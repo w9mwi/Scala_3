@@ -16,40 +16,75 @@ that were required in Scala 2 can also be removed.
 
 @main def main() =
   val intList = List(-3, -2, -1, 0, 1, 2, 3)
-  val intValue = -1
+  val intValue = 3
 
-  // *********************************************************
-  // IF/ELSE STATEMENTS
-  // NOTE: "then" is a new keyword added in Scala 3.
-  //       Scala 3 requires the use of the "then" keyword
-  //       in all "if" statements.
-  if intValue < 0 then
-    println("intValue = negative")
+  // ****************************************************************
+  // ****************************************************************
+  // IF STATEMENTS
+  //
+  // The following if statement works with Scala 3.  "then" is a new
+  // keyword added in Scala 3 that can follow "if" or "else if", but
+  // CAN'T follow "else".  When an if statement uses the new Scala 3
+  // "then" keyword, it eliminates the need for the if statement's
+  // parenthesis pair (), and eliminates the need for the braces
+  // pair {} following "if" and "else if".
+  print("if statement #1 result -  ")
+  if intValue > 0 then
+    print("intValue = positive;  ")
+    print("a")
+    print("b")
+    println("c")
   else if intValue == 0 then
-    println("intValue = zero")
+    print("intValue = zero;  ")
+    print("x")
+    print("y")
+    println("z")
   else
-    println("intValue = positive")
+    println("intValue = negative;  ")
 
-  // print(s"int = $int")
+  // The following if statement works with all Scala versions and
+  // is equivalent to the above if statement.  Because the "then"
+  // keyword isn't used here, this if statement requires the if
+  // statement's parenthesis pair (), and requires the braces
+  // pair {} following "if" and "else if".
+  print("if statement #2 result -  ")
+  if (intValue > 0) {
+    print("intValue = positive;  ")
+    print("a")
+    print("b")
+    println("c")
+  }
+  else if (intValue == 0) {
+    print("intValue = zero;  ")
+    print("x")
+    print("y")
+    println("z")
+  }
+  else
+    println("intValue = negative;  ")
 
-  // *********************************************************
+
+  // ****************************************************************
   // FOR LOOPS
-  // A for loop in Scala 3 can use the "do" keyword in place
-  // of a pair of braces {}; and its parenthesis () can also
-  // be eliminated.  The following 2 for loops are equivalent.
-  print("for loop #1 result = ")
-  for int <- intList do { // Works with Scala 3.
+  //
+  // The following for loop works with Scala 3.  The "do" keyword
+  // used in a Scala 3 for loop eliminates the need for the loop's
+  // parenthesis pair () and braces pair {}.
+  print("\nfor loop #1 result -  ")
+  for int <- intList do
+    print("x")
+    print("y")
+    print("z ")
+
+  // The following for loop works with all Scala versions and
+  // is equivalent to the above for loop.  Because the "do"
+  // keyword isn't used here, this for loop requires the
+  // parenthesis pair () and the braces pair {}.
+  print("\nfor loop #2 result -  ")
+  for (int <- intList) {
     print("x")
     print("y")
     print("z ")
   }
 
-  print("\nfor loop #2 result = ")
-  for (int <- intList) { // Works with all Scala versions.
-    print("x")
-    print("y")
-    print("z ")
-  }
-
-
-println("\n\nTHE END.")
+  print("\nTHE END.")
