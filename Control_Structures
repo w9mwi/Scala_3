@@ -1,17 +1,55 @@
-The Scala 3 main() program below demonstrates how to use the following
+The Scala 3 program below demonstrates how to use the following
 Scala 3 control structures...
 
 * if/else
 * for loops and expressions
-* match expressions
 * while loops
+* match expressions
 * try/catch
 
-In Scala 3 the do-while loop has been removed.  The "do" keyword can
-can now be used in the for loop.  In Scala 3 the "do" keyword is used
-in the while loop AFTER the while statement, instead of BEFORE the
-while loop as in Scala 2.
+In Scala 3 the do-while loop has been removed.  In Scala 3 the "do" keyword
+can be used within a for loop or a while loop to replace the braces {} pair.
+When a Scala 3 for/while loop uses the "do" keyword, the parenthesis () pair
+that were required in Scala 2 can also be removed.
 
-Control statements in Scala 3 don't require parenthesis () or braces {}
-as they do in Scala 2.  They are optional in Scala 3.
+============================================================================
 
+@main def main() =
+  val intList = List(-3, -2, -1, 0, 1, 2, 3)
+  val intValue = -1
+
+  // *********************************************************
+  // IF/ELSE STATEMENTS
+  // NOTE: "then" is a new keyword added in Scala 3.
+  //       Scala 3 requires the use of the "then" keyword
+  //       in all "if" statements.
+  if intValue < 0 then
+    println("intValue = negative")
+  else if intValue == 0 then
+    println("intValue = zero")
+  else
+    println("intValue = positive")
+
+  // print(s"int = $int")
+
+  // *********************************************************
+  // FOR LOOPS
+  // A for loop in Scala 3 can use the "do" keyword in place
+  // of a pair of braces {}; and its parenthesis () can also
+  // be eliminated.  The following 2 for loops are equivalent.
+  print("for loop #1 result = ")
+  for int <- intList do { // Works with Scala 3.
+    print("x")
+    print("y")
+    print("z ")
+  }
+
+  print("\nfor loop #2 result = ")
+  for (int <- intList) { // Works with all Scala versions.
+    print("x")
+    print("y")
+    print("z ")
+  }
+
+
+println("\n\nTHE END.")
