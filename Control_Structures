@@ -7,7 +7,11 @@ Scala 3 control structures...
 * while loops
 * try/catch
 
-In Scala 3, the do-while loop has been removed.  The "do" keyword
-can now be used in the for loop, and in the while loop but AFTER
-the while statement, instead of BEFORE the while loop as in Scala 2.
+In Scala 3 the do-while loop has been removed.  The "do" keyword can
+can now be used in the for loop.  In Scala 3 the "do" keyword is used
+in the while loop AFTER the while statement, instead of BEFORE the
+while loop as in Scala 2.
+
+Control statements in Scala 3 don't require parenthesis () or braces {}
+as they do in Scala 2.  They are optional in Scala 3.
 
