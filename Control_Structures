@@ -1,7 +1,7 @@
 The Scala 3 program below demonstrates how to use the following
 Scala 3 control structures...
 
-* if-else-then
+* if statements
 * while loops
 * for loops and expressions
 * match expressions
