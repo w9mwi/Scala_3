@@ -23,7 +23,7 @@ that were required in Scala 2 can also be removed.
   // IF STATEMENTS
   //
   // The following if statement works with Scala 3.  "then" is a new
-  // keyword added in Scala 3 that can follow "if" or "else if", but
+  // keyword added in Scala 3 that follows "if" and "else if", but
   // CAN'T follow "else".  When an if statement uses the new Scala 3
   // "then" keyword, it eliminates the need for the if statement's
   // parenthesis pair (), and eliminates the need for the braces
