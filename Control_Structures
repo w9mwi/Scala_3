@@ -1,9 +1,10 @@
 The Scala 3 program below demonstrates how to use the following
 Scala 3 control structures...
 
-* if statements
+* (f / if else / else  expressions
 * while loops
-* for loops and expressions
+* for loops
+* for expressions
 * match expressions
 * try/catch
 
@@ -20,17 +21,24 @@ parenthesis () pair that were required in Scala 2 can also be removed.
 
   // ****************************************************************
   // ****************************************************************
-  // IF STATEMENTS
+  // IF EXPRESSIONS
   //
+  // Every if statement gets evaluated to an expression, which means
+  // all if statements return a value.  Here is an example.
+  val v1 = if intList(5) < 0 then "negative"
+           else if intList(5) == 0 then "zero"
+           else "positive"
+  println(s"v1 = $v1\n") // PRINTS:  v1 = positive
+
   // The following if statement works with Scala 3.  "then" is a new
   // keyword added in Scala 3 that follows "if" and "else if", but
   // CAN'T follow "else".  When an if statement uses the new Scala 3
   // "then" keyword, it eliminates the need for the if statement's
-  // parenthesis pair (), and eliminates the need for the braces
+  // parenthesis pair (), and it eliminates the need for the braces
   // pair {} following "if" and "else if".
-  print("if statement #1 result -  ")
+  print("if statement #1 result:  ")
   if intValue > 0 then
-    print("intValue = positive;  ")
+    print("intValue = positive;  ") // PRINTS:  if statement #1 result:  intValue = positive;  abc
     print("a")
     print("b")
     println("c")
@@ -45,11 +53,11 @@ parenthesis () pair that were required in Scala 2 can also be removed.
   // The following if statement works with all Scala versions and
   // is equivalent to the above if statement.  Because the "then"
   // keyword isn't used here, this if statement requires the if
-  // statement's parenthesis pair (), and requires the braces
+  // statement's parenthesis pair (), and it requires the braces
   // pair {} following "if" and "else if".
-  print("if statement #2 result -  ")
+  print("if statement #2 result:  ")
   if (intValue > 0) {
-    print("intValue = positive;  ")
+    print("intValue = positive;  ") // PRINTS:  if statement #2 result:  intValue = positive;  abc
     print("a")
     print("b")
     println("c")
@@ -70,21 +78,47 @@ parenthesis () pair that were required in Scala 2 can also be removed.
   // The following for loop works with Scala 3.  The "do" keyword
   // used in a Scala 3 for loop eliminates the need for the loop's
   // parenthesis pair () and braces pair {}.
-  print("\nfor loop #1 result -  ")
+  print("\nfor loop #1 result:  ")
   for int <- intList do
     print("x")
     print("y")
-    print("z ")
+    print("z ") // PRINTS:  for loop #1 result:  xyz xyz xyz xyz xyz xyz xyz
 
   // The following for loop works with all Scala versions and
   // is equivalent to the above for loop.  Because the "do"
   // keyword isn't used here, this for loop requires the
   // parenthesis pair () and the braces pair {}.
-  print("\nfor loop #2 result -  ")
+  print("\nfor loop #2 result:  ")
   for (int <- intList) {
     print("x")
     print("y")
-    print("z ")
+    print("z ") // PRINTS:  for loop #2 result:  xyz xyz xyz xyz xyz xyz xyz
   }
+
+  // ****************************************************************
+  // FOR LOOPS THAT IMPLEMENT GUARDS
+  //
+  // An if expression contained within a for loop is called a "guard."
+  // An if expression that's used as a "guard" can contain only an "if";
+  // not a "then", not an "else if", and not an "else".
+  //
+  // The for loop in the following example contains a "guard" that
+  // allows only Int values less than 1 to be printed.
+  print("\nfor loop #3 result:  ")
+  for
+    int <- intList
+    if int < 1
+  do
+    print(int + ", ") // PRINTS:  for loop #3 result:  -3, -2, -1, 0,
+
+  // The for loop in the following example contains 2 "guards" which
+  // allow only Int values less than 1 and greater than -2 to be printed.
+  print("\nfor loop #4 result:  ")
+  for
+    int <- intList
+    if int < 1
+    if int > -2
+  do
+    print(int + ", ") // PRINTS:  for loop #4 result:  -1, 0,
 
   print("\nTHE END.")
