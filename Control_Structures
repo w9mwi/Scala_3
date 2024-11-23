@@ -34,6 +34,13 @@ CODE SNIPPET NO. 1
 
 CODE SNIPPET NO. 2
 
+  val intList = List(-3, -2, -1, 0, 1, 2, 3)
+  for int <- intList do print("x")
+// WON'T COMPILE!  To fix, both of the following print statements must
+// be indented to the same column (or greater) as above "for" keyword.
+print("y")
+ print("z ")
+
 =====================================================================
 
 SCALA 3 CONTROL STRUCTURES
