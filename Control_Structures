@@ -14,7 +14,7 @@ the indentation rules are violated.  When you want a Scala 3 program's
 control structure to execute multiple lines of code without using a
 braces pair {}, the multiple lines of code you want to execute must
 be indented to the same column number (or greater) than the first
-line of code to be executed.
+line of code that gets executed.
 
 =====================================================================
 
