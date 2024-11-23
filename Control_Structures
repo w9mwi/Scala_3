@@ -28,7 +28,8 @@ CODE SNIPPET NO. 1
     println("x equals 2.")
   else if x == 3 then
     println("x = 3")
-   println("x equals 3.")  // WON'T COMPILE!  To fix, indent this line one space to the right.
+   println("x equals 3.")  // WON'T COMPILE!
+                           // To fix, indent one (or more) space to the right.
   else println("x is some number other than 2 or 3.")
 
 CODE SNIPPET NO. 2
