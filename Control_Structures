@@ -6,10 +6,10 @@ comply with.
 
 Scala 3 allows control structures to execute multiple lines of code without
 placing those multiple lines of code between a braces pair {}, as previous
-Scala versions require.  However, Scala 3 allows this behavior (removal of
-the braces pair {}) only if the source code follows specific indentation
-rules.  Study the following code snippets to understand the behavior of
-these these Scala 3 indentation rules.
+Scala versions require.  However, Scala 3 allows this behavior (executing
+multiple lines of code without the braces pair {}) only if the source code
+follows specific indentation rules.  Study the following code snippets to
+understand the behavior of these these Scala 3 indentation rules.
 
 ======================================================================
 // CODE SNIPPET NO. 1
@@ -71,9 +71,9 @@ print("y")
 
 ---------------------
 // CODE SNIPPET NO. 7
-  
-=====================================================================
 
+
+=====================================================================
 SCALA 3 CONTROL STRUCTURES
 
 The Scala 3 program below demonstrates how to use the following
@@ -172,8 +172,8 @@ Scala 3 control structures:
   // FOR LOOPS THAT IMPLEMENT GUARDS
   //
   // An if expression contained within a for loop is called a "guard."
-  // An if expression that's used as a "guard" can contain only an "if";
-  // not a "then", not an "else if", and not an "else".
+  // An if expression that's used as a "guard" can contain only the
+  // "if" keyword, not "then", not "else if", and not "else".
   //
   // The for loop in the following example contains a "guard" that
   // allows only Int values less than 1 to be printed.
@@ -184,8 +184,8 @@ Scala 3 control structures:
   do
     print(int + ", ") // PRINTS:  for loop #3 result:  -3, -2, -1, 0,
 
-  // The for loop in the following example contains 2 "guards" which
-  // allow only Int values less than 1 and greater than -2 to be printed.
+  // The for loop in the following example contains 2 "guards" that allow
+  // only Int values less than 1 and greater than -2 to be printed.
   print("\nfor loop #4 result:  ")
   for
     int <- intList
@@ -195,12 +195,13 @@ Scala 3 control structures:
     print(int + ", ") // PRINTS:  for loop #4 result:  -1, 0,
 
   // ****************************************************************
-  // A FOR LOOP CAN BECOME AN EXPRESSION BY IMPLEMENTING THE yield KEYWORD.
+  // A FOR LOOP CAN BECOME AN EXPRESSION BY IMPLEMENTING THE "yield" KEYWORD.
   //
   // The for loop in this example implements the yield keyword, which
   // transforms it into an expression by returning a value.  A for loop
-  // can be written using a parenthesis pair (), or a braces pair {},
-  // or in Scala 3 without either.
+  // can be written using a parenthesis pair (), or a braces pair {}.
+  // In Scala 3 neither a parenthesis pair () or a braces pair {} are
+  // required.
   var var_listInt:List[Int] = for (i <- intList; zzz = 3.21) yield i * 2
   var_listInt               = for {i <- intList; zzz = 3.21} yield i * 2
   var_listInt               = for  i <- intList; zzz = 3.21  yield i * 2
@@ -213,7 +214,7 @@ Scala 3 control structures:
   println(s"var_ListStr = $var_ListStr") // PRINTS:  var_ListStr = List(JOE, MOE, JANICE)
 
   // The following for expression obtains the string length of all strings in
-  // var_ListStr that are longer 4 chars in length; then returns those values
+  // var_ListStr that are longer 4 chars in length; then it returns those values
   // into var_listInt.
   var_ListStr = List("apple", "banana", "lime", "orange")
   var_listInt = for fruit <- var_ListStr
