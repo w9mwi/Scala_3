@@ -1,5 +1,17 @@
 SCALA 3 INDENTATION RULES
 
+Before discussing the Scala 3 control structures below, you should
+first understand the indentation rules that Scala 3 source code must
+comply with.
+
+Scala 3 allows control structures to execute multiple lines of code
+without placing those multiple lines of code between a braces pair {},
+as is required in previous Scala versions.  However, Scala 3 allows
+this behavior only if the source code follows indentation rules.
+
+The following code snippets won't compile in a Scala 3 program because
+the indentation rules are violated.
+
 =====================================================================
 
 SCALA 3 CONTROL STRUCTURES
