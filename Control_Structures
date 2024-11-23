@@ -20,7 +20,9 @@ The following Scala 3 code snippets won't compile.  Search for the
 text "WON'T COMPILE" to see instructions on how to fix.
 
 ======================================================================
-CODE SNIPPET NO. 1
+// CODE SNIPPET NO. 1
+// WON'T COMPILE!  To fix, indent this line of code one (or more)
+// space to the right:  println("x equals 3.")
 
   val x = 3
   if x == 2 then
@@ -28,19 +30,55 @@ CODE SNIPPET NO. 1
     println("x equals 2.")
   else if x == 3 then
     println("x = 3")
-   println("x equals 3.")  // WON'T COMPILE!
-                           // To fix, indent one (or more) space to the right.
+   println("x equals 3.")
   else println("x is some number other than 2 or 3.")
 
-CODE SNIPPET NO. 2
+---------------------
+// CODE SNIPPET NO. 2
+// WON'T COMPILE!  To fix, both the print("y") and print("z ") statements
+// must be indented to the same column (or greater) as the "for" keyword.
 
   val intList = List(-3, -2, -1, 0, 1, 2, 3)
   for int <- intList do print("x")
-// WON'T COMPILE!  To fix, both of the following print statements must
-// be indented to the same column (or greater) as above "for" keyword.
 print("y")
  print("z ")
 
+---------------------
+// CODE SNIPPET NO. 3
+// The following code will compile, but print("y") and print("z ")
+// aren't part of the for loop.
+  val intList = List(-3, -2, -1, 0, 1, 2, 3)
+  for int <- intList do print("x")
+    print("y")
+    print("z ")
+
+// To make all 3 print statements execute with the for loop, the above
+// for loop can be restructured in either of the following 2 ways.
+  for int <- intList do
+    print("x")
+    print("y")
+    print("z ")
+
+  for int <- intList
+  do
+    print("x")
+    print("y")
+    print("z ")
+
+
+
+---------------------
+// CODE SNIPPET NO. 4
+
+---------------------
+// CODE SNIPPET NO. 5
+
+---------------------
+// CODE SNIPPET NO. 6
+
+---------------------
+// CODE SNIPPET NO. 7
+  
 =====================================================================
 
 SCALA 3 CONTROL STRUCTURES
