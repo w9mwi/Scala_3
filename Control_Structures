@@ -1,3 +1,21 @@
+SCALA 3 INDENTATION RULES
+
+=====================================================================
+
+SCALA 3 CONTROL STRUCTURES
+
+The Scala 3 program below demonstrates how to use the following
+Scala 3 control structures:
+
+* if expressions
+* while loops
+* for loops
+* for expressions
+* match expressions
+* try/catch
+
+=====================================================================
+
 @main def main() =
   val intList = List(-3, -2, -1, 0, 1, 2, 3)
   val intValue = 3
