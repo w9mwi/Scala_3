@@ -10,7 +10,11 @@ as is required in previous Scala versions.  However, Scala 3 allows
 this behavior only if the source code follows indentation rules.
 
 The following code snippets won't compile in a Scala 3 program because
-the indentation rules are violated.
+the indentation rules are violated.  When you want a Scala 3 program's
+control structure to execute multiple lines of code without using a
+braces pair {}, the multiple lines of code you want to execute must
+be indented to the same column number (or greater) than the first
+line of code to be executed.
 
 =====================================================================
 
