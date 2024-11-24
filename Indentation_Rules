@@ -1,1 +1,87 @@
+SCALA 3 INDENTATION RULES
+
+Before reading the Scala 3 control structures section, read this
+section first to understand the indentation rules that Scala 3
+source code must comply with.
+
+Scala 3 allows control structures to execute multiple lines of code without
+placing those multiple lines of code between a braces pair {}, as previous
+Scala versions require.  However, Scala 3 allows this behavior (executing
+multiple lines of code without the braces pair {}) only if the source code
+follows specific indentation rules.  Study the following code snippets to
+understand Scala 3 indentation rules.
+
+======================================================================
+// CODE SNIPPET NO. 1
+// WON'T COMPILE!  To fix, indent the println("x equals 3.") line of
+// code one (or more) space to the right:
+
+  val x = 3
+  if x == 2 then
+    println("x = 2")
+    println("x equals 2.")
+  else if x == 3 then
+    println("x = 3")
+   println("x equals 3.")
+  else println("x is some number other than 2 or 3.")
+
+---------------------
+// CODE SNIPPET NO. 2
+// WON'T COMPILE!  To fix, both the print("y") and print("z ") statements
+// must be indented to the same column (or greater) as the "for" keyword.
+
+  val intList = List(-3, -2, -1, 0, 1, 2, 3)
+  for int <- intList do print("x")
+print("y")
+ print("z ")
+
+---------------------
+// CODE SNIPPET NO. 3
+// The following code will compile, but print("y") and print("z ")
+// aren't part of the for loop.
+  val intList = List(-3, -2, -1, 0, 1, 2, 3)
+  for int <- intList do print("x")
+    print("y")
+    print("z ")
+
+// To make all 3 print statements execute with the for loop, the above code
+// code is restructured (2 different ways) in the next 2 for loops; so all
+// 3 print statements are located below the "do" keyword, and indented to
+// the right of the "for" keyword.
+  for int <- intList do
+    print("x")
+    print("y")
+
+    // The following print("z ") statement is part of the above for loop because
+    // it has the same indentation as the 2 print statements above it.
+    print("z ")
+
+  // The following print statement isn't part of the above for loop because
+  // it's indented to the same location as the above "for" keyword, which
+  // is also to the left of the above 3 print statements.
+  println("\nNot part of the above for loop.")
+
+  for int <- intList
+  do
+    print("x")
+    print("y")
+    print("z ")
+
+// Only the print("x") statement is part of the following for loop.
+  for int <- intList do
+  print("x")
+  print("y")
+
+
+---------------------
+// CODE SNIPPET NO. 4
+
+---------------------
+// CODE SNIPPET NO. 5
+
+---------------------
+// CODE SNIPPET NO. 6
+
+---------------------
+// CODE SNIPPET NO. 7
 
