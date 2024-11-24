@@ -27,16 +27,16 @@ Scala 3 control structures:
   // Every if statement gets evaluated to an expression, which means
   // all if statements return a value.  Here is an example.
   var var_String:String = if intList(5) < 0 then "negative"
-                          else if intList(5) == 0 then "zero"
-                          else "positive"
+  else if intList(5) == 0 then "zero"
+  else "positive"
   println(s"var_String = $var_String\n") // PRINTS:  var_String = positive
 
   // The following if statement works with Scala 3.  "then" is a new
-  // keyword added in Scala 3 that follows "if" and "else if", but
-  // CAN'T follow "else".  When an if statement uses the new Scala 3
-  // "then" keyword, it eliminates the need for the if statement's
-  // parenthesis pair (), and it eliminates the need for the braces
-  // pair {} following "if" and "else if".
+  // keyword added in Scala 3 that must always follow "if" and "else if",
+  // but isn't allowed to follow "else".  When an if statement uses the
+  // new Scala 3 "then" keyword, it eliminates the need for the if
+  // statement's parenthesis pair (), and it eliminates the need for
+  // any braces pair {} following "if" and "else if".
   print("if statement #1 result:  ")
   if intValue > 0 then
     print("intValue = positive;  ") // PRINTS:  if statement #1 result:  intValue = positive;  abc
@@ -101,7 +101,7 @@ Scala 3 control structures:
   //
   // An if expression contained within a for loop is called a "guard."
   // An if expression that's used as a "guard" can contain only the
-  // "if" keyword, not "then", not "else if", and not "else".
+  // "if" keyword; not "then", not "else if", and not "else".
   //
   // The for loop in the following example contains a "guard" that
   // allows only Int values less than 1 to be printed.
@@ -125,11 +125,12 @@ Scala 3 control structures:
   // ****************************************************************
   // A FOR LOOP CAN BECOME AN EXPRESSION BY IMPLEMENTING THE "yield" KEYWORD.
   //
-  // The for loop in this example implements the yield keyword, which
-  // transforms it into an expression by returning a value.  A for loop
-  // can be written using a parenthesis pair (), or a braces pair {}.
-  // In Scala 3 neither a parenthesis pair () or a braces pair {} are
-  // required.
+  // The 3 for loops in this example implements the yield keyword,
+  // which transforms it into an expression by returning a value.
+  // A for loop can use a parenthesis pair (), or a braces pair {},
+  // as the following 2 for loops demonstrate.  The third for loop
+  // below shows that parenthesis () or braces {} aren't required
+  // in Scala 3.
   var var_listInt:List[Int] = for (i <- intList; zzz = 3.21) yield i * 2
   var_listInt               = for {i <- intList; zzz = 3.21} yield i * 2
   var_listInt               = for  i <- intList; zzz = 3.21  yield i * 2
@@ -147,7 +148,7 @@ Scala 3 control structures:
   var_ListStr = List("apple", "banana", "lime", "orange")
   var_listInt = for fruit <- var_ListStr
                     if fruit.length > 4
-                yield fruit.length
+  yield fruit.length
   println(s"var_listInt = $var_listInt") // PRINTS:  var_listInt = List(5, 6, 6)
 
   print("\nTHE END.")
