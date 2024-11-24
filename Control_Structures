@@ -151,4 +151,36 @@ Scala 3 control structures:
   yield fruit.length
   println(s"var_listInt = $var_listInt") // PRINTS:  var_listInt = List(5, 6, 6)
 
+  // ****************************************************************
+  // MATCH EXPRESSIONS
+  // Scala 3 adds the new keyword "matchable" which works on all data types
+  // that can be used with "match".
+
+  print("match #1 = ")
+  intValue match
+    case 1 => println("one")
+    case 2 => println("two")
+    case 3 => println("three") // PRINTS:  match #1 = three
+    case _ => println("other")
+
+  // The following match shows that "match" is an expression by returning a value.
+  var result:Any = intValue match
+    case 1 => "one"
+    case 2 => "two"
+    case 3 => "three"
+    case _ => "other"
+  println(s"match #2 result = $result") // PRINTS:  match #2 result = three
+
+
+  // This "match" example matches on a Scala class.
+  case class Person(name:String)
+  val person:Person = Person("Tom")
+  print("match #3 = ")
+  person match
+    case Person(name)
+      if person.name == "Fred" => println("name is Fred.")
+    case Person(name)
+      if person.name == "Tom" => println("name is Tom.") // PRINTS:  match #3 = name is Tom.
+    case _ => println("person is unknown.")
+
   print("\nTHE END.")
