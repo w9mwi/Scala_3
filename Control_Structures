@@ -44,13 +44,22 @@ print("y")
     print("y")
     print("z ")
 
-// To make all 3 print statements execute with the for loop, the above
-// for loop can be restructured in either of the following 2 ways.  So
-// all 3 print statements are located below the "do" keyword.
+// To make all 3 print statements execute with the for loop, the above code
+// code is restructured (2 different ways) in the next 2 for loops; so all
+// 3 print statements are located below the "do" keyword, and indented to
+// the right of the "for" keyword.
   for int <- intList do
     print("x")
     print("y")
+
+    // The following print("z ") statement is part of the above for loop because
+    // it has the same indentation as the 2 print statements above it.
     print("z ")
+
+  // The following print statement isn't part of the above for loop because
+  // it's indented to the same location as the above "for" keyword, which
+  // is also to the left of the above 3 print statements.
+  println("\nNot part of the above for loop.")
 
   for int <- intList
   do
@@ -58,6 +67,10 @@ print("y")
     print("y")
     print("z ")
 
+// Only the print("x") statement is part of the following for loop.
+  for int <- intList do
+  print("x")
+  print("y")
 
 
 ---------------------
