@@ -1,8 +1,9 @@
 SCALA 3 CONTROL STRUCTURES
 
-Before reading this Control_Structures section, you need to understand the
-indentation rules that the Scala 3 compiler enforces on all Scala 3 source
-code.  So read the Indentation_Rules section first.
+Before you learn about Scala 3 control structures, you should first
+understand the indentation rules that the Scala 3 compiler enforces
+on all Scala 3 source code.  So read the Indentation_Rules section
+first.
 
 The Scala 3 program below demonstrates how to use the following
 Scala 3 control structures:
