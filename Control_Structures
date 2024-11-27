@@ -8,11 +8,11 @@ The Scala 3 program below demonstrates how to use the following
 Scala 3 control structures:
 
 * if expressions
-* while loops
 * for loops
 * for expressions
+* while loops
 * match expressions
-* try/catch
+* try/catch/finally blocks
 
 =====================================================================
 
@@ -26,10 +26,12 @@ Scala 3 control structures:
   //
   // Every if statement gets evaluated to an expression, which means
   // all if statements return a value.  Here is an example.
-  var var_String:String = if intList(5) < 0 then "negative"
+  print("if statement #1:  ")
+  var var_String:String =
+  if intList(5) < 0 then "negative"
   else if intList(5) == 0 then "zero"
   else "positive"
-  println(s"var_String = $var_String\n") // PRINTS:  var_String = positive
+  println(s"var_String = $var_String") // PRINTS:  if statement #1:  var_String = positive
 
   // The following if statement works with Scala 3.  "then" is a new
   // keyword added in Scala 3 that must always follow "if" and "else if",
@@ -37,12 +39,12 @@ Scala 3 control structures:
   // new Scala 3 "then" keyword, it eliminates the need for the if
   // statement's parenthesis pair (), and it eliminates the need for
   // any braces pair {} following "if" and "else if".
-  print("if statement #1 result:  ")
+  print("if statement #2:  ")
   if intValue > 0 then
-    print("intValue = positive;  ") // PRINTS:  if statement #1 result:  intValue = positive;  abc
+    print("intValue = positive;  ")
     print("a")
     print("b")
-    println("c")
+    println("c") // PRINTS:  if statement #2:  intValue = positive;  abc
   else if intValue == 0 then
     print("intValue = zero;  ")
     print("x")
@@ -56,12 +58,12 @@ Scala 3 control structures:
   // keyword isn't used here, this if statement requires the if
   // statement's parenthesis pair (), and it requires the braces
   // pair {} following "if" and "else if".
-  print("if statement #2 result:  ")
+  print("if statement #3:  ")
   if (intValue > 0) {
-    print("intValue = positive;  ") // PRINTS:  if statement #2 result:  intValue = positive;  abc
+    print("intValue = positive;  ")
     print("a")
     print("b")
-    println("c")
+    println("c") // PRINTS:  if statement #3:  intValue = positive;  abc
   }
   else if (intValue == 0) {
     print("intValue = zero;  ")
@@ -79,22 +81,23 @@ Scala 3 control structures:
   // The following for loop works with Scala 3.  The "do" keyword
   // used in a Scala 3 for loop eliminates the need for the loop's
   // parenthesis pair () and braces pair {}.
-  print("\nfor loop #1 result:  ")
+  print("\nfor loop #1:  ")
   for int <- intList do
     print("x")
     print("y")
-    print("z ") // PRINTS:  for loop #1 result:  xyz xyz xyz xyz xyz xyz xyz
+    print("z ") // PRINTS:  for loop #1:  xyz xyz xyz xyz xyz xyz xyz
 
   // The following for loop works with all Scala versions and
   // is equivalent to the above for loop.  Because the "do"
   // keyword isn't used here, this for loop requires the
   // parenthesis pair () and the braces pair {}.
-  print("\nfor loop #2 result:  ")
+  print("\nfor loop #2:  ")
   for (int <- intList) {
     print("x")
     print("y")
-    print("z ") // PRINTS:  for loop #2 result:  xyz xyz xyz xyz xyz xyz xyz
+    print("z ") // PRINTS:  for loop #2:  xyz xyz xyz xyz xyz xyz xyz
   }
+
 
   // ****************************************************************
   // FOR LOOPS THAT IMPLEMENT GUARDS
@@ -105,22 +108,23 @@ Scala 3 control structures:
   //
   // The for loop in the following example contains a "guard" that
   // allows only Int values less than 1 to be printed.
-  print("\nfor loop #3 result:  ")
+  print("\nfor loop #3:  ")
   for
     int <- intList
     if int < 1
   do
-    print(int + ", ") // PRINTS:  for loop #3 result:  -3, -2, -1, 0,
+    print(int + ", ") // PRINTS:  for loop #3:  -3, -2, -1, 0,
 
   // The for loop in the following example contains 2 "guards" that allow
   // only Int values less than 1 and greater than -2 to be printed.
-  print("\nfor loop #4 result:  ")
+  print("\nfor loop #4:  ")
   for
     int <- intList
     if int < 1
     if int > -2
   do
-    print(int + ", ") // PRINTS:  for loop #4 result:  -1, 0,
+    print(int + ", ") // PRINTS:  for loop #4:  -1, 0,
+
 
   // ****************************************************************
   // A FOR LOOP CAN BECOME AN EXPRESSION BY IMPLEMENTING THE "yield" KEYWORD.
@@ -134,28 +138,45 @@ Scala 3 control structures:
   var var_listInt:List[Int] = for (i <- intList; zzz = 3.21) yield i * 2
   var_listInt               = for {i <- intList; zzz = 3.21} yield i * 2
   var_listInt               = for  i <- intList; zzz = 3.21  yield i * 2
-  println(s"\n\nvar_listInt = $var_listInt") // PRINTS: var_listInt = List(-6, -4, -2, 0, 2, 4, 6)
+  println(s"\nfor loop #5:  var_listInt = $var_listInt") // PRINTS:  for loop #5:  var_listInt = List(-6, -4, -2, 0, 2, 4, 6)
 
   // In this example the for expression converts all names in var_ListStr
   // to upper case, and returns that result back into var_ListStr.
   var var_ListStr = List("jOe", "moE", "janIce")
   var_ListStr = for name <- var_ListStr yield name.toUpperCase
-  println(s"var_ListStr = $var_ListStr") // PRINTS:  var_ListStr = List(JOE, MOE, JANICE)
+  println(s"for loop #6:  var_ListStr = $var_ListStr") // PRINTS:  for loop #6:  var_ListStr = List(JOE, MOE, JANICE)
 
   // The following for expression obtains the string length of all strings in
   // var_ListStr that are longer 4 chars in length; then it returns those values
   // into var_listInt.
   var_ListStr = List("apple", "banana", "lime", "orange")
-  var_listInt = for fruit <- var_ListStr
-                    if fruit.length > 4
+  var_listInt =
+  for fruit <- var_ListStr if fruit.length > 4
   yield fruit.length
-  println(s"var_listInt = $var_listInt") // PRINTS:  var_listInt = List(5, 6, 6)
+  println(s"for loop #7:  var_listInt = $var_listInt\n") // PRINTS:  for loop #7:  var_listInt = List(5, 6, 6)
+
+
+  // ****************************************************************
+  // WHILE LOOPS
+  // The below while loop prints this text:
+  // while loop: var_Int = 1
+  // while loop: var_Int = 2
+  var var_Int = 1
+  while var_Int < 3
+  do
+    println(s"while loop: var_Int = $var_Int")
+    var_Int += 1
+  println // This println is outside the while loop because it's indented left of the 2 lines above.
+
+
 
   // ****************************************************************
   // MATCH EXPRESSIONS
-  // Scala 3 adds the new keyword "matchable" which works on all data types
-  // that can be used with "match".
-
+  // The "match" keyword can be used to match on specific data values like a
+  // an Int value (-33, -4, 12), String value ("abc", "Wyoming", Joe"),
+  // as shown in the following example.  The "match" keyword can also be used
+  // to match on data types like a user-defined class, String, Int, List[Float],
+  // Array[?], etc.
   print("match #1 = ")
   intValue match
     case 1 => println("one")
@@ -163,16 +184,19 @@ Scala 3 control structures:
     case 3 => println("three") // PRINTS:  match #1 = three
     case _ => println("other")
 
-  // The following match shows that "match" is an expression by returning a value.
-  var result:Any = intValue match
+  // The following match performs the same match as above.  But this example
+  // demonstrates that a match evaluates to an expression by returning a
+  // String value into var_String.
+  var varString =
+  intValue match
     case 1 => "one"
     case 2 => "two"
     case 3 => "three"
     case _ => "other"
-  println(s"match #2 result = $result") // PRINTS:  match #2 result = three
+  println(s"match #2 varString = $varString") // PRINTS:  match #2 varString = three
 
-
-  // This "match" example matches on a Scala class.
+  // In this example, the "match" keyword is used to perform a match on the user-defined
+  // Person class to determine the person's name.
   case class Person(name:String)
   val person:Person = Person("Tom")
   print("match #3 = ")
@@ -182,5 +206,58 @@ Scala 3 control structures:
     case Person(name)
       if person.name == "Tom" => println("name is Tom.") // PRINTS:  match #3 = name is Tom.
     case _ => println("person is unknown.")
+  //  PRINTS:  match #3 = name is Tom.
 
-  print("\nTHE END.")
+  // As demonstrated above, the "match" keyword can be used to match on specific
+  // data values.  The following example demonstrates that the "match" keyword
+  // can also be used to match on data types such as String, List[?], Array[_],
+  // etc.  This is accomplished by calling the getClassAsString() method, which
+  // is defined below.
+  var_String = getClassAsString(1)
+  println(s"match #4 = $var_String") // PRINTS:  match #4 = Int
+  var_String = getClassAsString("hello")
+  println(s"match #5 = $var_String") // PRINTS:  match #5 = String
+  var_String = getClassAsString(intList)
+  println(s"match #6 = $var_String") // PRINTS:  match #6 = List[?]
+  var_String = getClassAsString(Array[Float](-234.56F, -0.009F, 456.789F))
+  println(s"match #7 = $var_String") // PRINTS:  match #7 = Array[_]
+  var_String = getClassAsString(List("abc", "xyz"))
+  println(s"match #8 = $var_String") // PRINTS:  match #8 = List[?]
+  var_String = getClassAsString(true)
+  println(s"match #9 = $var_String") // PRINTS:  match #9 = Unknown
+
+  /**
+   * This method demonstrates the use of the new Scala 3 trait "Matchable",
+   * which applies to any data type that supports pattern matching.  (Some
+   * data types don’t support pattern matching because this could break
+   * encapsulation.)
+   *
+   * @param arg
+   * @return String
+   */
+  def getClassAsString(arg: Matchable): String =
+    arg match
+      case a: Array[_] => "Array[_]" // NOTE: Either the '_' char or the '?' char can be used here.
+      case b: Double => "Double"
+      case c: Int => "Int"
+      case d: List[?] => "List[?]" // NOTE: Either the '?' char or the '_' char can be used here.
+      case e: String => "String"
+      case _ => "Unknown"
+
+
+  // ****************************************************************
+  // TRY / CATCH / FINALLY
+  //
+  // The following sample code is commented out because the code isn't
+  // complete, and this topic will be covered in detail later.  This
+  // commented-out example is just to get a taste...
+  //
+  // try
+  //   writeTextToFile(text)
+  // catch
+  //   case ioe: IOException => println("Got an IOException.")
+  //   case nfe: NumberFormatException => println("Got a NumberFormatException.")
+  // finally
+  //   println("Clean up your resources here.")
+
+  print("THE END.")
