@@ -15,7 +15,47 @@ apply to writing Scala 3 methods/functions, classes, traits, and other code
 where you want to execute multiple lines of code without placing that code
 between a braces pair {}.
 
-Study the following code snippets to understand Scala 3 indentation rules.
+Study the following code samples to understand Scala 3 indentation rules.
+
+
+======================================================================
+In the following sample code notice the colon char (:) at the end of
+the first line of the single trait definition, and at the end of the
+first line of the two class definitions.
+
+When a colon char (:) appears at the end of the first line of a
+definition for a Scala 3 class, object, trait, enum, etc. it acts
+as a replacement for the braces pair {}.  When a colon char (:)
+is used to replace the braces pair {}, these 2 rules apply:
+
+* The definition of the class, object, trait, enum. etc. terminates
+  with the first line encountered that is blank, empty, or contains
+  only whitespace.
+
+* All lines that are part of the definition must be indented to the
+  RIGHT of the keyword 'class', 'object', 'trait', 'enum', etc.
+
+
+@main def main() =
+  trait Engine(engineType:String):
+    def startEngine(): Unit = println(s"$engineType engine started.")
+    def stopEngine(): Unit  = println(s"$engineType engine stopped.")
+
+  class Automobile(engineType: String) extends Engine(engineType):
+    override def startEngine(): Unit = println(s"$engineType engine started.")
+    override def stopEngine(): Unit = println(s"$engineType engine stopped.")
+
+  class Jet(engineType: String) extends Engine(engineType):
+    override def startEngine(): Unit = println(s"$engineType engine started.")
+    override def stopEngine(): Unit = println(s"$engineType engine stopped.")
+  
+  val auto = Automobile("Gasoline")
+  val jet  = Jet("Jet")
+  auto.startEngine()  // PRINTS:  Gasoline engine started.
+  jet.startEngine()   // PRINTS:  Jet engine started.
+  jet.stopEngine()    // PRINTS:  Jet engine stopped.
+  auto.stopEngine()   // PRINTS:  Gasoline engine stopped.
+
 
 ======================================================================
 // CODE SNIPPET NO. 1
