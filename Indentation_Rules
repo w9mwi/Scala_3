@@ -1,15 +1,21 @@
 SCALA 3 INDENTATION RULES
 
-Before reading the Scala 3 control structures section, read this
-section first to understand the indentation rules that Scala 3
-source code must comply with.
+Before you begin to learn Scala 3 programming, you should first read this
+section to understand the indentation rules enforced by the Scala 3 compiler.
 
 Scala 3 allows control structures to execute multiple lines of code without
 placing those multiple lines of code between a braces pair {}, as previous
 Scala versions require.  However, Scala 3 allows this behavior (executing
 multiple lines of code without the braces pair {}) only if the source code
-follows specific indentation rules.  Study the following code snippets to
-understand Scala 3 indentation rules.
+follows specific indentation rules.
+
+These indentation rules apply not only to Scala 3 control structures such as
+if expressions, for loops, for expressions, while loops, etc.  They also
+apply to writing Scala 3 methods/functions, classes, traits, and other code
+where you want to execute multiple lines of code without placing that code
+between a braces pair {}.
+
+Study the following code snippets to understand Scala 3 indentation rules.
 
 ======================================================================
 // CODE SNIPPET NO. 1
