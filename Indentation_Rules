@@ -63,10 +63,7 @@ for the following control structures:
 
 * if expressions
 * for loops
-* for expressions
-* while loops
-* match expressions
-* try/catch/finally blocks
+
 
 // CODE SNIPPET NO. 1
 // WON'T COMPILE!  To fix, indent the println("x equals 3.") line of
