@@ -5,9 +5,9 @@ section to understand the indentation rules enforced by the Scala 3 compiler.
 
 Scala 3 allows control structures to execute multiple lines of code without
 placing those multiple lines of code between a braces pair {}, as previous
-Scala versions require.  However, Scala 3 allows this behavior (executing
-multiple lines of code without the braces pair {}) only if the source code
-follows specific indentation rules.
+Scala versions require.  Only when the source code follows specific indentation
+rules does Scala 3 allow executing multiple lines of code without the braces
+pair {}.
 
 These indentation rules apply not only to Scala 3 control structures such as
 if expressions, for loops, for expressions, while loops, etc.  They also
@@ -15,11 +15,11 @@ apply to writing Scala 3 methods/functions, classes, traits, and other code
 where you want to execute multiple lines of code without placing that code
 between a braces pair {}.
 
-Study the following code samples to understand Scala 3 indentation rules.
+The following code samples demonstrate Scala 3 indentation rules.
 
 
 ======================================================================
-In the following sample code notice the colon char (:) at the end of
+In the following code example, notice the colon char (:) at the end of
 the first line of the single trait definition, and at the end of the
 first line of the two class definitions.
 
