@@ -58,6 +58,16 @@ is used to replace the braces pair {}, these 2 rules apply:
 
 
 ======================================================================
+The following code snippets demonstrate Scala 3 indentation rules
+for the following control structures:
+
+* if expressions
+* for loops
+* for expressions
+* while loops
+* match expressions
+* try/catch/finally blocks
+
 // CODE SNIPPET NO. 1
 // WON'T COMPILE!  To fix, indent the println("x equals 3.") line of
 // code one (or more) space to the right:
@@ -102,32 +112,20 @@ print("y")
     // it has the same indentation as the 2 print statements above it.
     print("z ")
 
-  // The following print statement isn't part of the above for loop because
+  // The following println statement isn't part of the above for loop because
   // it's indented to the same location as the above "for" keyword, which
   // is also to the left of the above 3 print statements.
   println("\nNot part of the above for loop.")
 
+  // All 3 print statements in the following for loop are executed as part
+  // of the for loop.
   for int <- intList
   do
     print("x")
     print("y")
     print("z ")
 
-// Only the print("x") statement is part of the following for loop.
+// Only the print("x") statement is executed as part of the following for loop.
   for int <- intList do
   print("x")
   print("y")
-
-
----------------------
-// CODE SNIPPET NO. 4
-
----------------------
-// CODE SNIPPET NO. 5
-
----------------------
-// CODE SNIPPET NO. 6
-
----------------------
-// CODE SNIPPET NO. 7
-
