@@ -35,7 +35,7 @@ When a colon char (:) is used to replace a braces pair {}, these 2 rules apply:
 * All lines that are part of the definition must be indented to the
   RIGHT of the keyword 'class', 'object', 'trait', etc.
 
-A method/function definitions don't use a colon char (:) to replace the
+Method/Function definitions don't use a colon char (:) to replace the
 braces pair {}.  To see how method/function definitions can eliminate
 the use of a braces pair {}, see the calculateAndPrintSum() method
 definition below.
