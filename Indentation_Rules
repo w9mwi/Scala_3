@@ -32,13 +32,14 @@ When a colon char (:) is used to replace a braces pair {}, these 2 rules apply:
 * The definition of the class, object, trait, etc. terminates with the first
   line encountered that's blank, empty, or contains only whitespace.
 
-* All lines that are part of the definition must be indented to the
+* All lines that are part of the body must be indented to the
   RIGHT of the keyword 'class', 'object', 'trait', etc.
 
 Method/Function definitions don't use a colon char (:) to replace the
 braces pair {}.  To see how method/function definitions can eliminate
 the use of a braces pair {}, see the calculateAndPrintSum() method
 definition below.
+
 
 @main def main() =
   trait Engine(engineType:String):
@@ -54,14 +55,18 @@ definition below.
     override def stopEngine(): Unit = println(s"$engineType engine stopped.")
 
   // A method/function definition that executes multiple lines of code without
-  // using the braces pair {} (as show below) don't contain a colon char (:)
-  // at the end of its first line, as do class, trait, etc. definitions.  When
-  // a method/function is defined to execute multiple lines of code without
-  // using a braces pair {}, the syntax shown below is used.  Where all lines
-  // of code within its body must be indented to the RIGHT of the 'def' keyword.
+  // using the braces pair {} (as show below) doesn't use a colon char (:) at
+  // the end of its first line, as the class, trait, etc. definitions do.  Instead,
+  // the syntax shown below is required.  Where the body of the method/function
+  // must be indented to the RIGHT of the 'def' keyword.  Also, the method/function
+  // doesn't terminate with the first blank/empty line.  It terminates with the
+  // first line of code NOT indented to the RIGHT of the 'def' keyword.
   def calculateAndPrintSum(a: Int, b: Int):Unit =
     val sum = a + b
-    println(s"The sum of $a + $b = $sum")
+
+    println(s"The sum of $a + $b = $sum") // Even though there's a blank line above this println
+                                          // statement, it is part of the calculateAndPrintSum()
+                                          // method's body.
 
   val auto = Automobile("Gasoline")
   val jet  = Jet("Jet")
