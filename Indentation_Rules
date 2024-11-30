@@ -11,7 +11,7 @@ pair {}.
 
 These indentation rules apply not only to Scala 3 control structures such as
 if expressions, for loops, for expressions, while loops, etc.  They also
-apply to writing Scala 3 methods/functions, classes, traits, and other code
+apply to writing Scala 3 methods/functions, classes, objects, traits, etc.,
 where you want to execute multiple lines of code without placing that code
 between a braces pair {}.
 
@@ -25,16 +25,20 @@ first line of the two class definitions.
 
 When a colon char (:) appears at the end of the first line of a
 definition for a Scala 3 class, object, trait, enum, etc. it acts
-as a replacement for the braces pair {}.  When a colon char (:)
-is used to replace the braces pair {}, these 2 rules apply:
+as a replacement for the braces pair {}.
 
-* The definition of the class, object, trait, enum. etc. terminates
-  with the first line encountered that is blank, empty, or contains
-  only whitespace.
+When a colon char (:) is used to replace a braces pair {}, these 2 rules apply:
+
+* The definition of the class, object, trait, etc. terminates with the first
+  line encountered that's blank, empty, or contains only whitespace.
 
 * All lines that are part of the definition must be indented to the
-  RIGHT of the keyword 'class', 'object', 'trait', 'enum', etc.
+  RIGHT of the keyword 'class', 'object', 'trait', etc.
 
+A method/function definitions don't use a colon char (:) to replace the
+braces pair {}.  To see how method/function definitions can eliminate
+the use of a braces pair {}, see the calculateAndPrintSum() method
+definition below.
 
 @main def main() =
   trait Engine(engineType:String):
@@ -48,13 +52,24 @@ is used to replace the braces pair {}, these 2 rules apply:
   class Jet(engineType: String) extends Engine(engineType):
     override def startEngine(): Unit = println(s"$engineType engine started.")
     override def stopEngine(): Unit = println(s"$engineType engine stopped.")
-  
+
+  // A method/function definition that executes multiple lines of code without
+  // using the braces pair {} (as show below) don't contain a colon char (:)
+  // at the end of its first line, as do class, trait, etc. definitions.  When
+  // a method/function is defined to execute multiple lines of code without
+  // using a braces pair {}, the syntax shown below is used.  Where all lines
+  // of code within its body must be indented to the RIGHT of the 'def' keyword.
+  def calculateAndPrintSum(a: Int, b: Int):Unit =
+    val sum = a + b
+    println(s"The sum of $a + $b = $sum")
+
   val auto = Automobile("Gasoline")
   val jet  = Jet("Jet")
   auto.startEngine()  // PRINTS:  Gasoline engine started.
   jet.startEngine()   // PRINTS:  Jet engine started.
   jet.stopEngine()    // PRINTS:  Jet engine stopped.
   auto.stopEngine()   // PRINTS:  Gasoline engine stopped.
+  calculateAndPrintSum(123, 321) // PRINTS:  The sum of 123 + 321 = 444
 
 
 ======================================================================
