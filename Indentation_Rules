@@ -121,7 +121,8 @@ print("y")
     print("y")
 
     // The following print("z ") statement is part of the above for loop because
-    // it has the same indentation as the 2 print statements above it.
+    // it has the same indentation as the 2 print statements above it.  This holds
+    // true even when blank/empty line are located above it.
     print("z ")
 
   // The following println statement isn't part of the above for loop because
@@ -129,8 +130,7 @@ print("y")
   // is also to the left of the above 3 print statements.
   println("\nNot part of the above for loop.")
 
-  // All 3 print statements in the following for loop are executed as part
-  // of the for loop.
+  // All 3 print statements below are executed as part of the for loop.
   for int <- intList
   do
     print("x")
