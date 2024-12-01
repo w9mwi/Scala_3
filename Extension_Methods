@@ -1,4 +1,52 @@
 In Scala 3 you can add new methods to any Scala class that has already been
 defined.  This includes not just Scala classes that you have written, but
-any Scala class that your code can implement.  Including classes that are
-defined in the Scala 3 language.
+any Scala class that your code can invoke; including classes defined by
+the Scala 3 language.
+
+The following prgogram shows...
+
+1) How to add a method to a class after you have written that class.
+2) How to add a method to the String class that's defined in Scala 3.
+
+==============================================================================
+
+@main def main() =
+  // ************************************************************************
+  // ************************************************************************
+  // Circle is defined here by the programmer as a "case class",
+  // but it contains no methods.
+  case class Circle(xCoordinate: Double, yCoordinate: Double, radius: Double)
+
+  // At some later point in the code you can add a new method to
+  // the Circle class by using the Scala 3 "extension" word, as
+  // shown here.  In this example a method named circumference()
+  // is added to the previously-defined Circle class.
+  extension (c: Circle)
+    def circumference: Double = c.radius * math.Pi * 2
+
+  // Here we instantiate a Circle class, then invoke its circumference() method.
+  val myCircle = Circle(12.34, -98.76, 10.0)
+  val circleCircumference = myCircle.circumference
+  println(s"Circumference = $circleCircumference") // PRINTS:  Circumference = 62.83185307179586
+
+
+  // ************************************************************************
+  // ************************************************************************
+  // The following code adds a method named makeInt() to the Scala 3
+  // String class.  NOTE: The Integer.parseInt() method called below
+  // is defined in the Java API.
+  extension (s: String)
+    def makeInt(radix: Int): Int = Integer.parseInt(s, radix)
+
+  // Below we convert 3 Strings representing base 2 (binary) integers
+  // to Scala Int values, which are always base 10 (decimal) integers.
+  // For simplicity, there's no error checking performed
+  // on these String to Integer conversions.
+  var strBase2Int = "1".makeInt(2)
+  println(s"1 binary = $strBase2Int decimal") // PRINTS:  1 binary = 1 decimal
+
+  strBase2Int = "10".makeInt(2)
+  println(s"10 binary = $strBase2Int decimal") // PRINTS:  10 binary = 2 decimal
+
+  strBase2Int = "100".makeInt(2)
+  println(s"100 binary = $strBase2Int decimal") // PRINTS:  100 binary = 4 decimal
