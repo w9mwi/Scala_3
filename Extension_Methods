@@ -3,10 +3,10 @@ defined.  This includes not just Scala classes that you have written, but
 any Scala class that your code can invoke; including classes defined by
 the Scala 3 language.
 
-The following prgogram shows...
+The following program shows...
 
 1) How to add a method to a class after you have written that class.
-2) How to add a method to the String class that's defined in Scala 3.
+2) How to add a method to the String class defined in Scala 3.
 
 ==============================================================================
 
