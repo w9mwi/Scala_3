@@ -26,8 +26,7 @@ The following prgogram shows...
 
   // Here we instantiate a Circle class, then invoke its circumference() method.
   val myCircle = Circle(12.34, -98.76, 10.0)
-  val circleCircumference = myCircle.circumference
-  println(s"Circumference = $circleCircumference") // PRINTS:  Circumference = 62.83185307179586
+  println(s"Circumference = ${myCircle.circumference}") // PRINTS:  Circumference = 62.83185307179586
 
 
   // ************************************************************************
@@ -40,13 +39,13 @@ The following prgogram shows...
 
   // Below we convert 3 Strings representing base 2 (binary) integers
   // to Scala Int values, which are always base 10 (decimal) integers.
-  // For simplicity, there's no error checking performed
-  // on these String to Integer conversions.
-  var strBase2Int = "1".makeInt(2)
-  println(s"1 binary = $strBase2Int decimal") // PRINTS:  1 binary = 1 decimal
+  // For simplicity, there's no error checking performed on these
+  // String to Integer conversions.
+  var result = "1".makeInt(2)
+  println(s"1 binary = $result decimal") // PRINTS:  1 binary = 1 decimal
 
-  strBase2Int = "10".makeInt(2)
-  println(s"10 binary = $strBase2Int decimal") // PRINTS:  10 binary = 2 decimal
+  result = "10".makeInt(2)
+  println(s"10 binary = $result decimal") // PRINTS:  10 binary = 2 decimal
 
-  strBase2Int = "100".makeInt(2)
-  println(s"100 binary = $strBase2Int decimal") // PRINTS:  100 binary = 4 decimal
+  result = "100".makeInt(2)
+  println(s"100 binary = $result decimal") // PRINTS:  100 binary = 4 decimal
