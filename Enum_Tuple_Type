@@ -1,20 +1,74 @@
 ENUM
 ====
 Scala 3 added the new keyword 'enum'.  Scala compiles enums to a
-class, which means that an enum can contain fields and methods.
+sealed class, which means that an enum can contain fields and methods.
+The following program demonstrates the use if Scala 3 enums.
+
+@main def main() =
+  // NOTE: All enum definitions must include the 'case' keyword.
+  enum Permissions:
+    case READ, WRITE, EXEC, NONE
+
+  val perm1: Permissions = Permissions.READ
+  println(s"perm1 = $perm1")  // PRINTS: perm1 = READ
+  val perm2: Permissions = Permissions.WRITE
+  val perm3: Permissions = Permissions.EXEC
+  val perm4: Permissions = Permissions.NONE
+  println(s"perm1.ordinal = ${perm1.ordinal}, perm2.ordinal = ${perm2.ordinal}, " +
+          s"perm3.ordinal = ${perm3.ordinal}, perm4.ordinal = ${perm4.ordinal}")
+  // PRINTS: perm1.ordinal = 0, perm2.ordinal = 1, perm3.ordinal = 2, perm4.ordinal = 3
+
+  val allPermissions: String = Permissions.values.mkString(", ")
+  println(s"allPermissions = $allPermissions")
+  // PRINTS: allPermissions = READ, WRITE, EXEC, NONE
+
+  val execPermission: Permissions = Permissions.valueOf("EXEC")
+  println(s"execPermission = $execPermission") // PRINTS: execPermission = EXEC
+
+  // **********************************************************************
+
+  // NOTE: enum arguments MUST be preceded with the 'val' or 'var' keyword,
+  // as shown here.  Because an enum is compiled to a class, an enum
+  // can contain methods and fields.  The following enum contains the
+  // method intToHexString.
+  enum PermissionBits(val bits: Int):
+    case READ  extends PermissionBits(4) // 4 = 100 binary
+    case WRITE extends PermissionBits(2) // 2 = 010 binary
+    case EXEC  extends PermissionBits(1) // 1 = 001 binary
+    case NONE  extends PermissionBits(0) // 0 = 000 binary
+    def intToHexString: String = "0x" + Integer.toHexString(bits)
+
+  // Because Scala 3 compiles an enum to a class, an enum can
+  // have a companion object.  Since the following object has
+  // the same name as the above enum PermissionBits, it becomes
+  // that enum's companion object.
+  object PermissionBits:
+    def getPermissionStatus(bits: Int): PermissionBits = {
+      bits match
+        case 4 => PermissionBits.READ
+        case 2 => PermissionBits.WRITE
+        case 1 => PermissionBits.EXEC
+        case _ => PermissionBits.NONE
+    }
+
+  val read:PermissionBits  = PermissionBits.READ
+  val bitsInt:Int          = read.bits
+  val bitsHexString:String = read.intToHexString
+  val bitsPermission: PermissionBits = PermissionBits.getPermissionStatus(2)
+  println(s"read = $read, bitsInt = $bitsInt, bitsHexString = $bitsHexString, bitsPermission = $bitsPermission")
+  // PRINTS: read = READ, bitsInt = 4, bitsHexString = 0x4, bitsPermission = WRITE
 
 ==============================================================
-
 TUPLE
 =====
-A tuple is a single value that contains/refernces multiple values.
-Each value contained in a tuple can be of any data type.  The Scala
-program below demonstrates the use of tuples.
+A tuple is a single value that contains multiple values.
+Each value contained in a tuple can be of any data type.
+The Scala program below demonstrates the use of tuples.
 
 TYPE
 ====
 The Scala keyword 'type' is used to define your own data type;
-so it has a meaningful name.  Here are some examples:
+so the type has a meaningful name.  Here are some examples:
 
 // Define MyInt to be a data type that's an Int.  This use
 // doesn't really make sense, but it demonstrates that you
