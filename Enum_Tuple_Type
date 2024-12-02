@@ -1,5 +1,12 @@
-TUPLES
-======
+ENUM
+====
+Scala 3 added the new keyword 'enum'.  Scala compiles enums to a
+class, which means that an enum can contain fields and methods.
+
+==============================================================
+
+TUPLE
+=====
 A tuple is a single value that contains/refernces multiple values.
 Each value contained in a tuple can be of any data type.  The Scala
 program below demonstrates the use of tuples.
@@ -18,7 +25,7 @@ val index:MyInt = 123
 
 // This example is self explanatory.  It defines a new data type
 // named Coordinate, which is a tuple.  The Scala program below
-// also demonstrates use of the 'type' keyword.
+// demonstrates use of 'tuple' and 'type' keywords.
 type Coordinate = (Double, Double, Double)
 val x = -123.45D
 val y =  456.78D
