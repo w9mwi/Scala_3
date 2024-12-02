@@ -1,16 +1,12 @@
-In Scala 3 'enum' and 'type' are keywords.  There is no keyword used to declare
-or reference a tuple.
-
-
 TUPLES
 ======
-A tuple is a single value that contains multiple values; where each
-value it contains can be of any data type.  The Scala program below
-shows the use of tuples.
+A tuple is a single value that contains/refernces multiple values.
+Each value contained in a tuple can be of any data type.  The Scala
+program below demonstrates the use of tuples.
 
 TYPE
 ====
-The Scala keyword 'type' is used to define your own data type
+The Scala keyword 'type' is used to define your own data type;
 so it has a meaningful name.  Here are some examples:
 
 // Define MyInt to be a data type that's an Int.  This use
@@ -20,8 +16,9 @@ so it has a meaningful name.  Here are some examples:
 type MyInt = Int
 val index:MyInt = 123
 
-// Here's another example that's self explanatory.  The
-// Scala program below also shows the use of tuples.
+// This example is self explanatory.  It defines a new data type
+// named Coordinate, which is a tuple.  The Scala program below
+// also demonstrates use of the 'type' keyword.
 type Coordinate = (Double, Double, Double)
 val x = -123.45D
 val y =  456.78D
