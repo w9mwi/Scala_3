@@ -1,0 +1,7 @@
+In Scala 3 'enum' and 'type' are keywords.  There is no keyword used to declare
+or reference a tuple.
+
+In Scala, a val can be declared a "tuple."  When a val is declared to be
+a tuple, it means that it contains multiple values, where each value it
+contains can be any data type. In addition to declaring a val as a tuple,
+a tuple can be passed to a method as an argument, or returned by a method.
