@@ -5,9 +5,61 @@ or reference a tuple.
 TUPLES
 ======
 A tuple is a single value that contains multiple values; where each
-value it contains can be of any data type; including other tuples
-and collections like Array, List, etc.
+value it contains can be of any data type.  The Scala program below
+shows the use of tuples.
 
-You can declare a val to be a tuple.  A tuple can be passed to a method as an
-argument (one argument per tuple).  When a method needs to return multiple
-values, it must return a tuple.
+TYPE
+====
+The Scala keyword 'type' is used to define your own data type
+so it has a meaningful name.  Here are some examples:
+
+// Define MyInt to be a data type that's an Int.  This use
+// doesn't really make sense, but it demonstrates that you
+// can define a new data type that's identical to a Scala
+// data type.
+type MyInt = Int
+val index:MyInt = 123
+
+// Here's another example that's self explanatory.  The
+// Scala program below also shows the use of tuples.
+type Coordinate = (Double, Double, Double)
+val x = -123.45D
+val y =  456.78D
+val z =  987.65D
+val currentLocation: Coordinate = (x, y, z)
+
+==============================================================
+@main def main() =
+  // Build the tupleA value...
+  val doubleArray = Array(-9.99D, 6.66D, 3.33D)
+  val intList = List(1, 2, 3)
+  val tupleA = (13, "thirteen", intList, doubleArray)
+
+  // The following println statement shows how to access individual
+  // tuple values via a method call to...  ._1, ._2, etc.
+  println(s"tupleA._1 = ${tupleA._1}, tupleA._2 = ${tupleA._2}," +
+          s"  tupleA._3 = ${tupleA._3}, tupleA._4 = Array(${tupleA._4.mkString(", ")})")
+  // PRINTS: tupleA._1 = 13, tupleA._2 = thirteen,  tupleA._3 = List(1, 2, 3), tupleA._4 = Array(-9.99, 6.66, 3.33)
+
+  // The following println statement shows how to access individual
+  // tuple values via an index... (0), (1), etc.
+  println(s"tupleA(0) = ${tupleA(0)}, tupleA(1) = ${tupleA(1)}," +
+          s"  tupleA(2) = ${tupleA(2)}, tupleA(3) = Array(${tupleA(3).mkString(", ")})")
+  // PRINTS: tupleA(0) = 13, tupleA(1) = thirteen,  tupleA(2) = List(1, 2, 3), tupleA(3) = Array(-9.99, 6.66, 3.33)
+
+  // Here we define a new data type named TupleA, having the same
+  // data type as val tupleA declared above  This TupleA data type
+  // is then is used by the tupleMethod() defined below.
+  type TupleA = (Int, String, List[Int], Array[Double])
+
+  def tupleMethod(tuple: TupleA): TupleA = {
+    // Modify the first 2 elements of tuple and return it.
+    val result: TupleA = (17, "seventeen", tuple(2), tuple(3))
+    result
+  }
+
+  val tupleB = tupleMethod(tupleA)
+  // Print the contents of tupleB.
+  println(s"tupleB(0) = ${tupleB(0)}, tupleB(1) = ${tupleB(1)}," +
+          s" tupleB(2) = ${tupleB(2)}, tupleB(3) = Array(${tupleB(3).mkString(", ")})")
+  // PRINTS: tupleB(0) = 17, tupleB(1) = seventeen, tupleB(2) = List(1, 2, 3), tupleB(3) = Array(-9.99, 6.66, 3.33)
