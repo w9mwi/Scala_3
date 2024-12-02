@@ -50,7 +50,7 @@ val currentLocation: Coordinate = (x, y, z)
   type TupleA = (Int, String, List[Int], Array[Double])
 
   def tupleMethod(tuple: TupleA): TupleA = {
-    // Modify the first 2 elements of tuple and return it.
+    // Create a new tuple and return it.
     val result: TupleA = (17, "seventeen", tuple(2), tuple(3))
     result
   }
