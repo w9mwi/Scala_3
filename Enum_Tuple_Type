@@ -2,7 +2,7 @@ ENUM
 ====
 Scala 3 added the new keyword 'enum'.  Scala compiles enums to a
 sealed class, which means that an enum can contain fields and methods.
-The following program demonstrates the use if Scala 3 enums.
+The following program demonstrates the use of enums.
 
 @main def main() =
   // NOTE: All enum definitions must include the 'case' keyword.
