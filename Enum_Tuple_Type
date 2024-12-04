@@ -96,14 +96,14 @@ val currentLocation: Coordinate = (x, y, z)
   // The following println statement shows how to access individual
   // tuple values via a method call to...  ._1, ._2, etc.
   println(s"tupleA._1 = ${tupleA._1}, tupleA._2 = ${tupleA._2}," +
-          s"  tupleA._3 = ${tupleA._3}, tupleA._4 = Array(${tupleA._4.mkString(", ")})")
-  // PRINTS: tupleA._1 = 13, tupleA._2 = thirteen,  tupleA._3 = List(1, 2, 3), tupleA._4 = Array(-9.99, 6.66, 3.33)
+          s"  tupleA._3 = ${tupleA._3}, tupleA._4     = Array(${tupleA._4.mkString(", ")})")
+  // PRINTS: tupleA._1 = 13, tupleA._2 = thirteen,  tupleA._3 = List(1, 2, 3), tupleA._4     = Array(-9.99, 6.66, 3.33)
 
   // The following println statement shows how to access individual
   // tuple values via an index... (0), (1), etc.
   println(s"tupleA(0) = ${tupleA(0)}, tupleA(1) = ${tupleA(1)}," +
-          s"  tupleA(2) = ${tupleA(2)}, tupleA(3) = Array(${tupleA(3).mkString(", ")})")
-  // PRINTS: tupleA(0) = 13, tupleA(1) = thirteen,  tupleA(2) = List(1, 2, 3), tupleA(3) = Array(-9.99, 6.66, 3.33)
+          s"  tupleA(2) = ${tupleA(2)}, tupleA(3)     = Array(${tupleA(3).mkString(", ")})")
+  // PRINTS: tupleA(0) = 13, tupleA(1) = thirteen,  tupleA(2) = List(1, 2, 3), tupleA(3)     = Array(-9.99, 6.66, 3.33)
 
   // Here we define a new data type named TupleA, having the same
   // data type as val tupleA declared above  This TupleA data type
@@ -119,5 +119,11 @@ val currentLocation: Coordinate = (x, y, z)
   val tupleB = tupleMethod(tupleA)
   // Print the contents of tupleB.
   println(s"tupleB(0) = ${tupleB(0)}, tupleB(1) = ${tupleB(1)}," +
-          s" tupleB(2) = ${tupleB(2)}, tupleB(3) = Array(${tupleB(3).mkString(", ")})")
-  // PRINTS: tupleB(0) = 17, tupleB(1) = seventeen, tupleB(2) = List(1, 2, 3), tupleB(3) = Array(-9.99, 6.66, 3.33)
+          s" tupleB(2) = ${tupleB(2)}, tupleB(3)     = Array(${tupleB(3).mkString(", ")})")
+  // PRINTS: tupleB(0) = 17, tupleB(1) = seventeen, tupleB(2) = List(1, 2, 3), tupleB(3)     = Array(-9.99, 6.66, 3.33)
+
+  // Here, the tupleMethod() returns its result into 4 different vals.
+  val (myInt, myString, myIntList, myDoubleArray) = tupleMethod(tupleA)
+  println(s"myInt     = $myInt, myString  = $myString," +
+          s" myIntList = $myIntList, myDoubleArray = Array(${myDoubleArray.mkString(", ")})")
+  // PRINTS: myInt     = 17, myString  = seventeen, myIntList = List(1, 2, 3), myDoubleArray = Array(-9.99, 6.66, 3.33)
