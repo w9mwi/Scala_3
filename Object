@@ -1,0 +1,6 @@
+Both a Scala class and a Scala object are used to represent some thing, or
+some entity.  When there can exist more than one of these things (such as
+a person, a house, an automobile), a Scala class should be used.  When
+there can only exist one of something (such as planet Earth, the Empire
+State Building), a Scala object should be used instead of a class.
+
