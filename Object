@@ -1,6 +1,58 @@
-Both a Scala class and a Scala object are used to represent some thing, or
-some entity.  When there can exist more than one of these things (such as
-a person, a house, an automobile), a Scala class should be used.  When
-there can only exist one of something (such as planet Earth, the Empire
-State Building), a Scala object should be used instead of a class.
+Both a Scala class and a Scala object are used to represent some thing,
+or some entity.  When there can exist more than one of these things
+(i.e., people, houses, automobiles), a Scala class should be used.
 
+When only one of something can exist (i.e., planet Earth, Empire
+State Building), a Scala object should be used.  In other words,
+a Scala object should always represent a singleton.
+
+A Scala object cannot contain arguments and cannot be instantiated.
+Once you define an object, it's available for use without having
+to instantiate it.  A Scala object is "lazy", which means it gets
+created the first time it's referenced.  An object can extend
+a class or a trait, but a class cannot extend an object.
+
+COMPANION OBJECT
+================
+When both a Scala object and a Scala class (or case class) have identical
+names, and they're both contained in the same file, the object is called
+a "companion object" to the class.  Conversely, the class is called a
+"companion class" to the object.
+
+A companion object should be used to contains methods and values that aren’t
+specific to the instances of the companion class.  In other words, methods
+and values that apply to all instances of a class should be placed in a
+companion object.  Placing those methods and values in a companion object
+(instead of in the class) saves both execution time and memory.  If
+those methods and values are contained in the class, they would get
+created again and again for every instance of the class.
+
+The following program demonstrates an example of this.  The method named
+print() is used to print the name and age values contained in the Person
+class.  Instead of defining that method in the Print class, the print
+method is places in a companion object to the Person class.  So the
+print() method will get created only once, instead getting created
+every time a Person class is instantited.
+
+@main def main() =
+
+  case class Person(name: String, age: Int):
+    // The following line invokes the print() method
+    // defined in the Person companion object.
+    def print = Person.print(name, age)
+
+  // Defining the print() method in this Person companion object (instead
+  // of in the Person class) prevents it from getting created for every
+  // instance of the Person class.
+  object Person:
+    def print(name: String, age: Int) =
+      println(s"name = $name, age = $age")
+
+  val person_1 = Person("Jack", 17)
+  person_1.print // PRINTS: name = Jack, age = 17
+
+  val person_2 = new Person("Jane", 13)
+  person_2.print // PRINTS: name = Jane, age = 13
+
+  val person_3 = new Person("Julie", 23)
+  person_3.print // PRINTS: name = Julie, age = 23
