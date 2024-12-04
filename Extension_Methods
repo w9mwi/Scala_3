@@ -17,10 +17,9 @@ The following program shows...
   // but it contains no methods.
   case class Circle(xCoordinate: Double, yCoordinate: Double, radius: Double)
 
-  // At some later point in the code you can add a new method to
-  // the Circle class by using the Scala 3 "extension" word, as
-  // shown here.  In this example a method named circumference()
-  // is added to the previously-defined Circle class.
+  // After you have defined a class, you can add a new method to that class
+  // by using the Scala 3 "extension" word.  In this example a method named
+  // circumference() gets added to the Circle class that was defined above.
   extension (c: Circle)
     def circumference: Double = c.radius * math.Pi * 2
 
