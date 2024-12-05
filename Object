@@ -43,25 +43,24 @@ NOTE: In the following example there is also a print() method in the Person clas
 
 @main def main() =
   case class Person(name: String, age: Int):
-    // The following line invokes the print() method
-    // defined in the Person companion object.
+    // The following print() method calls the print() method
+    // located in the companion Person object.
     def print = Person.print(name, age)
 
-
-  object Person: // This is a companion object to the above Person class.
-    // Because this print() method gets called ONLY from the Person class
-    // defined above, the programmer invokes it via an instance of a
-    // Person class, as is demonstrated further below.
+  // This is the companion object to the Person class.
+  object Person:
     def print(name: String, age: Int): Unit =
       println(s"name = $name, age = $age")
 
-    // The following printPersonViaArgument() method does NOT get
-    // invoked via an instance of the Person class.  Instead, the
-    // programmer calls it directly, passing its argument an
-    // instance of a Person class.
     def printPersonViaArgument(person: Person): Unit =
       println(s"name = ${person.name}, age = ${person.age}")
 
   val person = Person("Jack", 17)
+
+  // The print() method defined in the class Person is
+  // invoked via an instance of the Person class...
   person.print // PRINTS: name = Jack, age = 17
+
+  // The printPersonViaArgument() method defined
+  // in the Person object is invoked directly...
   Person.printPersonViaArgument(person.copy("Jane", 29)) // PRINTS: name = Jane, age = 29
