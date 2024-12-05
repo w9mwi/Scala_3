@@ -16,6 +16,20 @@ Scala 3 control structures:
 * try/catch/finally blocks
 
 =====================================================================
+GUARDS
+======
+Guards are "if/else/then" statements that can optionally contained
+within these control stuctures:
+
+* 'for' loops
+* 'case' clauses (like when used in 'match' expressions)
+
+'while' loops don't use Guards.  The 'for' loop can implement the
+'yield' keyword, which transforms the 'for' loop into an expression;
+so the for loop returns result.  Code examples that implement a guard
+are shown further below.
+
+=====================================================================
 
 @main def main() =
   val intList = List(-3, -2, -1, 0, 1, 2, 3)
