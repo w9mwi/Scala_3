@@ -1,0 +1,26 @@
+The following program demonstrates a String interpolater that's
+used to instantiate a Point class using custom syntax.  Notice
+that the Point class, and the myPoint() method that performs the
+String interpolation, are both located above the main() method.
+
+case class Point(x: Double, y: Double)
+
+extension (sc: StringContext)
+  def myPoint(args: Double*): Point = {
+    // reuse the `s`-interpolator and then split on ','
+    val pts = sc.s(args: _*).split(",", 2).map {
+      _.toDoubleOption.getOrElse(0.0)
+    }
+    Point(pts(0), pts(1))
+  }
+
+@main def main() =
+  // Instantiate a Point class using Scala syntax..
+  val point1 = Point(-123.456, 987.654)
+  println(point1) // PRINTS: Point(-123.456,987.654)
+
+  // Instantiate a Point class using custom syntax
+  // defined in the above myPoint() method..
+  val point2 = myPoint"654.321, -789.012"
+  println(point2) // PRINTS: Point(654.321,-789.012)
+
