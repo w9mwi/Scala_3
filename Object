@@ -29,39 +29,39 @@ reside in a companion object.
 
 The following program demonstrates an example of this.  The method named
 print() is used to print the "name" and "age" values contained in the Person
-class.  Instead of defining that method in the Print class, the print
-method is placed in the Person class's companion object.
+class.  Instead of defining that method in the Print class, the print()
+method is placed in the Person companion object.
 
-NOTE: In the following example there is a print() method in the Person class,
-      which invokes the print() method in the companion object.  Therefore, a
-      new print() method does get created for every instance of a Person class.
+NOTE: In the following example there is also a print() method in the Person class
+      class, which invokes the print() method in the companion object.  Therefore,
+      a new print() method does get created for every instance of a Person class.
       However, the Person class print() method is just a call to the print()
-      method in the Print object.  In this example there's not much savings
-      in execution time or memory space because the print() method in the
-      Person companion object contains only one line of code.  However,
-      if that method contained multiple lines of code, the savings could
-      become substantial.
-
+      method in the Print object.  In this example there's not much savings in
+      execution time or memory space because the print() method in the Person
+      object contains only one line of code.  However, if that method contained
+      multiple lines of code, the savings could be substantial.
 
 @main def main() =
-
   case class Person(name: String, age: Int):
     // The following line invokes the print() method
     // defined in the Person companion object.
     def print = Person.print(name, age)
 
-  // Defining the print() method in this Person companion object (instead
-  // of in the Person class) prevents it from getting created for every
-  // instance of the Person class.
-  object Person:
-    def print(name: String, age: Int) =
+
+  object Person: // This is a companion object to the above Person class.
+    // Because this print() method gets called ONLY from the Person class
+    // defined above, the programmer invokes it via an instance of a
+    // Person class, as is demonstrated further below.
+    def print(name: String, age: Int): Unit =
       println(s"name = $name, age = $age")
 
-  val person_1 = Person("Jack", 17)
-  person_1.print // PRINTS: name = Jack, age = 17
+    // The following printPersonViaArgument() method does NOT get
+    // invoked via an instance of the Person class.  Instead, the
+    // programmer calls it directly, passing its argument an
+    // instance of a Person class.
+    def printPersonViaArgument(person: Person): Unit =
+      println(s"name = ${person.name}, age = ${person.age}")
 
-  val person_2 = new Person("Jane", 13)
-  person_2.print // PRINTS: name = Jane, age = 13
-
-  val person_3 = new Person("Julie", 23)
-  person_3.print // PRINTS: name = Julie, age = 23
+  val person = Person("Jack", 17)
+  person.print // PRINTS: name = Jack, age = 17
+  Person.printPersonViaArgument(person.copy("Jane", 29)) // PRINTS: name = Jane, age = 29
