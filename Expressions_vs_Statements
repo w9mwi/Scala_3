@@ -1,0 +1,7 @@
+
+Expression - A line of code that returns a value, i.e., String, Array, Int, List, etc.
+             When a line of code returns a value, that is known as "expression-oriented
+             programming", abbreviated EOP.
+
+Statement - A line of code that doesn't return a value.  Examples of this are print
+           statements, reading, writing, or deleting data from a file.
