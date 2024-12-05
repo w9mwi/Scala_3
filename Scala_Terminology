@@ -1,0 +1,13 @@
+
+Expression - An Expression is a line of code that returns a value; such as a String,
+             an Array[Double], an Int, a List[String], etc.  When all lines of code
+             in a program return a value, that program qualifies to be called:
+
+             Expression-Oriented Programming = EOP 
+
+
+Statement - A Statement is a line of code that doesn't return a value.  Examples of
+            a statement is println, reading, writing, or deleting data from a file.
+            if/else statements can be written so they always return a value, and
+            qualify as EOP.  if/else statements can also be written so they don't
+            return a value, which isn't EOP.

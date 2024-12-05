@@ -1,9 +1,0 @@
-
-Expression - A line of code that returns a value such as a String, an Array, an Int, a List, etc.
-             When a line of code returns a value, that's known as "expression-oriented programming",
-             abbreviated EOP.
-
-Statement - A line of code that doesn't return a value.  Examples of this are print
-            statements, reading, writing, or deleting data from a file.  if/else
-            statements can be written so they always return a value; they can also
-            be written so they don't return a value.
