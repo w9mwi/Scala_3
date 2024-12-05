@@ -1,6 +1,6 @@
-Both a Scala class and a Scala object are used to represent some thing,
-or some entity.  When there can exist more than one of these things
-(i.e., people, houses, automobiles), a Scala class should be used.
+Both a Scala class and a Scala object are used to represent some "thing",
+or some "entity".  When there can exist more than one of these things
+(i.e., people, houses, automobiles), a Scala class must be used.
 
 When only one of something can exist (i.e., planet Earth, Empire
 State Building), a Scala object should be used.  In other words,
@@ -19,20 +19,29 @@ names, and they're both contained in the same file, the object is called
 a "companion object" to the class.  Conversely, the class is called a
 "companion class" to the object.
 
-A companion object should be used to contains methods and values that aren’t
-specific to the instances of the companion class.  In other words, methods
-and values that apply to all instances of a class should be placed in a
-companion object.  Placing those methods and values in a companion object
-(instead of in the class) saves both execution time and memory.  If
-those methods and values are contained in the class, they would get
-created again and again for every instance of the class.
+A companion object should be used to contain methods and values that aren’t
+specific to the instance of the companion class.  In other words, methods
+and values that never change should be placed in a companion object.  Doing
+so will prevent duplicate copies getting created every time a new instance
+of the class is generated.  This will save both memory and execution time
+because only one instance of these methods and values get created when they
+reside in a companion object.
 
 The following program demonstrates an example of this.  The method named
-print() is used to print the name and age values contained in the Person
+print() is used to print the "name" and "age" values contained in the Person
 class.  Instead of defining that method in the Print class, the print
-method is places in a companion object to the Person class.  So the
-print() method will get created only once, instead getting created
-every time a Person class is instantited.
+method is placed in the Person class's companion object.
+
+NOTE: In the following example there is a print() method in the Person class,
+      which invokes the print() method in the companion object.  Therefore, a
+      new print() method does get created for every instance of a Person class.
+      However, the Person class print() method is just a call to the print()
+      method in the Print object.  In this example there's not much savings
+      in execution time or memory space because the print() method in the
+      Person companion object contains only one line of code.  However,
+      if that method contained multiple lines of code, the savings could
+      become substantial.
+
 
 @main def main() =
 
