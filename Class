@@ -3,12 +3,13 @@ Class.
 
 AUXILIARY CLASS CONSTRUCTORS
 ============================
-Most class definitions are written to have a single default constructor.
-But you can define a class that contains multiple constructors, so a
-new class can be instantiated using different different argument lists.
-Tese additional constructors are called Auxiliary Constructors.  The
-following program demonstrates a class definition having Auxiliary
-Class Constructors.
+Most class definitions are written to have a single constructor, which
+is known as the class's Primary Constructor.  However, you can define
+a class that contains multiple constructors; so that class can be
+instantiated using different argument lists.  These additional
+constructors are called Auxiliary Constructors.  The following program
+demonstrates a class definition that has two Auxiliary Class Constructors.
 
-
-
+IMPORTANT: The first line of code executed by an Auxiliary Constructor
+           MUST be a call to "this", which invokes the class's Primary
+           Constructor.
