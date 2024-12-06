@@ -7,9 +7,45 @@ Most class definitions are written to have a single constructor, which
 is known as the class's Primary Constructor.  However, you can define
 a class that contains multiple constructors; so that class can be
 instantiated using different argument lists.  These additional
-constructors are called Auxiliary Constructors.  The following program
-demonstrates a class definition that has two Auxiliary Class Constructors.
+constructors are called Auxiliary Constructors.
 
 IMPORTANT: The first line of code executed by an Auxiliary Constructor
            MUST be a call to "this", which invokes the class's Primary
-           Constructor.
+           Constructor.  So every time an Auxiliary Constructor is
+           invoked, the first thing it must do is invoke the class's
+           Primary Constructor.
+
+import java.time.*
+
+class Student(name:String, govtId:Int):
+  // PRIMARY CONSTRUCTOR
+  // Code at this indentation level will get executed once (and
+  // only once) every time a new Student class is instantiated;
+  // regardless of which constructors are invoked.
+  print(s"\nname = $name, govtId = $govtId")
+
+  // AUXILIARY CONSTRUCTOR #1
+  def this(name:String, govtId:Int, applicationDate:LocalDate) =
+    this(name, govtId) // Calling "this" invokes the Student class Primary Constructor.
+    print(s", applicationDate = $applicationDate")
+
+  // AUXILIARY CONSTRUCTOR #2
+  def this(name:String, govtId:Int, studentId:Int) =
+    this(name, govtId) // Calling "this" invokes the Student class Primary Constructor.
+    print(s", studentId = $studentId")
+
+/******************
+ * main()
+ *****************/
+@main def main() =
+  // The following line of code invokes ONLY the Primary Constructor.
+  val stud1 = Student("Joe", 111)
+  // PRINTS: name = Joe, govtId = 111
+
+  // The following line invokes the Primary Constructor and Auxiliary Constructor #1.
+  val stud2 = Student("Jane", 222, LocalDate.now());
+  // PRINTS: name = Jane, govtId = 222, applicationDate = 2024-12-06
+
+  // The following line invokes the Primary Constructor and Auxiliary Constructor #2.
+  val stud3 = Student("Alice", 333, 444)
+  // PRINTS: name = Alice, govtId = 333, studentId = 444
