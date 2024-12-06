@@ -1,1 +1,14 @@
 Class.
+
+
+AUXILIARY CLASS CONSTRUCTORS
+============================
+Most class definitions are written to have a single default constructor.
+But you can define a class that contains multiple constructors, so a
+new class can be instantiated using different different argument lists.
+Tese additional constructors are called Auxiliary Constructors.  The
+following program demonstrates a class definition having Auxiliary
+Class Constructors.
+
+
+
