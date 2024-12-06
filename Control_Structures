@@ -15,6 +15,11 @@ Scala 3 control structures:
 * match expressions
 * try/catch/finally blocks
 
+What follows is only abbreviated coverage of Scala Control Structures.
+For more details, visit:
+
+https://docs.scala-lang.org/scala3/book/control-structures.html
+
 =====================================================================
 GUARDS
 ======
