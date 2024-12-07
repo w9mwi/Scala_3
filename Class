@@ -1,4 +1,3 @@
-Class.
 
 
 AUXILIARY CLASS CONSTRUCTORS
@@ -15,23 +14,29 @@ IMPORTANT: The first line of code executed by an Auxiliary Constructor
            invoked, the first thing it must do is invoke the class's
            Primary Constructor.
 
+============================================================================
+
 import java.time.*
 
 class Student(name:String, govtId:Int):
-  // PRIMARY CONSTRUCTOR
+  // PRIMARY CONSTRUCTOR ***************************************************
   // Code at this indentation level will get executed once (and
   // only once) every time a new Student class is instantiated;
   // regardless of which constructors are invoked.
   print(s"\nname = $name, govtId = $govtId")
 
-  // AUXILIARY CONSTRUCTOR #1
+  // AUXILIARY CONSTRUCTOR #1 **********************************************
   def this(name:String, govtId:Int, applicationDate:LocalDate) =
-    this(name, govtId) // Calling "this" invokes the Student class Primary Constructor.
+    // The first line executed of an Auxiliary Constructor must invoke
+    // the Primary Constructor, which is done by calling: this(name, govtId)
+    this(name, govtId) // Invokes the Student class's Primary Constructor.
     print(s", applicationDate = $applicationDate")
 
-  // AUXILIARY CONSTRUCTOR #2
+  // AUXILIARY CONSTRUCTOR #2 **********************************************
   def this(name:String, govtId:Int, studentId:Int) =
-    this(name, govtId) // Calling "this" invokes the Student class Primary Constructor.
+    // The first line executed of an Auxiliary Constructor must invoke
+    // the Primary Constructor, which is done by calling: this(name, govtId)
+    this(name, govtId) // Invokes the Student class's Primary Constructor.
     print(s", studentId = $studentId")
 
 /******************
