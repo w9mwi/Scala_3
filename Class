@@ -7,7 +7,7 @@ and objects, and is demonstrated from here on.  A Scala 3 class that
 contains only an argument list (no class body) doesn't require a braces
 pair {} or a colon char (:).
 
-IMPORTANT: A class can be written with, or without, an argument list.
+IMPORTANT: A class can be written to accept an argument list, or accept no arguments.
 
 When a class has an argument list, it's optional to precede each argument
 with the "val" keyword, or the "var" keyword, or neither.
