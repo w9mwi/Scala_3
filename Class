@@ -3,14 +3,14 @@ has an argument list, it's optional to precede each argument with the
 "val" keyword, or the "var" keyword, or neither.
 
 When a class argument is preceded with the "val" or "var" keyword, the
-argument becomes a public member by default; so it can be accessed
-outside the class.
+argument becomes a public class member by default; so it can be accessed
+inside and outside the class.
 
 When a class argument isn't preceded with the "val" or "var", the
 argument becomes a private "val" by default, so it can be accessed
 only from within the class, and its value can never be changed.
 
-The following code demonstrates all this.
+The following program demonstrates all this...
 
 class Bozo()
 class Book(var title:String)  // Book.title is a public var class member.
