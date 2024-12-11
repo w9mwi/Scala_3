@@ -26,22 +26,23 @@ class Movie(name:String):     // Movie.name is a private val class member.
   println(s"bozo = $bozo") // PRINTS: bozo = Bozo@357246de
 
   val book = Book("Scala 3 for Idiots")
+  // Because the Book.title argument has been declared a var, it's a public member,
+  // so it can accessed here, outside the Person class.
   println(s"book.title = ${book.title}") // PRINTS: book.title = Scala 3 for Idiots
-  // Because the Book.title argument has been declared
-  // a var, we can change its value as shown here...
+  // Because the Book.title argument has been declared a var, we can change also
+  // change it's value, as shown here...
   book.title = "Scala 3 for Geniuses"
   println(s"book.title = ${book.title}") // PRINTS: book.title = Scala 3 for Geniuses
 
   val person = Person("Tom")
+  // Because the Person.name argument has been declared a val, it's a public member,
+  // so it can be accessed here, outside the Person class.
   println(s"person.name = ${person.name}") // PRINTS: person.name = Tom
-  // If you un-comment the following line, the program won't compile
-  // because Person.name is declared a val, so it can't be changed.
-  // person.name = "Joe"
 
   val movie = Movie("When Galaxies Collide")
-  // Because the Movie.name argument isn't preceded with the "val"
-  // or "var" keyword, it becomes a private class member by default.
-  // So Movie.name can be accessed only from within the Movie class.
+  // Because the Movie.name argument isn't preceded with the "val" or
+  // "var" keyword, it becomes a private class member by default.  So
+  // Movie.name can be accessed only from within the Movie class.
   print("movie.name = "); movie.printName // PRINTS: movie.name = When Galaxies Collide
 
 ============================================================================
