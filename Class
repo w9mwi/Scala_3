@@ -1,4 +1,50 @@
+A class can be written with, or without, an argument list.  When a class
+has an argument list, it's optional to precede each argument with the
+"val" keyword, or the "var" keyword, or neither.
 
+When a class argument is preceded with the "val" or "var" keyword, the
+argument becomes a public member by default; so it can be accessed
+outside the class.
+
+When a class argument isn't preceded with the "val" or "var", the
+argument becomes a private "val" by default, so it can be accessed
+only from within the class, and its value can never be changed.
+
+The following code demonstrates all this.
+
+class Bozo()
+class Book(var title:String)  // Book.title is a public var class member.
+class Person(val name:String) // Person.name is a public val class member.
+class Movie(name:String):     // Movie.name is a private val class member.
+  def printName:Unit = println(name)
+
+/******************
+ * main()
+ *****************/
+@main def main():Unit =
+  val bozo = Bozo()
+  println(s"bozo = $bozo") // PRINTS: bozo = Bozo@357246de
+
+  val book = Book("Scala 3 for Idiots")
+  println(s"book.title = ${book.title}") // PRINTS: book.title = Scala 3 for Idiots
+  // Because the Book.title argument has been declared
+  // a var, we can change its value as shown here...
+  book.title = "Scala 3 for Geniuses"
+  println(s"book.title = ${book.title}") // PRINTS: book.title = Scala 3 for Geniuses
+
+  val person = Person("Tom")
+  println(s"person.name = ${person.name}") // PRINTS: person.name = Tom
+  // If you un-comment the following line, the program won't compile
+  // because Person.name is declared a val, so it can't be changed.
+  // person.name = "Joe"
+
+  val movie = Movie("When Galaxies Collide")
+  // Because the Movie.name argument isn't preceded with the "val"
+  // or "var" keyword, it becomes a private class member by default.
+  // So Movie.name can be accessed only from within the Movie class.
+  print("movie.name = "); movie.printName // PRINTS: movie.name = When Galaxies Collide
+
+============================================================================
 
 AUXILIARY CLASS CONSTRUCTORS
 ============================
@@ -13,8 +59,6 @@ IMPORTANT: The first line of code executed by an Auxiliary Constructor
            Constructor.  So every time an Auxiliary Constructor is
            invoked, the first thing it must do is invoke the class's
            Primary Constructor.
-
-============================================================================
 
 import java.time.*
 
