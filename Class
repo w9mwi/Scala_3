@@ -65,6 +65,42 @@ class Movie(name:String):     // Movie.name is a private val class member.
 
 ============================================================================
 
+DEFAULT ARGUMENTS
+=================
+Scala class constructors and Scala methods can be written to accept default arguments.
+A default argument is an argument that doesn't need to be specified when the class
+constructor, or the method, is invoked.  When a default argument isn't specified,
+the code supplies the default value specified in the argument list.  Study the
+following self-explanatory program to understand default arguments.
+
+class Socket(val timeout: Int = 5_000, val linger: Int = 5_000):
+  override def toString = s"timeout: $timeout, linger: $linger"
+
+/******************
+ * main()
+ *****************/
+@main def main():Unit =
+  def defaultArgumentMethod(name:String = "No Name", id:Int = 0):Unit =
+    println(s"name = $name,  id = $id")
+
+  val s1 = Socket()
+  println(s"s1 = $s1")  // PRINTS: s1 = timeout: 5000, linger: 5000
+  val s2 = Socket(2_500)
+  println(s"s2 = $s2")  // PRINTS: s2 = timeout: 2500, linger: 5000
+  val s3 = Socket(10_000, 10_000)
+  println(s"s3 = $s3")  // PRINTS: s3 = timeout: 10000, linger: 10000
+  val s4 = Socket(timeout = 10_000)
+  println(s"s4 = $s4")  // PRINTS: s4 = timeout: 10000, linger: 5000
+  val s5 = Socket(linger = 10_000)
+  println(s"s5 = $s5\n")  // PRINTS: s5 = timeout: 5000, linger: 10000
+
+  defaultArgumentMethod() // PRINTS: name = No Name,  id = 0
+  defaultArgumentMethod("Joe") // PRINTS: name = Joe,  id = 0
+  defaultArgumentMethod(id = -123) // PRINTS: name = No Name,  id = -123
+  defaultArgumentMethod(id = 987, name = "Sue") // PRINTS: name = Sue,  id = 987
+
+============================================================================
+
 AUXILIARY CLASS CONSTRUCTORS
 ============================
 Most class definitions are written to have a single constructor, which
