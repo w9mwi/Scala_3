@@ -1,14 +1,32 @@
-A class can be written with, or without, an argument list.  When a class
-has an argument list, it's optional to precede each argument with the
-"val" keyword, or the "var" keyword, or neither.
+A Scala 3 class can be written with or without a braces pair {}.  A Scala 3
+class that doesn't use a braces pair {} uses a colon char (:) instead, at
+the end of the class's argument list.  Then, all code following the colon
+char (:) must appear below the argument list, and must be indented to the
+right of the opening "class" keyword.  This applies to all Scala 3 classes
+and objects, and is demonstrated from here on.  A Scala 3 class that
+contains only an argument list (no class body) doesn't require a braces
+pair {} or a colon char (:).
+
+IMPORTANT: A class can be written with, or without, an argument list.
+
+IMPORTANT: A class can be written to contain val/var members that aren't
+           included in the class's argument list!  So don't assume that
+           a class's argument list references all of its val/var members.
+
+If a class has no val/var members, or all instantiations of that class will
+always have identical val/var values, then a Scala object (a "singleton")
+should be used instead of a Scala class.
+
+When a class does have an argument list, it's optional to precede each argument
+with the "val" keyword, or the "var" keyword, or neither.
 
 When a class argument is preceded with the "val" or "var" keyword, the
 argument becomes a public class member by default; so it can be accessed
 inside and outside the class.
 
-When a class argument isn't preceded with the "val" or "var", the
-argument becomes a private "val" by default, so it can be accessed
-only from within the class, and its value can never be changed.
+When a class argument isn't preceded with the "val" or "var" keyword, the
+argument becomes a private "val" by default, so it can be accessed only
+from within the class, and its value can never be changed.
 
 The following program demonstrates all this...
 
