@@ -9,15 +9,7 @@ pair {} or a colon char (:).
 
 IMPORTANT: A class can be written with, or without, an argument list.
 
-IMPORTANT: A class can be written to contain val/var members that aren't
-           included in the class's argument list!  So don't assume that
-           a class's argument list references all of its val/var members.
-
-If a class has no val/var members, or all instantiations of that class will
-always have identical val/var values, then a Scala object (a "singleton")
-should be used instead of a Scala class.
-
-When a class does have an argument list, it's optional to precede each argument
+When a class has an argument list, it's optional to precede each argument
 with the "val" keyword, or the "var" keyword, or neither.
 
 When a class argument is preceded with the "val" or "var" keyword, the
@@ -28,7 +20,15 @@ When a class argument isn't preceded with the "val" or "var" keyword, the
 argument becomes a private "val" by default, so it can be accessed only
 from within the class, and its value can never be changed.
 
-The following program demonstrates all this...
+IMPORTANT: A class can be written to contain val/var members that aren't
+           included in the class's argument list!  So don't assume that
+           a class's argument list references all of its val/var members.
+
+If a class has no val/var members, or if all instantiations of that class
+will always have identical val/var values, then a Scala object should be
+used instead of a Scala class.
+
+The following program demonstrates the above-mentioned rules.
 
 class Bozo()                  // A class doesn't require any arguments.
 class Book(var title:String)  // Book.title is a public var class member.
