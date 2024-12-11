@@ -12,7 +12,7 @@ only from within the class, and its value can never be changed.
 
 The following program demonstrates all this...
 
-class Bozo()
+class Bozo()                  // A class doesn't require any arguments.
 class Book(var title:String)  // Book.title is a public var class member.
 class Person(val name:String) // Person.name is a public val class member.
 class Movie(name:String):     // Movie.name is a private val class member.
