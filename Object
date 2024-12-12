@@ -20,19 +20,20 @@ a "companion object" to the class.  Conversely, the class is called a
 "companion class" to the object.
 
 A companion object should be used to contain methods and values that aren’t
-specific to the instance of the companion class.  In other words, methods
-and values that never change should be placed in a companion object.  Doing
-so will prevent duplicate copies getting created every time a new instance
-of the class is generated.  This will save both memory and execution time
-because only one instance of these methods and values get created when they
-reside in a companion object.
+specific to the instance of the companion class.  In other words, values that
+never change, and methods that work on all instances of a class, should be
+placed in a companion object.  Doing so will prevent duplicate copies getting
+created every time a new instance of the class is generated.  This will save
+both memory and execution time, because only one instance of these methods and
+values get created when they reside in a companion object.
 
-IMPORTANT: A companion class or object can access the private members of its companion.
-           Scala objects can also contain apply() and unapply() methods.  The apply()
-           method is used to as "factory method" to construct new instances of the
-           object's companion class.  The unapply() method is used to deconstruct the
-           object's companion class, so that class can be used with the "match" keyword
-           for pattern matching.
+IMPORTANT: A companion class can access the private members of its companion object.
+           A companion object can access the private members of its companion class.
+           apply() and unapply() methods should reside in a companion object.  Where
+           the apply() method is used to as "factory method" to construct new
+           instances of the object's companion class.  And the unapply() method is
+           used to deconstruct the object's companion class, so that class can be
+           used with the "match" keyword for pattern matching.
 
 The following program demonstrates a companion object.  The method named print()
 is used to print the "name" and "age" values contained in the Person class.
