@@ -27,19 +27,21 @@ of the class is generated.  This will save both memory and execution time
 because only one instance of these methods and values get created when they
 reside in a companion object.
 
-The following program demonstrates an example of this.  The method named
-print() is used to print the "name" and "age" values contained in the Person
-class.  Instead of defining that method in the Print class, the print()
-method is placed in the Person companion object.
+IMPORTANT: A companion class or object can access the private members of its companion.
 
-NOTE: In the following example there is also a print() method in the Person class
+The following program demonstrates a companion object.  The method named print()
+is used to print the "name" and "age" values contained in the Person class.
+Instead of defining that method in the Print class, the print() method is placed 
+n the Person companion object.
+
+NOTE: In the following program there is also a print() method in the Person class
       class, which invokes the print() method in the companion object.  Therefore,
-      a new print() method does get created for every instance of a Person class.
-      However, the Person class print() method is just a call to the print()
-      method in the Print object.  In this example there's not much savings in
-      execution time or memory space because the print() method in the Person
-      object contains only one line of code.  However, if that method contained
-      multiple lines of code, the savings could be substantial.
+      a new print() method actually does get created for every instance of a Person
+      class.  However, the Person class print() method invokes the print() method
+      in the Print object.  In this example there's not much savings in execution
+      time or memory space because the print() method in the Person object contains
+      only one line of code.  However, if the print() method in the Person object
+     contained multiple lines of code, the savings in of memory could be substantial.
 
 @main def main() =
   case class Person(name: String, age: Int):
