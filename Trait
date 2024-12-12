@@ -4,15 +4,33 @@ used to represent a behavior/attribute.  Examples of a behavior
 are: speak, travel, bake, etc.  Examples of an attribute are:
 color, weight, animal, etc.
 
-A Scala method can be defined the following two ways:
+
+A Scala method can be defined as a concrete method (which is
+most common), or as an abstract method.  Here's are examples:
 
 // The following method is a concrete method because its behavior
-// is defined.  (It contains a body of code.)
+// is defined.  (It contains a body of executable code.)
 def stop():Unit = println("Stopped walking")
 
 // The following method is an abstract method because its behavior
-// isn't defined.  (It contains no body of code.)
+// isn't defined.  (It contains no body of executable code.)  We
+// know this is a method (and not a field) because it specifies
+// a return type
 def stop():Unit
+
+
+// The following field is a concrete field because it's initialized to a value.
+def weight = 123.456D
+
+// The following field is an abstract field because it isn't initialized.
+def weight
+
+
+
+// The following method is an abstract method because its behavior
+// isn't defined.  (It contains no body of executable code.)
+def stop():Unit
+
 
 with a body of code,
 or without
