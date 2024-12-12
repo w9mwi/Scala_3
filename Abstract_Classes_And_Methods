@@ -1,0 +1,45 @@
+
+ABSTRACT CLASS
+==============
+An abstract class is defined when the "abstract" keyword precedes the "class" keyword.
+An abstract class should be written only when both of these 3 conditions are met:
+
+1) The class contains method(s) and/or member(s) that will be referenced by classes
+   inheriting from it.
+2) At least one of the class's methods/members will be implemented differently
+   among the classes that inherit from it.
+
+EXAMPLE:  Assume both class B and class C inherit from class A, and both class B and
+          class C require a method having an identical name and argument signature,
+          such as "run(Int, Int)".  However, class B and class C must implement
+          their "run(Int, Int)" methods differently.
+
+          To make this work, class A must be an abstract class, and class A must define
+          a "run(Int, Int)" method that doesn't contain a body of executable code.
+          Then, both class B and class C also need to define their own "run(Int, Int)"
+          methods that do contain a body of executable code that implements the
+          desired behavior.
+
+The "protected" keyword is used
+If methods contained in a base class should be invoked by the base class, or classes
+that inherit from it,
+
+   
+
+When an abstract class is defined, it should contain only methods that don't apply to every class inheriting
+from it should be defined, but left empty so they contain no body.
+
+
+
+
+
+You want to write code where some part of what it does is not fully
+              specified until it is used.  When a class is defined as abstract
+              (using the "abstract" key word), it means that at least one of its
+              members or methods must be overridden in a subclass.  When you want
+              a class member or method that CAN'T be overridden in a subclass,
+              use the "final" keyword.  You can also define an entire class using
+              the "final" key word, which means that no subclass can modify it.
+              The most common example of why you'd want to define a class as
+              "final" is when you want that class to be immutable--so no subclass
+              can modify it.
