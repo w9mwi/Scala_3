@@ -1,1 +1,44 @@
-Trait.
+Recall that a Scala class/object is used to represent a thing,
+such as a person, automobile, animal, etc.  A Scala trait is
+used to represent a behavior/attribute.  Examples of a behavior
+are: speak, travel, bake, etc.  Examples of an attribute are:
+color, weight, animal, etc.
+
+A Scala method can be defined the following two ways:
+
+// The following method is a concrete method because its behavior
+// is defined.  (It contains a body of code.)
+def stop():Unit = println("Stopped walking")
+
+// The following method is an abstract method because its behavior
+// isn't defined.  (It contains no body of code.)
+def stop():Unit
+
+with a body of code,
+or without
+
+A method that is defined, but contains no body/behavior/code, is
+"abstract".
+
+A Scala val can be defined these two ways:
+
+val weight = 234
+def weight = 234
+
+using the "def" keyword.
+
+but not initialized.  field that is defined, but isn't initialized, is
+also "abstract".  (A "field" is a Scala val.  But when an abstract
+field is defined, it doesn't contain the val keyword!)
+
+Methods that contain body/behavior/code in their definition are
+"concrete" methods.  Fields (vals/ vars) that are initialized to
+some value "concrete" fields.
+
+
+
+
+Scala traits are mostly used to hold vals/vars, methods, or
+types that are abstract (undefined).  However, a Scala trait
+CAN contain vals/vars, methods, and types that are defined,
+as this example shows...
