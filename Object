@@ -28,6 +28,7 @@ because only one instance of these methods and values get created when they
 reside in a companion object.
 
 IMPORTANT: A companion class or object can access the private members of its companion.
+           Scala objects can also contain apply() and unapply() methods.
 
 The following program demonstrates a companion object.  The method named print()
 is used to print the "name" and "age" values contained in the Person class.
