@@ -28,7 +28,10 @@ because only one instance of these methods and values get created when they
 reside in a companion object.
 
 IMPORTANT: A companion class or object can access the private members of its companion.
-           Scala objects can also contain apply() and unapply() methods.
+           Scala objects can also contain apply() and unapply() methods.  The apply()
+           method is used to as "factory method" to construct new instances of a
+           class.  The unapply() method is used to deconstruct a class, so it can
+           be used with the "match" keyword for pattern matching.
 
 The following program demonstrates a companion object.  The method named print()
 is used to print the "name" and "age" values contained in the Person class.
