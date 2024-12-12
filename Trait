@@ -1,8 +1,7 @@
 Recall that a Scala class/object is used to represent a thing,
 such as a person, automobile, animal, etc.  A Scala trait is
-used to represent a behavior/attribute.  Examples of a behavior
-are: speak, travel, bake, etc.  Examples of an attribute are:
-color, weight, animal, etc.
+used to represent a behavior.  Examples of a behavior
+are: speak, travel, bake, etc.
 
 
 A Scala method can be defined as a concrete method (which is
