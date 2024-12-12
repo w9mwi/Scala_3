@@ -7,7 +7,8 @@ Expression - An Expression is a line of code that returns a value; such as a Str
 
 
 Statement - A Statement is a line of code that doesn't return a value.  Examples of
-            a statement is println, reading, writing, or deleting data from a file.
-            if/else statements can be written so they always return a value, and
-            qualify as EOP.  if/else statements can also be written so they don't
-            return a value, which isn't EOP.
+            a statement are lines of code that print data to the screen, read data
+            from a file, write data to a file, delete data from a file.  An if/else
+            in Scala can be written so it always return a value, and therefore
+            qualifies as an expression.  An if/else can also be written so it
+            doesn't return a value, so it's just a statement.
