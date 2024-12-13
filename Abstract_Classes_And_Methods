@@ -14,8 +14,8 @@ implemented, or one member that's not initialized.  The following code shows
 an example of this.
 
 abstract class Animal(name:String):
-  def numberOfLegs():Int
-  val bodyTemp:Int
+  def numberOfLegs():Int // This is an abstract method.
+  val bodyTemp:Int       // This is an abstract member.
 
 Notice the numberOfLegs() method isn't implemented because it contains no body
 of executable code, which is what makes it an abstract method.  The bodyTemp
