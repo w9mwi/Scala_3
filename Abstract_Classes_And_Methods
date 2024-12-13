@@ -29,7 +29,7 @@ program shows an example of this.
 IMPORTANT - The following program's behavior will remain unchanged
             if you replace this text...   abstract class Animal:
             with this text...             trait Animal:
-            To understand why, read to the end of this web page.
+            To understand why, read the "TRAIT VS. ABSTRACT CLASS" section below.
 
 
 abstract class Animal:
