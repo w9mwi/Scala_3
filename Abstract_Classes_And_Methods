@@ -6,18 +6,20 @@ member is a val/var that's declared, but not initialized.  Abstract
 methods and members can exist only in an abstract class, or in a trait.
 
 Methods that contain a body of executable code are called concrete methods.
-Members (vals/vars) that are initialized to some value are called concrete members.
+Members (vals/vars) that are initialized to some value are called concrete
+members.
 
-Concrete methods and members can exist inside a regular class,
-inside an abstract class, inside a trait, and inside of the
-main() method.
+Concrete methods and members can exist inside a regular class, inside an
+abstract class, inside a trait, and inside of the main() method.
 
 
 ABSTRACT CLASS
 ==============
 Unlike a regular Scala class, an abstract class can't be instantiated.  An
-abstract class can only be used by a regular class that inherits from it,
-which is known as a superclass.
+abstract class can only be used by a regular class that inherits from it.
+
+When class A inherits from class B, class A is a superclass; class B
+is a subclass.
 
 A Scala class can be written as an abstract class when the "abstract" keyword
 precedes the "class" keyword, and it contains at least one method that's not
