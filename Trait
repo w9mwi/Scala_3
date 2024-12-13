@@ -18,9 +18,8 @@ of their similarities and differences:
 
 * traits and abstract classes can also contain concrete methods and
   concrete members.  Although it's possible to write a trait or an
-  abstract class that contains only concrete methods/members, it wouldn't
-  make sense to do that.  If all methods/members are concrete, they
-  should reside in a regular class instead.
+  abstract class that contains only concrete methods/members, it
+  would never make sense to do that.
 
 * Based on the above information, every trait and abstract class
   should contain at least one abstract method/member.  Once that
@@ -29,7 +28,8 @@ of their similarities and differences:
 
 * It's not possible to instantiate a trait or an abstract class.  Therefore,
   every trait and abstract class must be used as a "base class".  In other
-  words, traits and abstract classes must be inherited by regular classes.
+  words, traits and abstract classes can only be used when they're inherited
+  by a regular class.
 
 * A regular Scala class can extend (inherit from) only one class, but can
   inherit from any number of traits.
@@ -54,7 +54,7 @@ ANSWER:
 When BOTH of the following 2 conditions are true...
 
 1) You have multiple different class types (i.e., class A, class B, etc.);
-   where all those class types must invoke...
+   where ALL those class types must invoke...
 
    * A method having an identical name AND identical argument signature.
      ...AND/OR...
@@ -63,8 +63,8 @@ When BOTH of the following 2 conditions are true...
 2) A method/member must be coded differently, dependent on which
    class (class A, class B, etc.) invokes it.
 
-Methods/Members that must be coded differently (dependening on
-which class type invokes the method/member) must be coded as abstract
+Methods/Members that must be coded differently (dependent on which
+class type invokes the method/member) must be coded as abstract
 methods/members in the trait.  Those same methods/members must also
 be coded as concrete methods/members inside the classes (class A,
 class B, etc.) that inhert from the trait.  Doing this will force
@@ -73,9 +73,9 @@ have identical names.
 
 IMPORTANT: Code that works with ALL of these class types (class A,
            class B, etc.) must be also be added to the trait, but
-           as concrete (not abstract) methods/members.  So concrete
-           methods/members contained in the trait won't exist in
-           the class types that inherit from the trait.
+           as concrete (not abstract) methods/members.  Therefore,
+           concrete methods/members contained in the trait won't
+           exist in the class types that inherit from the trait.
 
 View the following web page to see a Scala 3 program that implements traits.
 https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
