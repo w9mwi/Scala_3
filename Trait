@@ -7,7 +7,6 @@ Before reading this section you should understand all of the following:
 * concrete member
 
 If you need to review these topics, read the following web page:
-
 https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
 
 In Scala, a trait and an abstract class are very similar.  Here is a list
@@ -21,14 +20,14 @@ of their similarities and differences:
   concrete members.  Although it's possible to write a trait or an
   abstract class that contains only concrete methods/members, it wouldn't
   make sense to do that.  If all methods/members are concrete, they
-  should reside in a regular class.
+  should reside in a regular class instead.
 
 * Based on the above information, every trait and abstract class
   should contain at least one abstract method/member.
 
 * It's not possible to instantiate a trait or an abstract class.  Therefore,
   every trait and abstract class must be used as a "base class".  In other
-  words, traits and abstract classes can only be inherited by regular classes.
+  words, traits and abstract classes must be inherited by regular classes.
 
 * A regular Scala class can extend (inherit from) only one class, but can
   inherit from any number of traits.
@@ -39,11 +38,11 @@ of their similarities and differences:
   As Scala 3 allows you to inherit from any class or trait using only the
   "extends" keyword.
 
-* In Scala 2, a trait couldn't accept arguments, as an abstract class can.
+* In Scala 2, a trait couldn't accept arguments as an abstract class can.
   In Scala 3, a trait can accept arguments.  This makes it possible for
   Scala 3 programs to eliminate the implementation of abstract classes.
-  Therefore, Scala 3 programs should implement only traits, and elminate
-  the implemntation abstract classes.
+  So Scala 3 programs should implement only traits, and elminate the
+  implementation of abstract classes.
 
 QUESTION:
 When should a Scala trait be implemented?
@@ -52,7 +51,7 @@ ANSWER:
 When BOTH of the following 2 conditions are true...
 
 1) You have multiple different class types (i.e., class A, class B, etc.);
-   where all these classes have...
+   where all these classes must invoke...
 
    * one or more methods having identical names AND identical argument signatures.
      ...AND/OR...
@@ -61,13 +60,16 @@ When BOTH of the following 2 conditions are true...
 2) At least one of these methods/members must be coded differently,
    dependent on which class (class A, class B, etc.) invokes it.
 
-   
+When both of the above conditions are true, methods and members that
+work with ALL of these classes (class A, class B, etc.) must be coded
+as concrete methods/members in the trait.
 
-
-         
-A Scala trait should be used only when 
-
+Methods and members that must be coded differently (dependening on
+which class invokes the method/member), must become abstract must
+be coded as abstract methods/members in the trait.  Then, concrete
+methods/members (having identical names and argument signatures)
+must be placed inside the classes (class A, class B, etc.) that
+inhert the trait.
 
 View the following web page to see a Scala 3 program that implements traits.
-
 https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
