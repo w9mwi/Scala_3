@@ -1,6 +1,6 @@
 A Scala 3 class can be written with or without a braces pair {}.  A Scala 3
-class that doesn't use a braces pair {} uses a colon char (:) instead, at
-the end of the class's argument list.  Then, all code following the colon
+class that doesn't use a braces pair {} uses a colon char (:) at the
+termination of the class's argument list.  All code following the colon
 char (:) must appear below the argument list, and must be indented to the
 right of the opening "class" keyword.  This applies to all Scala 3 classes
 and objects, and is demonstrated from here on.  A Scala 3 class that
