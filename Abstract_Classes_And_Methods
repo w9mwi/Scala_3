@@ -26,6 +26,11 @@ precedes the "class" keyword, and it contains at least one method that's not
 implemented, or at least one member that's not initialized.  The following
 program shows an example of this.
 
+IMPORTANT - The following program's behavior will remain unchanged
+            if you replace this text...   abstract class Animal:
+            with this text...             trait Animal:
+            To understand why, read to the end of this web page.
+
 
 abstract class Animal:
   def ageInYears:Int // ageInYears is an abstract method.
