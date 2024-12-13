@@ -3,7 +3,7 @@ ABSTRACT METHODS AND MEMBERS
 An abstract method is a method that's defined, but contains no body
 of executable code, which means it's not implemented.  An abstract
 member is a val/var that's declared, but not initialized.  Abstract
-methods and members can exist only in a class, or in a trait.
+methods and members can exist only in an abstract class, or in a trait.
 
 
 ABSTRACT CLASS
