@@ -49,15 +49,18 @@ QUESTION:
 When should a Scala trait be implemented?
 
 ANSWER:
-When all of the following are true...
+When BOTH of the following 2 conditions are true...
 
-1) You have multiple different class types (i.e., class A, class B, etc.)
-   that must implement one, or both, of the following:
+1) You have multiple different class types (i.e., class A, class B, etc.);
+   where all these classes have...
 
-   * Method(s) that have identical names, and identical argument signatures.
-   * Member(s) that have identical names.
+   * one or more methods having identical names AND identical argument signatures.
+     ...AND/OR...
+   * one or more members having identical names.
 
-2) 
+2) At least one of these methods/members must be coded differently,
+   dependent on which class (class A, class B, etc.) invokes it.
+
    
 
 
