@@ -1,68 +1,70 @@
-https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
+Before reading this section you should understand all of the following:
+
+* abstract class
+* abstract method
+* abstract member
+* concrete method
+* concrete member
+
+If you need to review these topics, read the following web page:
 
 https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
 
+In Scala, a trait and an abstract class are very similar.  Here is a list
+of their similarities and differences:
+
+* In Scala, traits and abstract classes are the only structures that can
+  contain abstract methods and abstract members.  In fact, the purpose of
+  traits and abstract classes is to contain abstract methods/members.
+
+* traits and abstract classes can also contain concrete methods and
+  concrete members.  Although it's possible to write a trait or an
+  abstract class that contains only concrete methods/members, it wouldn't
+  make sense to do that.  If all methods/members are concrete, they
+  should reside in a regular class.
+
+* Based on the above information, every trait and abstract class
+  should contain at least one abstract method/member.
+
+* It's not possible to instantiate a trait or an abstract class.  Therefore,
+  every trait and abstract class must be used as a "base class".  In other
+  words, traits and abstract classes can only be inherited by regular classes.
+
+* A regular Scala class can extend (inherit from) only one class, but can
+  inherit from any number of traits.
+
+* In Scala 2, the "with" keyword must be used (instead of the "extends" keyword)
+  to inherit from traits.  In Scala 3, you can still use the "with" keyword
+  to inherit from traits, but you should use the "extends" keyword instead.
+  As Scala 3 allows you to inherit from any class or trait using only the
+  "extends" keyword.
+
+* In Scala 2, a trait couldn't accept arguments, as an abstract class can.
+  In Scala 3, a trait can accept arguments.  This makes it possible for
+  Scala 3 programs to eliminate the implementation of abstract classes.
+  Therefore, Scala 3 programs should implement only traits, and elminate
+  the implemntation abstract classes.
+
+QUESTION:
+When should a Scala trait be implemented?
+
+ANSWER:
+When all of the following are true...
+
+1) You have multiple different class types (i.e., class A, class B, etc.)
+   that must implement one, or both, of the following:
+
+   * Method(s) that have identical names, and identical argument signatures.
+   * Member(s) that have identical names.
+
+2) 
+   
+
+
+         
+A Scala trait should be used only when 
+
+
+View the following web page to see a Scala 3 program that implements traits.
+
 https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
-
-
-Recall that a Scala class/object is used to represent a thing,
-such as a person, automobile, animal, etc.  A Scala trait is
-used to represent a behavior.  Examples of a behavior
-are: speak, travel, bake, etc.
-
-
-A Scala method can be defined as a concrete method (which is
-most common), or as an abstract method.  Here's are examples:
-
-// The following method is a concrete method because its behavior
-// is defined.  (It contains a body of executable code.)
-def stop():Unit = println("Stopped walking")
-
-// The following method is an abstract method because its behavior
-// isn't defined.  (It contains no body of executable code.)  We
-// know this is a method (and not a field) because it specifies
-// a return type
-def stop():Unit
-
-
-// The following field is a concrete field because it's initialized to a value.
-def weight = 123.456D
-
-// The following field is an abstract field because it isn't initialized.
-def weight
-
-
-
-// The following method is an abstract method because its behavior
-// isn't defined.  (It contains no body of executable code.)
-def stop():Unit
-
-
-with a body of code,
-or without
-
-A method that is defined, but contains no body/behavior/code, is
-"abstract".
-
-A Scala val can be defined these two ways:
-
-val weight = 234
-def weight = 234
-
-using the "def" keyword.
-
-but not initialized.  field that is defined, but isn't initialized, is
-also "abstract".  (A "field" is a Scala val.  But when an abstract
-field is defined, it doesn't contain the val keyword!)
-
-Methods that contain body/behavior/code in their definition are
-"concrete" methods.  Fields (vals/ vars) that are initialized to
-some value "concrete" fields.
-
-
-
-
-Scala traits are mostly used to hold vals/vars, methods, or
-types that are abstract (undefined).  However, a Scala trait
-CAN contain vals/vars, methods, and types that are defined,
-as this example shows...
