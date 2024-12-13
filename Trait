@@ -77,5 +77,42 @@ IMPORTANT: Code that works with ALL of these class types (class A,
            concrete methods/members contained in the trait won't
            exist in the class types that inherit from the trait.
 
+QUESTION:
+What happens if a class inherits from two traits that implement an
+identically-named method/member differently?  And how about if that
+method also exists in class itself?  And how about if that method
+also exists in a parent class, and also in a trait the parent class
+extends?
+
+ANSWER:
+Scala solves this problem via a mechanism called linearization.
+In the following snippet of Scala 3 code, assume that Trait_1 and
+Trait_2 both implement a concrete method named run().
+
+class Animal extends Trait_1, Trait_2:
+  ...  // Animal class defined here.
+
+val rabbit = Animal
+rabbit.run()
+
+Which run() method does the above line of code execute?  Scala searches
+for the run() method in the order shown below.  When the first run() method
+is found, Scala executes it, and stops the search.  This search process
+prevents "The Diamond Problem" of multiple inheritance from occurring.
+That is, when a Scala class implements what appears to be multiple
+inheritance, Scala resolves the problem by inheriting the duplicate-named
+method from only one of the classes/traits.
+
+1) Start with the class that invokes the run() method, which is Animal.
+2) If there is no run() method in Animal, search the traits from right
+   to left...  Search Trait_2 first, then search Trait_1.
+
+This one example will cover most real-world scenarios.  However, it's
+possible for this search to get far more complex.  For example, a class
+that extends a class, and extends multiple traits, and invokes a parent
+class via the call to super(), and its parent class extends a class that
+extends multiple traits.  Etc.  Etc.  Search the Internet if you need
+to know all rules that apply to this linearization process.
+
 View the following web page to see a Scala 3 program that implements traits.
 https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
