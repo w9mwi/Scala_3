@@ -42,9 +42,10 @@ of their similarities and differences:
 
 * In Scala 2, a trait couldn't accept arguments (as an abstract class can).
   In Scala 3, a trait can accept arguments.  This makes it possible for
-  Scala 3 programs to eliminate the implementation of abstract classes.
-  So Scala 3 programs should implement only traits, and elminate the
-  implementation of abstract classes.
+  Scala 3 programs to nearly eliminate the implementation of abstract classes,
+  with the exception for interoperability with Java code, and possibly some
+  other rare scenarios.  In most cases, Scala 3 programs should implement
+  only traits, and elminate the implementation of abstract classes.
 
 QUESTION:
 When should a Scala trait be implemented?
