@@ -51,7 +51,8 @@ class IrishSetter(name: String) extends Animal:
   // PRINTS:  dog = This Irish Setter is named Big Red; it's 12 years old.
 
 
-
+// ***************************************************************
+REWRITE THIS SECTION LATER.  REGARDING THE "final" AND "protected" KEYWORDS.
 The "protected" keyword is used
 If methods contained in a base class should be invoked by the base class, or classes
 that inherit from it,
@@ -62,6 +63,7 @@ the "final" key word, which means that no subclass can modify it.
 The most common example of why you'd want to define a class as
 "final" is when you want that class to be immutable--so no subclass
 can modify it.
+// ***************************************************************
 
 
 TRAIT VS. ABSTRACT CLASS
@@ -71,20 +73,25 @@ abstract methods and abstract members.  A trait containing an abstract method,
 or an abstract member, can then be inherited by another trait.
 
 So when you want to write a class that implements abstract methods/members, you can write
-either an abstract class, or a trait, that contains those abstract methods/members.
-So then your class can inherit from either the trait you wrote, or the abstract class
+either an abstract class, or a trait, to contain those abstract methods/members.  So then
+your class can inherit from either the trait you wrote, or inherit from the abstract class
 you wrote.  That leads to the following question...
 
 QUESTION: When you need to write abstract methods/members, should they be contained
           in a Scala trait, or in an abstract class?
 
-ANSWER:   Scala 2 traits can't accept arguments, but abstract classes (in Scala 2
+ANSWER:   Scala 2 traits can't accept arguments, but abstract classes (in both Scala 2
           and Scala 3) can accept arguments.  So with Scala 2 code, if you needed a
           base class that accepts constructor arguments, you had to use an abstract
           class.  Since Scala 3 traits now accept arguments, it's recommended that
           you use a trait to hold abstract methods/members, instead of an abstract
-          class.  And then inherit that trait from a regular class.
+          class.  Then, inherit that trait from a regular class.
 
-So in Scala 3, if you need to implement 
-Or if the code will be called from Java code.
-
+IMPORTANT:  A class can inherit from only one class, and from any number of traits.
+            Generally, you should use a trait to hold methods and members that can
+            would apply to different class types.  For example, assume you had 3
+            classes named Boat, Car, and Jet; and all 3 of those classes implemented
+            methods named startEngine(), travel(), and stopEngine().  You could place
+            those 3 methods in a trait named Action, where you'd define each one as
+            either an abstract method, or a concrete method.  Finally, the Boat,
+            Car, and Jet classes would all inherit from that Action trait.
