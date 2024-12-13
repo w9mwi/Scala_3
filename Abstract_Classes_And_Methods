@@ -62,3 +62,29 @@ the "final" key word, which means that no subclass can modify it.
 The most common example of why you'd want to define a class as
 "final" is when you want that class to be immutable--so no subclass
 can modify it.
+
+
+TRAIT VS. ABSTRACT CLASS
+========================
+As mentioned above, a Scala trait (like an abstract class) can also contain
+abstract methods and abstract members.  A trait containing an abstract method,
+or an abstract member, can then be inherited by another trait.
+
+So when you want to write a class that implements abstract methods/members, you can write
+either an abstract class, or a trait, that contains those abstract methods/members.
+So then your class can inherit from either the trait you wrote, or the abstract class
+you wrote.  That leads to the following question...
+
+QUESTION: When you need to write abstract methods/members, should they be contained
+          in a Scala trait, or in an abstract class?
+
+ANSWER:   Scala 2 traits can't accept arguments, but abstract classes (in Scala 2
+          and Scala 3) can accept arguments.  So with Scala 2 code, if you needed a
+          base class that accepts constructor arguments, you had to use an abstract
+          class.  Since Scala 3 traits now accept arguments, it's recommended that
+          you use a trait to hold abstract methods/members, instead of an abstract
+          class.  And then inherit that trait from a regular class.
+
+So in Scala 3, if you need to implement 
+Or if the code will be called from Java code.
+
