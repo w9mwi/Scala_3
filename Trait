@@ -1,3 +1,17 @@
+Scala provides 3 constructs for creating user-defined types:
+
+1) class
+2) object
+3) trait
+
+Use a Scala class (or a Scala object) to represent a thing/object, such
+as Person, Animal, etc.  A Scala trait is used to represent a behavior.
+Examples of behavior are commute-to-school, order-a-pizza, etc.  A Scala
+trait is used to contain identically-named methods/members that apply to
+different (but similar) class types (i.e., Person, Animal, etc).  Those
+class types will then inherit from (extend) the trait, and thus implement
+all methods/members contained in the trait.
+
 Before reading this section you should understand all of the following:
 
 * abstract class
