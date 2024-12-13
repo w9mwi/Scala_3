@@ -18,8 +18,8 @@ ABSTRACT CLASS
 Unlike a regular Scala class, an abstract class can't be instantiated.  An
 abstract class can only be used by a regular class that inherits from it.
 
-When class A inherits from class B, class A is a superclass; class B
-is a subclass.
+When class A inherits from class B, class A is the superclass; class B
+is the subclass.
 
 A Scala class can be written as an abstract class when the "abstract" keyword
 precedes the "class" keyword, and it contains at least one method that's not
