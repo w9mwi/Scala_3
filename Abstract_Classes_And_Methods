@@ -11,11 +11,32 @@ ABSTRACT CLASS
 A Scala class can be written as an abstract class when the "abstract" keyword
 precedes the "class" keyword, and it contains at least one method that's not
 implemented, or at least one member that's not initialized.  The following
-code shows an example of this.
+program shows an example of this.
 
-abstract class Animal(name:String):
-  def numberOfLegs:Int  // numberOfLegs is an abstract method.
-  val bodyTemp:Int      // bodyTemp is an abstract member.
+
+abstract class Animal:
+  def ageInYears:Int // ageInYears is an abstract method.
+  val bodyTemp:Int   // bodyTemp is an abstract member.
+
+// The following IrishSetter class inherits from the Animal class by
+// implementing the "extends" keyword.  This class wouldn't compile
+// if it didn't initialize bodyTemp to some value, or if it didn't
+// implement the ageInYears method.
+class IrishSetter(name: String) extends Animal:
+  val bodyTemp = 93
+  def ageInYears = 12
+  // Every class has a default toString() method.  Here we override that
+  // method with our own toString definition so it prints relevant info.
+  override def toString = s"This Irish Setter is named $name; it's $ageInYears years old."
+
+/******************
+ * main()
+ *****************/
+@main def main():Unit =
+  val dog = IrishSetter("Big Red")
+  println(s"dog = $dog")
+  // PRINTS:  dog = This Irish Setter is named Big Red; it's 12 years old.
+
 
 Notice the numberOfLegs() method isn't implemented because it contains no body
 of executable code, which is what makes it an abstract method.  The bodyTemp
