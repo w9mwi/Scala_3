@@ -5,6 +5,13 @@ of executable code, which means it's not implemented.  An abstract
 member is a val/var that's declared, but not initialized.  Abstract
 methods and members can exist only in an abstract class, or in a trait.
 
+Methods that contain a body of executable code are called concrete methods.
+Members (vals/vars) that are initialized to some value are called concrete members.
+
+Concrete methods and members can exist inside a regular class,
+inside an abstract class, inside a trait, and inside of the
+main() method.
+
 
 ABSTRACT CLASS
 ==============
