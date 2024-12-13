@@ -1,7 +1,33 @@
+ABSTRACT METHODS AND MEMBERS
+============================
+An abstract method is a method that's defined, but contains no body
+of executable code, which means it's not implemented.  An abstract
+member is a val/var that's declared, but not initialized.  Abstract
+methods and members can exist only in a class, or in a trait.
+
 
 ABSTRACT CLASS
 ==============
-An abstract class is defined when the "abstract" keyword precedes the "class" keyword.
+A Scala class can be written as an abstract class when the "abstract" keyword
+precedes the "class" keyword, and it contains at least one method that's not
+implemented, or one member that's not initialized.  The following code shows
+an example of this.
+
+abstract class Animal(name:String):
+  def numberOfLegs():Int
+  val bodyTemp:Int
+
+Notice the numberOfLegs() method isn't implemented because it contains no body
+of executable code, which is what makes it an abstract method.  The bodyTemp
+member (which is a val) is declared but not initialized, which is what makes
+it an abstract member.
+
+Unlike a regular Scala class, an abstract class can't be instantiated.  An
+abstract class can only be used by a regular class that inherits from it,
+which is known as a superclass.
+
+
+become can An abstract class is a Scala class  is written, and the "class" keyword An abstract class is defined when the "abstract" keyword precedes the "class" keyword.
 An abstract class should be written only when both of these 3 conditions are met:
 
 1) The class contains method(s) and/or member(s) that will be referenced by classes
