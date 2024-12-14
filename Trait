@@ -33,7 +33,7 @@ of their similarities and differences:
 * traits and abstract classes can also contain concrete methods and
   concrete members.  Although it's possible to write a trait or an
   abstract class that contains only concrete methods/members, it
-  would never make sense to do that.
+  wouldn't make sense to do that; you would use a class instead.
 
 * It's not possible to instantiate a trait or an abstract class.  Therefore,
   every trait and abstract class must be used as a "base class".  In other
