@@ -5,12 +5,9 @@ char (:) must appear below the argument list, and must be indented to the
 right of the opening "class" keyword.  This rule applies to all Scala 3 classes
 objects,and traits.
 
-A Scala 3 class that contains no class body doesn't require a braces pair {}
-or a colon char (:).
-
-IMPORTANT: A class can be written to arguments list, or accept no arguments.
-           However, even if the class accepts no arguments, a class must
-           always be written with a parenthesis pair ().
+A Scala class that contains no body doesn't require a braces pair {} or
+a colon char (:), but always requires a parenthesis pair (), even if
+the class constructor accepts no arguments.
 
 When a class has an argument list, it's optional to precede each argument
 with the "val" keyword, or the "var" keyword, or neither.
