@@ -35,15 +35,15 @@ of their similarities and differences:
   abstract class that contains only concrete methods/members, it
   would never make sense to do that.
 
-* Based on the above information, every trait and abstract class
-  should contain at least one abstract method/member.  Once that
-  requirement is met, it's OK for the trait or abstract class to
-  also contain concrete methods/members.
-
 * It's not possible to instantiate a trait or an abstract class.  Therefore,
   every trait and abstract class must be used as a "base class".  In other
   words, traits and abstract classes can only be used when they're inherited
   by a regular class.
+
+* Based on the above information, every trait and abstract class
+  should contain at least one abstract method/member.  Once that
+  requirement is met, it's OK for the trait or abstract class to
+  also contain concrete methods/members.
 
 * A regular Scala class can extend (inherit from) only one class, but can
   inherit from any number of traits.
