@@ -45,7 +45,7 @@ of their similarities and differences:
   requirement is met, it's OK for the trait or abstract class to
   also contain concrete methods/members.
 
-* A regular Scala class can extend (inherit from) only one class, but can
+* A Scala class can extend (inherit from) only one class, but can
   inherit from any number of traits.
 
 * In Scala 2, the "with" keyword must be used (instead of the "extends" keyword)
