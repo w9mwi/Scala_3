@@ -186,7 +186,7 @@ args/params passed to a case class with the keyword "val" or "var" if you choose
 
 CASE CLASS
 ==========
-The following is a list of 7 differences between a regular Scala class and a case class.
+The following is a list of 7 differences between a regular Scala class and a "case class".
 
 1) A "case class" requires at least one argument in its constructor.
    A regular Scala class requires no constructor arguments.
@@ -194,10 +194,10 @@ The following is a list of 7 differences between a regular Scala class and a cas
 2) Arguments of a regular class constructor become public class members when
    they're preceded with the val or var keyword, and private when they're not.
 
-   All arguments in a "case class" constructor are always public class members
-   by default; regardless if they're preceded with keyword "val"/"var", or
-   nothing.  When arguments in a "case class" constructor are preceded with
-   nothing, they're vals by default.
+   All arguments in a "case class" constructor are public class members by default;
+   regardless if they're preceded with no text, or the "val"/"var" keyword.
+   When arguments in a "case class" constructor are preceded with no text,
+   they're vals by default.
 
    Inside the body of a regular class, or a "case class", you can declare additional
    val/var class members as "private" or "protected".  If you don't declare them as
