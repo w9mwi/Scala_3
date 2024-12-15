@@ -44,17 +44,20 @@ used instead of a Scala class.
 For every regular class and "case class" that you write, Scala automatically
 generates the following 4 methods.
 
-apply()   - This method gets generated and invoked automatically whenever a Scala class
-            (or "case class") is instantiated.  (This method is rarely called directly
-            by the programer.)  In Scala 3 you don't need to use the "new" keyword when
-            instantiating a regular class, or a "case class".  You can replace a regular
-            class's default apply() method by adding your own apply() method to the
-            body of the regular class.  But a "case class" always implements its own
-            apply method.
+apply()   -  This method gets generated and invoked automatically whenever a Scala class
+             (or "case class") is instantiated.  (This method is rarely called directly
+             by the programer.)  In Scala 3 you don't need to use the "new" keyword when
+             instantiating a regular class, or a "case class".  You can replace a regular
+             class's default apply() method by adding your own apply() method to the
+             body of the regular class.  But a "case class" always implements its own
+             apply() method.
+
 equals()   - Determines if two Scala objects are equal.  Read the hashCode() description below.
+
 hashCode() - Returns an Int value.  If calling hashCode() on two Scala objects return the
              same Int value, they are equal.  You can use the equals() method or the
              '==' operator in place of calling hashCode() to determine equivalency.
+
 toString() - Renders the case class’s name and fields to a String.  You may want
              to define your own toString() method for a class (using the 'override'
              keyword) so it prints information about the class that you desire.
