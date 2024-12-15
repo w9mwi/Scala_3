@@ -188,23 +188,23 @@ CASE CLASS
 ==========
 The following is a list of 7 differences between a regular Scala class and a case class.
 
-1) A case class requires at least one argument in its constructor,
-   while a regular Scala class requires no constructor arguments.
+1) A "case class" requires at least one argument in its constructor.
+   A regular Scala class requires no constructor arguments.
 
-2) The args/params passed to a plain Scala class become PUBLIC class members
-   ONLY when they're preceded with the val or var keyword.  If its args/params
-   aren't preceded with val/var, they become PRIVATE members, accessible only
-   from within the body of the class.
+2) Arguments of a regular class constructor become public class members when
+   they're preceded with the val or var keyword, and private when they're not.
 
-   All args/params passed to a Scala case class become PUBLIC class members by
-   default, regardless if they're preceded with keywords val/var, or nothing.
-   If the args/params passed to a case class are preceded with nothing, they
-   become val by default.
+   All arguments in a "case class" constructor are always public class members
+   by default; regardless if they're preceded with keyword "val"/"var", or
+   nothing.  When arguments in a "case class" constructor are preceded with
+   nothing, they're vals by default.
 
-   Within the body of a plain class, or a case class, you can declare additional
-   val/var class members, and define them to be "private" or "protected" members.
-   If you don't define them as "private" or "protected", they are PUBLIC class
-   members by default.  (In Scala, there is no keyword named "public".)
+   Inside the body of a regular class, or a "case class", you can declare additional
+   val/var class members as "private" or "protected".  If you don't declare them as
+   "private" or "protected", they are public class members by default.  Same holds
+   true with methods defined in a regular class or a "case class."  If you don't
+   define methods as "private" or "protected", they're public by default.
+   NOTE: In Scala, there is no "public" keyword.
    
    The following code sample demonstrates this behavior.  Read in-line comments
    for details.
