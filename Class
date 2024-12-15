@@ -169,15 +169,6 @@ class Student(name:String, govtId:Int):
 
 ============================================================================
 
-CASE CLASS
-==========
-A Scala "case class" 
-
-
-
-
-DIFFERENCES BETWEEN A SCALA "case class" AND A SCALA "class"
-============================================================
 Below is an example of how to create a simple class, and a simple case class.
 Both of these classes store a "name" and "Id" as a val--so they are basically
 equivalent classes.  However, a regular class (the PersonClass) REQUIRES its
@@ -192,10 +183,13 @@ args/params passed to a case class with the keyword "val" or "var" if you choose
    case class PersonCaseClass(name:String, id:Int) // A case class definition.
    val jim = PersonCaseClass("Joe", 98765)         // The case class being instantiated.
 
-A Scala "case class" is different from a regular Scala class in the following 6 ways.
 
-1) A case class MUST contain one or more args/params in its definition,
-   while a plain Scala class can contain zero or more args/params.
+CASE CLASS
+==========
+The following is a list of 7 differences between a regular Scala class and a case class.
+
+1) A case class requires at least one argument in its constructor,
+   while a regular Scala class requires no constructor arguments.
 
 2) The args/params passed to a plain Scala class become PUBLIC class members
    ONLY when they're preceded with the val or var keyword.  If its args/params
