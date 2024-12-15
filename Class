@@ -12,11 +12,12 @@ CLASS
 =====
 A Scala 3 class can be written with or without a braces pair {}.  A Scala 3
 class that doesn't use a braces pair {} must use a colon char (:) at the
-termination of the class's argument list.  All code following the colon
-char (:) must appear on a new line below the argument list, and must be
-indented to the right of the opening "class" or "case class" keywords.
+termination of the class's argument list.  All of the class's code that
+follows the colon char (:) must appear on a new line below its argument
+list, and must be indented to the right of the opening "class" or
+"case class" keywords.
 
-Scala 3 "case classes", objects and traits also implement the
+Scala 3 "case classes", objects and traits implement the
 colon char (:) this same way.
 
 A Scala class that contains no body doesn't require a braces pair {} or
