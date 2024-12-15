@@ -223,27 +223,23 @@ unapply() - The unapply() method serves as an extractor for pattern matching on
             an unapply() method for you.  So you can perform pattern matching
             on every "case class" without doing anything.
 
+ A "case class" requires at least one argument in its constructor.
+ A regular Scala class doesn't require arguments in its  constructor.
 
-1) A "case class" requires at least one argument in its constructor.
-   A regular Scala class doesn't require an argument in its  constructor.
+All arguments in a "case class" constructor are public class members by default;
+regardless if they're preceded with no text, or the "val"/"var" keyword.
+When arguments in a "case class" constructor are preceded with no text,
+they're vals by default.
 
-2) Arguments of a regular class constructor become public class members when
-   they're preceded with the val or var keyword, and private when they're not.
+A "case class" is Serializable; a regular class isn't Serializable.  If you want
+want to make a regular class Serializable, you need to add the text
+"extends Serializable" to the class definition.
 
-   All arguments in a "case class" constructor are public class members by default;
-   regardless if they're preceded with no text, or the "val"/"var" keyword.
-   When arguments in a "case class" constructor are preceded with no text,
-   they're vals by default.
+Like a regular Scala class, a "case class" can be abstract, like this example:
 
-   Within the body of a regular class, or a "case class", you can declare val/var
-   members as "private" or "protected".  If you don't declare them as "private"
-   or "protected", they are public class members by default.  Same holds true
-   with methods defined in a regular class or a "case class."  If you don't
-   define methods as "private" or "protected", they're public by default.
-   NOTE: In Scala, there is no "public" keyword.
-   
-   The following code sample demonstrates this behavior.  Read in-line comments
-   for details.
+In Scala 3, a "case class" can extend a trait, an abstract class, and a regular class.
+
+
    ===========================================================================
    object Demo
    {
@@ -310,23 +306,3 @@ unapply() - The unapply() method serves as an extractor for pattern matching on
    }
    ===========================================================================
 
-3) When a "case class" is used, Scala automatically creates the following
-   6 methods, so you never need to write them yourself.  If you need any
-   of these yourself
-
-
-   
-
-
-
-4) A case class is Serializable.
-
-5) A case class CAN be abstract, like this:   abstract case class Card(id:Int)
-
-6) A regular class can extend a trait.  But a case class CAN'T extend a trait,
-   or another case class.  However, a case class CAN extend a regular class OR
-   an abstract class.  The following example will work with or without the
-   "abstract" keyword:
-
-   abstract class Card(id:Int)
-   case class DebitCard(id:Int, name:String, number:Int) extends Card(id)
