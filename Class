@@ -244,6 +244,16 @@ unapply() - The unapply() method serves as an extractor for pattern matching on
             If you want to perform pattern matching on a regular class, you must
             write your own unapply() method and add it to the class's body.
 
+For every "case class" (and regular class) that you write, Scala also generates
+these 4 methods automatically:
+
+apply()
+equals()
+hashCode()
+toString()
+
+See the "CLASS" section at the top of this web page for details.
+
 All arguments in a "case class" constructor are public class members by default;
 regardless if they're preceded with no text, or the "val"/"var" keyword.
 When arguments in a "case class" constructor are preceded with no text,
