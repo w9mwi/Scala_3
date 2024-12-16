@@ -249,78 +249,8 @@ regardless if they're preceded with no text, or the "val"/"var" keyword.
 When arguments in a "case class" constructor are preceded with no text,
 they become vals by default.
 
-A "case class" is Serializable; a regular class isn't Serializable.  If you want
-want to make a regular class Serializable, you need to add the text
-"extends Serializable" to the class definition.
+A "case class" is Serializable; a regular class isn't Serializable.
 
-Like a regular Scala class, a "case class" can be abstract, like this example:
+Like a regular Scala class, and a "case class", can be an abstract class.
 
 In Scala 3, a "case class" can extend a trait, an abstract class, and a regular class.
-
-
-   ===========================================================================
-   object Demo
-   {
-     // Both args/params passed to PersonClass_1 become public
-     // members by default, because they're preceded with
-     // keywords val or var.
-     class PersonClass_1(val name: String, var age: Int) {
-       def printArgs(): Unit = {
-         println(s"PersonClass_1.name = $name,  PersonClass_1.age = $age")
-       }
-     }
-
-     // Both args/params passed to PersonClass_2 become private class
-     // members because they're NOT preceded with keywords val or var.
-     // The private members "name" and "age" are accessed and printed
-     // after the PersonClass_2 is instantiated, by calling the method
-     // printArgs().
-     class PersonClass_2(name:String, age:Int) {
-       def printArgs():Unit = {
-         println(s"PersonClass_2.name = $name,  PersonClass_2.age = $age")
-       }
-     }
-
-     // All args/params passed to PersonCaseClass become public
-     // members by default, regardless if they're preceded with
-     // val, var, or nothing.
-     case class PersonCaseClass(name:String, val age:Int) {
-       def printArgs(): Unit = {
-         println(s"PersonCaseClass.name = $name,  PersonCaseClass.age = $age")
-       }
-     }
-
-     def main(args: Array[String]):Unit = {
-       // **********************************
-       // Test PersonClass_1 behavior:
-       val person_1 = new PersonClass_1("Joe", 15)
-       person_1.printArgs() // PRINTS: PersonClass_1.name = Joe,  PersonClass_1.age = 15
-
-       // The following 2 lines compile because person_1.name and person_1.age
-       // are public class members.
-       var name = person_1.name
-       var age  = person_1.age
-
-       // **********************************
-       // Test PersonClass_2 behavior:
-       val person_2 = new PersonClass_2("Jack", 23)
-       person_2.printArgs() // PRINTS: PersonClass_2.name = Jack,  PersonClass_2.age = 23
-
-       // If you uncomment the following 2 lines, they won't compile because
-       // person_2.name and person_2.age are private class members.
-       // name = person_2.name  // WON'T COMPILE!
-       // age  = person_2.age   // WON'T COMPILE!
-
-       // **********************************
-       // Test PersonCaseClass behavior:
-       val person_3 = new PersonCaseClass("Sally", 47)
-       person_3.printArgs() // PRINTS: PersonCaseClass.name = Sally,  PersonCaseClass.age = 47
-
-       // The following 2 lines compile because ALL args/params passed
-       // to a case class are ALWAYS public class members.
-       name = person_3.name
-       age  = person_3.age
-     }
-   }
-   ===========================================================================
-
