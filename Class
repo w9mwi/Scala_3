@@ -100,13 +100,20 @@ class Movie(name:String):     // Movie.name is a private val class member.
 
 ============================================================================
 
-DEFAULT ARGUMENTS
-=================
+DEFAULT ARGUMENTS AND NAMED ARGUMENTS
+=====================================
 Scala class constructors and Scala methods can be written to accept default arguments.
 A default argument is an argument that doesn't need to be specified when the class
 constructor, or the method, is invoked.  When a default argument isn't specified,
-the code supplies the default value specified in the argument list.  Study the
-following self-explanatory program to understand default arguments.
+the code supplies the default value specified in the argument list.
+
+When you invoke a method, you can set any of its argument values, in
+any order you want, by specifying the argument's name, like this...
+
+printAddress(streetAddress = "9876 Main St.",  city = "Manitowoc",
+             state = "WI", zipCode = 54220)
+
+Study the following self-explanatory program to understand default arguments.
 
 class Socket(val timeout: Int = 5_000, val linger: Int = 5_000):
   override def toString = s"timeout: $timeout, linger: $linger"
