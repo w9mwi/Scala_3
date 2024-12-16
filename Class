@@ -247,9 +247,9 @@ equals()
 hashCode()
 toString()
 
-A "case class" is Serializable; a regular class isn't Serializable.
+A "case class" is Serializable by default.  A regular class isn't Serializable by default.
 
-Like a regular Scala class, and a "case class", can be an abstract class.
+Like a regular class, a "case class" can be an abstract class.
 
 In Scala 3, a "case class" can extend a trait, an abstract class, and a regular class.
 
