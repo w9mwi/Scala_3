@@ -267,3 +267,32 @@ A "case class" is Serializable; a regular class isn't Serializable.
 Like a regular Scala class, and a "case class", can be an abstract class.
 
 In Scala 3, a "case class" can extend a trait, an abstract class, and a regular class.
+
+The following program demonstrates two "case class" examples.
+
+
+/******************
+* main()
+******************/
+@main def main():Unit =
+  case class CaseClass_1(val name:String, var id:Int, weight:Double)
+  case class CaseClass_2(product:String, serialNo:Int, price:Float):
+    val myVal = -123.456F
+    var myVar = "myVar can be updated."
+    // Scala automatically generates a toString() method for every class
+    // and "case class".  Here we override the toString() method so
+    // we can customize it to print what we want.
+    override def toString(): String =
+      s"product = $product, serialNo = $serialNo, price = $price, " +
+                  s"myVal = $myVal, myVar = $myVar"
+
+
+  val cc1 = CaseClass_1("Joe", 123, 456.789D)
+  println(s"cc1.name = ${cc1.name}, cc1.id = ${cc1.id}, cc1.weight = ${cc1.weight}")
+  // PRINTS: cc1.name = Joe, cc1.id = 123, cc1.weight = 456.789
+
+  val cc2 = CaseClass_2(price = 78.21F, product = "Spoon", serialNo = 98765)
+  cc2.myVar = "mayVar has been updated!"
+  println(cc2.toString())
+  // PRINTS:
+  // product = Spoon, serialNo = 98765, price = 78.21, myVal = -123.456, myVar = mayVar has been updated!
