@@ -67,6 +67,9 @@ toString() - Renders the case class’s name and fields to a String.  You may wa
              to define your own toString() method for a class (using the 'override'
              keyword) so it prints information about the class that you desire.
 
+When a Scala "case class" is written, Scala automaticaly generates the copy() and
+unapply() methods.  (For details, see the "CASE CLASS" section below.)
+
 The following program demonstrates the above-mentioned rules.
 
 class Bozo()                  // A class doesn't require any arguments.
