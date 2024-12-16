@@ -1,6 +1,6 @@
-This web page covers the following Scala class related topics,
-in the order listed.  Each of these topics has a dedicated
-section devoted it.
+This web page covers the Scala class, where "class" is a keyword,
+and the most fundamental data structure in the Scala language.
+All of the topics listed here are related the Scala class.
 
 * Class
 * Default Arguments
