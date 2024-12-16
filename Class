@@ -107,8 +107,9 @@ A default argument is an argument that doesn't need to be specified when the cla
 constructor, or the method, is invoked.  When a default argument isn't specified,
 the code supplies the default value specified in the argument list.
 
-When you instantiate a class, or invoke a method, you can set any of its argument
-values in any order you want, by specifying the argument's name, like this...
+When you instantiate a class, a trait, an object, or invoke a method, you can set
+any of its argument values in any order you want, by specifying the argument's name,
+like this...
 
 printAddress(streetAddress = "9876 Main St.",
              city          = "Manitowoc",
