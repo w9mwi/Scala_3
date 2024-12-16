@@ -1,12 +1,14 @@
 This web page covers the Scala class, where "class" is a keyword.
 A Scala class is the most common and fundamental data structure
-in the Scala language.  All of the following topics are related
-to the Scala class, and have a dedicated section below.
+in the Scala language.  All of these topics are related to the
+Scala class:
 
 * Class
 * Default Arguments and Named Arguments
 * Auxiliary Class Constructors
 * Case Class
+
+Each of these topics has a dedicated section below.
 
 
 CLASS
