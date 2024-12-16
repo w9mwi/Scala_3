@@ -11,17 +11,18 @@ to the Scala class, and have a dedicated section below.
 
 CLASS
 =====
-A Scala 3 class can be written with or without a braces pair {}.  A Scala 3
-class that doesn't use a braces pair {} must use a colon char (:) at the
-termination of the class's argument list.  All of the class's code that
-follows the colon char (:) must appear on a new line below its argument
-list, and must be indented to the right of the opening "class" or
-"case class" keywords.  Scala 3 "case classes", objects and traits
-implement the colon char (:) in this same way.
+A Scala class or "case class" always requires a parenthesis pair () in its
+constructor, even when the class constructor accepts no arguments.
 
-A Scala class that contains no body doesn't require a braces pair {} or
-a colon char (:), but its constructor always requires a parenthesis
-pair (), even when the class constructor accepts no arguments.
+A Scala 3 class or "case class" can be written with or without a braces
+pair {}.  A Scala 3 class that doesn't use a braces pair {} must use a
+colon char (:) at the termination of the class's argument list.  With
+this exception...  A Scala class or "case class" that contains no body
+of executable doesn't implement this braces pair {}, or colon char (:).
+
+All of the code that follows the colon char (:) in a class or "case class"
+must appear on a new line below its argument list, and must be indented to
+the right of the opening "class" or "case class" keywords.
 
 When a class has an argument list, it's optional to precede each argument
 with the "val" keyword, or the "var" keyword, or neither.
@@ -30,21 +31,21 @@ When a class argument is preceded with the "val" or "var" keyword, the
 argument becomes a public class member by default; so it can be accessed
 inside and outside the class.
 
-When a class argument isn't preceded with the "val" or "var" keyword, the
-argument becomes a private "val" by default, so it can be accessed only
-from within the class, and its value can never be changed.
+When a class argument doesn't use the "val" or "var" keyword, the argument
+becomes a private "val" by default, so it can be accessed only from within
+the class, and its value can never be changed.
 
 IMPORTANT: A class can be written to contain val/var members that aren't
            included in the class's argument list.  So don't assume that
            a class's argument list references all of its val/var members.
 
-If a class has no val/var members, or if all instantiations of that class
-will always have identical val/var values, then a Scala object should be
-used instead of a Scala class.
+If a class contains no val/var members, or if all instantiations of that class
+will always have identical val/var values, then a Scala object should be used
+instead of a Scala class.
 
 A regular class isn't Serializable by default, while a "case class" is Serializable
-by default.  If you want want to make a regular class Serializable, you need to add
-the text "extends Serializable" to the class definition.
+by default.  If you want to make a regular class Serializable, you need to add the
+text "extends Serializable" to the class definition.
 
 For every regular class and "case class" that you write, Scala automatically
 generates the following 4 methods.
