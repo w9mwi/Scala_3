@@ -4,7 +4,7 @@ in the Scala language.  All of the following topics are related
 to the Scala class, and have a dedicated section below.
 
 * Class
-* Default Arguments
+* Default Arguments and Named Arguments
 * Auxiliary Class Constructors
 * Case Class
 
@@ -115,8 +115,8 @@ constructor, or the method, is invoked.  When a default argument isn't specified
 the code supplies the default value specified in the argument list.
 
 When you instantiate a class, a trait, an object, or invoke a method, you can set
-any of its argument values in any order you want, by specifying the argument's name,
-like this...
+any of its argument values in any order you want as long as you specify the
+argument's name when do so, like this...
 
 printAddress(streetAddress = "9876 Main St.",
              city          = "Manitowoc",
@@ -270,12 +270,11 @@ In Scala 3, a "case class" can extend a trait, an abstract class, and a regular 
 
 The following program demonstrates two "case class" examples.
 
-
 /******************
-* main()
-******************/
+ * main()
+ ******************/
 @main def main():Unit =
-  case class CaseClass_1(val name:String, var id:Int, weight:Double)
+  case class CaseClass_1(val name:String, var id:Int, weight:Double = 456.789D)
   case class CaseClass_2(product:String, serialNo:Int, price:Float):
     val myVal = -123.456F
     var myVar = "myVar can be updated."
@@ -284,15 +283,15 @@ The following program demonstrates two "case class" examples.
     // we can customize it to print what we want.
     override def toString(): String =
       s"product = $product, serialNo = $serialNo, price = $price, " +
-                  s"myVal = $myVal, myVar = $myVar"
+        s"myVal = $myVal, myVar = $myVar"
 
 
-  val cc1 = CaseClass_1("Joe", 123, 456.789D)
+  val cc1 = CaseClass_1("Joe", 123)
   println(s"cc1.name = ${cc1.name}, cc1.id = ${cc1.id}, cc1.weight = ${cc1.weight}")
   // PRINTS: cc1.name = Joe, cc1.id = 123, cc1.weight = 456.789
 
   val cc2 = CaseClass_2(price = 78.21F, product = "Spoon", serialNo = 98765)
   cc2.myVar = "mayVar has been updated!"
   println(cc2.toString())
-  // PRINTS:
-  // product = Spoon, serialNo = 98765, price = 78.21, myVal = -123.456, myVar = mayVar has been updated!
+// PRINTS:
+// product = Spoon, serialNo = 98765, price = 78.21, myVal = -123.456, myVar = mayVar has been updated!
