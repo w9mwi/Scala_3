@@ -1,14 +1,12 @@
 This web page covers the Scala class, where "class" is a keyword.
 A Scala class is the most common and fundamental data structure
-in the Scala language.  All of these topics are related to the
-Scala class:
+in the Scala language.  All of the following topics are related
+to the Scala class and have a dedicated section below.
 
 * Class
 * Default Arguments and Named Arguments
 * Auxiliary Class Constructors
 * Case Class
-
-Each of these topics has a dedicated section below.
 
 
 CLASS
@@ -241,14 +239,13 @@ unapply() - The unapply() method serves as an extractor for pattern matching on
             write your own unapply() method and add it to the class's body.
 
 For every "case class" (and regular class) that you write, Scala also generates
-these 4 methods automatically:
+the following 4 methods automatically.  See the "CLASS" section at the top of
+this web page for details about these 4 methods.
 
 apply()
 equals()
 hashCode()
 toString()
-
-See the "CLASS" section at the top of this web page for details.
 
 A "case class" is Serializable; a regular class isn't Serializable.
 
