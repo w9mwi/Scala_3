@@ -1,3 +1,29 @@
+This web page covers the Scala object, where "object" is a keyword.
+A Scala object is often used as a "companion object" to a regular
+Scala class having an identical name.  A Scala object accepts no
+arguments and can't be instantiated.  This is because a Scala
+object is a "singleton", which means it can represent only one
+of something.  Therefore
+
+Every member that remains unchanged among all instances of the class
+should reside in a Scala object.  In other words, these values are
+"contants", because their value never changes.
+
+
+,
+and every member of a 
+
+
+in the Scala language.  All of the following topics are related
+to the Scala class and have a dedicated section below.
+
+* Class
+* Default Arguments and Named Arguments
+* Auxiliary Class Constructors
+* Case Class
+
+
+
 Both a Scala class and a Scala object are used to represent some "thing",
 or some "entity".  When there can exist more than one of these things
 (i.e., people, houses, automobiles), a Scala class must be used.
