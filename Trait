@@ -67,8 +67,15 @@ of their similarities and differences:
        val bodyTemp:Int                                    // bodyTemp is an abstract member.
        val weight:Int = 234                                // weight is a concrete member.
 
-* A Scala class can extend (inherit from) only one class, but can
-  inherit from any number of traits.
+  IMPORTANT: A trait can also declare the following 2 items as abstract, but aren't
+             demonstrated here.
+             
+             1) abstract type members (type T), potentially with bounds (type T <: S)
+             2) abstract givens (given t: T) in Scala 3 only
+
+* The word "mixin" is often associated with Scala traits.  A Scala class can extend
+  (inherit from) only one class, but it can extend multiple traits.  When a class
+  extends multiple traits, it's "mixing in" different traits; thus, the name "mixin."
 
 * In Scala 2, the "with" keyword must be used (instead of the "extends" keyword)
   to inherit from traits.  In Scala 3, you can still use the "with" keyword
@@ -89,23 +96,22 @@ When should a Scala trait be implemented?
 ANSWER:
 When BOTH of the following 2 conditions are true...
 
-1) You have multiple different class types (i.e., class A, class B, etc.);
-   where ALL those class types must invoke...
+1) You have different class types (i.e., class A, class B, etc.),
+   where each of those class types must invoke...
 
    * A method having an identical name AND identical argument signature.
      ...AND/OR...
    * A member having an identical name.
 
-2) A method/member must be coded differently, dependent on which
+2) The method/member must be coded differently, dependent on which
    class (class A, class B, etc.) invokes it.
 
-Methods/Members that must be coded differently (dependent on which
-class type invokes the method/member) must be coded as abstract
-methods/members in the trait.  Those same methods/members must also
-be coded as concrete methods/members inside the classes (class A,
-class B, etc.) that inhert from the trait.  Doing this will force
-each class type to invoke different code for methods/members that
-have identical names.
+Methods/Members that must be coded differently among the class types
+inheriting from the trait must be coded as abstract methods/members
+in the trait.  And then, each of those methods/members must be
+defined/initialized in the class inheriting from the trait.  That
+will force each class type inheriting from the trait to always
+execute the appropriate code.
 
 IMPORTANT: Code that works with ALL of these class types (class A,
            class B, etc.) must be also be added to the trait, but
