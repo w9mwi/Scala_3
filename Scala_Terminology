@@ -1,19 +1,3 @@
-
-Expression - An Expression is a line of code that returns a value; such as a String,
-             an Array[Double], an Int, a List[String], etc.  When all lines of code
-             in a program return a value, that program qualifies to be called:
-
-             Expression-Oriented Programming = EOP 
-
-
-Statement - A Statement is a line of code that doesn't return a value.  Examples of
-            a statement are lines of code that print data to the screen, read data
-            from a file, write data to a file, delete data from a file.  An if/else
-            in Scala can be written so it always return a value, and therefore
-            qualifies as an expression.  An if/else can also be written so it
-            doesn't return a value, so it's just a statement.
-
-
 Decomposition - The process of breaking down complex problems or systems into smaller,
                 more manageable parts.  This concept is fundamental to Scala's approach
                 to software design and development, combining both object-oriented and
@@ -67,4 +51,15 @@ Decomposition - The process of breaking down complex problems or systems into sm
                                             * Implement different behaviors based on the structure of data
                                             * Decompose algebraic data types efficiently
 
+Expression - An Expression is a line of code that returns a value; such as a String,
+             an Array[Double], an Int, a List[String], etc.  When all lines of code
+             in a program return a value, that program qualifies to be called:
 
+             Expression-Oriented Programming = EOP
+
+Statement - A Statement is a line of code that doesn't return a value.  Examples of
+            a statement are lines of code that print data to the screen, read data
+            from a file, write data to a file, delete data from a file.  An if/else
+            in Scala can be written so it always return a value, and therefore
+            qualifies as an expression.  An if/else can also be written so it
+            doesn't return a value, so it's just a statement.
