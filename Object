@@ -1,6 +1,6 @@
 This web page covers the Scala object, where "object" is a keyword.
 
-Both a Scala class and a Scala object are used to represent some "thing",
+Both a Scala class and Scala object are used to represent some "thing",
 or some "entity".  When there can exist more than one of these things
 (i.e., people, houses, automobiles), a Scala class is used.
 
@@ -25,10 +25,17 @@ Remember, the Scala object should reside in the same file as its companion class
 
 Placing members and methods in a class's companion object (instead of in the
 class itself) saves memory (and also time) because only one instance of the
-value or method will get created.  Instead of creating a new member/method
+value or method will get created--instead of creating a new member/method
 every time the class is instantiated.
 
-\
+IMPORTANT: A companion class can access the private members of its companion object.
+           A companion object can access the private members of its companion class.
+           If you write your own apply() or unapply() methods for a regular class,
+           those methods should reside in a companion object.  The apply() method 
+           s used to as "factory method" to construct new instances of the object's
+           companion class.  The unapply() method is used to deconstruct the object's
+           companion class, so that class can be used with the "match" keyword for
+           pattern matching.
 
 All of the following topics are related to the Scala object,
 and have a dedicated section below.
@@ -40,26 +47,7 @@ and have a dedicated section below.
 
 COMPANION OBJECT
 ================
-When both a Scala object and a Scala class (or case class) have identical
-names, and they're both contained in the same file, the object is called
-a "companion object" to the class.  Conversely, the class is called a
-"companion class" to the object.
 
-A companion object should be used to contain methods and values that aren’t
-specific to the instance of the companion class.  In other words, values that
-never change, and methods that work on all instances of a class, should be
-placed in a companion object.  Doing so will prevent duplicate copies getting
-created every time a new instance of the class is generated.  This will save
-both memory and execution time, because only one instance of these methods and
-values get created when they reside in a companion object.
-
-IMPORTANT: A companion class can access the private members of its companion object.
-           A companion object can access the private members of its companion class.
-           apply() and unapply() methods should reside in a companion object.  Where
-           the apply() method is used to as "factory method" to construct new
-           instances of the object's companion class.  And the unapply() method is
-           used to deconstruct the object's companion class, so that class can be
-           used with the "match" keyword for pattern matching.
 
 The following program demonstrates a companion object.  The method named print()
 is used to print the "name" and "age" values contained in the Person class.
