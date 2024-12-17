@@ -57,24 +57,26 @@ instantiation of another Person class.
 
 @main def main() =
   case class Person(name: String, age: Int):
-    // The following print() method calls the print() method
-    // located in the companion Person object.
+    // The following print() method invokes the print() method
+    // defined in the Person class's companion object below.
     def print = Person.print(name, age)
 
-  // This is the companion object to the Person class.
+  // *************************************************
+  // This is the companion object to the above Person case class.
   object Person:
     def print(name: String, age: Int): Unit =
       println(s"name = $name, age = $age")
-
     def printPersonViaArgument(person: Person): Unit =
       println(s"name = ${person.name}, age = ${person.age}")
+  // *************************************************
 
-  val person = Person("Jack", 17)
+  val person = Person("Jack", 17) // Instantiates a Person class.
 
-  // The print() method defined in the class Person is
-  // invoked via an instance of the Person class...
+  // The following line invokes the print() method defined in the
+  // Person class, which then invokes the print() method defined
+  // in the Person object.
   person.print // PRINTS: name = Jack, age = 17
 
-  // The printPersonViaArgument() method defined
-  // in the Person object is invoked directly...
+  // Here we directly invoke the printPersonViaArgument()
+  // method defined in the Person object.
   Person.printPersonViaArgument(person.copy("Jane", 29)) // PRINTS: name = Jane, age = 29
