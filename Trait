@@ -48,7 +48,7 @@ of their similarities and differences:
   The following code shows how to declare an abstract method (a method
   that's not defined), and how to declare an abstract member (a val
   that's not initialized).  The following abstract class and trait
-  declarations are equivalent; that is either one could be used to
+  declarations are equivalent; that is, either one could be used to
   replace the other.
 
   abstract class Animal:
