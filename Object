@@ -89,9 +89,6 @@ A "case object" is to a Scala object what a "case class" is to a Scala class.
 When you write a "case object", Scala automatically generates the following
 methods, which don't get generated when you write a regular object.
 
-apply()   -  This method gets generated and invoked automatically when a Scala
-             "case object" is referenced.
-
 copy()    - Creates and returns a new "case object" instance that's a copy
             of the existing "case object".  If you pass this copy() method any
             arguments, those arguments specify the "case object" member values
