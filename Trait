@@ -41,9 +41,23 @@ of their similarities and differences:
   by a regular class.
 
 * Based on the above information, every trait and abstract class
-  should contain at least one abstract method/member.  Once that
-  requirement is met, it's OK for the trait or abstract class to
-  also contain concrete methods/members.
+  must contain at least one abstract method/member.  Once that
+  requirement is met, the trait or the abstract class can also
+  contain concrete methods/members.
+
+  The following code shows how to declare an abstract method (a method
+  that's not defined), and how to declare an abstract member (a val
+  that's not initialized).  The following abstract class and trait
+  declarations are equivalent; that is either one could be used to
+  replace the other.
+
+  abstract class Animal:
+    def ageInYears:Int // ageInYears is an abstract method.
+    val bodyTemp:Int   // bodyTemp is an abstract member.
+
+  trait Animal:
+    def ageInYears:Int // ageInYears is an abstract method.
+    val bodyTemp:Int   // bodyTemp is an abstract member.
 
 * A Scala class can extend (inherit from) only one class, but can
   inherit from any number of traits.
@@ -54,7 +68,7 @@ of their similarities and differences:
   As Scala 3 allows you to inherit from any class or trait using only the
   "extends" keyword.
 
-* In Scala 2, a trait couldn't accept arguments (as an abstract class can).
+* In Scala 2, a trait couldn't accept arguments, as an abstract class can.
   In Scala 3, a trait can accept arguments.  This makes it possible for
   Scala 3 programs to nearly eliminate the implementation of abstract classes,
   with the exception for interoperability with Java code, and possibly some
