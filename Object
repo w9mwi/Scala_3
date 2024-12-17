@@ -1,4 +1,12 @@
 This web page covers the Scala object, where "object" is a keyword.
+Both of the following items have a dedicated section below.
+
+* Object
+* Case Object
+
+
+OBJECT
+======
 
 Both a Scala class and Scala object are used to represent some "thing",
 or some "entity".  When there can exist more than one of these things
@@ -31,37 +39,21 @@ every time the class is instantiated.
 IMPORTANT: A companion class can access the private members of its companion object.
            A companion object can access the private members of its companion class.
            If you write your own apply() or unapply() methods for a regular class,
-           those methods should reside in a companion object.  The apply() method 
-           s used to as "factory method" to construct new instances of the object's
-           companion class.  The unapply() method is used to deconstruct the object's
-           companion class, so that class can be used with the "match" keyword for
-           pattern matching.
+           those methods should reside in a companion object, not in the class.
+           The apply() method is used as "factory method" to construct new instances
+           of the object's companion class.  The unapply() method is used to deconstruct
+           the object's companion class, so the class can be used with the "match"
+           keyword for pattern matching.
 
-All of the following topics are related to the Scala object,
-and have a dedicated section below.
+The following program demonstrates a companion object.  The print() method
+located in the Person class invokes the print() method located in the Person
+companion object.
 
-* Object
-* Case Object
-
-
-
-COMPANION OBJECT
-================
-
-
-The following program demonstrates a companion object.  The method named print()
-is used to print the "name" and "age" values contained in the Person class.
-Instead of defining that method in the Print class, the print() method is placed 
-n the Person companion object.
-
-NOTE: In the following program there is also a print() method in the Person class
-      class, which invokes the print() method in the companion object.  Therefore,
-      a new print() method actually does get created for every instance of a Person
-      class.  However, the Person class print() method invokes the print() method
-      in the Print object.  In this example there's not much savings in execution
-      time or memory space because the print() method in the Person object contains
-      only one line of code.  However, if the print() method in the Person object
-     contained multiple lines of code, the savings in of memory could be substantial.
+In this example there's not much time or memory savings by adding a companion
+object because the print() method in the Person object contains only one line
+of code.  However, if the print() method in the Person object contained several
+lines of code, the savings in of time and memory would add up with every
+instantiation of another Person class.
 
 @main def main() =
   case class Person(name: String, age: Int):
