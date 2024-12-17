@@ -297,6 +297,9 @@ classes they write.  If the programmer is OK with allowing a class she writes to
 ("extended") by classes located in other files, she should write an "open class"; otherwise,
 if she wants to prohibit that behavior, it should be wriiten as a regular class.
 
-classes located in other files, 
-can (or can't) be extended by some other class, located in another file, written in the
-future by some other programmer.
+4 Key Points of a Scala 'open class':
+  1) Explicit Extension - Classes marked with the 'open' modifier are explicitly designed for extension.
+  2) Default Behavior - Concrete (Regular) classes in Scala 3 are not open for extension by default.
+  3) Abstract Classes and Traits - These are open by default, and don't require the 'open' modifier.
+  4) Improved Library Design - This feature encourages library authors to clearly specify which classes
+     are intended for extension.
