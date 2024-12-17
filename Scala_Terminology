@@ -12,3 +12,59 @@ Statement - A Statement is a line of code that doesn't return a value.  Examples
             in Scala can be written so it always return a value, and therefore
             qualifies as an expression.  An if/else can also be written so it
             doesn't return a value, so it's just a statement.
+
+
+Decomposition - The process of breaking down complex problems or systems into smaller,
+                more manageable parts.  This concept is fundamental to Scala's approach
+                to software design and development, combining both object-oriented and
+                functional programming paradigms.
+
+                4 benefits of Decomposition in Scala are
+                   1) Improved Readability - By breaking down complex systems, code becomes
+                                             more understandable and maintainable.
+                   2) Enhanced Modularity - Decomposition allows for better organization of
+                                            code into logical, reusable components.
+                   3) Flexibility - Scala's approach to decomposition supports both object-oriented
+                                    and functional programming styles, offering developers flexibility
+                                    in design choices.
+                   4) Scalability: - Well-decomposed systems are easier to scale and extend
+                                     as project requirements evolve.
+
+                There are 2 types of Decomposition in Scala:
+                1) Object-Oriented Decomposition
+                   Scala supports object-oriented decomposition, which involves breaking
+                   down a large system into progressively smaller classes or objects.
+                   This approach allows developers to:
+                      * Create modular and reusable code
+                      * Encapsulate related functionality and data
+                      * Establish clear hierarchies and relationships between components
+
+                2) Functional Decomposition
+                   Scala also emphasizes functional decomposition, which is a key aspect of
+                   its functional programming features. This involves:
+                      * Breaking down complex functions into smaller, more focused functions
+                      * Using higher-order functions and function composition
+                      * Leveraging immutable data structures and pure functions
+
+                The 3 Key Components of Decomposition in Scala are:
+                   1) Traits - Traits are a primary tool for decomposition in Scala, serving as a
+                               means to specify interfaces and provide concrete implementations.
+                               They allow for:
+                                  * Abstract interface definition
+                                  * Mixin composition
+                                  * Code reuse through multiple inheritance
+
+                   2) Case Classes - Case classes in Scala are particularly useful for modeling
+                                     immutable data and facilitating pattern matching.
+                                     They provide:
+                                        * Automatic implementations of common methods
+                                        * Easy instance creation without the 'new' keyword
+                                        * Built-in support for decomposition through pattern matching
+
+                   3) Pattern Matching - Pattern matching is a powerful feature in Scala that supports
+                                         decomposition by allowing developers to:
+                                            * Extract data from complex structures
+                                            * Implement different behaviors based on the structure of data
+                                            * Decompose algebraic data types efficiently
+
+
