@@ -7,6 +7,7 @@ to the Scala class and have a dedicated section below.
 * Default Arguments and Named Arguments
 * Auxiliary Class Constructors
 * Case Class
+* Open Class (Scala 3 only)
 
 
 CLASS
@@ -280,3 +281,17 @@ The following program demonstrates two "case class" examples.
   println(cc2.toString())
 // PRINTS:
 // product = Spoon, serialNo = 98765, price = 78.21, myVal = -123.456, myVar = mayVar has been updated!
+
+
+OPEN CLASS
+==========
+Scala 3 allows an "open class" declaration, where 'open' is a soft keyword in Scala 3.
+
+Scala 3 won't allow a class in one file to extend (inherit from) a class contained in
+a different file.  If a programmer wants to allow a class she writes to be extended
+by classes located in other files, she can declare it as an "open class".
+
+Having to explicitly mark classes as 'open' avoids common pitfalls in Obect-Oriented design.
+In particular, it allows library designers to explicitly control that a class they write
+can (or can't) be extended by some other class, located in another file, written in the
+future by some other programmer.
