@@ -45,19 +45,27 @@ of their similarities and differences:
   requirement is met, the trait or the abstract class can also
   contain concrete methods/members.
 
-  The following code shows how to declare an abstract method (a method
-  that's not defined), and how to declare an abstract member (a val
-  that's not initialized).  The following abstract class and trait
-  declarations are equivalent; that is, either one could be used to
-  replace the other.
+  The following code snippet demonstrates how to write an abstract class
+  and a trait that are equivalent to one another; that is, either one
+  could be used to replace the other.  In both the abstract class and
+  the trait below we demonstrate how to:
 
-  abstract class Animal:
-    def ageInYears:Int // ageInYears is an abstract method.
-    val bodyTemp:Int   // bodyTemp is an abstract member.
+     * declare an abstract method (a method that's not defined)
+     * declare an abstract member (a val that's not initialized)
+     * declare a concrete method (a method that is defined)
+     * declare a concrete member (a val that is initialized)
 
-  trait Animal:
-    def ageInYears:Int // ageInYears is an abstract method.
-    val bodyTemp:Int   // bodyTemp is an abstract member.
+     abstract class Animal:
+       def ageInYears:Int                                  // ageInYears is an abstract method.
+       def printWeight:Unit = println(s"weight = $weight") // printWeight is a concrete method.
+       val bodyTemp:Int                                    // bodyTemp is an abstract member.
+       val weight:Int = 234                                // weight is a concrete member.
+
+     trait Animal:
+       def ageInYears:Int                                  // ageInYears is an abstract method.
+       def printWeight:Unit = println(s"weight = $weight") // printWeight is a concrete method.
+       val bodyTemp:Int                                    // bodyTemp is an abstract member.
+       val weight:Int = 234                                // weight is a concrete member.
 
 * A Scala class can extend (inherit from) only one class, but can
   inherit from any number of traits.
