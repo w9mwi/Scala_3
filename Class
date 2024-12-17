@@ -287,11 +287,16 @@ OPEN CLASS
 ==========
 Scala 3 allows an "open class" declaration, where 'open' is a soft keyword in Scala 3.
 
-Scala 3 won't allow a class in one file to extend (inherit from) a class contained in
-a different file.  If a programmer wants to allow a class she writes to be extended
-by classes located in other files, she can declare it as an "open class".
+Scala 3 won't allow a class located in one file to extend (inherit from) a class contained
+in a different file.  If a programmer wants to allow a class she writes to be extended
+by classes located in other files, she can declare the class as an "open class".
 
 Having to explicitly mark classes as 'open' avoids common pitfalls in Obect-Oriented design.
-In particular, it allows library designers to explicitly control that a class they write
+In particular, it allows library designers to explicitly control the accessabilty of
+classes they write.  If the programmer is OK with allowing a class she writes to be inherited
+("extended") by classes located in other files, she should write an "open class"; otherwise,
+if she wants to prohibit that behavior, it should be wriiten as a regular class.
+
+classes located in other files, 
 can (or can't) be extended by some other class, located in another file, written in the
 future by some other programmer.
