@@ -7,7 +7,6 @@ Both of the following items have a dedicated section below.
 
 OBJECT
 ======
-
 Both a Scala class and Scala object are used to represent some "thing",
 or some "entity".  When there can exist more than one of these things
 (i.e., people, houses, automobiles), a Scala class is used.
@@ -80,3 +79,29 @@ instantiation of another Person class.
   // Here we directly invoke the printPersonViaArgument()
   // method defined in the Person object.
   Person.printPersonViaArgument(person.copy("Jane", 29)) // PRINTS: name = Jane, age = 29
+
+
+CASE OBJECT
+===========
+This case object automatically provides implementations for toString, hashCode, and equals methods
+
+A "case object" is to a Scala object what a "case class" is to a Scala class.
+When you write a "case object", Scala automatically generates the following
+methods, which don't get generated when you write a regular object.
+
+hashCode() - Returns an Int value.  If calling hashCode() on two Scala objects return the
+             same Int value, they are equal.  You can use the equals() method or the
+             '==' operator in place of calling hashCode() to determine equivalency.
+
+toString() - Renders the "object class’s name and fields to a String.  You may want
+             to define your own toString() method for a "case object" (using the 'override'
+             keyword) so it prints information about the "case object" that you desire.
+
+unapply() - The unapply() method serves as an extractor for pattern matching on
+            a "case object".  (Pattern matching is invoked via the "match" keyword.)
+            For every "case object" that you write, Scala automatically generates
+            an unapply() method for you.  So you can perform pattern matching
+            on a "case object" without having to write an unapply() method.
+
+A "case object" is Serializable by default.  A regular object isn't Serializable by default.
+
