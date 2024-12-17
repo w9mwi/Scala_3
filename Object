@@ -1,22 +1,34 @@
 This web page covers the Scala object, where "object" is a keyword.
-A Scala object is often used as a "companion object" to a regular
-Scala class that has an identical name.  A Scala object accepts no
-arguments and can't be instantiated.  This is because a Scala object
-represents a "singleton", which means it can represent only one of
-something.  A Scala object should be used...
 
-* To store constant values.  that is, vals that never change, and apply
-  to all instances of its companion class.
+Both a Scala class and a Scala object are used to represent some "thing",
+or some "entity".  When there can exist more than one of these things
+(i.e., people, houses, automobiles), a Scala class is used.
 
-* To store methods that can be invoked from all instances of the companion class.
+A Scala object is often used as a "companion object."  A "companion
+object" is an object that has an idential name to its "companion
+class", and is located in the same file.
+
+A Scala object accepts no arguments and can't be instantiated.  This is
+because a Scala object represents a "singleton", which means it can
+represent only one of something.  A Scala object is "lazy", which means
+it gets created the first time it's referenced.  An object can extend
+a class or a trait, but a class cannot extend an object.
+
+A Scala object should be used...
+
+1) To store constant values in a val.  So every instance of the companion
+   class will reference the same value.
+
+2) To store methods that will work with all instances of the companion class.
+
+Remember, the Scala object should reside in the same file as its companion class.
 
 Placing members and methods in a class's companion object (instead of in the
-class itself) saves memory (and also time) because only on instance of the
+class itself) saves memory (and also time) because only one instance of the
 value or method will get created.  Instead of creating a new member/method
-every time the object's companion class is instantiated.
+every time the class is instantiated.
 
-
-
+\
 
 All of the following topics are related to the Scala object,
 and have a dedicated section below.
@@ -25,20 +37,6 @@ and have a dedicated section below.
 * Case Object
 
 
-
-Both a Scala class and a Scala object are used to represent some "thing",
-or some "entity".  When there can exist more than one of these things
-(i.e., people, houses, automobiles), a Scala class must be used.
-
-When only one of something can exist (i.e., planet Earth, Empire
-State Building), a Scala object should be used.  In other words,
-a Scala object should always represent a singleton.
-
-A Scala object cannot contain arguments and cannot be instantiated.
-Once you define an object, it's available for use without having
-to instantiate it.  A Scala object is "lazy", which means it gets
-created the first time it's referenced.  An object can extend
-a class or a trait, but a class cannot extend an object.
 
 COMPANION OBJECT
 ================
