@@ -11,8 +11,8 @@ Decomposition - The process of breaking down complex problems or systems into sm
                    3) Flexibility - Scala's approach to decomposition supports both object-oriented
                                     and functional programming styles, offering developers flexibility
                                     in design choices.
-                   4) Scalability: - Well-decomposed systems are easier to scale and extend
-                                     as project requirements evolve.
+                   4) Scalability - Well-decomposed systems are easier to scale and extend
+                                    as project requirements evolve.
 
                 There are 2 types of Decomposition in Scala:
                 1) Object-Oriented Decomposition
