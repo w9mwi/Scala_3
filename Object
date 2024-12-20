@@ -9,21 +9,30 @@ OBJECT
 ======
 Both a Scala class and Scala object are used to represent some "thing",
 or some "entity".  When there can exist more than one of these things
-(i.e., people, houses, automobiles), a Scala class is used.
+(i.e., people, houses, automobiles), a Scala class is used.  When only
+one of a "thing" can exist (i.e., planet Earth, a mathematical constant,
+etc.), a Scala object should be used.
 
-A Scala object is often used as a "companion object."  A "companion
-object" is an object that has an idential name to its "companion
-class", and is located in the same file.
+All of the following is true of a Scala object:
 
-A Scala object accepts no arguments and can't be instantiated.  This is
-because a Scala object represents a "singleton", which means it can
-represent only one of something.  A Scala object is "lazy", which means
-it gets created the first time it's referenced.  An object can extend
-a class or a trait, but a class cannot extend an object.
+1) A Scala object accepts no arguments and can't be instantiated.
+   This is because a Scala object represents a "singleton", which
+   means it can represent only one of something.
+
+2) A Scala object is "lazy", which means it gets created the first
+  time it's referenced.
+
+3) An object can extend a class or a trait, but a class cannot
+   extend an object.
+
+4) An object is often used as a "companion object" to a class.
+   An object becomes a "companion object" to a class when the
+   object's name is identical to the class, and resides in the
+   same file as the class.
 
 A Scala object should be used...
 
-1) To store constant values in a val.  So every instance of the companion
+1) To store constants using a val.  So every instance of the companion
    class will reference the same value.
 
 2) To store methods that will work with all instances of the companion class.
@@ -31,18 +40,16 @@ A Scala object should be used...
 Remember, the Scala object should reside in the same file as its companion class.
 
 Placing members and methods in a class's companion object (instead of in the
-class itself) saves memory (and also time) because only one instance of the
-value or method will get created--instead of creating a new member/method
+class itself) saves memory (and execution time) because only one instance of
+the value or method will get created--instead of creating a new member/method
 every time the class is instantiated.
 
 IMPORTANT: A companion class can access the private members of its companion object.
-           A companion object can access the private members of its companion class.
            If you write your own apply() or unapply() methods for a regular class,
            those methods should reside in a companion object, not in the class.
            The apply() method is used as "factory method" to construct new instances
-           of the object's companion class.  The unapply() method is used to deconstruct
-           the object's companion class, so the class can be used with the "match"
-           keyword for pattern matching.
+           of a class.  The unapply() method is used to deconstruct a class, so
+           the class can be used with the "match" keyword for pattern matching.
 
 The following program demonstrates a companion object.  The print() method
 located in the Person class invokes the print() method located in the Person
