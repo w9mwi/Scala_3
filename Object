@@ -13,19 +13,19 @@ or some "entity".  When there can exist more than one of these things
 one of a "thing" can exist (i.e., planet Earth, a mathematical constant,
 etc.), a Scala object should be used.
 
-All of the following is true of a Scala object:
+All of the following 4 items is true of a Scala object:
 
 1) A Scala object accepts no arguments and can't be instantiated.
    This is because a Scala object represents a "singleton", which
    means it can represent only one of something.
 
 2) A Scala object is "lazy", which means it gets created the first
-  time it's referenced.
+   time it's referenced.  (Recall, an object isn't instantiated).
 
-3) An object can extend a class or a trait, but a class cannot
+3) A Scala object can extend a class or a trait, but a class cannot
    extend an object.
 
-4) An object is often used as a "companion object" to a class.
+4) A Scala object is often used as a "companion object" to a class.
    An object becomes a "companion object" to a class when the
    object's name is identical to the class, and resides in the
    same file as the class.
@@ -33,16 +33,16 @@ All of the following is true of a Scala object:
 A Scala object should be used...
 
 1) To store constants using a val.  So every instance of the companion
-   class will reference the same value.
+   class can reference this value.
 
-2) To store methods that will work with all instances of the companion class.
+2) To contain methods that can work with every instance of the companion class.
 
 Remember, the Scala object should reside in the same file as its companion class.
 
 Placing members and methods in a class's companion object (instead of in the
 class itself) saves memory (and execution time) because only one instance of
-the value or method will get created--instead of creating a new member/method
-every time the class is instantiated.
+the member, or method, gets created--instead of creating a new member/method
+for every new instantiation of the class.
 
 IMPORTANT: A companion class can access the private members of its companion object.
            If you write your own apply() or unapply() methods for a regular class,
