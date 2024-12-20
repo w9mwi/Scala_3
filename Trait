@@ -120,9 +120,9 @@ IMPORTANT: Code that works with ALL of these class types (class A,
            exist in the class types that inherit from the trait.
 
 QUESTION:
-What happens if a class inherits from two traits that implement an
+What happens when a class inherits from two traits that implement an
 identically-named method/member differently?  And how about if that
-identically-named method also exists in class itself?
+identically-named method also exists in the class itself?
 
 ANSWER:
 Scala solves this problem via a mechanism called linearization.
