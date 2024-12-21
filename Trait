@@ -71,7 +71,7 @@ of their similarities and differences:
              demonstrated here.
              
              1) abstract type members (type T), potentially with bounds (type T <: S)
-             2) abstract givens (given t: T) in Scala 3 only
+             2) abstract given members (given t: T) in Scala 3 only
 
 * The word "mixin" is often associated with Scala traits.  A Scala class can extend
   (inherit from) only one class, but it can extend multiple traits.  When a class
