@@ -13,7 +13,7 @@ or some "entity".  When there can exist more than one of these things
 one of a "thing" can exist (i.e., planet Earth, a mathematical constant,
 etc.), a Scala object should be used.
 
-All of the following 4 items is true of a Scala object:
+The following 4 items are true of a Scala object:
 
 1) A Scala object accepts no arguments and can't be instantiated.
    This is because a Scala object represents a "singleton", which
@@ -27,7 +27,7 @@ All of the following 4 items is true of a Scala object:
 
 4) A Scala object is often used as a "companion object" to a class.
    An object becomes a "companion object" to a class when the
-   object's name is identical to the class, and resides in the
+   object's name is identical to the class, and it resides in the
    same file as the class.
 
 A Scala object should be used...
@@ -35,7 +35,8 @@ A Scala object should be used...
 1) To store constants using a val.  So every instance of the companion
    class can reference this value.
 
-2) To contain methods that can work with every instance of the companion class.
+2) To contain methods that can work with every instance of the companion
+   class. So every instance of the companion class can invoke this method.
 
 Remember, the Scala object should reside in the same file as its companion class.
 
@@ -55,11 +56,11 @@ The following program demonstrates a companion object.  The print() method
 located in the Person class invokes the print() method located in the Person
 companion object.
 
-In this example there's not much time or memory savings by adding a companion
-object because the print() method in the Person object contains only one line
-of code.  However, if the print() method in the Person object contained several
-lines of code, the savings in of time and memory would add up with every
-instantiation of another Person class.
+In this example there's not much savings in computer memory or execution time
+by adding this companion object, because the print() method in the Person object
+contains only one line of code.  However, if the print() method in the Person
+object contained several lines of code, the savings in computer memory and execution
+time wouldadd up with every instantiation of another Person class.
 
 @main def main() =
   case class Person(name: String, age: Int):
