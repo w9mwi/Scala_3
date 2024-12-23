@@ -113,11 +113,12 @@ class Movie(name:String):     // Movie.name is a private val class member.
 BASE CLASS
 ==========
 There is no Scala keyword "base" that's used to define a "base class."  A class
-becomes a "base class" whenever some other class inherts from (or extends) it.
+becomes a "base class" whenever some other class inherts from (extends) it.
+
 A "base class" is also known as a "superclass", or a "parent class."
 
 A "base class" is designed to be extended by (inherited from) other classes.
-It is possible for a "base class" to be a regular Scala class, because Scala
+It is possible for a "base class" to be a regular Scala class,  as Scala
 allows you to extend (inherit from) a regular class.
 
 However, a "base class" is frequently written as an "abstract class" or as a "trait",
