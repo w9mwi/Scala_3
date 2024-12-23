@@ -121,14 +121,14 @@ A "base class" is designed to be extended by (inherited from) other classes.
 It is possible for a "base class" to be a regular Scala class,  as Scala
 allows you to extend (inherit from) a regular class.
 
-However, a "base class" is frequently written as an "abstract class" or as a "trait",
-which prevents it from being instantiated directly.
+However, a "base class" is frequently written as an "abstract class" or as a "trait".
+Because an "abstract class" and a "trait" can't be instantiated directly, they're
+used only when a regular class inherits from (extends) them.
 
-NOTE:  An "abstract class" and a "trait" can only be used when they're extended
-       by (inherited from) a regular class.  See these sections for details:
+For details about abstract classes and traits, see these sections:
 
-       1) https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
-       2) https://github.com/w9mwi/Scala_3/blob/main/Trait
+1) https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
+2) https://github.com/w9mwi/Scala_3/blob/main/Trait
 
 
 ============================================================================
