@@ -4,6 +4,7 @@ in the Scala language.  All of the following topics are related
 to the Scala class and have a dedicated section below.
 
 * Class
+* Base Class
 * Default Arguments and Named Arguments
 * Auxiliary Class Constructors
 * Case Class
@@ -78,7 +79,7 @@ class Bozo()                  // A class doesn't require any arguments.
 class Book(var title:String)  // Book.title is a public var class member.
 class Person(val name:String) // Person.name is a public val class member.
 class Movie(name:String):     // Movie.name is a private val class member.
-  def printName:Unit = println(name)
+  def printName:Unit = println(name)  // printName is method in the Movie class.
 
 /******************
  * main()
@@ -106,6 +107,28 @@ class Movie(name:String):     // Movie.name is a private val class member.
   // "var" keyword, it becomes a private class member by default.  So
   // Movie.name can be accessed only from within the Movie class.
   print("movie.name = "); movie.printName // PRINTS: movie.name = When Galaxies Collide
+
+============================================================================
+
+BASE CLASS
+==========
+There is no Scala keyword "base" that's used to define a "base class."  A class
+becomes a "base class" whenever some other class inherts from (or extends) it.
+A "base class" is also known as a "superclass", or a "parent class."
+
+A "base class" is designed to be extended by (inherited from) other classes.
+It is possible for a "base class" to be a regular Scala class, because Scala
+allows you to extend (inherit from) a regular class.
+
+However, a "base class" is frequently written as an "abstract class" or as a "trait",
+which prevents it from being instantiated directly.
+
+NOTE:  An "abstract class" and a "trait" can only be used when they're extended
+       by (inherited from) a regular class.  See these sections for details:
+
+       1) https://github.com/w9mwi/Scala_3/blob/main/Abstract_Classes_And_Methods
+       2) https://github.com/w9mwi/Scala_3/blob/main/Trait
+
 
 ============================================================================
 
