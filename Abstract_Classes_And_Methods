@@ -56,21 +56,6 @@ class IrishSetter(name: String) extends Animal:
   // PRINTS:  dog = This Irish Setter is named Big Red; it's 12 years old.
 
 
-// ***************************************************************
-REWRITE THIS SECTION LATER.  REGARDING THE "final" AND "protected" KEYWORDS.
-The "protected" keyword is used
-If methods contained in a base class should be invoked by the base class, or classes
-that inherit from it,
-
-When you want a class member or method that CAN'T be overridden in a subclass,
-use the "final" keyword.  You can also define an entire class using
-the "final" key word, which means that no subclass can modify it.
-The most common example of why you'd want to define a class as
-"final" is when you want that class to be immutable--so no subclass
-can modify it.
-// ***************************************************************
-
-
 TRAIT VS. ABSTRACT CLASS
 ========================
 As mentioned above, a Scala trait (like an abstract class) can also contain
@@ -86,11 +71,11 @@ QUESTION: When you need to write abstract methods/members, should they be contai
           in a Scala trait, or in an abstract class?
 
 ANSWER:   Scala 2 traits can't accept arguments, but abstract classes (in both Scala 2
-          and Scala 3) can accept arguments.  So with Scala 2 code, if you needed a
-          base class that accepts constructor arguments, you had to use an abstract
-          class.  Since Scala 3 traits now accept arguments, it's recommended that
-          you use a trait to hold abstract methods/members, instead of an abstract
-          class.  Then, inherit that trait from a regular class.
+          and Scala 3) can accept arguments.  So Scala 2 required you to use an abstract
+          class instead of a trait, if it required arguments.  Since Scala 3 traits now
+          accept arguments, it's recommended that you use a trait to hold abstract
+          methods/members, instead of an abstract class.  Then, inherit that trait
+          from a regular class.
 
 IMPORTANT:  A class can inherit from only one class, and from any number of traits.
             Generally, you should use a trait to hold methods and members that can
