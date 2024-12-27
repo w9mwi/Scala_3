@@ -103,6 +103,8 @@ copy()    - Creates and returns a new "case object" instance that's a copy
             that will be changed in the copied-to (returned) instance.  Calling
             copy() without any arguments makes an exact copy of the "object class".
 
+equals()   - Determines if two Scala objects are equal.  Read the hashCode() description below.
+
 hashCode() - Returns an Int value.  If calling hashCode() on two Scala objects return the
              same Int value, they are equal.  You can use the equals() method or the
              '==' operator in place of calling hashCode() to determine equivalency.
