@@ -16,8 +16,8 @@ has a dedicated section below.
    a data type.  For example, the following code defines a type named
    Score, which has a tuple type of (Int, Int).
 
-    type Score = (Int, Int)  // Defines a data type named 'Score'.
-    val finalScore: Score = (42, 13)
+      type Score = (Int, Int)  // Defines a data type named 'Score'.
+      val finalScore: Score = (42, 13)
 
 
 ==============================================================
@@ -85,7 +85,7 @@ The following program demonstrates the use of enums.
 ==============================================================
 TUPLE
 =====
-A tuple is a single value that contains multiple values.
+A tuple is a data type that references multiple values.
 Each value contained in a tuple can be of any data type.
 The Scala program in the 'TYPE' section below demonstrates
 the use of tuples.
@@ -95,25 +95,22 @@ the use of tuples.
 TYPE
 ====
 The Scala keyword 'type' is used to define your own data type;
-so the type has a meaningful name.  Here are some examples:
+so the data type has a meaningful name.  Here are two examples
+that are self explanatory:
 
-// Define MyInt to be a data type that's an Int.  This use
-// doesn't really make sense, but it demonstrates that you
-// can define a new data type that's identical to a Scala
-// data type.
-type MyInt = Int
-val index:MyInt = 123
+    type Score = (Int, Int)  // Defines a data type named 'Score'.
+    val finalScore: Score = (42, 13)
 
-// This example is self explanatory.  It defines a new data type
-// named Coordinate, which is a tuple.  The Scala program below
-// demonstrates use of 'tuple' and 'type' keywords.
-type Coordinate = (Double, Double, Double)
-val x = -123.45D
-val y =  456.78D
-val z =  987.65D
-val currentLocation: Coordinate = (x, y, z)
+    type Coordinate = (Double, Double, Double)
+    val x = -123.45D
+    val y =  456.78D
+    val z =  987.65D
+    val currentLocation: Coordinate = (x, y, z)
 
-==============================================================
+
+The Scala program below demonstrates use of 'tuple' and 'type' keywords.
+
+
 @main def main() =
   // Build the tupleA value...
   val doubleArray = Array(-9.99D, 6.66D, 3.33D)
