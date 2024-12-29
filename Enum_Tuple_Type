@@ -1,3 +1,26 @@
+This page covers the following 3 topics, each of which 
+has a dedicated section below.
+
+1) Enums.  A Scala enumeration type is declared via the
+   'enum' keyword, which is a new keyword in Scala 3.
+
+2) Tuples.  There is no keyword for specifying a tuple in Scala.
+   A tuple is just a collection of multiple data types.  For
+   example, instead of a method returning a single value that's
+   an Int, or a String, or a List[Double], a method could return
+   three separate values of any type.  For example a method could
+   return this tuple:  (Int, String, List[Double])
+
+3) Types.  You can create a data type having a name that you specify,
+   by using the Scala keyword 'type'.   That name will then refer to
+   a data type.  For example, the following code defines a type named
+   Score, which has a tuple type of (Int, Int).
+
+    type Score = (Int, Int)  // Defines a data type named 'Score'.
+    val finalScore: Score = (42, 13)
+
+
+==============================================================
 ENUM
 ====
 Scala 3 added the new keyword 'enum'.  Scala compiles enums to a
@@ -58,13 +81,17 @@ The following program demonstrates the use of enums.
   println(s"read = $read, bitsInt = $bitsInt, bitsHexString = $bitsHexString, bitsPermission = $bitsPermission")
   // PRINTS: read = READ, bitsInt = 4, bitsHexString = 0x4, bitsPermission = WRITE
 
+
 ==============================================================
 TUPLE
 =====
 A tuple is a single value that contains multiple values.
 Each value contained in a tuple can be of any data type.
-The Scala program below demonstrates the use of tuples.
+The Scala program in the 'TYPE' section below demonstrates
+the use of tuples.
 
+
+==============================================================
 TYPE
 ====
 The Scala keyword 'type' is used to define your own data type;
