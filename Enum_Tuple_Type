@@ -5,27 +5,34 @@ has a dedicated section below.
    'enum' keyword, which is a new keyword in Scala 3.
 
 2) Tuples.  There is no keyword for specifying a tuple in Scala.
-   A tuple is just a collection of multiple data types.  For
-   example, instead of a method returning a single value that's
-   an Int, or a String, or a List[Double], a method could return
-   three separate values of any type.  For example a method could
-   return this tuple:  (Int, String, List[Double])
+   A tuple is just a collection of multiple values, where each of
+   those values can be of any data types.  For example, instead
+   of a method returning a single value that's an Int, or a String,
+   or a List[Double], a method could return three separate values
+   as a tuple, like this:
+   (Int, String, List[Double])
 
 3) Types.  You can create a data type having a name that you specify,
    by using the Scala keyword 'type'.   That name will then refer to
    a data type.  For example, the following code defines a type named
    Score, which has a tuple type of (Int, Int).
 
-      type Score = (Int, Int)  // Defines a data type named 'Score'.
-      val finalScore: Score = (42, 13)
+     type Score = (Int, Int) // Defines a data type named 'Score'.
+     val finalScore: Score = (42, 13)
 
+     // The individual values that make up a tuple can be accessed in the
+     // following two ways.
+     println(s"finalScore.1 = ${finalScore._1},  finalScore.2 = ${finalScore._2}")
+     // PRINTS:  finalScore.1 = 42,  finalScore.2 = 13
+     println(s"finalScore(0) = ${finalScore(0)},  finalScore(1) = ${finalScore(1)}")
+     // PRINTS:  finalScore(0) = 42,  finalScore(1) = 13
 
 ==============================================================
 ENUM
 ====
 Scala 3 added the new keyword 'enum'.  Scala compiles enums to a
-sealed class, which means that an enum can contain fields and methods.
-The following program demonstrates the use of enums.
+sealed class, which means that an enum can contain arguments, fields
+and methods.  The following program demonstrates the use of enums.
 
 @main def main() =
   // NOTE: All enum definitions must include the 'case' keyword.
@@ -146,7 +153,7 @@ The Scala program below demonstrates use of 'tuple' and 'type' keywords.
           s" tupleB(2) = ${tupleB(2)}, tupleB(3)     = Array(${tupleB(3).mkString(", ")})")
   // PRINTS: tupleB(0) = 17, tupleB(1) = seventeen, tupleB(2) = List(1, 2, 3), tupleB(3)     = Array(-9.99, 6.66, 3.33)
 
-  // Here, the tupleMethod() returns its result into 4 different vals.
+  // Here, we declare and initialize 4 different vals by invoking tupleMethod()...
   val (myInt, myString, myIntList, myDoubleArray) = tupleMethod(tupleA)
   println(s"myInt     = $myInt, myString  = $myString," +
           s" myIntList = $myIntList, myDoubleArray = Array(${myDoubleArray.mkString(", ")})")
