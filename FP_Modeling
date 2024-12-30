@@ -1,2 +1,11 @@
 FUNCTIONAL PROGRAM MODELING
 ===========================
+
+When you write a Scala program using the Functional Programing Paradigm
+(instead of the Object-Oriented Paradigm), the program is typically
+modeled using these Scala constructs:
+
+* Enumerations
+* Case classes
+* Traits
+
