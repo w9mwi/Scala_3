@@ -11,8 +11,8 @@ modeled using these Scala constructs:
 
 With Functional Programming, the data, and the operations on that data, are
 two separate things.  You don’t encapsulate them together in a single class,
-as you do with Object-Oriented Programming.  Consider, for example, a set of
-numbers (which is the data), and the operations performed on those numbers
+as you would with Object-Oriented Programming.  Consider, for example, a set
+of numbers (which is the data), and the operations performed on those numbers
 (which is the behavior).  Separating the data (numbers) from the operations
 performed on those numbers is how you'd code a functional program.
 
