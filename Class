@@ -316,14 +316,19 @@ sealed class Person(name:String, number:Int) ...
 sealed case class Person(name:String, number:Int) ...
 sealed trait SubjectObserver ...
 
-A regular class/trait in Scala 3 can be extended by other classes, in any source
-file, as long as it's not designated as final (using the 'final' keyword).  In other
-words, subclasses of a regular class can be created in other source files.
+As long as a class/trait isn't designated as a final class/trait (using the 'final'
+keyword), a regular class/trait in Scala 3 can be extended by classes residing in
+any source file
 
 A sealed class/trait can be extended by other classes only if they reside within
 the same source file where the sealed class/trait is defined.  Attempting to
 extend a sealed class/trait in a file where it's not defined will result in a
 compilation error.
+
+Thus, the difference between a 'final' class/trait and a 'sealed' class/trait
+is that a 'final' class/triat can never be extended; while a 'sealed' class/trait
+can be extended only by classes residing in the same source file as the sealed
+class/trait.
 
 With regular classes, the compiler can't guarantee that it knows about all its
 subclasses; because they may exist in other files.  This means the class's
