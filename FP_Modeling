@@ -10,9 +10,97 @@ modeled using these Scala constructs:
 * Traits
 
 With Functional Programming, the data, and the operations on that data, are
-separated.  You don’t encapsulate them together in a single class, as you
+separated.  You don’t need encapsulate them together in a single class, as you
 would with Object-Oriented Programming.  For example, a set of numbers (which
 is the data), and the operations performed on those numbers (which is the
-behavior) should be separated from each other in a program that implements
+behavior) can be separated from each other in a program that implements
 functional programming.
 
+Consider the following program, which contains stand-alone enums, case classes,
+and methods to build a pizza.  These enums, case classes, and methods work as
+they are in their stand-alone form.
+
+Below the following program we reconfigure the same program in 4 different ways
+to make it follow the Functional Programing paradigm.  There is no one correct
+way to accomplish this, which is why we rewrite it 4 different ways.
+
+====================================================================
+
+ORIGINAL PROGRAM
+================
+
+import CrustSize.*
+import CrustType.*
+import Topping.*
+
+enum CrustSize:
+  case Small, Medium, Large
+enum CrustType:
+  case Thin, Thick, Regular
+enum Topping:
+  case Cheese, Pepperoni, BlackOlives, GreenOlives, Onions
+
+case class Pizza(crustSize: CrustSize,
+                 crustType: CrustType,
+                 toppings: Seq[Topping])
+
+case class Address(street1: String,
+                   street2: Option[String],
+                   city: String,
+                   state: String,
+                   zipCode: String)
+
+case class Customer(name: String,
+                    phone: String,
+                    address: Address)
+
+case class Order(pizzas: Seq[Pizza],
+                 customer: Customer)
+
+def toppingPrice(t: Topping): Double = t match
+  case Cheese | Onions => 0.5
+  case Pepperoni | BlackOlives | GreenOlives => 0.75
+
+def crustPrice(s: CrustSize, t: CrustType): Double =
+  (s, t) match
+    // if the crust size is small or medium,
+    // the type is not important
+    case (Small | Medium, _) => 0.25
+    case (Large, Thin) => 0.50
+    case (Large, Regular) => 0.75
+    case (Large, Thick) => 1.00
+
+def pizzaPrice(p: Pizza): Double =
+  p match
+    case Pizza(crustSize, crustType, toppings) =>
+    val base  = 6.00
+    val crust = crustPrice(p.crustSize, p.crustType)
+    val tops  = p.toppings.map(toppingPrice).sum
+    base + crust + tops
+
+@main def main() =
+  println("main() is called.")
+
+  val pizza1 = Pizza(Small, Regular, Seq(Cheese, BlackOlives))
+  val pizza1Price = pizzaPrice(pizza1)
+  println(s"pizza1 = ${pizza1.toString}, Price = $pizza1Price")
+  // PRINTS:  pizza1 = Pizza(Small,Regular,List(Cheese, BlackOlives)), Price = 7.5
+
+====================================================================
+
+PROGRAM NO. 1
+=============
+
+====================================================================
+
+PROGRAM NO. 2
+=============
+
+====================================================================
+PROGRAM NO. 3
+=============
+
+====================================================================
+
+PROGRAM NO. 4
+=============
