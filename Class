@@ -233,7 +233,7 @@ class Student(name:String, govtId:Int):
   val stud3 = Student("Alice", 333, 444)
   // PRINTS: name = Alice, govtId = 333, studentId = 444
 
-
+============================================================================
 
 CASE CLASS
 ==========
@@ -307,6 +307,7 @@ The following program demonstrates two "case class" examples.
 // PRINTS:
 // product = Spoon, serialNo = 98765, price = 78.21, myVal = -123.456, myVar = mayVar has been updated!
 
+============================================================================
 
 SEALED CLASS
 ============
@@ -339,6 +340,7 @@ With sealed classes, the compiler will know about all its subclasses, so the
 class's unapply() method (which is used for pattern matching on the class)
 will always work.
 
+============================================================================
 
 OPEN CLASS
 ==========
