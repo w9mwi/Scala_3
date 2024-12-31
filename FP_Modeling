@@ -16,13 +16,15 @@ is the data), and the operations performed on those numbers (which is the
 behavior) can be separated from each other in a program that implements
 functional programming.
 
-Consider the following program, which contains stand-alone enums, case classes,
-and methods to build a pizza.  These enums, case classes, and methods work as
-they are in their stand-alone form.
+Consider the following program designated ORIGINAL PROGRAM.  It contains
+stand-alone enums, case classes, and methods to build a pizza.  These enums,
+case classes, and methods work as they are in their stand-alone form. 
 
-Below the following program we reconfigure the same program in 4 different ways
-to make it follow the Functional Programing paradigm.  There is no one correct
-way to accomplish this, which is why we rewrite it 4 different ways.
+Below the ORIGINAL PROGRAM, we rewite it 4 different ways (as PROGRAM NO. 1,
+PROGRAM NO. 2, PROGRAM NO. 3, and PROGRAM NO. 4.) so it follows the Functional
+Programing paradigm.  It's done 4 different ways because there is no one
+correct way to make a program comply with following the Functional Programing
+paradigm.
 
 ====================================================================
 
