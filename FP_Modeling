@@ -9,16 +9,17 @@ modeled using these Scala constructs:
 * Case classes
 * Traits
 
-With Functional Programming, the data, and the operations on that data, are
-separated.  You don’t need encapsulate them together in a single class, as you
-would with Object-Oriented Programming.  For example, a set of numbers (which
-is the data), and the operations performed on those numbers (which is the
-behavior) can be separated from each other in a program that implements
+With Functional Programming the data and the operations on that data are
+separated.  You don’t need to encapsulate them together in a single class,
+as you might with Object-Oriented Programming.  For example, a set of numbers
+(which is the data), and the operations performed on those numbers (which is
+the behavior) can be separated from each other in a program that implements
 functional programming.
 
-Consider the following program designated ORIGINAL PROGRAM.  It contains
-stand-alone enums, case classes, and methods to build a pizza.  These enums,
-case classes, and methods work as they are in their stand-alone form. 
+Consider the following program that's designated as the ORIGINAL PROGRAM.  It
+contains stand-alone enums, case classes, and methods to build a pizza.  These
+enums, case classes, and methods work as they are in their stand-alone form,
+as the program demonstrates.
 
 Below the ORIGINAL PROGRAM, we rewite it 4 different ways (as PROGRAM NO. 1,
 PROGRAM NO. 2, PROGRAM NO. 3, and PROGRAM NO. 4.) so it follows the Functional
