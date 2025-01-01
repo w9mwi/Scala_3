@@ -166,8 +166,96 @@ def crustPrice(s: CrustSize, t: CrustType): Double =
 
 ====================================================================
 
-PROGRAM NO. 2
-=============
+PROGRAM NO. 2 - Implement Modules
+=================================
+PROGRAM NO.1 above is rewritten here with these 2 changes made:
+
+   1) The "PizzaServiceInterface" is created.
+
+   2) The "object PizzaService" is created, and the method Pizza.price()
+      is moved into it from the "object Pizza".
+
+   3) The "object Pizza" is removed.
+
+Also, the "object PizzaService" contains 4 new methods.
+
+
+import CrustSize.*
+import CrustType.*
+import Topping.*
+
+enum CrustSize:
+  case Small, Medium, Large
+enum CrustType:
+  case Thin, Thick, Regular
+enum Topping:
+  case Cheese, Pepperoni, BlackOlives, GreenOlives, Onions
+
+case class Pizza(crustSize: CrustSize,
+                 crustType: CrustType,
+                 toppings: Seq[Topping])
+
+case class Address(street1: String,
+                   street2: Option[String],
+                   city: String,
+                   state: String,
+                   zipCode: String)
+
+case class Customer(name: String,
+                    phone: String,
+                    address: Address)
+
+case class Order(pizzas: Seq[Pizza],
+                 customer: Customer)
+
+trait PizzaServiceInterface:
+  def price(p: Pizza): Double
+  def addTopping(p: Pizza, t: Topping): Pizza
+  def removeAllToppings(p: Pizza): Pizza
+  def updateCrustSize(p: Pizza, cs: CrustSize): Pizza
+  def updateCrustType(p: Pizza, ct: CrustType): Pizza
+
+object PizzaService extends PizzaServiceInterface:
+  def price(p: Pizza): Double =
+    p match
+      case Pizza(crustSize, crustType, toppings) =>
+        val base = 6.00
+        val crust = crustPrice(p.crustSize, p.crustType)
+        val tops = p.toppings.map(Topping.price).sum
+        base + crust + tops
+  def addTopping(p: Pizza, t: Topping): Pizza =
+    p.copy(toppings = p.toppings :+ t)
+  def removeAllToppings(p: Pizza): Pizza =
+    p.copy(toppings = Seq.empty)
+  def updateCrustSize(p: Pizza, cs: CrustSize): Pizza =
+    p.copy(crustSize = cs)
+  def updateCrustType(p: Pizza, ct: CrustType): Pizza =
+    p.copy(crustType = ct)
+// The following line isn't required, but makes it easier
+// to see where "object PizzaService" ends.
+end PizzaService
+
+object Topping:
+  def price(t: Topping): Double = t match
+    case Cheese | Onions => 0.5
+    case Pepperoni | BlackOlives | GreenOlives => 0.75
+
+def crustPrice(s: CrustSize, t: CrustType): Double =
+  (s, t) match
+    // if the crust size is small or medium,
+    // the type is not important
+    case (Small | Medium, _) => 0.25
+    case (Large, Thin) => 0.50
+    case (Large, Regular) => 0.75
+    case (Large, Thick) => 1.00
+
+@main def main() =
+  println("main() is called.")
+
+  val pizza1 = Pizza(Small, Regular, Seq(Cheese, BlackOlives))
+  val pizza1Price = PizzaService.price(pizza1)
+  println(s"pizza1 = ${pizza1.toString}, Price = $pizza1Price")
+// PRINTS:  pizza1 = Pizza(Small,Regular,List(Cheese, BlackOlives)), Price = 7.5
 
 ====================================================================
 PROGRAM NO. 3
