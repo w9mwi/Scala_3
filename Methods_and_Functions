@@ -1,0 +1,25 @@
+METHODS AND FUNCTIONS
+=====================
+
+In Scala 2 and Scala 3 a method can be defined...
+
+* Inside a class
+* Inside a case class
+* Inside an object
+* Inside a case object
+* Inside a trait
+
+In Scala 3 a method can be defined outside any of those constructs,
+as a stand-alone method.  These methods are known as "top-level"
+definitions because they're not nested in another definition.  In
+other words, methods in Scala 3 can be defined anywhere.  Here is
+an example of two stand-alone methods...
+
+def greetingWithName(name:String):String =
+  s"Hey, my name is $name."
+
+@main def main() =
+  println(greetingWithName("Sally")) // PRINTS: Hey, my name is Sally.
+  println(greetingWithWeight(478))   // PRINTS: Hey, I weigh 478 pounds.
+  def greetingWithWeight(weight:Int):String =
+    s"Hey, I weigh $weight pounds."
