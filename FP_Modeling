@@ -95,11 +95,14 @@ PROGRAM NO. 1 - Implement Companion Objects
 ===========================================
 The ORIGINAL PROGRAM above is rewritten here with these 2 changes made:
 
-1) The "object Topping" is created, and the method toppingPrice()
-   is moved into it and renamed to price().
+   1) The "object Topping" is created, and the method toppingPrice()
+      is moved into it and renamed to price().
 
-2) The "object Pizza" is created, and the method pizzaPrice()
-   is moved into it and renamed to price().
+   2) The "object Pizza" is created, and the method pizzaPrice()
+      is moved into it and renamed to price().
+
+The method pizzaPrice() is unchanged.  It could be moved into
+a new companion object named either CrustSize or CrustType.
 
 
 import CrustSize.*
