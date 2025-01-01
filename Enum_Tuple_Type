@@ -32,7 +32,14 @@ ENUM
 ====
 Scala 3 added the new keyword 'enum'.  Scala compiles enums to a
 sealed class, which means that an enum can contain arguments, fields
-and methods.  The following program demonstrates the use of enums.
+and methods.
+
+Just as a Scala class can have a "companion object", an enum in
+Scala 3 can also have a "companion object".  An object becomes
+a "companion object" to an enum when the object's name is identical
+to the enum name, and it resides in the same file as the enum.
+
+The following program demonstrates the use of enums.
 
 @main def main() =
   // NOTE: All enum definitions must include the 'case' keyword.
