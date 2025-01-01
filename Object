@@ -27,16 +27,22 @@ The following 4 items are true of a Scala object:
 
 4) A Scala object is often used as a "companion object" to a class.
    An object becomes a "companion object" to a class when the
-   object's name is identical to the class, and it resides in the
-   same file as the class.
+   object's name is identical to the class name, and it resides in
+   the same file as the class.
 
-A Scala object should be used...
+5) Scala 3 added the 'enum' keyword.  In Scala 3, an object can also
+   become a "companion object" to an enum.  An object becomes a
+   "companion object" to an enum when the object's name is identical
+   to the enum name, and it resides in the same file as the enum.
 
-1) To store constants using a val.  So every instance of the companion
-   class can reference this value.
+A Scala object should be used to...
 
-2) To contain methods that can work with every instance of the companion
-   class. So every instance of the companion class can invoke this method.
+1) store constants using a val.  So every instance of the companion
+   class can reference this same value.
+
+2) contain methods that will work with every instance of the companion
+   class. So every instance of the companion class can invoke this same
+   method.
 
 Remember, the Scala object should reside in the same file as its companion class.
 
