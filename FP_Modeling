@@ -21,13 +21,9 @@ contains stand-alone enums, case classes, and methods to build a pizza.  These
 enums, case classes, and methods work as they are in their stand-alone form,
 as the program demonstrates.
 
-Below the ORIGINAL PROGRAM, we rewite it 4 different ways (as PROGRAM NO. 1,
-PROGRAM NO. 2, PROGRAM NO. 3, and PROGRAM NO. 4.) so it follows the Functional
-Programing paradigm.  It's done 4 different ways because there is no one
-correct way to make a program comply with following the Functional Programing
-paradigm.
+Below the "ORIGINAL PROGRAM" below, we rewite it 2 different ways that
+follow the Functional Programming paradigm.
 
-====================================================================
 
 ORIGINAL PROGRAM
 ================
@@ -93,7 +89,7 @@ def pizzaPrice(p: Pizza): Double =
 
 PROGRAM NO. 1 - Implement Companion Objects
 ===========================================
-The ORIGINAL PROGRAM above is rewritten here with these 2 changes made:
+The ORIGINAL PROGRAM above is rewritten here with these changes made:
 
    1) The "object Topping" is created, and the method toppingPrice()
       is moved into it and renamed to price().
@@ -168,7 +164,7 @@ def crustPrice(s: CrustSize, t: CrustType): Double =
 
 PROGRAM NO. 2 - Implement Modules
 =================================
-PROGRAM NO.1 above is rewritten here with these 2 changes made:
+PROGRAM NO.1 above is rewritten here with these changes made:
 
    1) The "PizzaServiceInterface" is created.
 
@@ -177,7 +173,7 @@ PROGRAM NO.1 above is rewritten here with these 2 changes made:
 
    3) The "object Pizza" is removed.
 
-Also, the "object PizzaService" contains 4 new methods.
+Also, notice the "object PizzaService" contains 4 new methods.
 
 
 import CrustSize.*
@@ -256,12 +252,3 @@ def crustPrice(s: CrustSize, t: CrustType): Double =
   val pizza1Price = PizzaService.price(pizza1)
   println(s"pizza1 = ${pizza1.toString}, Price = $pizza1Price")
 // PRINTS:  pizza1 = Pizza(Small,Regular,List(Cheese, BlackOlives)), Price = 7.5
-
-====================================================================
-PROGRAM NO. 3
-=============
-
-====================================================================
-
-PROGRAM NO. 4
-=============
