@@ -26,11 +26,15 @@ IMPORTANT: Only the last argument in a method's argument list can accept
 The following program shows how to implement a method that accepts varargs.
 
 /*********************************************************
- * When an asterisk char (*) appears after an argument in a method's argument
- * list (as shown below), it designates that the argument can be passed
- * zero arguments, one argument, or multiple arguments separated by commas.
- * Read in-line comments below for details.
- *********************************************************/
+*
+* When an asterisk char (*) appears after an argument in a method's argument
+* list (as shown below), it designates that the argument can be passed
+* zero arguments, one argument, or multiple arguments separated by commas.
+* Read in-line comments below for details.
+*
+* @param str - A variable number of String arguments.
+* @return String
+*********************************************************/
 def variableNoOfStringArgs(str:String *):String =
 {
   // This method can get passed any number of String arguments, which all
@@ -50,9 +54,12 @@ def variableNoOfStringArgs(str:String *):String =
   str.mkString(" ")
 }
 
+/*********************************************************
+ * main()
+ ********************************************************/
 @main def main() =
   // Confirm the method can be passed no arguments.
-  var strResult = variableNoOfStringArgs()
+  var strResult:String = variableNoOfStringArgs()
   println(s"1) strResult = $strResult\n") // PRINTS: 1) strResult =
 
   // Confirm the method can be passed one argument.
@@ -62,3 +69,38 @@ def variableNoOfStringArgs(str:String *):String =
   // Confirm the method can be passed multiple arguments.
   strResult = variableNoOfStringArgs("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
   println(s"3) strResult = $strResult\n") // PRINTS: 3) strResult = Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+
+  // ***********************************************************************
+  // Because the above variableNoOfStringArgs() method always transforms
+  // its str argument into a Seq[String] type, we can pass it any collection
+  // containing Strings that is of type Seq, such as the following types,
+  // and is demonstrated in the code below.
+  // * Array[String]
+  // * List[String]
+  // * Seq[String]
+  // * Vector[String]
+  //
+  // NOTICE:  Scala 2 requires the text ":_*" in the following calls to variableNoOfStringArgs().
+  //          This also works in Scala 3 for backwards compatibility.  The next section shows
+  //          that Scala 3 no longer requires this text.
+  val listOfWords:List[String] = List("Tomorrow", "is", "a", "different", "day.")
+  strResult = variableNoOfStringArgs(listOfWords:_*)
+  println(s"4) strResult = $strResult\n") // PRINTS: 4) strResult = Tomorrow is a different day.
+
+  val seqOfWords:Seq[String] = listOfWords.toSeq
+  strResult = variableNoOfStringArgs(seqOfWords:_*)
+  println(s"5) strResult = $strResult\n") // PRINTS: 5) strResult = Tomorrow is a different day.
+
+  val arrayOfWords: Array[String] = listOfWords.toArray
+  strResult = variableNoOfStringArgs(arrayOfWords: _*)
+  println(s"6) strResult = $strResult\n") // PRINTS: 6) strResult = Tomorrow is a different day.
+
+  val vectorOfWords: Vector[String] = listOfWords.toVector
+  strResult = variableNoOfStringArgs(vectorOfWords:_*)
+  println(s"7) strResult = $strResult\n") // PRINTS: 7) strResult = Tomorrow is a different day.
+
+  // NOTICE:  The ":_*" text in the 4 above calls to variableNoOfStringArgs() can be eliminated
+  //          (in Scala 2 and Scala 3) by replacing that text with a call to the mkString(" ")
+  //          method as shown here...
+  strResult = variableNoOfStringArgs(vectorOfWords.mkString(" "))
+  println(s"8) strResult = $strResult\n") // PRINTS: 8) strResult = Tomorrow is a different day.
