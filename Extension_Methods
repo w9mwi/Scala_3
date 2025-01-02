@@ -1,6 +1,6 @@
 In Scala 3 you can add new methods to any Scala class that has already been
 defined.  This includes not just Scala classes that you have written, but
-any Scala class that your code can invoke; including classes defined by
+any Scala class that your code can access; including classes defined in
 the Scala 3 language.
 
 The following program shows...
@@ -51,15 +51,15 @@ The following program shows...
 
 ==============================================================================
 
-When you want to add a method to some class that you can access, but can't change,
-you can do so like in the example below.
+Here's another example similar to the one above.  Here, we add 3 methods
+to the Circle class, after the Circle class has already been defined.
 
-// Assume you can access this Circle case class, but can't changes its source code.
+// Define the Circle class here.
 case class Circle(x: Double, y: Double, radius: Double)
 
-// If you add the following code to your source code, you'll be able to
-// invoke the 3 methods defined below (circumference, diameter, and area)
-// on any Circle class that you instantiate.
+// Here we add 3 methods (circumference, diameter, and area) to the Circle class
+// defined above.  Now, these 3 methods can be invoked via any Circle class
+// that you instantiate.
 extension (c: Circle)
   def circumference: Double = c.radius * math.Pi * 2
   def diameter: Double = c.radius * 2
