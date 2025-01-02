@@ -48,3 +48,19 @@ The following program shows...
 
   result = "100".makeInt(2)
   println(s"100 binary = $result decimal") // PRINTS:  100 binary = 4 decimal
+
+==============================================================================
+
+When you want to add a method to some class that you can access, but can't change,
+you can do so like in the example below.
+
+// Assume you can access this Circle case class, but can't changes its source code.
+case class Circle(x: Double, y: Double, radius: Double)
+
+// If you add the following code to your source code, you'll be able to
+// invoke the 3 methods defined below (circumference, diameter, and area)
+// on any Circle class that you instantiate.
+extension (c: Circle)
+  def circumference: Double = c.radius * math.Pi * 2
+  def diameter: Double = c.radius * 2
+  def area: Double = math.Pi * c.radius * c.radius
