@@ -9,6 +9,8 @@ In Scala 2 and Scala 3 a method can be defined inside a...
 * case object
 * trait
 
+STAND-ALONE METHODS
+===================
 In Scala 3 a method can also be defined outside any of those constructs,
 as a stand-alone method.  These methods are known as "top-level"
 definitions because they're not nested within another definition.
@@ -29,3 +31,22 @@ end greetingWithName  // This line works only with Scala 3, and is optional.
   def greetingWithWeight(weight:Int):String =
     s"Hey, I weigh $weight pounds."
   end greetingWithWeight // This line works only with Scala 3, and is optional.
+
+
+METHODS HAVING NO ARGUMENTS (Empty Parenthesis vs. No parenthesis)
+==================================================================
+Scala methods that contain no arguments can be written these 2 ways:
+
+1) with empty parenthesis, like this:  def writeToFile():Unit = ...
+
+   Use empty parenthises when the method has side effects,
+   like printing text to the screen, manipulating a file, etc.
+
+2) with no parenthesis, like this: def calculateDistance:Double = ...
+
+   Use no parenthises when the method doesn't have any side effects;
+   like when it only calculates, and then returns, a result.
+
+This is just a suggestion; it isn't enforced.  So even if you adhere to
+this suggestion, it doesn't mean other programmers will do the same.
+So don't assume that code you didn't write follows this convention.
