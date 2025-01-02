@@ -4,23 +4,10 @@ Methods in Scala can be defined so a single argument can actually accept
 any number of arguments.  This concept is often referred to as "varargs",
 a "variable number of arguments".
 
-In Scala, a method can be defined to accept multiple arguments in a
-single argument list, like this:
-
-def add(x:Int, y:Int):Int = x + y
-
-A method can also be defined to accept multiple argument lists, like this:
-
-def add(x:Int)(y:Int):Int = x + y
-
-Methods defined with multiple argument lists are used to implement
-the concept known as "currying", which is covered in the "Currying"
-section.
-
 IMPORTANT: Only the last argument in a method's argument list can accept
            a variable number of arguments.  A method that contains multiple
            argument lists (a curried method) can accept one vararg per
-           argument list, which also must be the last argument in the
+           argument list, as long as it too is the last argument in the
            argument list.
 
 The following program shows how to implement a method that accepts varargs.
