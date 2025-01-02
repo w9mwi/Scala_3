@@ -1,8 +1,8 @@
 VARIABLE NUMBER OF ARGUMENTS
 ============================
 Methods in Scala can be defined so a single argument can actually accept any
-number of arguments, as long as they all have the same data type.  Tis concept
-is often referred to as "varargs", a "variable number of arguments."
+number of arguments, as long as they all have the same data type.  This concept
+is often referred to as "varargs", which means a "variable number of arguments."
 
 IMPORTANT: Only the last argument in a method's argument list can accept
            a variable number of arguments.  A method that contains multiple
