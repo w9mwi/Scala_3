@@ -1,8 +1,8 @@
 VARIABLE NUMBER OF ARGUMENTS
 ============================
-Methods in Scala can be defined so a single argument can actually accept
-any number of arguments.  This concept is often referred to as "varargs",
-a "variable number of arguments".
+Methods in Scala can be defined so a single argument can actually accept any
+number of arguments, as long as they all have the same data type.  Tis concept
+is often referred to as "varargs", a "variable number of arguments."
 
 IMPORTANT: Only the last argument in a method's argument list can accept
            a variable number of arguments.  A method that contains multiple
@@ -24,14 +24,15 @@ The following program shows how to implement a method that accepts varargs.
 *********************************************************/
 def variableNoOfStringArgs(str:String *):String =
 {
-  // This method can get passed any number of String arguments, which all
-  // get assigned to the single argument named str.  Although the str
-  // argument appears to be declared as a String, it's not a String.
-  // The asterisk char (*) tells the compiler that str can receive any
-  // number of arguments.  Therefore, an argument designated as a vararg
-  // becomes a Seq type, so it can hold any number of arguments.  In this
-  // example str becomes a Seq[String] type because it's declared as a
-  // String in the argument.
+  // This method can get passed any number of String arguments, which all get
+  // assigned to the single argument named str.  Although the str argument
+  // appears to be declared as a String, it's not a String.  The asterisk
+  // char (*) tells the compiler that str can actually be any number of
+  // Strings.  Therefore, an argument that's designated as a vararg becomes
+  // a Seq type, which is really just a single collection; where the
+  // collection can hold any number of values.  In this example str
+  // becomes a Seq[String] type because str is declared as a String
+  // in the argument list.
   //
   // Here, we verify that str is of type: Seq[String]
   if (str.isInstanceOf[Seq[String]])
@@ -49,11 +50,11 @@ def variableNoOfStringArgs(str:String *):String =
   var strResult:String = variableNoOfStringArgs()
   println(s"1) strResult = $strResult\n") // PRINTS: 1) strResult =
 
-  // Confirm the method can be passed one argument.
+  // Confirm the method can be passed one String argument.
   strResult = variableNoOfStringArgs("Wednesday")
   println(s"2) strResult = $strResult\n") // PRINTS: 2) strResult = Wednesday
 
-  // Confirm the method can be passed multiple arguments.
+  // Confirm the method can be passed multiple String arguments.
   strResult = variableNoOfStringArgs("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
   println(s"3) strResult = $strResult\n") // PRINTS: 3) strResult = Sunday Monday Tuesday Wednesday Thursday Friday Saturday
 
