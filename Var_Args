@@ -10,18 +10,20 @@ IMPORTANT: Only the last argument in a method's argument list can accept
            argument list, as long as it too is the last argument in the
            argument list.
 
-The following program shows how to implement a method that accepts varargs.
+The following program shows how to implement a method that accepts varargs
+using code that works with both Scala 2 and Scala 3, and varargs code that
+works only with Scala 3.
 
 /*********************************************************
-*
-* When an asterisk char (*) appears after an argument in a method's argument
-* list (as shown below), it designates that the argument can be passed
-* zero arguments, one argument, or multiple arguments separated by commas.
-* Read in-line comments below for details.
-*
-* @param str - A variable number of String arguments.
-* @return String
-*********************************************************/
+ *
+ * When an asterisk char (*) appears after an argument in a method's argument
+ * list (as shown below), it designates that the argument can be passed
+ * zero arguments, one argument, or multiple arguments separated by commas.
+ * Read in-line comments below for details.
+ *
+ * @param str - A variable number of String arguments.
+ * @return String
+ *********************************************************/
 def variableNoOfStringArgs(str:String *):String =
 {
   // This method can get passed any number of String arguments, which all get
@@ -69,8 +71,8 @@ def variableNoOfStringArgs(str:String *):String =
   // * Vector[String]
   //
   // NOTICE:  Scala 2 requires the text ":_*" in the following calls to variableNoOfStringArgs().
-  //          This also works in Scala 3 for backwards compatibility.  The next section shows
-  //          that Scala 3 no longer requires this text.
+  //          This also works in Scala 3 for backwards compatibility.  The section further below
+  //          shows Scala 3 can replace this ":_*" text with a single asterisk char (*).
   val listOfWords:List[String] = List("Tomorrow", "is", "a", "different", "day.")
   strResult = variableNoOfStringArgs(listOfWords:_*)
   println(s"4) strResult = $strResult\n") // PRINTS: 4) strResult = Tomorrow is a different day.
@@ -92,3 +94,20 @@ def variableNoOfStringArgs(str:String *):String =
   //          method as shown here...
   strResult = variableNoOfStringArgs(vectorOfWords.mkString(" "))
   println(s"8) strResult = $strResult\n") // PRINTS: 8) strResult = Tomorrow is a different day.
+
+
+  // ***********************************************************************
+  // This section works only with Scala 3.  It does exactly the same as
+  // 5), 6), 7), and 8) above, except it replaces the ":_*" text with
+  // a single asterisk char (*) when calling variableNoOfStringArgs().
+  strResult = variableNoOfStringArgs(listOfWords*)
+  println(s"9) strResult = $strResult\n") // PRINTS: 9) strResult = Tomorrow is a different day.
+
+  strResult = variableNoOfStringArgs(seqOfWords*)
+  println(s"10) strResult = $strResult\n") // PRINTS: 10) strResult = Tomorrow is a different day.
+
+  strResult = variableNoOfStringArgs(arrayOfWords*)
+  println(s"11) strResult = $strResult\n") // PRINTS: 11) strResult = Tomorrow is a different day.
+
+  strResult = variableNoOfStringArgs(vectorOfWords*)
+  println(s"12) strResult = $strResult\n") // PRINTS: 12) strResult = Tomorrow is a different day.
