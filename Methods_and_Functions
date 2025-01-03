@@ -58,7 +58,6 @@ end printName // This line is optional in Scala 3.
   println(s"squareMethod(123.456F) = ${squareMethod(123.456F)}")
   // PRINTS: squareMethod(123.456F) = 15241.384
 
-
 Scala methods that contain no arguments can be written these 2 ways:
 
 1) with empty parenthesis, like this:  def writeToFile():Unit = ...
