@@ -1,6 +1,18 @@
-METHODS AND FUNCTIONS
-=====================
+This web page covers the following topics, all of which are related to
+Scala methods and functions.  Each of these topics contains its own
+section, each section is designated with a heading of the same name.
 
+* METHODS
+* FUNCTIONS
+* ETA EXPANSION
+* ANONYMOUS FUNCTION
+* NULLARY FUNCTION
+* PARTIAL FUNCTION
+* FUNCTIONS BUILT WITH ONLY CASE STATEMENTS
+
+
+METHODS
+=======
 In Scala 2 and Scala 3 a method can be defined inside a...
 
 * class
@@ -9,17 +21,16 @@ In Scala 2 and Scala 3 a method can be defined inside a...
 * case object
 * trait
 
-STAND-ALONE METHODS
-===================
 In Scala 3 a method can also be defined outside any of those constructs,
 as a stand-alone method.  These methods are known as "top-level"
 definitions because they're not nested within another definition.
-In other words, methods in Scala 3 can be defined anywhere.
+In other words, methods in Scala 3 can be defined almost anywhere.
 
 In Scala 3 the last line of a method definition can include the new
-Scala 3 soft keyword "end" followed by the method name.  This makes
-it easier to see exactly where a method definition ends, and is optional.
-Below is an example of program using two stand-alone methods.
+Scala 3 soft keyword "end" followed by the method name.  Adding this
+text to the end of a method in Scala 3 is optional, but makes it easier
+to see exactly where a method definition ends.  Below is an example of
+Scala 3 program using two stand-alone methods.
 
 def greetingWithName(name:String):String =
   s"Hey, my name is $name."
@@ -32,21 +43,21 @@ end greetingWithName  // This line works only with Scala 3, and is optional.
     s"Hey, I weigh $weight pounds."
   end greetingWithWeight // This line works only with Scala 3, and is optional.
 
-
-METHODS HAVING NO ARGUMENTS (Empty Parenthesis vs. No parenthesis)
-==================================================================
 Scala methods that contain no arguments can be written these 2 ways:
 
 1) with empty parenthesis, like this:  def writeToFile():Unit = ...
 
-   Use empty parenthises when the method has side effects,
-   like printing text to the screen, manipulating a file, etc.
+   Use empty parenthises when the method has side effects, like
+   printing text to the screen, manipulating a file, etc.
 
 2) with no parenthesis, like this: def calculateDistance:Double = ...
 
    Use no parenthises when the method doesn't have any side effects;
-   like when it only calculates, and then returns, a result.
+   like when it only calculates and returns a result.
 
-This is just a suggestion; it isn't enforced.  So even if you adhere to
-this suggestion, it doesn't mean other programmers will do the same.
-So don't assume that code you didn't write follows this convention.
+This is just a suggestion/convention; it's not enforced.  Even if you
+adhere to this convention, it doesn't mean other programmers will do
+the same.  Don't assume that code you didn't write follows this convention.
+
+
+
