@@ -23,11 +23,24 @@ IMPORTANT: Every method that accepts a vararg always transforms that vararg into
 
 
 /*********************************************************
+ * When an asterisk char (*) appears after the last argument in a method's
+ * argument list, it designates that the argument is a vararg, as this
+ * method demonstrates.  A vararg can get passed zero arguments, one argument,
+ * or multiple arguments separated by commas.
  *
- * When an asterisk char (*) appears after an argument in a method's argument
- * list (as shown below), it designates that the argument is a "vararg" so
- * it can be passed zero arguments, one argument, or multiple arguments
- * separated by commas.  Read in-line comments below for details.
+ * Although the str argument appears to be declared a String type in the
+ * argument list, str isn't a String type; because a String can't hold
+ * multiple Strings as a vararg can.
+ *
+ * When a method's argument is designated as a vararg, the compiler transforms
+ * that argument into a Seq type, which is capable of holding any number of
+ * values.  In this example str becomes a Seq[String] type because the argument
+ * is declared a String.
+ *
+ * Therefore, inside the method, a vararg always becomes a Seq collection of
+ * values.  If the vararg is declared type String, it becomes a Seq[String].
+ * If the vararg is declared type Boolean, it becomes a Seq[Boolean]. Etc.
+ * Read in-line comments below for details.
  *
  * @param str - A variable number of String arguments.
  * @return String
@@ -35,13 +48,7 @@ IMPORTANT: Every method that accepts a vararg always transforms that vararg into
 def variableNoOfStringArgs(str:String *):String =
 {
   // This method can get passed any number of String arguments, which all get
-  // assigned to the single argument named str.  Although the str argument
-  // appears to be declared as a String, it's not a String.  The asterisk
-  // char (*) in the argument list tells the compiler that str is a vararg.
-  // An argument that's designated as a vararg becomes a Seq type within
-  // the method.  A Seq type is a collection, which is how the vararg can
-  // can hold any number of values.  In this example str becomes a
-  // Seq[String] type, as str is declared a String in the argument list.
+  // assigned to the single argument named str.  
 
   // Here, we verify that str is of type: Seq[String]
   if (str.isInstanceOf[Seq[String]])
