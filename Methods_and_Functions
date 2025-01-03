@@ -13,8 +13,9 @@ section; each section is designated with a heading of the same name.
 
 METHODS
 =======
-In Scala 2 and Scala 3 a method can be defined inside a...
+In Scala 2 a method is always defined inside a...
 
+* abstract class
 * class
 * case class
 * object
