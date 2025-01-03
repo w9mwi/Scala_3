@@ -10,7 +10,6 @@ section; each section is designated with a heading of the same name.
 * PARTIAL FUNCTION
 * FUNCTIONS BUILT WITH ONLY CASE STATEMENTS
 
-
 METHODS
 =======
 A Scala method is always written using the "def" keyword.
@@ -20,11 +19,6 @@ IMPORTANT: The "def" keyword can also be used to define an abstract value
            an abstract method (a method that's declared, but has no body
            of executable code).  Abstract vals/vars, and abstract methods
            are used only in Scala traits and in Scala abstract classes.
-
-
-Here's an example of a Scala method named squareMethod(),
-which accepts a Float number as an argument, squares the number, and returns the result
-as a Float number.
 
 In Scala 2 a method must be defined inside another construct, such as...
 
@@ -43,19 +37,22 @@ In other words, methods in Scala 3 can be defined almost anywhere.
 In Scala 3 the last line of a method definition can include the new
 Scala 3 soft keyword "end" followed by the method name.  Adding this
 text to the end of a method in Scala 3 is optional, but makes it easier
-to see exactly where a method definition ends.  Below is an example of
-Scala 3 program using two stand-alone methods.
+to see exactly where a method definition ends.
 
-def greetingWithName(name:String):String =
-  s"Hey, my name is $name."
-end greetingWithName  // This line works only with Scala 3, and is optional.
+Below is an example of Scala 3 program that defines a stand-alone method
+named squareMethod(), and uses the Scala 3 soft keyword "end" to designate
+the end of the method.
 
+/*********************************************************
+ * main()
+ ********************************************************/
 @main def main() =
-  println(greetingWithName("Sally")) // PRINTS: Hey, my name is Sally.
-  println(greetingWithWeight(478))   // PRINTS: Hey, I weigh 478 pounds.
-  def greetingWithWeight(weight:Int):String =
-    s"Hey, I weigh $weight pounds."
-  end greetingWithWeight // This line works only with Scala 3, and is optional.
+  def squareMethod(number: Float): Float =
+    number * number
+  end squareMethod // This line is optional in Scala 3.
+  println(s"squareMethod(123.456F) = ${squareMethod(123.456F)}")
+  // PRINTS: squareMethod(123.456F) = 15241.384
+
 
 Scala methods that contain no arguments can be written these 2 ways:
 
