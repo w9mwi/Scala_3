@@ -17,9 +17,8 @@ syntax that works only with Scala 3.
 
 IMPORTANT: Every method that accepts a vararg always transforms that vararg into
            a Seq data type, which is a collection similar to an Array, or a List.
-           In other words, when a method is passed a "vararg", the method treats
-           the vararg as if it's a Seq data type; because that's what a vararg
-           actually becomes inside the method's body.
+           Because the only way to store multiple values in a single argument
+           is if the argument is a collection type.
 
 /*********************************************************
  * When an asterisk char (*) appears after the last argument
