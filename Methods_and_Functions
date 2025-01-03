@@ -34,10 +34,10 @@ as a stand-alone method.  These methods are known as "top-level"
 definitions because they're not nested within another definition.
 In other words, methods in Scala 3 can be defined almost anywhere.
 
-In Scala 3 the last line of a method definition can include the new
-Scala 3 soft keyword "end" followed by the method name.  Adding this
-text to the end of a method in Scala 3 is optional, but makes it easier
-to see exactly where a method definition ends.
+In Scala 3 the last line of a method definition can include the Scala 3
+soft keyword "end" followed by the method name.  Adding this text to
+the end of a method in Scala 3 is optional, but makes it easier to
+see exactly where a method definition ends.
 
 Below is a Scala 3 program that defines two stand-alone methods, and uses
 the Scala 3 soft keyword "end" to designate the end of both methods.
@@ -58,35 +58,36 @@ end printName // This line is optional in Scala 3.
   println(s"squareMethod(123.456F) = ${squareMethod(123.456F)}")
   // PRINTS: squareMethod(123.456F) = 15241.384
 
+
 Scala methods that contain no arguments can be written these 2 ways:
 
 1) with empty parenthesis, like this:  def writeToFile():Unit = ...
 
-   Use empty parenthises when the method has side effects, like
-   printing text to the screen, manipulating a file, etc.
+   You should use empty parenthises when the method has side effects,
+   like printing text to the screen, manipulating a file, etc.
 
 2) with no parenthesis, like this: def calculateDistance:Double = ...
 
-   Use no parenthises when the method doesn't have any side effects;
+   You should use no parenthises when the method has no side effects;
    like when it only calculates and returns a result.
 
 This is just a suggestion/convention; it's not enforced.  Even if you
 adhere to this convention, it doesn't mean other programmers will do
 the same.  Don't assume that code you didn't write follows this convention.
 
-Each argument in a method definition must include a declaration of its data type;
-i.e., Int, Boolean, List[Sting], etc.  For example, the squareMethod() shown
-below declares its argument named number is of type Float.
+Each argument in a method definition must declare its data type; i.e.,
+Int, Boolean, List[Sting], etc.  For example, the squareMethod() below
+declares its argument "number" as type Float.
 
   def squareMethod(number: Float): Float =
     number * number
   end squareMethod // This line is optional in Scala 3.
 
-In Scala, you can define a method argument to accept another method!
+In Scala, you can define a method argument to accept another method.
 When you define a method to accept another method as one of its arguments,
 you must declare that argument as a "function data type".  A "function data
 type" is always written using the rocket symbol (=>).  The following program
-shows the processNumber() method has an argument named myFunction.  That
+shows the processNumber() method has an argument named myFunction.  The
 myFunction argument is declared to be of this type:
 
 Int=>Int
