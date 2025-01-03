@@ -10,7 +10,7 @@ IMPORTANT: Only the last argument in a method's argument list can accept
            argument list, as long as it too is the last argument in the
            argument list.
 
-The following program shows how its variableNoOfStringArgs()  method can accept
+The following program shows how the variableNoOfStringArgs()  method can accept
 multiple arguments (varargs) using code that works with both Scala 2 and Scala 3.
 The last portion of this program shows how to call the variableNoOfStringArgs()
 method using syntax that works only with Scala 3.
@@ -19,15 +19,15 @@ IMPORTANT: Every method that accepts a vararg always transforms that vararg into
            a Seq data type, which is a collection similar to an Array, or a List.
            In other words, when a method is passed a "vararg", the method treats
            the vararg as if it's a Seq data type; because that's what a vararg
-           actually becomes, inside the method's body.
+           actually becomes inside the method's body.
 
 
 /*********************************************************
  *
  * When an asterisk char (*) appears after an argument in a method's argument
- * list (as shown below), it designates that the argument can be passed
- * zero arguments, one argument, or multiple arguments separated by commas.
- * Read in-line comments below for details.
+ * list (as shown below), it designates that the argument is a "vararg" so
+ * it can be passed zero arguments, one argument, or multiple arguments
+ * separated by commas.  Read in-line comments below for details.
  *
  * @param str - A variable number of String arguments.
  * @return String
@@ -68,19 +68,26 @@ def variableNoOfStringArgs(str:String *):String =
   strResult = variableNoOfStringArgs("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
   println(s"3) strResult = $strResult\n") // PRINTS: 3) strResult = Sunday Monday Tuesday Wednesday Thursday Friday Saturday
 
+
   // ***********************************************************************
-  // Because the above variableNoOfStringArgs() method always transforms
-  // its str argument into a Seq[String] type, we can pass it any collection
-  // containing Strings that is of type Seq, such as the following types,
-  // and is demonstrated in the code below.
-  // * Array[String]
+  // In the above section we passed only a String type to the method
+  // variableNoOfStringArgs().  In this section we demonstrate that a
+  // vararg can always accept a collection.  Where the collection must
+  // be a Seq type, and the collection must contain the same type that the
+  // vararg is declared, which in this example is a String.
+  //
+  // The reason why a vararg can always accept a collection is because
+  // a vararg is always automatically transformed into a Seq type (which
+  // is a collection) within the method.
+  //
+  // When a collection is passed to a vararg, the collection's name must
+  // be followed by the text ":_*" (for Scala 2 or Scala 3), or "*" (for
+  // Scala 3 only).  In the code below, we pass to variableNoOfStringArgs()
+  // the following data types as a vararg.
   // * List[String]
   // * Seq[String]
+  // * Array[String]
   // * Vector[String]
-  //
-  // NOTICE:  Scala 2 requires the text ":_*" in the following calls to variableNoOfStringArgs().
-  //          This also works in Scala 3 for backwards compatibility.  The section further below
-  //          shows Scala 3 can replace this ":_*" text with a single asterisk char (*).
   val listOfWords:List[String] = List("Tomorrow", "is", "a", "different", "day.")
   strResult = variableNoOfStringArgs(listOfWords:_*)
   println(s"4) strResult = $strResult\n") // PRINTS: 4) strResult = Tomorrow is a different day.
