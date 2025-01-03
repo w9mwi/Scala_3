@@ -1,0 +1,9 @@
+Scala 3 has a new way of defining the main() method.
+For example, here is a simple "Hello World" program
+that works only in Scala 3.
+
+@main def main() =
+  println("Hello World.")
+
+For more info about the Scala 3 main() method, read this web page:
+https://docs.scala-lang.org/scala3/book/methods-main-methods.html
