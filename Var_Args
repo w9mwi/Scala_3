@@ -1,8 +1,8 @@
 VARIABLE NUMBER OF ARGUMENTS
 ============================
-Methods in Scala can be defined so a single argument can actually accept any
-number of arguments, as long as they all have the same data type.  This concept
-is often referred to as "varargs", which means a "variable number of arguments."
+Methods in Scala can be defined so a single argument can accept any number of
+arguments, as long as they all have the same data type.  This concept is often
+referred to as "varargs", which means a "variable number of arguments."
 
 IMPORTANT: Only the last argument in a method's argument list can accept
            a variable number of arguments.  A method that contains multiple
@@ -10,9 +10,17 @@ IMPORTANT: Only the last argument in a method's argument list can accept
            argument list, as long as it too is the last argument in the
            argument list.
 
-The following program shows how to implement a method that accepts varargs
-using code that works with both Scala 2 and Scala 3, and varargs code that
-works only with Scala 3.
+The following program shows how its variableNoOfStringArgs()  method can accept
+multiple arguments (varargs) using code that works with both Scala 2 and Scala 3.
+The last portion of this program shows how to call the variableNoOfStringArgs()
+method using syntax that works only with Scala 3.
+
+IMPORTANT: Every method that accepts a vararg always transforms that vararg into
+           a Seq data type, which is a collection similar to an Array, or a List.
+           In other words, when a method is passed a "vararg", the method treats
+           the vararg as if it's a Seq data type; because that's what a vararg
+           actually becomes, inside the method's body.
+
 
 /*********************************************************
  *
