@@ -74,5 +74,36 @@ This is just a suggestion/convention; it's not enforced.  Even if you
 adhere to this convention, it doesn't mean other programmers will do
 the same.  Don't assume that code you didn't write follows this convention.
 
+Each argument in a method definition must include a declaration of its data type;
+i.e., Int, Boolean, List[Sting], etc.  For example, the squareMethod() shown
+below declares its argument named number is of type Float.
 
+  def squareMethod(number: Float): Float =
+    number * number
+  end squareMethod // This line is optional in Scala 3.
+
+In Scala, you can define a method argument to accept another method!
+When you define a method to accept another method as one of its arguments,
+you must declare that argument as a "function data type".  A "function data
+type" is always written using the rocket symbol (=>).  The following program
+shows the processNumber() method has an argument named myFunction.  That
+myFunction argument is declared to be of this type:
+
+Int=>Int
+
+The rocket symbol (=>) designates it's a function.  The left-side Int designates
+the function accepts an Int argument.  The right-side Int designates the function
+returns an Int value.
+
+@main def main() =
+  def addTen(number: Int): Int =
+    number + 10
+  end addTen
+
+  def processNumber(number:Int, myFunction:Int=>Int):Int =
+    myFunction(number)
+  end processNumber
+
+  val result:Int = processNumber(123, addTen)
+  println(s"processNumber(123, addTen) = $result") // PRINTS: processNumber(123, addTen) = 133
 
