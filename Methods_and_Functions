@@ -39,17 +39,22 @@ Scala 3 soft keyword "end" followed by the method name.  Adding this
 text to the end of a method in Scala 3 is optional, but makes it easier
 to see exactly where a method definition ends.
 
-Below is an example of Scala 3 program that defines a stand-alone method
-named squareMethod(), and uses the Scala 3 soft keyword "end" to designate
-the end of the method.
+Below is a Scala 3 program that defines two stand-alone methods, and uses
+the Scala 3 soft keyword "end" to designate the end of both methods.
 
+def printName(name: String) =
+  println(s"name is: $name")
+end printName // This line is optional in Scala 3.
 /*********************************************************
  * main()
  ********************************************************/
 @main def main() =
+  printName("Sally") // PRINTS: name is: Sally
+
   def squareMethod(number: Float): Float =
     number * number
   end squareMethod // This line is optional in Scala 3.
+
   println(s"squareMethod(123.456F) = ${squareMethod(123.456F)}")
   // PRINTS: squareMethod(123.456F) = 15241.384
 
