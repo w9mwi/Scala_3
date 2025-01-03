@@ -10,17 +10,16 @@ IMPORTANT: Only the last argument in a method's argument list can accept
            argument list, as long as it too is the last argument in the
            argument list.
 
-The following program shows how the variableNoOfStringArgs()  method can accept
-multiple arguments (varargs) using code that works with both Scala 2 and Scala 3.
-The last portion of this program shows how to call the variableNoOfStringArgs()
-method using syntax that works only with Scala 3.
+The following program shows how the variableNoOfStringArgs() method can accept
+a vararg.  Most of this code works with Scala 2 and Scala 3.  The last section
+of this program shows how to call the variableNoOfStringArgs() method using
+syntax that works only with Scala 3.
 
 IMPORTANT: Every method that accepts a vararg always transforms that vararg into
            a Seq data type, which is a collection similar to an Array, or a List.
            In other words, when a method is passed a "vararg", the method treats
            the vararg as if it's a Seq data type; because that's what a vararg
            actually becomes inside the method's body.
-
 
 /*********************************************************
  * When an asterisk char (*) appears after the last argument
@@ -49,10 +48,7 @@ IMPORTANT: Every method that accepts a vararg always transforms that vararg into
  *********************************************************/
 def variableNoOfStringArgs(str:String *):String =
 {
-  // This method can get passed any number of String arguments, which all get
-  // assigned to the single argument named str.  
-
-  // Here, we verify that str is of type: Seq[String]
+  // Here we verify that str is of type: Seq[String]
   if (str.isInstanceOf[Seq[String]])
     println("str is of type: Seq[String]") // PRINTS: str is of type: Seq[String]
 
