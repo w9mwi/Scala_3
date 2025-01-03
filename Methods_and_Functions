@@ -13,7 +13,20 @@ section; each section is designated with a heading of the same name.
 
 METHODS
 =======
-In Scala 2 a method is always defined inside a...
+A Scala method is always written using the "def" keyword.
+
+IMPORTANT: The "def" keyword can also be used to define an abstract value
+           (a val/var that's declared, but not initialized), or to define
+           an abstract method (a method that's declared, but has no body
+           of executable code).  Abstract vals/vars, and abstract methods
+           are used only in Scala traits and in Scala abstract classes.
+
+
+Here's an example of a Scala method named squareMethod(),
+which accepts a Float number as an argument, squares the number, and returns the result
+as a Float number.
+
+In Scala 2 a method must be defined inside another construct, such as...
 
 * abstract class
 * class
