@@ -37,13 +37,12 @@ def variableNoOfStringArgs(str:String *):String =
   // This method can get passed any number of String arguments, which all get
   // assigned to the single argument named str.  Although the str argument
   // appears to be declared as a String, it's not a String.  The asterisk
-  // char (*) tells the compiler that str can actually be any number of
-  // Strings.  Therefore, an argument that's designated as a vararg becomes
-  // a Seq type, which is really just a single collection; where the
-  // collection can hold any number of values.  In this example str
-  // becomes a Seq[String] type because str is declared as a String
-  // in the argument list.
-  //
+  // char (*) in the argument list tells the compiler that str is a vararg.
+  // An argument that's designated as a vararg becomes a Seq type within
+  // the method.  A Seq type is a collection, which is how the vararg can
+  // can hold any number of values.  In this example str becomes a
+  // Seq[String] type, as str is declared a String in the argument list.
+
   // Here, we verify that str is of type: Seq[String]
   if (str.isInstanceOf[Seq[String]])
     println("str is of type: Seq[String]") // PRINTS: str is of type: Seq[String]
