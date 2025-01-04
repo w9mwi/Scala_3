@@ -128,12 +128,12 @@ A Scala partial function is a function that returns values for only a specific s
 values passed to its argument.  Because mathematics doesn't allow division by zero,
 it could make sense to write a partial function to perform mathematical division.
 Where the partial function would return nothing when division by zero is attempted.
+In Scala, partial functions are unary functions that implement this trait:
 
-In Scala, partial functions are unary functions that implementing this trait:
-PartialFunction[A, B]
-Where A is the argument type, and B the result type.
+   PartialFunction[A, B]  // A is the argument type, and B the returned result type.
 
 To define a partial function, use a case identical to those used in match expressions:
+
 
 
 
