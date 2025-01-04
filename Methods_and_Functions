@@ -5,9 +5,9 @@ section; each section is designated with a heading of the same name.
 * METHODS
 * FUNCTIONS
 * ETA EXPANSION
-* ANONYMOUS FUNCTION
-* NULLARY FUNCTION
-* PARTIAL FUNCTION
+* ANONYMOUS FUNCTIONS
+* NULLARY FUNCTIONS
+* PARTIAL FUNCTIONS
 * FUNCTIONS BUILT WITH ONLY CASE STATEMENTS
 
 METHODS
@@ -107,4 +107,53 @@ The right-side Int designates the function returns an Int value.
 
   val result:Int = processNumber(123, addTen)
   println(s"processNumber(123, addTen) = $result") // PRINTS: processNumber(123, addTen) = 133
+
+======================================================================
+
+======================================================================
+
+======================================================================
+
+======================================================================
+
+======================================================================
+PARTIAL FUNCTIONS
+=================
+
+IMPORTANT:  Don't confuse partial functions with partially-applied functions.
+            Partial functions aren't related to partially-applied functions;
+            the two are completely different.
+
+A Scala partial function is a function that returns values for only a specific set of
+values passed to its argument.  Because mathematics doesn't allow division by zero,
+it could make sense to write a partial function to perform mathematical division.
+Where the partial function would return nothing when division by zero is attempted.
+
+In Scala, partial functions are unary functions that implementing this trait:
+PartialFunction[A, B]
+Where A is the argument type, and B the result type.
+
+To define a partial function, use a case identical to those used in match expressions:
+
+
+
+
+EXAMPLE: If a partial function performs mathematical division on
+         a number passed to it, NO RESULT WILL BE RETURNED when
+         that number is zero; because dividing by zero is invalid.
+
+Implementing a partial function in Scala requires the programmer
+to define these two methods:
+1) apply()       - Automatically called when you pass the function an argument.
+2) isDefinedAt() - This method returns a Boolean true for all valid values passed
+                   to it.  It returns false for invalid values passed to it.
+
+
+
+
+
+======================================================================
+======================================================================
+======================================================================
+======================================================================
 
