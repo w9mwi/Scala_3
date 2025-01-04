@@ -42,6 +42,7 @@ see exactly where a method definition ends.
 Below is a Scala 3 program that defines two stand-alone methods, and uses
 the Scala 3 soft keyword "end" to designate the end of both methods.
 
+------------------------------------------------------------------------------
 def printName(name: String) =
   println(s"name is: $name")
 end printName // This line is optional in Scala 3.
@@ -57,7 +58,7 @@ end printName // This line is optional in Scala 3.
 
   println(s"squareMethod(123.456F) = ${squareMethod(123.456F)}")
   // PRINTS: squareMethod(123.456F) = 15241.384
-
+------------------------------------------------------------------------------
 
 Scala methods that contain no arguments can be written these 2 ways:
 
@@ -96,6 +97,10 @@ The rocket symbol (=>) designates the argument is a function.
 The left-side Int designates the function accepts one Int argument.
 The right-side Int designates the function returns an Int value.
 
+The following program demonstrates passing the function named "addTen"
+as an argument to the processNumber() method.
+
+------------------------------------------------------------------------------
 @main def main() =
   def addTen(number: Int): Int =
     number + 10
@@ -107,6 +112,7 @@ The right-side Int designates the function returns an Int value.
 
   val result:Int = processNumber(123, addTen)
   println(s"processNumber(123, addTen) = $result") // PRINTS: processNumber(123, addTen) = 133
+------------------------------------------------------------------------------
 
 ======================================================================
 
@@ -142,7 +148,7 @@ not values.  This is why all partial funcions appearing in the following code ex
 are declared as vals.
 
 The following program is self-explanatory.  Read in-line comments for details.
-
+------------------------------------------------------------------------------
 val doubleOddNumbers: PartialFunction[Int, Int] =
   // NOTE: You can replace "number" below with any
   //       valid naming option you want.
@@ -163,7 +169,7 @@ end doubleOddNumbers
   then // The following 2 lines DO execute.
     intNumber = doubleOddNumbers(intNumber)
     println(s"intResult = $intNumber") // PRINTS: intResult = 2
-
+------------------------------------------------------------------------------
 
 
 
