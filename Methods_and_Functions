@@ -66,7 +66,7 @@ Scala methods that contain no arguments can be written these 2 ways:
    You should use empty parenthises when the method has side effects,
    like printing text to the screen, manipulating a file, etc.
 
-2) with no parenthesis, like this: def calculateDistance:Double = ...
+2) with no parenthesis, like this:  def calculateDistance:Double = ...
 
    You should use no parenthises when the method has no side effects;
    like when it only calculates and returns a result.
@@ -92,7 +92,7 @@ myFunction argument is declared to be of this type:
 
 Int=>Int
 
-The rocket symbol (=>) designates it's a function.
+The rocket symbol (=>) designates the argument is a function.
 The left-side Int designates the function accepts one Int argument.
 The right-side Int designates the function returns an Int value.
 
