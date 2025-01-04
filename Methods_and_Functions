@@ -132,11 +132,10 @@ In Scala, partial functions are unary functions that implement this trait:
 
    PartialFunction[A, B]  // A is the argument type, and B the returned result type.
 
-To define a partial function, use a case identical to those used in match expressions:
-
-
-
-
+Because the PartialFunction trait is a value type, you can't define a partial function
+using the "def" keyword.  As the "def" keyword in Scala is used to define methods,
+not values.  This is why all partial funcions appearing in the following code are
+declared as vals.
 
 EXAMPLE: If a partial function performs mathematical division on
          a number passed to it, NO RESULT WILL BE RETURNED when
