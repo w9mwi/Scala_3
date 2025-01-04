@@ -92,9 +92,9 @@ myFunction argument is declared to be of this type:
 
 Int=>Int
 
-The rocket symbol (=>) designates it's a function.  The left-side Int designates
-the function accepts an Int argument.  The right-side Int designates the function
-returns an Int value.
+The rocket symbol (=>) designates it's a function.
+The left-side Int designates the function accepts one Int argument.
+The right-side Int designates the function returns an Int value.
 
 @main def main() =
   def addTen(number: Int): Int =
