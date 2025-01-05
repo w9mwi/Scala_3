@@ -149,6 +149,9 @@ are declared as vals.
 
 The following program is self-explanatory.  Read in-line comments for details.
 ------------------------------------------------------------------------------
+
+// As stated above, a partial function is always assigned to a val/var,
+// and is never written using the "def" keyword.
 val doubleOddNumbers: PartialFunction[Int, Int] =
   // NOTE: You can replace "number" below with any
   //       valid naming option you want.
