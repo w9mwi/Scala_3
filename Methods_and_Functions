@@ -1,3 +1,19 @@
+This web page covers the following topics, all of which are related to
+Scala methods and functions.  Each of these topics contains its own
+section; each section is designated with a heading of the same name.
+
+* DIFFERENCE BETWEEN A METHOD AND A FUNCTION
+* METHODS
+* FUNCTIONS
+* ETA EXPANSION
+* ANONYMOUS FUNCTIONS
+* NULLARY FUNCTIONS
+* PARTIAL FUNCTIONS
+* FUNCTIONS BUILT WITH ONLY CASE STATEMENTS
+
+
+DIFFERENCE BETWEEN A METHOD AND A FUNCTION
+==========================================
 The words "method" and "function" are often used interchangeably as if
 a method and a function are identical.  Generally, it doesn't matter
 which terminology you use because it's often not relevant if some
@@ -6,8 +22,9 @@ some important differences between a method and a function that you
 should understand.
 
 A method is always written using the "def" keyword.  The "def" keyword
-is never used to write a function, and a function is always assigned
-to a val/var.
+is never used to write a function. A function is always assigned to a
+val/var, so mutiple copies of the function can exist.  A method can never
+be assigned to a val/var.  A method exists only where it's defined.
 
 A method can't be passed as an argument to another method or function.
 Only functions can be passed as an argument to another function or
@@ -15,26 +32,17 @@ method.  Interestingly, Scala does allow you to pass a method as an
 argument to another method/function!  This appears to break the rule
 that says it's not allowed.  However, when you pass a method as an argument
 to another method/function, the Scala compiler automatically transforms
-the method passed into a function, in the background, that's transparent
-to the programmer.  Transforming a method into a function is accomplished
-by performing an "eta expansion" on the method.
+the method into a function in the background, which is transparent to the
+programmer.  Transforming a method into a function is accomplished by
+performing an "eta expansion" on the method.
 
 Although an "eta expansion" is done automatically by the compiler when
 passing a method as an argument to another method/function, the programmer
 can manually perform an "eta expansion" on a method, transforming it into
-a function.  This is covered in the sections below.
+a function.  This allows you to assign your transformed method (which
+becomes a function) to a val/var.  This is topic is covered in more detail
+in the sections below.
 
-This web page covers the following topics, all of which are related to
-Scala methods and functions.  Each of these topics contains its own
-section; each section is designated with a heading of the same name.
-
-* METHODS
-* FUNCTIONS
-* ETA EXPANSION
-* ANONYMOUS FUNCTIONS
-* NULLARY FUNCTIONS
-* PARTIAL FUNCTIONS
-* FUNCTIONS BUILT WITH ONLY CASE STATEMENTS
 
 METHODS
 =======
