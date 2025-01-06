@@ -17,35 +17,47 @@ DIFFERENCE BETWEEN A METHOD AND A FUNCTION
 ==========================================
 The words "method" and "function" are often used interchangeably as if
 a method and a function are identical.  Generally, it doesn't matter
-which terminology you use because it's often not relevant.  However,
+which terminology is used because it's usually not relevant.  However,
 in Scala there are some important differences between a method and
-a function that you should understand.
+a function that should be understood.
 
 A method is always written using the "def" keyword.  The "def" keyword
-is never used to write a function.  A function is always assigned to a
-val/var, so mutiple copies of the function can exist.  A method can never
-be assigned to a val/var.  A method exists only where it's defined.
+is never used to write a function.  A function can only exist when it's
+assigned to a val/var.  This makes it possible for multiple vals/vars to
+store an identical function.  A method can never be assigned to a val/var.
+A method can exist only in one place, where it's defined.
 
-A method can't be passed as an argument to another method or function.
-Only functions can be passed as an argument to another function or
-method.  Interestingly, Scala actually allow you to pass a method to
-an argument of another method/function!  This appears to break the rule
-that says it's not allowed.  However, when you pass a method as an argument
-to another method/function, the Scala compiler automatically transforms
-the method into a function, which is transparent to the programmer.
-Transforming a method into a function is accomplished by performing
-an "eta expansion" on the method.
+IMPORTANT:  Methods/Functions can't accept an argument that references
+            another method.  However, methods/functions can accept an
+            argument that references another function.
 
-Although an "eta expansion" is done automatically by the compiler when
-passing a method as an argument to another method/function, the programmer
-can manually perform an "eta expansion" on a method, transforming it into
-a function.  This allows you to assign your transformed method (which
-becomes a function) to a val/var.  This is topic is covered in more detail
-in the sections below.
+           Arguments passed to a method/function always become vals or
+           vars within the method/function body.  This is why a function
+           can be passed as an argument to a method/function; because
+           a function is always stored in a val/var when it's created.
+           Since a method can't be stored in a val/var, you can't pass
+           a method to another method/function
+
+Interestingly, Scala allows you to pass a method as an argument to another
+method/function!  This appears to break the rule that says it's not allowed.
+When you pass a method as an argument to another method/function, the Scala
+compiler automatically transforms the method into a function, which is
+transparent to the programmer.  This is why you don't need to distinguish
+methods from functions most of the time; because the compiler often resolves
+those differences for you.
+
+Transforming a method into a function is known as performing an "eta expansion" on
+the method.  When you pass a method as an argument to another method/function, the
+Scala compiler performs the "eta expansion" for you.  However, the programmer can
+manually perform an "eta expansion" on a method.  This allows you to transform a
+method into a function, and then store that function in a val/var.  This topic is
+covered in more detail in the sections below.
 
 
 METHODS
 =======
+Before reading this section, read the above section titled 'DIFFERENCE BETWEEN A METHOD AND A FUNCTION'.
+
 A Scala method is always written using the "def" keyword.
 
 IMPORTANT: The "def" keyword can also be used to define an abstract value
@@ -149,8 +161,14 @@ as an argument to the processNumber() method.
 ------------------------------------------------------------------------------
 
 ======================================================================
+FUNCTIONS
+=========
+Before reading this section, read the above section titled 'DIFFERENCE BETWEEN A METHOD AND A FUNCTION'.
 
 ======================================================================
+ETA EXPANSION
+=============
+Before reading this section, read the above section titled 'DIFFERENCE BETWEEN A METHOD AND A FUNCTION'.
 
 ======================================================================
 
