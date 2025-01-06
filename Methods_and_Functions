@@ -31,12 +31,11 @@ IMPORTANT:  Methods/Functions can't accept an argument that references
             another method.  However, methods/functions can accept an
             argument that references another function.
 
-           Arguments passed to a method/function always become vals or
-           vars within the method/function body.  This is why a function
-           can be passed as an argument to a method/function; because
-           a function is always stored in a val/var when it's created.
-           Since a method can't be stored in a val/var, you can't pass
-           a method to another method/function
+           Only vals/vars can be passed as arguments to methods/functions.  This
+           is why a function can be passed as an argument to a method/function;
+           because a function is always stored in a val/var when it's created.
+           Since a method can't be stored in a val/var, you can't pass a method
+           to another method/function
 
 Interestingly, Scala allows you to pass a method as an argument to another
 method/function!  This appears to break the rule that says it's not allowed.
