@@ -27,22 +27,32 @@ assigned to a val/var.  This makes it possible for multiple vals/vars to
 store an identical function.  A method can never be assigned to a val/var.
 A method can exist only in one place, where it's defined.
 
-IMPORTANT:  Methods/Functions CAN'T accept an argument that references
-            a method.  However, methods/functions CAN accept an argument
+IMPORTANT:  Methods/Functions CAN'T accept arguments that reference a
+            method.  However, methods/functions CAN accept arguments
             that references a function.
 
-           Only vals/vars can be passed as arguments to methods/functions.  This
-           is why a function can be passed as an argument to a method/function;
-           because a function is always stored in a val/var when it's created.
-           Since a method can't be stored in a val/var, you can't pass a method
-           to a method/function.
+            Only a "value" can be passed as an argument to a method/function.
+            So anything stored in a val/var can be passed to a method function.
+            Also, any literal value, or any expression that resovles to a value,
+            can be passed to a method/function, such as the following:
+
+              * if (x > 3) then true else false  (Resolves to either true or false.)
+              * List(1,2,3)                      (A literal List[Int] value.)
+              * Array(9.9F, 8.8F, 7.7F)          (A literal Array[Float] value.)
+              * false                            (A literal Boolean value.)
+              * -345                             (A literal Int value.)
+
+           This is why a function can be passed as an argument to a method/function;
+           because a function is always stored in a val/var when it's created.  Since
+           a method can't be stored in a val/var, you can't pass a method to a
+           method/function.
 
 Interestingly, Scala allows you to pass a method as an argument to a method/function!
 This appears to break the rule that says it's not allowed.  When you pass a method as
-an argument to a method/function, the Scala compiler automatically transforms the method
-into a function, which is transparent to the programmer.  This is why you don't need to
-distinguish methods from functions most of the time; because the compiler often resolves
-those differences for you.
+an argument to a method/function, the Scala compiler automatically transforms that
+argument into a function, which is transparent to the programmer.  This is why you
+don't need to distinguish methods from functions most of the time; because the
+compiler often resolves those differences for you.
 
 Transforming a method into a function is known as performing an "eta expansion" on
 the method.  When you pass a method as an argument to a method/function, the Scala
