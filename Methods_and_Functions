@@ -27,30 +27,29 @@ assigned to a val/var.  This makes it possible for multiple vals/vars to
 store an identical function.  A method can never be assigned to a val/var.
 A method can exist only in one place, where it's defined.
 
-IMPORTANT:  Methods/Functions can't accept an argument that references
-            another method.  However, methods/functions can accept an
-            argument that references another function.
+IMPORTANT:  Methods/Functions CAN'T accept an argument that references
+            a method.  However, methods/functions CAN accept an argument
+            that references a function.
 
            Only vals/vars can be passed as arguments to methods/functions.  This
            is why a function can be passed as an argument to a method/function;
            because a function is always stored in a val/var when it's created.
            Since a method can't be stored in a val/var, you can't pass a method
-           to another method/function
+           to a method/function.
 
-Interestingly, Scala allows you to pass a method as an argument to another
-method/function!  This appears to break the rule that says it's not allowed.
-When you pass a method as an argument to another method/function, the Scala
-compiler automatically transforms the method into a function, which is
-transparent to the programmer.  This is why you don't need to distinguish
-methods from functions most of the time; because the compiler often resolves
+Interestingly, Scala allows you to pass a method as an argument to a method/function!
+This appears to break the rule that says it's not allowed.  When you pass a method as
+an argument to a method/function, the Scala compiler automatically transforms the method
+into a function, which is transparent to the programmer.  This is why you don't need to
+distinguish methods from functions most of the time; because the compiler often resolves
 those differences for you.
 
 Transforming a method into a function is known as performing an "eta expansion" on
-the method.  When you pass a method as an argument to another method/function, the
-Scala compiler performs the "eta expansion" for you.  However, the programmer can
-manually perform an "eta expansion" on a method.  This allows you to transform a
-method into a function, and then store that function in a val/var.  This topic is
-covered in more detail in the sections below.
+the method.  When you pass a method as an argument to a method/function, the Scala
+compiler performs the "eta expansion" for you.  However, the programmer can manually
+perform an "eta expansion" on a method.  This allows you to transform a method into
+a function, and then assign that function to a val/var.  This topic is covered in
+more detail in the sections below.
 
 
 METHODS
