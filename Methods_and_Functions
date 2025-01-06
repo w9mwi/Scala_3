@@ -54,7 +54,8 @@ more detail in the sections below.
 
 METHODS
 =======
-Before reading this section, read the above section titled 'DIFFERENCE BETWEEN A METHOD AND A FUNCTION'.
+Before reading this section, read the above section titled:
+DIFFERENCE BETWEEN A METHOD AND A FUNCTION
 
 A Scala method is always written using the "def" keyword.
 
@@ -161,12 +162,25 @@ as an argument to the processNumber() method.
 ======================================================================
 FUNCTIONS
 =========
-Before reading this section, read the above section titled 'DIFFERENCE BETWEEN A METHOD AND A FUNCTION'.
+Before reading this section, read the above section titled:
+DIFFERENCE BETWEEN A METHOD AND A FUNCTION
 
 ======================================================================
 ETA EXPANSION
 =============
-Before reading this section, read the above section titled 'DIFFERENCE BETWEEN A METHOD AND A FUNCTION'.
+Before reading this section, read the above section titled:
+DIFFERENCE BETWEEN A METHOD AND A FUNCTION
+
+
+def add10(x: Int): Int = x + 10
+
+@main def main() =
+  println("main() called.")
+  val intList = List(1,2,3)
+  val myFunction:(Int => Int) = add10
+  var intListResult = intList.map(myFunction)
+  println(s"intListResult = $intListResult") // PRINTS: intListResult = List(11, 12, 13)
+
 
 ======================================================================
 
