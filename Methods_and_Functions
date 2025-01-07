@@ -60,7 +60,7 @@ is covered in more detail in the sections below.
 
 METHODS
 =======
-Before reading this section, read the above section titled:
+Before reading this section read the above section titled:
 DIFFERENCE BETWEEN A METHOD AND A FUNCTION
 
 A Scala method is always written using the "def" keyword.
@@ -168,13 +168,13 @@ as an argument to the processNumber() method.
 ======================================================================
 FUNCTIONS
 =========
-Before reading this section, read the above section titled:
+Before reading this section read the above section titled:
 DIFFERENCE BETWEEN A METHOD AND A FUNCTION
 
 ======================================================================
 ETA EXPANSION
 =============
-Before reading this section, read the above section titled:
+Before reading this section read the above section titled:
 DIFFERENCE BETWEEN A METHOD AND A FUNCTION
 
 The following program shows how to do the following:
