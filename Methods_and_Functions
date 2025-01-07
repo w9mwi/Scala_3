@@ -19,7 +19,7 @@ The words "method" and "function" are often used interchangeably as if
 a method and a function are identical.  Generally, it doesn't matter
 which terminology is used because it's usually not relevant.  However,
 in Scala there are some important differences between a method and
-a function that should be understood, and are described here.
+a function that should be understood, which are described here.
 
    * A method is always written using the "def" keyword.
    * The "def" keyword is never used to write a function.
@@ -36,7 +36,7 @@ a function that should be understood, and are described here.
          generally very short and simple.  In this example the anonymous function
          "x=>x*2" is passed as an argument to the List.map() method.
 
-         var intList = List(1,2,3)
+         var intList = List(1, 2, 3)
          intList = intList.map(x=>x*2)  // "x=>x*2" is an anonymous function.
          println(s"intList = $intList") // PRINTS: intList = List(2, 4, 6)
 
@@ -49,31 +49,46 @@ a function that should be understood, and are described here.
            // those 2 arguments, and returns a type Double.  The function is
            // assigned to val addFunction.  All vals/vars have a data type.
            // So the data type of addFunction is the data type of the function
-           // it's assigned.  That data type is:  (Double, Double) => Double)
+           // it's assigned.  That data type is:  (Double, Double) => Double
            //
            val addFunction:((Double, Double) => Double) = (x, y) => x + y
            val result:Double = addFunction(123.456D, 654.321D)
            println(s"result = $result") // PRINTS: result = 777.777
 
-Above is stated above, a method can't be passed to another method/function.  But
-a method can be transformed into a function by performing an "eta expansion" on
-the method, so it can then be passed to another method/function.
+As stated above, a method can't be passed to another method/function.  But a method
+can be transformed into a function by performing an "eta expansion" on the method;
+so it can then be passed to another method/function.  The following program shows
+how to perform an "eta expansion" on the addMethod method, so it can be passed to
+the myMethod method.
+------------------------------------------------------------------------------
+// myMethod is a method that accepts a function as its argument.
+def myMethod(addFunction:(Double, Double) => Double):Double=
+  val x:Double = 123.456D
+  val y:Double = 654.321D
+  addFunction(x, y)
 
-Interestingly, Scala allows you to pass a method as an argument to a method/function!
-This appears to break the rule that says it's not allowed.  When you pass a method as
-an argument to a method/function, the Scala compiler automatically transforms that
-argument into a function, which is transparent to the programmer.  This is why you
-don't need to distinguish methods from functions most of the time; because the
-compiler often resolves those differences for you.
+// addMethod is a method. 
+def addMethod(x:Double, y:Double):Double = x + y
 
-Transforming a method into a function is known as performing an "eta expansion" on
-the method.  When you pass a method as an argument to a method/function, the Scala
-compiler performs the "eta expansion" automatically.  However, the programmer can
-perform an "eta expansion" on a method manually.  This allows you to transform
-a method into a function, and then assign that function to a val/var.  This topic
-is covered in more detail in the sections below.
+// main()
+@main def main() =
+  // The underscore char (_) on the following line performs the
+  // "eta expansion" on the myMethod method; transforming it into
+  // a function so it can be passed to the myMethod method.
+  // This code works in Scala 2 and Scala 3.
+  var result:Double = myMethod(addMethod _)
+  println(s"result = $result") // PRINTS:  result = 777.777
+
+  // When you pass a method to another method/function in Scala 3,
+  // you don't need to include the underscore char (_) as shown
+  // above because Scala 3 performs the "eta expansion" automatically.
+  // The following line won't compile in Scala 2.
+  result = myMethod(addMethod)  // Works only in Scala 3.
+  println(s"result = $result") // PRINTS:  result = 777.777
+------------------------------------------------------------------------------
 
 
+======================================================================
 METHODS
 =======
 Before reading this section read the above section titled:
@@ -180,6 +195,7 @@ as an argument to the processNumber() method.
   val result:Int = processNumber(123, addTen)
   println(s"processNumber(123, addTen) = $result") // PRINTS: processNumber(123, addTen) = 133
 ------------------------------------------------------------------------------
+
 
 ======================================================================
 FUNCTIONS
