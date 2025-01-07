@@ -42,7 +42,15 @@ a function that should be understood, and are described here.
 
       2) You can write a function that is assigned to a val/var.  You can then
          invoke the function directly via the val/var name.  You can also pass
-         that val/var as an argument to another method/function.
+         that val/var as an argument to another method/function.  Here's an
+         example of how to write a function.
+
+           // This function accepts 2 arguments (x and y) of type Double, adds
+           // those 2 arguments, and returns a type Double.  The function is
+           // assigned to val addFunction.  All vals/vars have a data type.
+           // The data type of addFunction is the data type of the function
+           // it's assigned.  That data type is:  (Double, Double) => Double)
+           val addFunction:((Double, Double) => Double) = (x, y) => x + y
 
 
 
