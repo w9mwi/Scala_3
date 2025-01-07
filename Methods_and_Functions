@@ -47,8 +47,8 @@ a function that should be understood, which are described here.
                   function's code that appears on the right-side of the equals
                   sign (=) qualifies as an anonymous function.  So you're
                   assigning an anonymous function to a val/var.  But since that
-                  code can be referenced via the val/var name, it's no longer
-                  anonymous.
+                  code can be referenced via the val/var name, the function is
+                  no longer anonymous.
 
            // This function accepts 2 arguments (x and y) of type Double, adds
            // those 2 arguments, and returns a type Double.  The function is
