@@ -45,10 +45,10 @@ a function that should be understood, which are described here.
          You can also pass that val/var as an argument to another method/function.
          NOTICE:  When you write a function that gets assigned to a val/var, the
                   function's code that appears on the right-side of the equals
-                  sign (=) qualifies as an anonymous function.  So you're
-                  assigning an anonymous function to a val/var.  But since that
-                  code can be referenced via the val/var name, the function is
-                  no longer anonymous.
+                  sign (=) qualifies as an anonymous function, if it stood alone.
+                  So you're effectivley assigning an anonymous function to a val/var.
+                  But since that code can be referenced via the val/var name,
+                  the function is no longer anonymous.
 
            // This function accepts 2 arguments (x and y) of type Double, adds
            // those 2 arguments, and returns a type Double.  The function is
