@@ -27,31 +27,21 @@ assigned to a val/var.  This makes it possible for multiple vals/vars to
 store an identical function.  A method can never be assigned to a val/var.
 A method can exist only in one place, where it's defined.
 
-IMPORTANT:  Methods/Functions CAN'T accept arguments that reference a
-            method.  However, methods/functions CAN accept arguments
-            that references a function.
+IMPORTANT:  Methods/Functions can accept any argument that resolves to a
+            valid data type.  This includes the following:
 
-            Only a "value" can be passed as an argument to a method/function.
-            A "value" constitutes the following 3 possibilites:
+               * Anything that is (or could be) stored in a val/var, including a function.
+               * Literal values (including tuples), such as:
+                 (-1.23, false), true,  'Z',  "Joe",  -987.654F,  Array(-123.4, 567.8)
+               * An expression that resovles to a value, such as:
+                 if (myInt > 3) then true else false  (Resolves to either true or false.)
 
-               * Anything stored in a val/var, including a function.
-               * A literal value.
-               * An expression that resovles to a value.
+            All functions have some data type.  (Function data types are explained in
+            the FUNCTIONS section below.)  Therefore, methods/functions can accept
+            arguments that reference a function.
 
-            The following program demonstrates this.  Read in-line comments for details.
-
-
-
-              * if (x > 3) then true else false  (Resolves to either true or false.)
-              * List(1,2,3)                      (A literal List[Int] value.)
-              * Array(9.9F, 8.8F, 7.7F)          (A literal Array[Float] value.)
-              * false                            (A literal Boolean value.)
-              * -345                             (A literal Int value.)
-
-           This is why a function can be passed as an argument to a method/function;
-           because a function is always stored in a val/var when it's created.  Since
-           a method can't be stored in a val/var, you can't pass a method to a
-           method/function.
+            A method doesn't have a data type!  Therefore, a method can never be passed
+            as an argument a method/function.
 
 Interestingly, Scala allows you to pass a method as an argument to a method/function!
 This appears to break the rule that says it's not allowed.  When you pass a method as
@@ -62,10 +52,10 @@ compiler often resolves those differences for you.
 
 Transforming a method into a function is known as performing an "eta expansion" on
 the method.  When you pass a method as an argument to a method/function, the Scala
-compiler performs the "eta expansion" for you.  However, the programmer can manually
-perform an "eta expansion" on a method.  This allows you to transform a method into
-a function, and then assign that function to a val/var.  This topic is covered in
-more detail in the sections below.
+compiler performs the "eta expansion" automatically.  However, the programmer can
+manually perform an "eta expansion" on a method.  This allows you to transform
+a method into a function, and then assign that function to a val/var.  This topic
+is covered in more detail in the sections below.
 
 
 METHODS
@@ -187,6 +177,71 @@ ETA EXPANSION
 Before reading this section, read the above section titled:
 DIFFERENCE BETWEEN A METHOD AND A FUNCTION
 
+The following program shows how to do the following:
+
+1) Write a function, assign it to a val, and pass it to a method.
+
+2) Write a method and pass it to another method.  When the method gets
+   passed to the other method, it gets transformed into a function via
+   an "eta expansion".
+
+Read the in-line comments for details
+
+------------------------------------------------------------------------------
+/**************************************
+* myMethod()
+**************************************/
+def myMethod(intArg:Int,
+             functionArg:((Double, Double) => Double),
+             methodArg:((Double, Double) => Double),
+             booleanArg:Boolean,
+             floatArrayArg:Array[Float]):String =
+  s"intArg = $intArg\n" +
+  // To invoke functionArg and methodArg, we call their apply() method.
+  s"functionArg.apply(123.456, 654.321) = ${functionArg.apply(123.456D, 654.321D)}\n" +
+  s"methodArg.apply(123.456D, 654.321D) = ${methodArg.apply(123.456D, 654.321D)}\n" +
+  s"floatArrayArg = ${floatArrayArg.mkString(" ")}\n" +
+  s"booleanArg = $booleanArg"
+
+/**************************************
+* addMethod()
+**************************************/
+def addMethod(x:Double, y:Double):Double = x + y
+
+/**************************************
+* main()
+ **************************************/
+@main def main() =
+  val myInt: Int = 3
+
+  // **************************************************************************
+  // Here we demonstrate how to write a FUNCTION (NOT A METHOD), named
+  // addFunction, assign it to a val, then pass it as an argument to
+  // the method named myMethod(), which then invokes the function.
+  //
+  // The addFunction written here accepts 2 arguments (x and y) of type Double,
+  // adds those 2 arguments, and returns a type Double.
+  val addFunction:((Double, Double) => Double) =
+    (x, y) => x + y
+  // **************************************************************************
+
+  val result:String = myMethod(myInt,  // Pass a val to myMethod.
+                               // addFunction is already a function, so it gets passed to myMethod() unaltered.
+                               addFunction, // Pass a function to myMethod.
+                               // addMethod is a method, so it must be transformed into a function via an
+                               // "eta expansion" before it's passed to myMethod.  Adding the underscore
+                               // char (_) here performs the "eta expansion."  The underscore char (_)
+                               // works in Scala 2 and Scala 3, but is no longer required in Scala 3.
+                               addMethod _, // Pass an eta-expanded method to myMethod.
+                               if (myInt > 3) then true else false, // This line resolves to a single Boolean value.
+                               Array(9.87F, 6.54F, -3.21F))         // Pass a literal value to myMethod.
+  
+   println(s"$result") // PRINTS: intArg = 3
+                       //         functionAdd.apply(123.456, 654.321) = 777.777
+                       //         methodArg.apply(123.456D, 654.321D) = 777.777
+                       //         floatArrayArg = 9.87 6.54 -3.21
+                       //         booleanArg = false
+------------------------------------------------------------------------------
 
 def add10(x: Int): Int = x + 10
 
