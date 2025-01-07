@@ -19,47 +19,32 @@ The words "method" and "function" are often used interchangeably as if
 a method and a function are identical.  Generally, it doesn't matter
 which terminology is used because it's usually not relevant.  However,
 in Scala there are some important differences between a method and
-a function that should be understood.
+a function that should be understood, and are described here.
 
-A method is always written using the "def" keyword.  The "def" keyword is
-never used to write a function.  In Scala there are two ways to write
-a function:
+   * A method is always written using the "def" keyword.
+   * The "def" keyword is never used to write a function.
+   * A function always has a data type, so functions can be assigned to a val/var.
+   * A method never has a data type, so methods can't be assigned to a val/var.
+   * A function can be passed to another method/function.
+   * A method can't be passed to another method/function.  But a method can be
+     transformed into a function by performing an "eta expansion" on it, so it
+     can then be passed to another method/function.
+   * In Scala there are two ways to write a function:
 
-1) You can write an "anonymous function" (also known as a "function literal").
-   Anonymous functions get passed as arguments to methods/functions.  They're
-   generally very short and simple functions.  In this example, the anonymous
-   function "x=>x*2" is passed as an argument to the List.map() method.
+      1) You can write an "anonymous function" (also known as a "function literal").
+         Anonymous functions get passed as arguments to methods/functions.  They're
+         generally very short and simple.  In this example the anonymous function
+         "x=>x*2" is passed as an argument to the List.map() method.
 
-      var intList = List(1,2,3)
-      intList = intList.map(x=>x*2)
-      println(s"intList = $intList") // PRINTS: intList = List(2, 4, 6)
+         var intList = List(1,2,3)
+         intList = intList.map(x=>x*2)  // "x=>x*2" is an anonymous function.
+         println(s"intList = $intList") // PRINTS: intList = List(2, 4, 6)
 
-2) You can write a function that is assigned to a val/var.
+      2) You can write a function that is assigned to a val/var.  You can then
+         invoke the function directly via the val/var name.  You can also pass
+         that val/var as an argument to another method/function.
 
 
-
-
-Every function has a data type, as does every val/var.  Therefore, you can
-assign a function to a val/var.  A method doesn't have a data type, so a
-method can never be assigned to a val/var.
-
-A method can exist only in one place, where it's defined.
-
-IMPORTANT:  Methods/Functions can accept any argument that resolves to a
-            valid data type.  This includes the following:
-
-               * Anything that is (or could be) stored in a val/var, including a function.
-               * Literal values (including tuples), such as:
-                 (-1.23, false), true,  'Z',  "Joe",  -987.654F,  Array(-123.4, 567.8)
-               * An expression that resovles to a value, such as:
-                 if (myInt > 3) then true else false  (Resolves to either true or false.)
-
-            All functions have some data type.  (Function data types are explained in
-            the FUNCTIONS section below.)  Therefore, methods/functions can accept
-            arguments that reference a function.
-
-            A method doesn't have a data type!  Therefore, a method can never be passed
-            as an argument a method/function.
 
 Interestingly, Scala allows you to pass a method as an argument to a method/function!
 This appears to break the rule that says it's not allowed.  When you pass a method as
