@@ -32,9 +32,10 @@ a function that should be understood, which are described here.
    * In Scala there are two ways to write a function:
 
       1) You can write an "anonymous function" (also known as a "function literal").
-         Anonymous functions get passed as arguments to methods/functions.  They're
-         generally very short and simple.  In this example the anonymous function
-         "x=>x*2" is passed as an argument to the List.map() method.
+         Obviously, anonymous functions have no name.  Anonymous functions get passed
+         as arguments to methods/functions.  They're generally very short and simple.
+         In this example the anonymous function "x=>x*2" is passed as an argument
+         to the List.map() method.
 
          var intList:List[Int] = List(1, 2, 3)
          intList = intList.map(x=>x*2)  // "x=>x*2" is an anonymous function.
@@ -43,12 +44,13 @@ a function that should be understood, which are described here.
       2) You can write a function that is assigned to a val/var.  You can then
          invoke the function directly via the val/var name (as shown below).
          You can also pass that val/var as an argument to another method/function.
+
          NOTICE:  When you write a function that gets assigned to a val/var, the
-                  function's code that appears on the right-side of the equals
-                  sign (=) qualifies as an anonymous function, if it stood alone.
-                  So you're effectivley assigning an anonymous function to a val/var.
-                  But since that code can be referenced via the val/var name,
-                  the function is no longer anonymous.
+                  function's executable code (which appears on the right-side
+                  of the equals sign) would be an anonymous function if it stood
+                  alone.  So you're effectively assigning an anonymous function
+                  to a val/var. But since that function can be referenced via the
+                  val/var name, it's no longer anonymous.
 
            // This function accepts 2 arguments (x and y) of type Double, adds
            // those 2 arguments, and returns a type Double.  The function is
