@@ -179,68 +179,60 @@ DIFFERENCE BETWEEN A METHOD AND A FUNCTION
 
 The following program shows how to do the following:
 
-1) Write a function, assign it to a val, and pass it to a method.
+1) Write a function, assign it to a val named addFunction, then pass
+   it to the myMethod method, which invokes the function.  When a
+   function is passed to another method/function an eta expansion
+   is NOT performed on it because it's already a function.
 
-2) Write a method and pass it to another method.  When the method gets
-   passed to the other method, it gets transformed into a function via
-   an "eta expansion".
+2) Write a method named addMethod and pass it to the myMethod method.
+   When a method is passed to another method/function, an eta expansion
+   MUST be performed on it to transform the method into a function.
 
 Read the in-line comments for details
 
 ------------------------------------------------------------------------------
 /**************************************
-* myMethod()
-**************************************/
-def myMethod(intArg:Int,
-             functionArg:((Double, Double) => Double),
-             methodArg:((Double, Double) => Double),
-             booleanArg:Boolean,
-             floatArrayArg:Array[Float]):String =
-  s"intArg = $intArg\n" +
-  // To invoke functionArg and methodArg, we call their apply() method.
-  s"functionArg.apply(123.456, 654.321) = ${functionArg.apply(123.456D, 654.321D)}\n" +
-  s"methodArg.apply(123.456D, 654.321D) = ${methodArg.apply(123.456D, 654.321D)}\n" +
-  s"floatArrayArg = ${floatArrayArg.mkString(" ")}\n" +
-  s"booleanArg = $booleanArg"
+ * myMethod()
+ **************************************/
+def myMethod(functionArg:((Double, Double) => Double),
+             methodArg:((Double, Double) => Double)):String =
+  val x:Double = 123.456D
+  val y:Double = 654.321D
+  // Return the following String...
+  s"functionArg($x, $y) = ${functionArg(x, y)}\n" +
+  s"methodArg($x, $y)   = ${methodArg(x, y)}"
 
 /**************************************
-* addMethod()
-**************************************/
+ * addMethod()
+ **************************************/
 def addMethod(x:Double, y:Double):Double = x + y
 
 /**************************************
-* main()
+ * main()
  **************************************/
 @main def main() =
-  val myInt: Int = 3
-
   // **************************************************************************
-  // Here we demonstrate how to write a FUNCTION (NOT A METHOD), named
-  // addFunction, assign it to a val, then pass it as an argument to
-  // the method named myMethod(), which then invokes the function.
-  //
-  // The addFunction written here accepts 2 arguments (x and y) of type Double,
-  // adds those 2 arguments, and returns a type Double.
+  // Here we demonstrate how to write a FUNCTION (NOT A METHOD) and assign it
+  // to a val named addFunction.  This function accepts 2 arguments (x and y)
+  // of type Double, adds those 2 arguments, and returns a type Double.
   val addFunction:((Double, Double) => Double) =
     (x, y) => x + y
   // **************************************************************************
 
-  val result:String = myMethod(myInt,  // Pass a val to myMethod.
-                               // addFunction is already a function, so it gets passed to myMethod() unaltered.
-                               addFunction, // Pass a function to myMethod.
-                               // addMethod is a method, so it must be transformed into a function via an
-                               // "eta expansion" before it's passed to myMethod.  Adding the underscore
-                               // char (_) here performs the "eta expansion."  The underscore char (_)
-                               // works in Scala 2 and Scala 3, but is no longer required in Scala 3.
-                               addMethod _, // Pass an eta-expanded method to myMethod.
-                               if (myInt > 3) then true else false, // This line resolves to a single Boolean value.
-                               Array(9.87F, 6.54F, -3.21F))         // Pass a literal value to myMethod.
-  
-   println(s"$result") // PRINTS: intArg = 3
-                       //         functionAdd.apply(123.456, 654.321) = 777.777
-                       //         methodArg.apply(123.456D, 654.321D) = 777.777
-                       //         floatArrayArg = 9.87 6.54 -3.21
-                       //         booleanArg = false
+  // Call the myMethod method defined above.  Pass to it the addFunction
+  // function and the addMethod method.  Then print the String that the
+  // myMethod method returns.
+  val result:String =
+    myMethod(// addFunction is a function, so it gets passed to myMethod unaltered.
+             addFunction,
+             // addMethod is a method, so it must be transformed into a function via an
+             // "eta expansion" before it's passed to myMethod.  Adding the underscore
+             // char (_) here performs the "eta expansion."  The underscore char (_)
+             // works in Scala 2 and Scala 3, but is no longer required in Scala 3.
+             addMethod _)
+
+  println(s"$result") // PRINTS: functionArg(123.456, 654.321) = 777.777
+                      //         methodArg(123.456, 654.321)   = 777.777
 ------------------------------------------------------------------------------
 
 def add10(x: Int): Int = x + 10
