@@ -53,7 +53,7 @@ compiler often resolves those differences for you.
 Transforming a method into a function is known as performing an "eta expansion" on
 the method.  When you pass a method as an argument to a method/function, the Scala
 compiler performs the "eta expansion" automatically.  However, the programmer can
-manually perform an "eta expansion" on a method.  This allows you to transform
+perform an "eta expansion" on a method manually.  This allows you to transform
 a method into a function, and then assign that function to a val/var.  This topic
 is covered in more detail in the sections below.
 
