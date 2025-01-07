@@ -66,9 +66,12 @@ def myMethod(addFunction:(Double, Double) => Double):Double=
   val x:Double = 123.456D
   val y:Double = 654.321D
   addFunction(x, y)
+end myMethod // This line is optional in Scala 3
 
 // addMethod is a method. 
-def addMethod(x:Double, y:Double):Double = x + y
+def addMethod(x:Double, y:Double):Double =
+  x + y
+end addMethod // This line is optional in Scala 3
 
 // main()
 @main def main() =
@@ -85,6 +88,7 @@ def addMethod(x:Double, y:Double):Double = x + y
   // The following line won't compile in Scala 2.
   result = myMethod(addMethod)  // Works only in Scala 3.
   println(s"result = $result") // PRINTS:  result = 777.777
+end main  // This line is optional in Scala 3
 ------------------------------------------------------------------------------
 
 
@@ -111,10 +115,10 @@ In Scala 2 a method must be defined inside another construct, such as...
 * case object
 * trait
 
-In Scala 3 a method can also be defined outside any of those constructs,
-as a stand-alone method.  These methods are known as "top-level"
-definitions because they're not nested within another definition.
-In other words, methods in Scala 3 can be defined almost anywhere.
+In Scala 3 a method can also be defined outside any of those constructs, as
+a stand-alone method.  These methods are known as "top-level" definitions
+because they're not nested within another definition.  In other words,
+methods in Scala 3 can be defined almost anywhere.
 
 In Scala 3 the last line of a method definition can include the Scala 3
 soft keyword "end" followed by the method name.  Adding this text to
