@@ -32,9 +32,15 @@ IMPORTANT:  Methods/Functions CAN'T accept arguments that reference a
             that references a function.
 
             Only a "value" can be passed as an argument to a method/function.
-            So anything stored in a val/var can be passed to a method function.
-            Also, any literal value, or any expression that resovles to a value,
-            can be passed to a method/function, such as the following:
+            A "value" constitutes the following 3 possibilites:
+
+               * Anything stored in a val/var, including a function.
+               * A literal value.
+               * An expression that resovles to a value.
+
+            The following program demonstrates this.  Read in-line comments for details.
+
+
 
               * if (x > 3) then true else false  (Resolves to either true or false.)
               * List(1,2,3)                      (A literal List[Int] value.)
