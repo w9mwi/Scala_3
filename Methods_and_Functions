@@ -55,7 +55,9 @@ a function that should be understood, and are described here.
            val result:Double = addFunction(123.456D, 654.321D)
            println(s"result = $result") // PRINTS: result = 777.777
 
-
+Above is stated above, a method can't be passed to another method/function.  But
+a method can be transformed into a function by performing an "eta expansion" on
+the method, so it can then be passed to another method/function.
 
 Interestingly, Scala allows you to pass a method as an argument to a method/function!
 This appears to break the rule that says it's not allowed.  When you pass a method as
