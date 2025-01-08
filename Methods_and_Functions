@@ -190,6 +190,9 @@ same.  Don't assume code you didn't write follows this convention.
 ======================================================================
 FUNCTIONS
 =========
+Before reading this section read the above section titled:
+METHODS VS. FUNCTIONS
+
 A val/var has a data type, and a function can be assigned to a val/var.
 Therefore, all functions have a data type.  A function data type is
 specified using the "rocket symbol" (=>).
