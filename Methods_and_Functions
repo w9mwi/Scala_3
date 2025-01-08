@@ -68,6 +68,16 @@ so it can then be passed to another method/function.  The following program show
 how to perform an "eta expansion" on the addMethod method, so it can be passed to
 the myMethod method.
 
+SUMMARY:  In most cases you'll write methods to obtain the functionality you need.
+          The only time you really need to write a function when you pass an
+          anonymous function to a method/function as an argument, or when you
+          want to assign a function to a val/var.
+
+          But remember, Scala 3 automatically transforms a method into a function
+          when you pass that method to another method/function, or when you assign
+          a method to a val/var.  In Scala 2 and Scala 3 you can perform that
+          transformation manually by just adding an underscore char (_) to your code.
+
 ------------------------------------------------------------------------------
 // myMethod is a method that accepts a function as its argument.
 def myMethod(addFunction:(Double, Double) => Double):Double=
