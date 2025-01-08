@@ -194,7 +194,37 @@ A val/var has a data type, and a function can be assigned to a val/var.
 Therefore, all functions have a data type.  A function data type is
 specified using the "rocket symbol" (=>).
 
+A method, or a function, is a "higher-order function" if one or both
+of the following is true.
 
+   1) It accepts at least one argument that's a function.
+   2) It returns a function.
+
+------------------------------------------------------------------------------
+@main def main() =
+  // FUNCTIONS THAT ACCEPT NO ARGUMENTS.
+  val getCurrentTime: () => Long    = () => System.currentTimeMillis()
+  val getRandomNumber: () => Double = () => scala.util.Random.nextDouble()
+  
+  // FUNCTIONS THAT ACCEPT A SINGLE ARGUMENTS.
+  val double: Int => Int       = x    => x * 2
+  val isEven: Int => Boolean   = x    => x % 2 == 0
+  val greet: String => String  = name => s"Hello, $name!"
+  
+  // FUNCTIONS THAT ACCEPT TWO ARGUMENTS.
+  val add: (Int, Int) => Int                  = (a, b)   => a + b
+  val multiply: (Double, Double) => Double    = (x, y)   => x * y
+  val concatenate: (String, String) => String = (s1, s2) => s1 + s2
+  
+  // HIGHER-ORDER FUNCTIONS
+  // NOTE:  A higher-order function is a method, or a function, that...
+  //        * accepts at least one argument that's a function
+  //           ...AND/OR...
+  //        * returns a function
+  val applyTwice: (Int => Int, Int)     => Int        = (f, x) => f(f(x))
+  val compose: (Int => Int, Int => Int) => Int => Int = (f, g) => x => f(g(x))
+end main
+------------------------------------------------------------------------------
 
 ======================================================================
 ETA EXPANSION
