@@ -190,75 +190,21 @@ METHODS VS. FUNCTIONS
 ======================================================================
 ETA EXPANSION
 =============
-Before reading this section read the above section titled:
-METHODS VS. FUNCTIONS
 
-The following program shows how to do the following:
+An "eta expansion" transforms a Scala method into a Scala function.
+In Scala 3 the compiler can perform this automatically, without any
+programmer intervention.  However, an "eta expansion" can also be
+perfomed manually by the programmer in Scala 3.
 
-1) Write a function, assign it to a val named addFunction, then pass
-   it to the myMethod method, which invokes the function.  When a
-   function is passed to another method/function an eta expansion
-   is NOT performed on it because it's already a function.
+To perform an "eta expansion" in Scala 2 requires the programmer
+to do it manually.
 
-2) Write a method named addMethod and pass it to the myMethod method.
-   When a method is passed to another method/function, an eta expansion
-   MUST be performed on it to transform the method into a function.
+Read the "METHODS VS. FUNCTIONS" section above which explains this
+topic.  It also contains a Scala program demonstrating how to perform
+an "eta expansion" on a method automatically (in Scala 3) and manually.
 
-Read the in-line comments for details
 
-------------------------------------------------------------------------------
-/**************************************
- * myMethod()
- **************************************/
-def myMethod(functionArg:((Double, Double) => Double),
-             methodArg:((Double, Double) => Double)):String =
-  val x:Double = 123.456D
-  val y:Double = 654.321D
-  // Return the following String...
-  s"functionArg($x, $y) = ${functionArg(x, y)}\n" +
-  s"methodArg($x, $y)   = ${methodArg(x, y)}"
 
-/**************************************
- * addMethod()
- **************************************/
-def addMethod(x:Double, y:Double):Double = x + y
-
-/**************************************
- * main()
- **************************************/
-@main def main() =
-  // **************************************************************************
-  // Here we demonstrate how to write a FUNCTION (NOT A METHOD) and assign it
-  // to a val named addFunction.  This function accepts 2 arguments (x and y)
-  // of type Double, adds those 2 arguments, and returns a type Double.
-  val addFunction:((Double, Double) => Double) =
-    (x, y) => x + y
-  // **************************************************************************
-
-  // Call the myMethod method defined above.  Pass to it the addFunction
-  // function and the addMethod method.  Then print the String that the
-  // myMethod method returns.
-  val result:String =
-    myMethod(// addFunction is a function, so it gets passed to myMethod unaltered.
-             addFunction,
-             // addMethod is a method, so it must be transformed into a function via an
-             // "eta expansion" before it's passed to myMethod.  Adding the underscore
-             // char (_) here performs the "eta expansion."  The underscore char (_)
-             // works in Scala 2 and Scala 3, but is no longer required in Scala 3.
-             addMethod _)
-
-  println(s"$result") // PRINTS: functionArg(123.456, 654.321) = 777.777
-                      //         methodArg(123.456, 654.321)   = 777.777
-------------------------------------------------------------------------------
-
-def add10(x: Int): Int = x + 10
-
-@main def main() =
-  println("main() called.")
-  val intList = List(1,2,3)
-  val myFunction:(Int => Int) = add10
-  var intListResult = intList.map(myFunction)
-  println(s"intListResult = $intListResult") // PRINTS: intListResult = List(11, 12, 13)
 
 
 ======================================================================
