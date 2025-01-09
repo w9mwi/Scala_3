@@ -193,6 +193,18 @@ FUNCTIONS
 Before reading this section read the above section titled:
 METHODS VS. FUNCTIONS
 
+When Scala compiles code that becomes a function (code that you don't see),
+the function becomes a Scala object named Function, which also extends
+a trait corresponding to the number of arguments the function accepts.
+These are the 23 trait names that the object Function can extend:
+
+Function0  (If the function accepts 0 arguments.)
+Function1  (If the function accepts 1 arguments.)
+Function2  (If the function accepts 2 arguments.)
+...
+Function22  (If the function accepts 22 arguments, which is the maximum limit.)
+
+
 Unlike a method, the "def" keyword is never used when writing a function.
 A val/var has a data type, and a function can be assigned to a val/var.
 Therefore, all functions have a data type.  A function data type is
