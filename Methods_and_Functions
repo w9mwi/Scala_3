@@ -206,8 +206,13 @@ Function22  (When the function accepts 22 arguments, which is the maximum limit.
 
 Unlike a method, the "def" keyword is never used when writing a function.
 A val/var has a data type, and a function can be assigned to a val/var.
-Therefore, all functions have a data type.  A function data type is
-always specified using the "rocket symbol" (=>).
+Therefore, all functions have a data type.  A function data type is always
+specified using the "rocket symbol" (=>).  Here are some examples of
+function data types.
+
+   * ()=>Char                    (A function that accepts no arguments, and returns a Char.)
+   * Int=>String                 (A function that accepts one Int argument, and returns a String.)
+   * (Int,Char,Float)=>Boolean   (A function that accepts arguments Int, Char, Float, and returns a Boolean.)
 
 A method, or a function, is a "higher-order function" if one or both
 of the following is true.
