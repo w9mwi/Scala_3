@@ -110,7 +110,7 @@ end addMethod // This line is optional in Scala 3
   // A method isn't a value, so it CAN'T be assigned to a val/var.
   // When you assign a method to a val/var, as in the following
   // line of code, the Scala compiler automatically performs an
-  // "eta expansion" on addMethod.
+  // "eta expansion" on the method, transforming it into a function.
   var function:(Double, Double) => Double = addMethod
   // The following line is functionally identical to the line above.
   // The underscore char (_) manually performs the "eta expansion",
