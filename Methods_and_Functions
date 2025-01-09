@@ -91,39 +91,33 @@ end addMethod // This line is optional in Scala 3
 @main def main() =
   // Here, we just confirm the addMethod method works.
   var result:Double = addMethod(123.456D, 654.321D)
-  println(s"result = $result") // PRINTS:  result = 777.777
+  println(s"1) result = $result") // PRINTS: 1) result = 777.777
 
   // The following line of code passes the addMethod to myMethod as
   // an argument.  But as we stated above, you can't pass a method
   // to another method/function, unless it's first transformed into
-  // a function.  The following line of code won't work in Scala 2,
-  // but it works in Scala 3.  As Scala 3 automatically transforms
-  // arguments that reference methods into functions.
-  result = myMethod(addMethod) // This works only in Scala 3.
-  println(s"result = $result") // PRINTS:  result = 777.777
-
-  // The following line of code manually transforms the addMethod
-  // argument into a function by performing an "eta expansion" on
-  // it via the underscore operator (_).  So it works in both
-  // Scala 2 and Scala 3.
-  result = myMethod(addMethod _) // Works in Scala 2 and Scala 3.
-  println(s"result = $result") // PRINTS:  result = 777.777
+  // a function via an "eta expansion".  However, the Scala compiler
+  // automatically performs an "eta expansion" on arguments that
+  // reference methods, so the following line of code works.
+  result = myMethod(addMethod)
+  // The following line is functionally identical to the line above.
+  // The underscore char (_) manually performs the "eta expansion",
+  // but it's optional.
+  result = myMethod(addMethod _)
+  println(s"2) result = $result") // PRINTS: 2) result = 777.777
 
   // A function is a value, so it CAN be assigned to a val/var.
   // A method isn't a value, so it CAN'T be assigned to a val/var.
   // When you assign a method to a val/var, as in the following
-  // line of code, both Scala 2 and Scala 3 will automatically
-  // transform the method into a function.
-  var function:(Double, Double) => Double = addMethod // Works in Scala 2 and Scala 3.
+  // line of code, the Scala compiler automatically performs an
+  // "eta expansion" on addMethod.
+  var function:(Double, Double) => Double = addMethod
+  // The following line is functionally identical to the line above.
+  // The underscore char (_) manually performs the "eta expansion",
+  // but it's optional.
+  function = addMethod _
   result = myMethod(function)
-  println(s"result = $result") // PRINTS:  result = 777.777
-
-  // The following line of code manually performs an "eta expansion" on
-  // addMethod via the underscore char (_).  The underscore char (_)
-  // isn't needed here, it's optional.
-  function = addMethod _ // Works in Scala 2 and Scala 3.
-  result = myMethod(function)
-  println(s"result = $result") // PRINTS:  result = 777.777
+  println(s"3) result = $result") // PRINTS: 3) result = 777.777
 end main  // This line is optional in Scala 3
 ------------------------------------------------------------------------------
 
