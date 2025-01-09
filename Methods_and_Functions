@@ -23,8 +23,8 @@ a function that should be understood, which are described here.
 
    * A method is always written using the "def" keyword.
    * The "def" keyword is never used to write a function.
-   * A function always has a data type, so functions can be assigned to a val/var.
-   * A method never has a data type, so methods can't be assigned to a val/var.
+   * A function is a value, so it has a data type, and can be assigned to a val/var.
+   * A method isn't a value, so it has no data type, and can't be assigned to a val/var.
    * A function can be passed to another method/function.
    * A method can't be passed to another method/function.  But a method can be
      transformed into a function by performing an "eta expansion" on it, so it
@@ -32,10 +32,10 @@ a function that should be understood, which are described here.
    * In Scala there are two ways to write a function:
 
       1) You can write an "anonymous function" (also known as a "function literal").
-         Obviously, anonymous functions have no name.  Anonymous functions get passed
-         as arguments to methods/functions.  They're generally very short and simple.
-         In this example the anonymous function "x=>x*2" is passed as an argument
-         to the List.map() method.
+         Obviously, anonymous functions have no name.  Anonymous functions are often
+         passed as arguments to methods/functions.  They're generally very short and
+         simple.  In this example the anonymous function "x=>x*2" is passed as an
+         argument to the List.map() method.
 
          var intList:List[Int] = List(1, 2, 3)
          intList = intList.map(x=>x*2)  // "x=>x*2" is an anonymous function.
@@ -69,10 +69,10 @@ how to perform an "eta expansion" on the addMethod method, so it can be passed t
 the myMethod method.
 
 SUMMARY:  In most cases you'll write methods to obtain the functionality you need.
-          Because even when you need a function (to assign to a val/var, or to pass
-          it as an argument to a method/function), you can easily transform a method
-          into a function via an "eta expansion", as is demonstrated in the following
-          program.
+          And if you need a function (to assign to a val/var, or to pass it as an
+          argument to a method/function), you can easily transform a method into
+          a function via an "eta expansion", as is demonstrated in the following
+          program.  So writing methods is far more common than writing functions.
 
 ------------------------------------------------------------------------------
 // myMethod is a method that accepts a function as its argument.
