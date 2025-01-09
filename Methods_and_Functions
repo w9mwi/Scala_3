@@ -193,9 +193,10 @@ FUNCTIONS
 Before reading this section read the above section titled:
 METHODS VS. FUNCTIONS
 
+Unlike a method, the "def" keyword is never used when writing a function.
 A val/var has a data type, and a function can be assigned to a val/var.
 Therefore, all functions have a data type.  A function data type is
-specified using the "rocket symbol" (=>).
+always specified using the "rocket symbol" (=>).
 
 A method, or a function, is a "higher-order function" if one or both
 of the following is true.
