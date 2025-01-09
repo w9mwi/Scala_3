@@ -226,11 +226,11 @@ function data types.
    * Int=>String                 (A function that accepts one Int argument, and returns a String.)
    * (Int,Char,Float)=>Boolean   (A function that accepts arguments Int, Char, Float, and returns a Boolean.)
 
-A method, or a function, is a "higher-order function" if one or both
-of the following is true.
+A method, or a function, is a "higher-order function"
+if one or both of the following is true.
 
-   1) It accepts at least one argument that's a function.
-   2) It returns a function.
+   * It accepts at least one argument that's a function.
+   * It returns a function.
 
 ------------------------------------------------------------------------------
 @main def main() =
