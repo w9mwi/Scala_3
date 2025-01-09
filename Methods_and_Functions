@@ -41,9 +41,9 @@ a function that should be understood, which are described here.
          intList = intList.map(x=>x*2)  // "x=>x*2" is an anonymous function.
          println(s"intList = $intList") // PRINTS: intList = List(2, 4, 6)
 
-      2) You can write a function that is assigned to a val/var.  You can then
-         invoke the function directly via the val/var name (as shown below).
-         You can also pass that val/var as an argument to another method/function.
+      2) You can write a function and assign it to a val/var.  You can then
+         invoke the function directly via the val/var name, as in the following
+         example.
 
          NOTICE:  When you write a function that gets assigned to a val/var, the
                   function's executable code (which appears on the right-side
@@ -52,11 +52,11 @@ a function that should be understood, which are described here.
                   to a val/var. But since that function can be referenced via the
                   val/var name, it's no longer anonymous.
 
-           // This function accepts 2 arguments (x and y) of type Double, adds
-           // those 2 arguments, and returns a type Double.  The function is
-           // assigned to val addFunction.  All vals/vars have a data type.
-           // So the data type of addFunction is the data type of the function
-           // it's assigned.  That data type is:  (Double, Double) => Double
+           // The addFunction below is assigned to a val.  It accepts 2 arguments
+           // (x and y) of type Double, sums those 2 arguments, and returns a
+           // type Double.  All vals/vars have a data type.  So the data type of
+           // the val addFunction is the data type of the function it's assigned.
+           // That data type is:  (Double, Double) => Double
            //
            val addFunction:((Double, Double) => Double) = (x, y) => x + y
            val result:Double = addFunction(123.456D, 654.321D)
@@ -64,15 +64,14 @@ a function that should be understood, which are described here.
 
 As stated above, a method can't be passed to another method/function.  But a method
 can be transformed into a function by performing an "eta expansion" on the method;
-so it can then be passed to another method/function.  The following program shows
-how to perform an "eta expansion" on the addMethod method, so it can be passed to
-the myMethod method.
+so it can then be passed to another method/function.  The program below shows
+examples of how this is done.
 
 SUMMARY:  In most cases you'll write methods to obtain the functionality you need.
-          And if you need a function (to assign to a val/var, or to pass it as an
-          argument to a method/function), you can easily transform a method into
-          a function via an "eta expansion", as is demonstrated in the following
-          program.  So writing methods is far more common than writing functions.
+          If you need a function, you can easily transform a method into a function
+          by performing and an "eta expansion" on the method, as is demonstrated
+          in the following program.  So writing Scala methods is far more common
+          than writing functions.
 
 ------------------------------------------------------------------------------
 // myMethod is a method that accepts a function as its argument.
