@@ -228,17 +228,17 @@ if one or both of the following is true.
 ------------------------------------------------------------------------------
 @main def main() =
   // FUNCTIONS THAT ACCEPT NO ARGUMENTS.
-  val getCurrentTime: () => Long    = () => System.currentTimeMillis()
-  val getRandomNumber: () => Double = () => scala.util.Random.nextDouble()
+  val getCurrentTime:  () => Long    = () => System.currentTimeMillis()
+  val getRandomNumber: () => Double  = () => scala.util.Random.nextDouble()
   
   // FUNCTIONS THAT ACCEPT A SINGLE ARGUMENTS.
-  val double: Int => Int       = x    => x * 2
-  val isEven: Int => Boolean   = x    => x % 2 == 0
-  val greet: String => String  = name => s"Hello, $name!"
+  val double: Int    => Int     = x    => x * 2
+  val isEven: Int    => Boolean = x    => x % 2 == 0
+  val greet:  String => String  = name => s"Hello, $name!"
   
   // FUNCTIONS THAT ACCEPT TWO ARGUMENTS.
-  val add: (Int, Int) => Int                  = (a, b)   => a + b
-  val multiply: (Double, Double) => Double    = (x, y)   => x * y
+  val add:         (Int, Int)       => Int    = (a, b)   => a + b
+  val multiply:    (Double, Double) => Double = (x, y)   => x * y
   val concatenate: (String, String) => String = (s1, s2) => s1 + s2
   
   // HIGHER-ORDER FUNCTIONS
@@ -246,8 +246,8 @@ if one or both of the following is true.
   //        * accepts at least one argument that's a function
   //           ...AND/OR...
   //        * returns a function
-  val applyTwice: (Int => Int, Int)     => Int        = (f, x) => f(f(x))
-  val compose: (Int => Int, Int => Int) => Int => Int = (f, g) => x => f(g(x))
+  val applyTwice: (Int => Int, Int)        => Int        = (f, x) => f(f(x))
+  val compose:    (Int => Int, Int => Int) => Int => Int = (f, g) => x => f(g(x))
 end main
 ------------------------------------------------------------------------------
 
