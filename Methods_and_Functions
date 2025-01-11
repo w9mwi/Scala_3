@@ -25,9 +25,15 @@ a function that should be understood, which are described here.
    * A function is a value, so it has a data type, and can be assigned to a val/var.
    * A method isn't a value, so it has no data type, and can't be assigned to a val/var.
    * A function can be passed to another method/function.
-   * A method can't be passed to another method/function.  But a method can be
-     transformed into a function by performing an "eta expansion" on it, so it
-     can then be passed to another method/function.
+   * A method can't be passed as an argument to another method/function.  But a method
+     can be transformed into a function by performing an "eta expansion" on it, so it
+     then can be passed to another method/function.  In Scala 3, the compiler
+     automatically performs the "eta expansion" on a method when it's passed as an
+     argument to another method/function.  So it appears that you can pass a method
+     to another method/function.  In Scala 2, the programmer needs to perform the
+     "eta expansion" on the method before passing it to another method/function.
+     The program below shows how to perform an "eta expansion" manually in Scala 2
+     and Scala 3.
    * In Scala there are two ways to write a function:
 
       1) You can write an "anonymous function" (also known as a "function literal").
