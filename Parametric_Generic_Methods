@@ -1,0 +1,55 @@
+The following 3 terms have the same meaning:
+
+1) Argument Data Type
+2) Parametric Data Type
+3) Generic Data Type
+
+
+A parametric method is a method defined to accept any data type that applies
+to the method's algorithm.  EXAMPLE:  When the add() method is written to
+accept a parametric data type, that one method can be made to work with
+3 different data types (Int, Float, Double), if it's written to accept
+parametric data types.
+
+-------------------------------------------------------------------------------
+// **************************************************************
+// This section of code creates a new List type named GoodList.
+// GoodList will work with any data type (i.e., Int, String,
+// Boolean, Array[Float]) because it implements a "type argument",
+// which is designated by the uppercase letter: A 
+trait GoodList[A]:
+  def head:A
+  def tail:GoodList[A]
+
+case class GoodEmpty[A]() extends GoodList[A]:
+  override def head = throw new NoSuchElementException()
+  override def tail = throw new NoSuchElementException()
+
+case class GoodNotEmpty[A](h:A, t:GoodList[A]) extends GoodList[A]:
+  override def head:A           = h
+  override def tail:GoodList[A] = t
+// **************************************************************
+
+// This lastElement() method is RECURSIVE.
+def lastElement[A](list:GoodList[A]): A =
+  if (list == GoodEmpty()) throw new NoSuchElementException()
+  // This recursive method terminates when the following "else if" statement is true.
+  else if (list.tail == GoodEmpty[A]()) list.head
+  else lastElement(list.tail)  // Invoke a recursive call to lastElement().
+end lastElement
+
+trait MyMap[K, V]:
+  def put(key:K, value:V):MyMap[K,V]
+  def get(key:K):V // This could throw an exception
+
+
+@main def main() =
+  val goodNumbers:GoodList[Int] = GoodNotEmpty(1, GoodNotEmpty(2, GoodNotEmpty(3,  GoodEmpty())))
+  val firstElem:Int = goodNumbers.head
+  val lastElem:Int = lastElement(goodNumbers)
+  println(goodNumbers.toString)  // PRINTS: GoodNotEmpty(1,GoodNotEmpty(2,GoodNotEmpty(3,GoodEmpty())))
+  println(firstElem)             // PRINTS: 1
+  println(lastElem)              // PRINTS: 3
+
+end main
+-------------------------------------------------------------------------------
