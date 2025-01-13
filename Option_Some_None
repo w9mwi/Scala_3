@@ -6,15 +6,14 @@ contain either a single value, or no value.
 
 When an Option contains a single value, that value is wrapped in the Some class.
 When an Option contains no value, that value is represented as the None object.
-Therefore, any instance of scala.Option will be one of the following:
+Every instance of scala.Option will be one of the following:
 
    * scala.Some  (A Scala class that extends the Option class.)
    * scala.None  (A Scala object that extends the Option class.)
 
-
 The following program demonstrates that Option(54321) and Some(54321)
 are equivalent expressions.
-
+---------------------------------------------------------------------------------------------------
 @main def main() =
   val number_1:Option[Int] = Option(54321)
   val number_2:Some[Int]   = Some(54321)
@@ -27,3 +26,4 @@ are equivalent expressions.
     case number_1 => println("number_2 == number_1") // PRINTS: number_2 == number_1
     case _        => println("number_2 != number_1") // This line never executes.
 end main
+---------------------------------------------------------------------------------------------------
