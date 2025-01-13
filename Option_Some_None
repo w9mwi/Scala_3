@@ -11,19 +11,27 @@ Every instance of scala.Option will be one of the following:
    * scala.Some  (A Scala class that extends the Option class.)
    * scala.None  (A Scala object that extends the Option class.)
 
-The following program demonstrates that Option(54321) and Some(54321)
-are equivalent expressions.
+The following program demonstrates:
+   * Option(54321) and Some(54321) are equivalent expressions.
+   * None and Option.empty are equivalent expressions.
 ---------------------------------------------------------------------------------------------------
 @main def main() =
   val number_1:Option[Int] = Option(54321)
   val number_2:Some[Int]   = Some(54321)
-  val number_3:None.type   = None
+  val number_3:Option[Int] = None
+  val number_4:Option[Int] = Option.empty
 
   if (number_1 == number_2)
   then println("number_1 == number_2") // PRINTS: number_1 == number_2
-
   number_2 match
     case number_1 => println("number_2 == number_1") // PRINTS: number_2 == number_1
     case _        => println("number_2 != number_1") // This line never executes.
+
+
+  if (number_3 == number_4)
+  then println("number_3 == number_4") // PRINTS: number_3 == number_4
+  number_4 match
+    case number_3 => println("number_4 == number_3") // PRINTS: number_4 == number_3
+    case _        => println("number_4 != number_3") // This line never executes.
 end main
 ---------------------------------------------------------------------------------------------------
