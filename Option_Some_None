@@ -36,16 +36,12 @@ The following program demonstrates:
 end main
 ---------------------------------------------------------------------------------------------------
 
-The Scala Option type is used to address the issue of null references, and to
-provide a more functional approach to dealing with potentially absent values.
-Option will assign the scala.None value to a val/var, instead assigning it
-a null.
+Using the Scala Option type can prevent null pointer exceptions from occurring by explicitly
+representing the presence, or absence, of a value.  When an Option instance has no value,
+it is assigned the scala.None value, instead of a null.
 
 An Option class has behavior similar to a Scala List because you can invoke
-the following methods on an Option, as you can a List.  But unlike a List
-(which can store multiple values), an Option will store either a single value,
-or it'll store the scala.None value; instead of assigning a null, which will
-throw an exception.
+the following methods on an Option, as you can a List.
 
 * collect()                           * forAll()
 * contains()                          * forEach()
@@ -54,4 +50,15 @@ throw an exception.
 * flatMap()                           * toList()
 * flatten()                           * zip(), unzip()
 * fold(), foldLeft(), foldRight()
+
+But unlike a List (which can store multiple values), an Option will have either a scala.Some
+value, or it'll have the scala.None value (instead of a null value).  The reason why an
+Option has behaviors similar to a List is so the programmer can traverse through multiple
+different Option values in one swoop, as in a "for comprehension", as can be done with a List.
+
+When all Option values returned by a "for comprehension" have a scala.Some value, then
+there are no "exceptions", and normal processing can continue.
+
+When any Option value returned by a "for comprehension" has a scala.None value, then
+an "exception" has occurred, and your code must address that exception.
 
