@@ -64,3 +64,25 @@ there are no "exceptions", and normal processing can continue.
 When any Option value returned by a "for comprehension" has a scala.None value, then
 an "exception" has occurred, and your code must address that exception.
 
+---------------------------------------------------------------------------------------------------
+@main def main() =
+  val combinedLists =
+  for { num <- List(1, 2, 3)
+        char <- List('A', 'B')
+      } yield s"$num-$char"
+  combinedLists.foreach(println)
+  // PRINTS: 1-A
+  //         1-B
+  //         2-A
+  //         2-B
+  //         3-A
+  //         3-B
+
+
+  val combinedOptions =
+  for {num <- Option(1, 2, 3)
+       char <- Option('A', 'B')
+      } yield s"$num-$char"
+  combinedOptions.foreach(println) // PRINTS: (1,2,3)-(A,B)
+end main
+---------------------------------------------------------------------------------------------------
