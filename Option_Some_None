@@ -8,8 +8,8 @@ When an Option contains a single value, that value is wrapped in the Some class.
 When an Option contains no value, that value is represented as the None object.
 Every instance of scala.Option will be one of the following:
 
-   * scala.Some  (A Scala class that extends the Option class.)
-   * scala.None  (A Scala object that extends the Option class.)
+   * scala.Some  (A Scala class that extends the class:  Option[A])
+   * scala.None  (A Scala object that extends the class: Option[Nothing])
 
 The following program demonstrates:
    * Option(54321) and Some(54321) are equivalent expressions.
