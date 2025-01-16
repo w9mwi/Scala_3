@@ -37,8 +37,10 @@ end main
 ---------------------------------------------------------------------------------------------------
 
 Using the Scala Option type can prevent null pointer exceptions from occurring by explicitly
-representing the presence, or absence, of a value.  When an Option instance has no value,
-it is assigned the scala.None value, instead of a null.
+representing the presence, or absence, of a value.
+
+* When an Option instance has a value, it is assigned the scala.Some value.
+* When an Option instance has no value, it is assigned the scala.None value, instead of null.
 
 An Option class has behavior similar to a Scala List because you can invoke
 the following methods on an Option, as you can a List.
