@@ -1,22 +1,11 @@
 OPTION
 ======
-In Scala, an Option type will always contain either a single value, or no value.
-An Option class has behavior similar to a Scala List because you can invoke the
-following methods on an Option, as you can a List.
-
-* collect()                           * forAll()
-* contains()                          * forEach()
-* exists()                            * isEmpty()
-* filter()                            * map()
-* flatMap()                           * toList()
-* flatten()                           * zip(), unzip()
-* fold(), foldLeft(), foldRight()
-
-
+In Scala, an Option data type is a container that can hold any data type.
+But unlike other containers, an Option can hold only one value, or no value.
 
 When an Option contains a single value, that value is wrapped in the Some class.
 When an Option contains no value, that value is represented as the None object.
-Every instance of scala.Option will be one of the following:
+Therefore, every instance of scala.Option will be one of the following:
 
    * scala.Some  (A Scala class that extends the class:  Option[A])
    * scala.None  (A Scala object that extends the class: Option[Nothing])
@@ -45,3 +34,15 @@ The following program demonstrates:
     case _        => println("number_4 != number_3") // This line never executes.
 end main
 ---------------------------------------------------------------------------------------------------
+
+An Option class has behavior similar to a Scala List because you can invoke
+the following methods on an Option, as you can a List.
+
+* collect()                           * forAll()
+* contains()                          * forEach()
+* exists()                            * isEmpty()
+* filter()                            * map()
+* flatMap()                           * toList()
+* flatten()                           * zip(), unzip()
+* fold(), foldLeft(), foldRight()
+
