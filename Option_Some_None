@@ -36,6 +36,11 @@ The following program demonstrates:
 end main
 ---------------------------------------------------------------------------------------------------
 
+The Scala Option type is used to address the issue of null references, and to
+provide a more functional approach to dealing with potentially absent values.
+Option will assign the scala.None value to a val/var, instead assigning it
+a null, which will throw an exception.
+
 An Option class has behavior similar to a Scala List because you can invoke
 the following methods on an Option, as you can a List.
 
