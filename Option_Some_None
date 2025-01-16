@@ -4,9 +4,9 @@ In Scala, an Option data type is a container that can store any data type.
 Unlike other containers, an Option can store either one value, or no value
 (never multiple values).
 
-When an Option contains a single value, that value is wrapped inside the Some class.
-When an Option contains no value, that value is the None object.
-Therefore, every instance of scala.Option will store one of the following values:
+When an Option contains a single value, that value is wrapped inside the scala.Some class.
+When an Option contains no value, that value becomes the scala.None object (instead of a null).
+Therefore, every instance of scala.Option will be one of the following values:
 
    * scala.Some  (A Scala class that extends the class:  Option[A])
    * scala.None  (A Scala object that extends the class: Option[Nothing])
@@ -42,7 +42,10 @@ Option will assign the scala.None value to a val/var, instead assigning it
 a null, which will throw an exception.
 
 An Option class has behavior similar to a Scala List because you can invoke
-the following methods on an Option, as you can a List.
+the following methods on an Option, as you can a List.  But unlike a List
+(which can store multiple values), an Option will store either a single value,
+or it'll store the scala.None value; instead of assigning a null, which will
+throw an exception.
 
 * collect()                           * forAll()
 * contains()                          * forEach()
