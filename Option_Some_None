@@ -1,8 +1,18 @@
 OPTION
 ======
-The Scala Option class can be thought of as a Scala List that contains
-either one element, or no elements.  So an Option type will always
-contain either a single value, or no value.
+In Scala, an Option type will always contain either a single value, or no value.
+An Option class has behavior similar to a Scala List because you can invoke the
+following methods on an Option, as you can a List.
+
+* collect()                           * forAll()
+* contains()                          * forEach()
+* exists()                            * isEmpty()
+* filter()                            * map()
+* flatMap()                           * toList()
+* flatten()                           * zip(), unzip()
+* fold(), foldLeft(), foldRight()
+
+
 
 When an Option contains a single value, that value is wrapped in the Some class.
 When an Option contains no value, that value is represented as the None object.
