@@ -117,10 +117,49 @@ more Option behavior.
   println(longName) // PRINTS: None
 // ****************************************************************
 end main
+---------------------------------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------
+case class User(name: String, age: Int)
+
+def findUser(id: Int): Option[User] =
+  // Simulate a database lookup.
+  if      (id == 1) Some(User("Alice", 19))
+  else if (id == 2) Some(User("Joe", 18))
+  else if (id == 3) Some(User("Sally", 17))
+  else None
+end findUser
+
+def getAge(user: User): Option[Int] =
+  if (user.age >= 18) Some(user.age) else None
+end getAge
+
+// findUser(0) returns: None (Because no user has an id = 0)
+var userAge:Option[Int] = for { user <- findUser(0)
+                                age <- getAge(user)
+                              } yield age
+end userAge
+
+@main def main() =
+  println(userAge) // PRINTS:  None
+
+  userAge = for { user <- findUser(1)
+                  age <- getAge(user)
+                } yield age
+  println(userAge) // PRINTS: Some(19)
+
+  userAge = for { user <- findUser(2)
+                  age <- getAge(user)
+                  } yield age
+  println(userAge) // PRINTS: Some(18)
+
+  // getAge(3) returns: None (Because age < 18)
+  userAge = for { user <- findUser(3)
+                  age <- getAge(user)
+                  } yield age
+  println(userAge) // PRINTS: None
+end main
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
