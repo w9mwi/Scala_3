@@ -86,3 +86,44 @@ an "exception" has occurred, and your code must address that exception.
   combinedOptions.foreach(println) // PRINTS: (1,2,3)-(A,B)
 end main
 ---------------------------------------------------------------------------------------------------
+
+Read the in-line comments in the following program to understand
+more Option behavior.
+---------------------------------------------------------------------------------------------------
+@main def main() =
+  // ****************************************************************
+  // This section:
+  // 1) Shows an Option value gets assigned the scala.None value.
+  // 2) Shows an Option value gets assigned the scala.Some value.
+  var name:Option[String] = None
+  var result:String       = name.getOrElse("Unknown")
+  println(result) // PRINTS: Unknown
+
+  name   = Some("Joe")
+  result = name.getOrElse("Unknown")
+  println(result) // PRINTS: Joe
+  // ****************************************************************
+
+
+  // ****************************************************************
+  // This section shows the Option class possesses many of the same
+  // methods the List class has.
+  val upperName:Option[String] = name.map(_.toUpperCase)
+  println(upperName)      // PRINTS: Some(JOE)
+  println(name.isEmpty)   // PRINTS: false
+  println(name.isDefined) // PRINTS: true
+
+  val longName:Option[String] = name.filter(_.length > 5)
+  println(longName) // PRINTS: None
+// ****************************************************************
+end main
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
