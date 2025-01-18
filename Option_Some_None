@@ -53,16 +53,17 @@ the following methods on an Option, as you can a List.
 * flatten()                           * zip(), unzip()
 * fold(), foldLeft(), foldRight()
 
-But unlike a List (which can store multiple values), an Option will have either a scala.Some
-value, or it'll have the scala.None value (instead of a null value).  The reason why an
-Option has behaviors similar to a List is so the programmer can traverse through multiple
-different Option values in one swoop, as in a "for comprehension", as can be done with a List.
+But unlike a List (which can store multiple values), an Option val/var can store either
+a scala.Some value, or it'll store the scala.None value (in place of a null value).
+The reason why an Option has behaviors similar to a List is so the programmer can
+traverse through multiple different Option values in one swoop; just as a
+"for comprehension" can do with a List.
 
-When all Option values returned by a "for comprehension" have a scala.Some value, then
-there are no "exceptions", and normal processing can continue.
+When all Option values returned by a "for comprehension" have a scala.Some value,
+then there are no "exceptions", and normal processing can continue.
 
-When any Option value returned by a "for comprehension" has a scala.None value, then
-an "exception" has occurred, and your code must address that exception.
+When a "for comprehension" returns an Option value of scala.None,
+then an "exception" has occurred and your code must deal with it.
 
 ---------------------------------------------------------------------------------------------------
 @main def main() =
