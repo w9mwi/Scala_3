@@ -93,8 +93,8 @@ more Option behavior.
 @main def main() =
   // ****************************************************************
   // This section:
-  // 1) Shows an Option value gets assigned the scala.None value.
-  // 2) Shows an Option value gets assigned the scala.Some value.
+  // 1) Assigns the scala.None value to an Option value.
+  // 2) Assigns the scala.Some value to an Option value.
   var name:Option[String] = None
   var result:String       = name.getOrElse("Unknown")
   println(result) // PRINTS: Unknown
@@ -106,8 +106,8 @@ more Option behavior.
 
 
   // ****************************************************************
-  // This section shows the Option class possesses many of the same
-  // methods the List class has.
+  // This section shows the Option class has many of the same
+  // methods that the List class posseses.
   val upperName:Option[String] = name.map(_.toUpperCase)
   println(upperName)      // PRINTS: Some(JOE)
   println(name.isEmpty)   // PRINTS: false
@@ -151,14 +151,13 @@ end userAge
 
   userAge = for { user <- findUser(2)
                   age <- getAge(user)
-                  } yield age
+                } yield age
   println(userAge) // PRINTS: Some(18)
 
-  // getAge(3) returns: None (Because age < 18)
   userAge = for { user <- findUser(3)
                   age <- getAge(user)
-                  } yield age
-  println(userAge) // PRINTS: None
+                } yield age
+  println(userAge) // PRINTS: None  (Because age < 18)
 end main
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
