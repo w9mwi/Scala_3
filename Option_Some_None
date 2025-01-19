@@ -24,6 +24,13 @@ into the scala.None value.  Here is an example:
    val myStringOption:Option[String] = Option(null)
    println(s"myStringOption = $myStringOption") // PRINTS: myStringOption = None
 
+IMPORTANT:  It is OK to wrap a null value inside an Option class, like this:  Option(null)
+            Because Option(null) returns the value: scala.None
+
+WARNING:  Never wrap a null value inside the scala.Some class, like this:  Some(null)
+          The scala.Some class is used to designate a valid value.  So it wouldn't
+          make sense to wrap a null value (or any other invalid value) inside the
+          scala.Some class.
 
 ---------------------------------------------------------------------------------------------------
 The following program demonstrates how to nest multiple Option values inside
