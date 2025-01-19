@@ -28,9 +28,13 @@ IMPORTANT:  It is OK to wrap a null value inside an Option class, like this:  Op
             Because Option(null) returns the value: scala.None
 
 WARNING:  Never wrap a null value inside the scala.Some class, like this:  Some(null)
-          The scala.Some class is used to designate a valid value.  So it wouldn't
-          make sense to wrap a null value (or any other invalid value) inside the
-          scala.Some class.
+          The scala.Some class is used to designate a valid value.  So it makes no
+          sense to wrap a null value (or any invalid value) inside the scala.Some
+          class.  The get method in the code below returns the null value, so when
+          toUpperCase() is invoked, it throws a NullPointerException.
+
+          val myStringOption:Option[String] = Some(null)
+          println(myStringOption.get.toUpperCase())  // Throws NullPointerException!
 
 ---------------------------------------------------------------------------------------------------
 The following program demonstrates how to nest multiple Option values inside
