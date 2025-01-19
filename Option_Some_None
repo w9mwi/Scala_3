@@ -20,10 +20,62 @@ An Option should be used to obtain values that have the possibility being null.
 So when an Option obtains a non-existent value, it will reference the scala.None
 value instead of the null value.
 
+---------------------------------------------------------------------------------------------------
+The following program demonstrates how to nest multiple Option values inside
+a single "for comprehension" and yield a result.
+
+When all Option values obtained within a "for expression" return
+the scala.Some type, then the entire "for expression" will return the
+scala.Some type.  This is shown in the first "for expression" below.
+
+When any Option value obtained within a "for expression" returns the
+scala.None type, then the entire "for expression" will return the
+scala.None type.  This is shown in the second "for expression" below.
+
+Read in-line comments for details.
+
+def positiveIntToString(number:Int):String =
+  if (number >= 0)
+    number.toString
+  else null
+end positiveIntToString
+
+// ***********************************
+// main()
+@main def main() =
+  println("main()")
+
+  // When all numbers passed to the positiveIntToString method are positive,
+  // as shown here, combinedResult will be assigned the scala.Some value:
+  var combinedResult:Option[String] = for {
+    value_1 <- Option(positiveIntToString(1))
+    value_2 <- Option(positiveIntToString(2))
+    value_3 <- Option(positiveIntToString(3))
+    value_4 <- Option(positiveIntToString(4))
+  } yield value_1.toUpperCase + ", " + value_2.toUpperCase + ", "  + value_3.toUpperCase +  ", "  + value_4.toUpperCase
+  println(s"1) combinedResult = $combinedResult") // PRINTS: 1) combinedResult = Some(1, 2, 3, 4)
+  var finalResult:String = combinedResult.getOrElse("ERROR: Negative numbers are invalid.")
+  println(s"2) finalResult = $finalResult")       // PRINTS: 2) finalResult = 1, 2, 3, 4
+
+  // When any number passed to the positiveIntToString method is negative,
+  // as shown here, combinedResult will be assigned the scala.None value:
+  combinedResult = for {
+    value_1 <- Option(positiveIntToString(1))
+    value_2 <- Option(positiveIntToString(2))
+    value_3 <- Option(positiveIntToString(3))
+    value_4 <- Option(positiveIntToString(-77))
+  } yield value_1.toUpperCase + ", " + value_2.toUpperCase + ", "  + value_3.toUpperCase +  ", "  + value_4.toUpperCase
+  println(s"3) combinedResult = $combinedResult") // PRINTS: 3) combinedResult = None
+  finalResult = combinedResult.getOrElse("ERROR: Negative numbers are invalid.")
+  println(s"4) finalResult = $finalResult")       // PRINTS: 4) finalResult = ERROR: Negative numbers are invalid.
+end main
+
+---------------------------------------------------------------------------------------------------
+
 The following program demonstrates:
    * Option(54321) and Some(54321) are equivalent expressions.
    * None and Option.empty are equivalent expressions.
----------------------------------------------------------------------------------------------------
+
 @main def main() =
   val number_1:Option[Int] = Option(54321)
   val number_2:Some[Int]   = Some(54321)
