@@ -9,12 +9,16 @@ An Option that has a value will reference the scala.Some class.  Where the
 value is wrapped inside the scala.Some class.
 
 An Option that has no value will reference the scala.None object, instead
-of referencing a null value.  This is done to avoid null exceptions.
+of referencing a null value.
 
 To sum up, every instance of scala.Option will reference one of the following:
 
    * scala.Some  (A Scala class that extends the class:  Option[A])
    * scala.None  (A Scala object that extends the class: Option[Nothing])
+
+An Option should be used to store values that have the possibility being null.
+So instead of obtaining a null value, an Option will reference the scala.None
+value.
 
 The following program demonstrates:
    * Option(54321) and Some(54321) are equivalent expressions.
