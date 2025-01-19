@@ -15,8 +15,7 @@ is eqivalent to the result stored in val combinedLists_1.
   // PRINTS: List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
 
   // The following line of code generates the same result
-  // as the for comprehension above that is assigned to
-  // the val combinedLists_1.
+  // as the for comprehension above.
   val combinedLists_2 = intList.flatMap(num => List('a','b').map(char => s"$num-$char"))
   println(combinedLists_2)
   // PRINTS: List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
