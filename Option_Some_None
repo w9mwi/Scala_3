@@ -16,9 +16,14 @@ To sum up, every instance of scala.Option will reference one of the following:
    * scala.Some  (A Scala class that extends the class:  Option[A])
    * scala.None  (A Scala object that extends the class: Option[Nothing])
 
-An Option should be used to obtain values that have the possibility being null.
-So when an Option obtains a non-existent value, it will reference the scala.None
-value instead of the null value.
+An Option should be used to obtain values that have a possibility not existing.
+For example, if it's possible for a result to be a null value, that result
+should be wrapped inside the scala.Some class, which transforms null values
+into the scala.None value.  Here is an example:
+
+   val myStringOption:Option[String] = Option(null)
+   println(s"myStringOption = $myStringOption") // PRINTS: myStringOption = None
+
 
 ---------------------------------------------------------------------------------------------------
 The following program demonstrates how to nest multiple Option values inside
@@ -34,6 +39,7 @@ scala.None type.  This is shown in the second "for expression" below.
 
 Read in-line comments for details.
 
+// NOTICE: This method can return a null value.
 def positiveIntToString(number:Int):String =
   if (number >= 0)
     number.toString
@@ -43,7 +49,8 @@ end positiveIntToString
 // ***********************************
 // main()
 @main def main() =
-  println("main()")
+
+
 
   // When all numbers passed to the positiveIntToString method are positive,
   // as shown here, combinedResult will be assigned the scala.Some value:
@@ -53,6 +60,7 @@ end positiveIntToString
     value_3 <- Option(positiveIntToString(3))
     value_4 <- Option(positiveIntToString(4))
   } yield value_1.toUpperCase + ", " + value_2.toUpperCase + ", "  + value_3.toUpperCase +  ", "  + value_4.toUpperCase
+
   println(s"1) combinedResult = $combinedResult") // PRINTS: 1) combinedResult = Some(1, 2, 3, 4)
   var finalResult:String = combinedResult.getOrElse("ERROR: Negative numbers are invalid.")
   println(s"2) finalResult = $finalResult")       // PRINTS: 2) finalResult = 1, 2, 3, 4
@@ -65,6 +73,7 @@ end positiveIntToString
     value_3 <- Option(positiveIntToString(3))
     value_4 <- Option(positiveIntToString(-77))
   } yield value_1.toUpperCase + ", " + value_2.toUpperCase + ", "  + value_3.toUpperCase +  ", "  + value_4.toUpperCase
+
   println(s"3) combinedResult = $combinedResult") // PRINTS: 3) combinedResult = None
   finalResult = combinedResult.getOrElse("ERROR: Negative numbers are invalid.")
   println(s"4) finalResult = $finalResult")       // PRINTS: 4) finalResult = ERROR: Negative numbers are invalid.
