@@ -137,8 +137,9 @@ A Scala method is always written using the "def" keyword.
 IMPORTANT: The "def" keyword can also be used to define an abstract value
            (a val/var that's declared, but not initialized), or to define
            an abstract method (a method that's declared, but has no body
-           of executable code).  Abstract vals/vars, and abstract methods
-           are used only in Scala traits and in Scala abstract classes.
+           of executable code).  Only Scala traits and Scala abstract
+           classes can contain abstract vals/vars and abstract methods;
+           they cannot reside in Scala classes or objects.
 
 In Scala 2 a method must be defined inside another construct, such as...
 
@@ -154,10 +155,11 @@ a stand-alone method.  These methods are known as "top-level" definitions
 because they're not nested within another definition.  In other words,
 methods in Scala 3 can be defined almost anywhere.
 
-In Scala 3 the last line of a method definition can include the Scala 3
-soft keyword "end" followed by the method name.  Adding this text to
-the end of a method in Scala 3 is optional, but makes it easier to
-see exactly where a method definition ends.
+In Scala 3, if you indent properly, a method's executable code doesn't need to
+reside within a braces pair {}.  In Scala 3 the last line of a method definition
+can include the Scala 3 soft keyword "end" followed by the method's name.
+Adding this end tag in Scala 3 is optional, but makes it easier to see exactly
+where a method definition ends.
 
 Below is a Scala 3 program that defines two stand-alone methods, and uses
 the Scala 3 soft keyword "end" to designate the end of both methods.
