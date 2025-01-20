@@ -232,6 +232,8 @@ if one or both of the following is true.
    * It accepts at least one argument that's a function.
    * It returns a function.
 
+The following program demonstrates multiple examples of how
+to write Scala functions.
 ------------------------------------------------------------------------------
 @main def main() =
   // FUNCTIONS THAT ACCEPT NO ARGUMENTS.
@@ -261,6 +263,8 @@ end main
 ======================================================================
 ETA EXPANSION
 =============
+Before reading this section read the above section titled:
+METHODS VS. FUNCTIONS
 
 An "eta expansion" transforms a Scala method into a Scala function.
 In Scala 3 the compiler can perform this automatically, without any
@@ -269,13 +273,6 @@ perfomed manually by the programmer in Scala 3.
 
 To perform an "eta expansion" in Scala 2 requires the programmer
 to do it manually.
-
-Read the "METHODS VS. FUNCTIONS" section above which explains this
-topic.  It also contains a Scala program demonstrating how to perform
-an "eta expansion" on a method automatically (in Scala 3) and manually.
-
-
-
 
 
 ======================================================================
