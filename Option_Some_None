@@ -36,7 +36,8 @@ WARNING:  Never wrap a null value inside the scala.Some class, like this:  Some(
           val myStringOption:Option[String] = Some(null)
           println(myStringOption.get.toUpperCase())  // Throws NullPointerException!
 
----------------------------------------------------------------------------------------------------
+
+
 The following program demonstrates how to nest multiple Option values inside
 a single "for comprehension" and yield a result.
 
@@ -50,6 +51,7 @@ scala.None type.  This is shown in the second "for expression" below.
 
 Read in-line comments for details.
 
+---------------------------------------------------------------------------------------------------
 // NOTICE: This method can return a null value.
 def positiveIntToString(number:Int):String =
   if (number >= 0)
@@ -60,17 +62,15 @@ end positiveIntToString
 // ***********************************
 // main()
 @main def main() =
-
-
-
   // When all numbers passed to the positiveIntToString method are positive,
   // as shown here, combinedResult will be assigned the scala.Some value:
-  var combinedResult:Option[String] = for {
+  var combinedResult:Option[String] =
+  for
     value_1 <- Option(positiveIntToString(1))
     value_2 <- Option(positiveIntToString(2))
     value_3 <- Option(positiveIntToString(3))
     value_4 <- Option(positiveIntToString(4))
-  } yield value_1.toUpperCase + ", " + value_2.toUpperCase + ", "  + value_3.toUpperCase +  ", "  + value_4.toUpperCase
+  yield value_1.toUpperCase + ", " + value_2.toUpperCase + ", "  + value_3.toUpperCase +  ", "  + value_4.toUpperCase
 
   println(s"1) combinedResult = $combinedResult") // PRINTS: 1) combinedResult = Some(1, 2, 3, 4)
   var finalResult:String = combinedResult.getOrElse("ERROR: Negative numbers are invalid.")
@@ -78,18 +78,18 @@ end positiveIntToString
 
   // When any number passed to the positiveIntToString method is negative,
   // as shown here, combinedResult will be assigned the scala.None value:
-  combinedResult = for {
+  combinedResult =
+  for
     value_1 <- Option(positiveIntToString(1))
     value_2 <- Option(positiveIntToString(2))
     value_3 <- Option(positiveIntToString(3))
     value_4 <- Option(positiveIntToString(-77))
-  } yield value_1.toUpperCase + ", " + value_2.toUpperCase + ", "  + value_3.toUpperCase +  ", "  + value_4.toUpperCase
+  yield value_1.toUpperCase + ", " + value_2.toUpperCase + ", "  + value_3.toUpperCase +  ", "  + value_4.toUpperCase
 
   println(s"3) combinedResult = $combinedResult") // PRINTS: 3) combinedResult = None
   finalResult = combinedResult.getOrElse("ERROR: Negative numbers are invalid.")
   println(s"4) finalResult = $finalResult")       // PRINTS: 4) finalResult = ERROR: Negative numbers are invalid.
 end main
-
 ---------------------------------------------------------------------------------------------------
 
 The following program demonstrates:
@@ -149,9 +149,10 @@ then an "exception" has occurred and your code must deal with it.
 ---------------------------------------------------------------------------------------------------
 @main def main() =
   val combinedLists =
-  for { num <- List(1, 2, 3)
-        char <- List('A', 'B')
-      } yield s"$num-$char"
+    for
+      num <- List(1, 2, 3)
+      char <- List('A', 'B')
+    yield s"$num-$char"
   combinedLists.foreach(println)
   // PRINTS: 1-A
   //         1-B
@@ -159,18 +160,18 @@ then an "exception" has occurred and your code must deal with it.
   //         2-B
   //         3-A
   //         3-B
-
-
   val combinedOptions =
-  for {num <- Option(1, 2, 3)
-       char <- Option('A', 'B')
-      } yield s"$num-$char"
+    for
+      num <- Option(1, 2, 3)
+      char <- Option('A', 'B')
+    yield s"$num-$char"
   combinedOptions.foreach(println) // PRINTS: (1,2,3)-(A,B)
 end main
 ---------------------------------------------------------------------------------------------------
 
 Read the in-line comments in the following program to understand
 more Option behavior.
+
 ---------------------------------------------------------------------------------------------------
 @main def main() =
   // ****************************************************************
@@ -185,7 +186,6 @@ more Option behavior.
   result = name.getOrElse("Unknown")
   println(result) // PRINTS: Joe
   // ****************************************************************
-
 
   // ****************************************************************
   // This section shows the Option class has many of the same
@@ -218,27 +218,34 @@ def getAge(user: User): Option[Int] =
 end getAge
 
 // findUser(0) returns: None (Because no user has an id = 0)
-var userAge:Option[Int] = for { user <- findUser(0)
-                                age  <- getAge(user)
-                              } yield age
-end userAge
+var userAge:Option[Int] =
+for
+  user <- findUser(0)
+  age  <- getAge(user)
+yield age
 
 @main def main() =
   println(userAge) // PRINTS:  None
 
-  userAge = for { user <- findUser(1)
-                  age  <- getAge(user)
-                } yield age
+  userAge =
+  for
+    user <- findUser(1)
+    age  <- getAge(user)
+  yield age
   println(userAge) // PRINTS: Some(19)
 
-  userAge = for { user <- findUser(2)
-                  age  <- getAge(user)
-                } yield age
+  userAge =
+  for
+    user <- findUser(2)
+    age  <- getAge(user)
+  yield age
   println(userAge) // PRINTS: Some(18)
 
-  userAge = for { user <- findUser(3)
-                  age  <- getAge(user)
-                } yield age
+  userAge =
+  for
+    user <- findUser(3)
+    age  <- getAge(user)
+  yield age
   println(userAge) // PRINTS: None  (Because age < 18)
 end main
 ---------------------------------------------------------------------------------------------------
