@@ -36,7 +36,6 @@ so the for loop returns result.  Code examples that implement a guard
 are shown further below.
 
 =====================================================================
-
 @main def main() =
   val intList = List(-3, -2, -1, 0, 1, 2, 3)
   val intValue = 3
@@ -49,9 +48,9 @@ are shown further below.
   // all if statements return a value.  Here is an example.
   print("if statement #1:  ")
   var var_String:String =
-  if intList(5) < 0 then "negative"
-  else if intList(5) == 0 then "zero"
-  else "positive"
+    if intList(5) < 0 then "negative"
+    else if intList(5) == 0 then "zero"
+    else "positive"
   println(s"var_String = $var_String") // PRINTS:  if statement #1:  var_String = positive
 
   // The following if statement works with Scala 3.  "then" is a new
@@ -113,11 +112,10 @@ are shown further below.
   // keyword isn't used here, this for loop requires the
   // parenthesis pair () and the braces pair {}.
   print("\nfor loop #2:  ")
-  for (int <- intList) {
+  for (int <- intList)
     print("x")
     print("y")
     print("z ") // PRINTS:  for loop #2:  xyz xyz xyz xyz xyz xyz xyz
-  }
 
 
   // ****************************************************************
@@ -172,8 +170,8 @@ are shown further below.
   // into var_listInt.
   var_ListStr = List("apple", "banana", "lime", "orange")
   var_listInt =
-  for fruit <- var_ListStr if fruit.length > 4
-  yield fruit.length
+    for fruit <- var_ListStr if fruit.length > 4
+    yield fruit.length
   println(s"for loop #7:  var_listInt = $var_listInt\n") // PRINTS:  for loop #7:  var_listInt = List(5, 6, 6)
 
 
@@ -209,11 +207,11 @@ are shown further below.
   // demonstrates that a match evaluates to an expression by returning a
   // String value into var_String.
   var varString =
-  intValue match
-    case 1 => "one"
-    case 2 => "two"
-    case 3 => "three"
-    case _ => "other"
+    intValue match
+      case 1 => "one"
+      case 2 => "two"
+      case 3 => "three"
+      case _ => "other"
   println(s"match #2 varString = $varString") // PRINTS:  match #2 varString = three
 
   // In this example, the "match" keyword is used to perform a match on the user-defined
@@ -270,8 +268,7 @@ are shown further below.
   // TRY / CATCH / FINALLY
   //
   // The following sample code is commented out because the code isn't
-  // complete, and this topic will be covered in detail later.  This
-  // commented-out example is just to get a taste...
+  // complete  This topic will be covered in detail later.
   //
   // try
   //   writeTextToFile(text)
@@ -282,3 +279,4 @@ are shown further below.
   //   println("Clean up your resources here.")
 
   print("THE END.")
+end main
