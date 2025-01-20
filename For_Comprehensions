@@ -3,20 +3,27 @@ a result which gets assigned to the val combinedLists_1.
 Notice that the result assigned to val combinedLists_2
 is eqivalent to the result stored in val combinedLists_1.
 
+---------------------------------------------------------------------------------------------------
 @main def main() =
   println("main()")
   val intList = List(1,2,3)
-  val combinedLists_1 = for {
+  val combinedLists_1 =
+  for
     num <- intList
     char <- List('a','b')
-  } yield s"$num-$char"
+  yield s"$num-$char"
 
   println(combinedLists_1)
   // PRINTS: List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
 
   // The following line of code generates the same result
   // as the for comprehension above.
-  val combinedLists_2 = intList.flatMap(num => List('a','b').map(char => s"$num-$char"))
+  val combinedLists_2 =
+      intList.flatMap(num => List('a','b').map(char => s"$num-$char"))
   println(combinedLists_2)
-  // PRINTS: List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
+// PRINTS: List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
 end main
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
