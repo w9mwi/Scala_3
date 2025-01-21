@@ -222,12 +222,12 @@ Therefore, all functions have a data type.  A function data type is always
 specified using the "rocket symbol" (=>).  Here are some examples of
 function data types.
 
-   * ()=>Char                    (A function that accepts no arguments, and returns a Char.)
-   * Int=>String                 (A function that accepts one Int argument, and returns a String.)
-   * (Int,Char,Float)=>Boolean   (A function that accepts arguments Int, Char, Float, and returns a Boolean.)
+   * ()=>Char                      (A function that accepts no arguments, and returns a Char.)
+   * Int=>String                   (A function that accepts one Int argument, and returns a String.)
+   * (Int,Char,Float)=>Boolean     (A function that accepts arguments Int, Char, Float, and returns a Boolean.)
+   * (Array[Boolean])=>(Int,Char)  (A function that accepts one Array[Boolean] argument, and returns an (Int, Char) tuple.)
 
-A method, or a function, is a "higher-order function"
-if one or both of the following is true.
+A method, or a function, is a "higher-order function" if one or both of the following is true.
 
    * It accepts at least one argument that's a function.
    * It returns a function.
@@ -350,9 +350,13 @@ syntax; using either the underscore char (_), or the rocket symbol (=>).
 When an underscore char (_) is used to write an anonymous function, the
 rocket symbol (=>) is not used; and vice-versa.
 
-The following line of code assigns a function to the val addIntFunc.
+The following 4 lines of code create an identical function, and assign
+it to a val.  This demonstrates how functions can be written using
+either the underscore char (_) or the rocket symbol (=>).
 
 val addIntFunc:(Int, Int) => Int = (a:Int, b:Int) => a + b
+
+This addIntFun function can be written 
 
 Any function assigned to a val/var contains an anonymous function on the
 right side of the equals sign (=).  So the anonymous function part of
