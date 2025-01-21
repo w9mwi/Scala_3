@@ -411,6 +411,9 @@ https://www.scala-lang.org/files/archive/api/3.3.1/scala/PartialFunction.html#
 ======================================================================
 FUNCTIONS BUILT WITH ONLY CASE STATEMENTS
 
+The following program demonstrates how a set of case statements
+can be used as the body of executable code that gets assigned
+to a function.
 ------------------------------------------------------------------------------
 @main def main() =
   // The following code serves only as a reminder of how case
