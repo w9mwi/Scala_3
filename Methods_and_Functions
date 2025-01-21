@@ -22,18 +22,18 @@ a function that should be understood, which are described here.
 
    * A method is always written using the "def" keyword.
    * The "def" keyword is never used to write a function.
-   * A function is a value, so it has a data type, and can be assigned to a val/var.
-   * A method isn't a value, so it has no data type, and can't be assigned to a val/var.
-   * A function can be passed as an argument to another method/function.
-   * A method can't be passed as an argument to another method/function.  But a method
-     can be transformed into a function by performing an "eta expansion" on it; so it
-     then can be passed to another method/function.  In Scala 3 the compiler
-     automatically performs an "eta expansion" on a method when it's passed as an
-     argument to another method/function.  So it appears that you can pass a method
-     to another method/function.  In Scala 2 the programmer often (but not always)
-     needs to manually perform an "eta expansion" on a method before passing it to
-     another method/function.  The program below shows how to perform an
-     "eta expansion" manually in Scala 2 and Scala 3.
+   * A function is a "value", so it has a data type, and can be assigned to a val/var.
+   * A method isn't a "value", so it has no data type, and can't be assigned to a val/var.
+   * Because a function is a "value", it can be passed as an argument to another method/function.
+   * Because a method has no "value", it can't be passed as an argument to another
+     method/function.  However, a method can be transformed into a function by performing
+     an "eta expansion" on it; so it then can be passed to another method/function.
+     In Scala 3 the compiler automatically performs an "eta expansion" on a method when
+     it's passed as an argument to another method/function.  So it appears that you can
+     pass a method to another method/function.  In Scala 2 the programmer often (but not
+     always) needs to manually perform an "eta expansion" on a method before passing it
+     to another method/function.  The program at the end of this section demonstrates
+     how to perform an "eta expansion" manually in Scala 2 and Scala 3.
    * In Scala there are two ways to write a function:
 
       1) You can write an "anonymous function", also known as a "function literal".
@@ -66,11 +66,6 @@ a function that should be understood, which are described here.
            val addFunction:((Double, Double) => Double) = (x, y) => x + y
            val result:Double = addFunction(123.456D, 654.321D)
            println(s"result = $result") // PRINTS: result = 777.777
-
-As stated above, a method can't be passed to another method/function.  But a method
-can be transformed into a function by performing an "eta expansion" on the method;
-so it can then be passed to another method/function.  The program below shows
-examples of how this is done.
 
 SUMMARY:  In most cases you'll write methods to obtain the functionality you need.
           If you need a function, you can easily transform a method into a function
