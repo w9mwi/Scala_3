@@ -345,15 +345,18 @@ METHODS VS. FUNCTIONS
 
 An anonymous function is a function that doesn't have a name, and is not
 bound to a class/object/trait.  An anonymous function is sometimes known
-as "a function literal."  The "FUNCTIONS" section above demonstrated
-a function that gets assigned to the val add, like this:
+as a "function literal."  Anonymous functions can be written with different
+syntax; using either the underscore char (_), or the rocket symbol (=>).
+When an underscore char (_) is used to write an anonymous function, the
+rocket symbol (=>) is not used; and vice-versa.
 
-val add:(Int, Int) => Int = (a:Int, b:Int) => a + b
+The following line of code assigns a function to the val addIntFunc.
 
-An anonymous function always contains the rocket symbol (=>).  Any function
-assigned to a val/var contains an anonymous function on the right side of
-the equals sign (=).  From the above example, the anonymous function part
-is this code, when it stands alone:
+val addIntFunc:(Int, Int) => Int = (a:Int, b:Int) => a + b
+
+Any function assigned to a val/var contains an anonymous function on the
+right side of the equals sign (=).  So the anonymous function part of
+the addIntFunc above is this code, when it stands alone:
 
 (a:Int, b:Int) => a + b
 
