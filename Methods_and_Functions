@@ -272,8 +272,66 @@ programmer intervention.  However, an "eta expansion" can also be
 perfomed manually by the programmer in Scala 3.
 
 To perform an "eta expansion" in Scala 2 requires the programmer
-to do it manually.
+to do it manually.  The following program demonstrates how to
+perform an eta expansion; transforming methods into functions.
 
+------------------------------------------------------------------------------
+@main def main():Unit =
+  def noArgumentMethod():Int = 123
+  def multiply2NumbersMethod(number_1: Float, number_2: Float): Float = number_1 * number_2
+  def squareMethod(number: Float): Float = number * number
+
+  // *********************************************************************
+  // The following line of code demonstrates that the Scala compiler
+  // automatically transforms the squareMethod method into a function
+  // by performing an eta expansion on it.  It is then assigned to the
+  // var squareFunction.  The var squareFunction is a Scala function,
+  // not a method.
+  var squareFunction:(Float => Float) = squareMethod
+  println(s"1) squareFunction(123.456F) = ${squareFunction(123.456F)}")
+  // PRINTS: 1) squareFunction(123.456F) = 15241.384
+
+  // The following line of code performs an eta expansion on
+  // squareMethod using the underscore char.
+  squareFunction = squareMethod _
+  println(s"2) squareFunction(123.456F) = ${squareFunction(123.456F)}")
+  // PRINTS: 2) squareFunction(123.456F) = 15241.384
+
+  // The following line performs an eta expansion on squareMethod
+  // using the underscore char enclosed in parenthesis.
+  squareFunction = squareMethod(_)  // With underscore char. in parenthesis
+  println(s"3) squareFunction(123.456F) = ${squareFunction(123.456F)}")
+  // PRINTS: 3) squareFunction(123.456F) = 15241.384
+
+  // *********************************************************************
+  // Just like the above example, we perform 3 equivalent eta expansions.
+  // This time on multiply2NumbersMethod.
+  var multiply2NumbersFunction: (Float, Float) => Float = multiply2NumbersMethod
+  println(s"4) multiply2NumbersFunction(123F, 456F) = ${multiply2NumbersFunction(123F, 456F)}")
+  // PRINTS: 4) multiply2NumbersFunction(123F, 456F) = 56088.0
+
+  multiply2NumbersFunction = multiply2NumbersMethod _
+  println(s"5) multiply2NumbersFunction(123F, 456F) = ${multiply2NumbersFunction(123F, 456F)}")
+  // PRINTS: 5) multiply2NumbersFunction(123F, 456F) = 56088.0
+
+  multiply2NumbersFunction = multiply2NumbersMethod(_, _)
+  println(s"6) multiply2NumbersFunction(123F, 456F) = ${multiply2NumbersFunction(123F, 456F)}")
+  // PRINTS: 6) multiply2NumbersFunction(123F, 456F) = 56088.0
+
+  // ***************************************************************************
+  // The List.map() method (defined in the Scala API) invoked below accepts a
+  // function (not a method) as its argument.  But if you pass a method to
+  // List.map() (as shown below), Scala automatically transforms the method
+  // into a function.
+  var floatList: List[Float] = List(1.0F, 2.0F, 3.0F, 4.0F, 5.0F)
+  // The following 2 lines are equivalent.
+  floatList = floatList.map(squareMethod)
+  floatList = floatList.map(squareMethod _)
+  println(s"7) floatList = $floatList") // PRINTS: 7) floatList = List(1.0, 16.0, 81.0, 256.0, 625.0)
+  floatList = floatList.map(squareFunction)
+  println(s"8) floatList = $floatList") // PRINTS: 8) floatList = List(1.0, 256.0, 6561.0, 65536.0, 390625.0)
+end main
+------------------------------------------------------------------------------
 
 ======================================================================
 
