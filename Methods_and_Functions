@@ -267,13 +267,17 @@ Before reading this section read the above section titled:
 METHODS VS. FUNCTIONS
 
 An "eta expansion" transforms a Scala method into a Scala function.
-In Scala 3 the compiler can perform this automatically, without any
-programmer intervention.  However, an "eta expansion" can also be
-perfomed manually by the programmer in Scala 3.
 
-To perform an "eta expansion" in Scala 2 requires the programmer
-to do it manually.  The following program demonstrates how to
-perform an eta expansion; transforming methods into functions.
+In Scala 3 the compiler performs most eta expansions automatically
+without any programmer intervention.  However, an "eta expansion"
+can also be perfomed manually by the programmer in Scala 3.
+
+In Scala 2 the programmer often (but not always) needs to manually
+perform an "eta expansion" on a method before passing it as an
+argument to another method/function.
+
+The following program demonstrates how to perform eta expansions;
+transforming methods into functions.
 
 ------------------------------------------------------------------------------
 @main def main():Unit =
