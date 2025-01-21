@@ -409,6 +409,44 @@ https://www.scala-lang.org/files/archive/api/3.3.1/scala/PartialFunction.html#
 
 
 ======================================================================
+FUNCTIONS BUILT WITH ONLY CASE STATEMENTS
+
+------------------------------------------------------------------------------
+@main def main() =
+  // The following code serves only as a reminder of how case
+  // statements are commonly used with the "match" keyword to
+  // perform pattern matching.  So you can compare and contrast
+  // this code with the section below that uses case statements
+  // (without the "match" keyword) to create a Scala function.
+  val number: Int = 3
+  val result: String = number match {
+    case 1 => "One"
+    case 2 => "Two"
+    case 3 => "Three"
+    case _ => "Other"
+  }
+  println(s"result = $result") // PRINTS: result = Three
+
+  // The following set of case statements doesn't use the "match" keyword,
+  // and therefore doesn't perform pattern matching.  Instead, the case
+  // statements act as a body of executable code, which returns a value,
+  // and gets assigned to the val func.
+  val func: (Any => String) =
+    case d: Double => "Double"
+    case f: Float  => "Float"
+    case i: Int    => "Int"
+    case s: String => "String"
+    case _         => "Other"
+  // Execute the function assigned to the val func...
+  println(func('X'))       // PRINTS: Other
+  println(func(123.456D))  // PRINTS: Double
+  println(func(-98.76F))   // PRINTS: Float
+  println(func(12345))     // PRINTS: Int
+  println(func("Jupiter")) // PRINTS: String
+end main
+------------------------------------------------------------------------------
+
+=========================================
 ======================================================================
 ======================================================================
 ======================================================================
