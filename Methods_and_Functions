@@ -340,24 +340,28 @@ end main
 ======================================================================
 ANONYMOUS FUNCTIONS
 ===================
+Before reading this section read the above section titled:
+METHODS VS. FUNCTIONS
+
 An anonymous function is a function that doesn't have a name, and is not
 bound to a class/object/trait.  An anonymous function is sometimes known
-as "a fuction literal."  The "FUNCTIONS" section above demonstrated
+as "a function literal."  The "FUNCTIONS" section above demonstrated
 a function that gets assigned to the val add, like this:
 
 val add:(Int, Int) => Int = (a:Int, b:Int) => a + b
 
-Any function assigned to a val/var contains an anonymous function on the
-right side of the equals sign (=).  From the above example, that code is:
+An anonymous function always contains the rocket symbol (=>).  Any function
+assigned to a val/var contains an anonymous function on the right side of
+the equals sign (=).  From the above example, the anonymous function part
+is this code, when it stands alone:
 
 (a:Int, b:Int) => a + b
 
-This code alone qualifies as an anonymous function.  You could pass this code
-as an argument to another method/function.  You can place an anonymous function
-on its own line of code within a program and it will execute; but it won't
-have any effect on the program's behavior (other than consuming time).  When
-a method/function accepts a function as an argument, you can pass it in
-any of these 3 ways:
+You could pass this code as an argument to another method/function.  You can
+place an anonymous function on its own line of code within a program and it
+will execute; but it won't have any effect on the program's behavior (other
+than consuming time and memory).  When a method/function accepts a function
+as an argument, you can pass it in any of these 3 ways:
 
 1) Pass the argument a method that's been transformed into a function
    via an Eta Expansion.  (See the "ETA EXPANSION" section above.)
@@ -378,13 +382,6 @@ For example, List.map() requires a function to be passed as its argument.  When 
 method/function accepts a function as an argument, you can pass the argument an
 anonymous function, as the following example demonstrates.
 
-NOTE: When an ANONYMOUS FUNCTION is written using the rocket symbol (=>)
-      the token(s) on the left side of "=>" represents the argument(s)
-      passed to the function.  The expression on the right side of "=>"
-      is the algorithm that generates the function's return value.
-      The right side of "=>" must reference all arguments included on
-      the left side of "=>".  The following program demonstrates
-      some examples of how to use anonymous functions.
 
 
 ======================================================================
