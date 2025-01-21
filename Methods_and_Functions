@@ -30,10 +30,10 @@ a function that should be understood, which are described here.
      then can be passed to another method/function.  In Scala 3, the compiler
      automatically performs the "eta expansion" on a method when it's passed as an
      argument to another method/function.  So it appears that you can pass a method
-     to another method/function.  In Scala 2, the programmer needs to manually perform
-     an "eta expansion" on a method before passing it to another method/function.
-     The program below shows how to perform an "eta expansion" manually in Scala 2
-     and Scala 3.
+     to another method/function.  In Scala 2, the programmer often (but not always)
+     needs to manually perform an "eta expansion" on a method before passing it to
+     another method/function.  The program below shows how to perform an "eta expansion"
+     manually in Scala 2 and Scala 3.
    * In Scala there are two ways to write a function:
 
       1) You can write an "anonymous function", also known as a "function literal".
