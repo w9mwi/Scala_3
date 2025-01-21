@@ -280,11 +280,11 @@ without any programmer intervention.  However, an "eta expansion"
 can also be perfomed manually by the programmer in Scala 3.
 
 In Scala 2 the programmer often (but not always) needs to manually
-perform an "eta expansion" on a method before passing it as an
-argument to another method/function.
+perform an "eta expansion" on a method when assigning it to a
+val/var, or passing it as an argument to another method/function.
 
 The following program demonstrates how to perform eta expansions;
-transforming methods into functions.
+transforming Scala methods into Scala functions.
 
 ------------------------------------------------------------------------------
 @main def main():Unit =
