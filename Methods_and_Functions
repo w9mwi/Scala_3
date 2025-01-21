@@ -350,45 +350,39 @@ syntax; using either the underscore char (_), or the rocket symbol (=>).
 When an underscore char (_) is used to write an anonymous function, the
 rocket symbol (=>) is not used; and vice-versa.
 
-The following 4 lines of code create an identical function, and assign
-it to a val.  This demonstrates how functions can be written using
-either the underscore char (_) or the rocket symbol (=>).
+The following 4 lines of code demonstrate how the same function can be
+written with different syntax, using either the underscore char (_) or
+the rocket symbol (=>).  All of the following 4 functions are equivalent.
 
-val addIntFunc:(Int, Int) => Int = (a:Int, b:Int) => a + b
-
-This addIntFun function can be written 
+    val addIntFunc_1:(Int, Int) => Int = (a:Int, b:Int) => a + b
+    val addIntFunc_2:(Int, Int) => Int = (a, b) => a + b
+    val addIntFunc_3:(Int, Int) => Int = (_:Int) + (_:Int)
+    val addIntFunc_4:(Int, Int) => Int = _ + _
 
 Any function assigned to a val/var contains an anonymous function on the
-right side of the equals sign (=).  So the anonymous function part of
-the addIntFunc above is this code, when it stands alone:
+right side of the equals sign (=).  So the the following 4 lines of code
+(obtained from the 4 lines above) all qualify as anonymous functions.
 
-(a:Int, b:Int) => a + b
+    (a:Int, b:Int) => a + b
+    (a, b) => a + b
+    (_:Int) + (_:Int)
+    _ + _
 
-You could pass this code as an argument to another method/function.  You can
-place an anonymous function on its own line of code within a program and it
-will execute; but it won't have any effect on the program's behavior (other
-than consuming time and memory).  When a method/function accepts a function
-as an argument, you can pass it in any of these 3 ways:
+When a method/function accepts a function as an argument, you can always
+pass to it an anonymous function.
 
-1) Pass the argument a method that's been transformed into a function
+You can place an anonymous function on its own line of code within a program
+and it will execute; but it won't have any effect on the program's behavior
+(other than consuming time and memory).  When a method/function accepts a
+function as an argument, you can pass it in any of these 3 ways:
+
+1) Pass to the argument an anonymous function.  This is how anonymous
+   functions are used in Scala programs.
+
+2) Pass the argument a val/var that has been assigned a function.
+
+3) Pass the argument a method that's been transformed into a function
    via an Eta Expansion.  (See the "ETA EXPANSION" section above.)
-
-2) Pass the argument a val/var that points to a function, like the
-   val add function shown above.
-
-3) Pass the argument an anonymous function.  So instead of passing the
-   argument add, you could instead pass the argument this code:
-
-   (a:Int, b:Int) => a + b
-
-   This is how an anonymous functions is used in programs; that is,
-   pass it as an argument to another method/function.
-
-The Scala API contains hundreds of methods that accept a function as an argument.
-For example, List.map() requires a function to be passed as its argument.  When a
-method/function accepts a function as an argument, you can pass the argument an
-anonymous function, as the following example demonstrates.
-
 
 
 ======================================================================
