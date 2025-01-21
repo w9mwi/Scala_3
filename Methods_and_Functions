@@ -50,22 +50,12 @@ a function that should be understood, which are described here.
          invoke the function directly via the val/var name, as in the following
          example.
 
-         NOTICE:  When you write a function that gets assigned to a val/var, the
-                  function's executable code (which appears on the right side
-                  of the equals sign) would be an anonymous function if it stood
-                  alone.  So you're effectively assigning an anonymous function
-                  to a val/var. But since that function can be referenced via the
-                  val/var name, it's no longer anonymous.
-
-           // The addFunction below is assigned to a val.  It accepts 2 arguments
-           // (x and y) of type Double, sums those 2 arguments, and returns a
-           // type Double.  All vals/vars have a data type.  So the data type of
-           // the val addFunction is the data type of the function it's assigned.
-           // That data type is:  (Double, Double) => Double
-           //
-           val addFunction:((Double, Double) => Double) = (x, y) => x + y
-           val result:Double = addFunction(123.456D, 654.321D)
-           println(s"result = $result") // PRINTS: result = 777.777
+         IMPORTANT:  When you write a function that gets assigned to a val/var, the
+                     function's executable code (which appears on the right side
+                     of the equals sign) would be an anonymous function if it stood
+                     alone.  So you're effectively assigning an anonymous function
+                     to a val/var. But since that function can be referenced via the
+                     val/var name, it's no longer anonymous.
 
 SUMMARY:  In most cases you'll write methods to obtain the functionality you need.
           If you need a function, you can easily transform a method into a function
