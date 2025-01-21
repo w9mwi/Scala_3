@@ -259,9 +259,9 @@ The following program demonstrates multiple examples of how to write Scala funct
 end main
 ------------------------------------------------------------------------------
 
-The following program demonstrates how the same function can be written
-with different syntax, using either the underscore char (_) or the
-rocket symbol (=>).  All 4 functions in the following code are equivalent.
+The following program demonstrates how the same function can be written with
+different syntax, using either the underscore char (_) or the rocket symbol (=>).
+All 4 functions in the following program are equivalent.
 
 ------------------------------------------------------------------------------
 @main def main() =
