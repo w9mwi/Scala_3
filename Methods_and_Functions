@@ -232,8 +232,7 @@ A method, or a function, is a "higher-order function" if one or both of the foll
    * It accepts at least one argument that's a function.
    * It returns a function.
 
-The following program demonstrates multiple examples of how
-to write Scala functions.
+The following program demonstrates multiple examples of how to write Scala functions.
 ------------------------------------------------------------------------------
 @main def main() =
   // FUNCTIONS THAT ACCEPT NO ARGUMENTS.
@@ -259,6 +258,27 @@ to write Scala functions.
   val compose:    (Int => Int, Int => Int) => Int => Int = (f, g) => x => f(g(x))
 end main
 ------------------------------------------------------------------------------
+
+The following program demonstrates how the same function can be written
+with different syntax, using either the underscore char (_) or the
+rocket symbol (=>).  All 4 functions in the following code are equivalent.
+
+------------------------------------------------------------------------------
+@main def main() =
+  val addIntFunc_1:(Int, Int) => Int = (a:Int, b:Int) => a + b
+  println(s"addIntFunc_1(111, 222) = ${addIntFunc_1(111, 222)}") // PRINTS: addIntFunc_1(111, 222) = 333
+
+  val addIntFunc_2:(Int, Int) => Int = (a, b) => a + b
+  println(s"addIntFunc_2(222, 333) = ${addIntFunc_2(222, 333)}") // PRINTS: addIntFunc_2(222, 333) = 555
+
+  val addIntFunc_3:(Int, Int) => Int = (_:Int) + (_:Int)
+  println(s"addIntFunc_3(333, 444) = ${addIntFunc_3(333, 444)}") // PRINTS: addIntFunc_3(333, 444) = 777
+
+  val addIntFunc_4:(Int, Int) => Int = _ + _
+  println(s"addIntFunc_4(444, 555) = ${addIntFunc_4(444, 555)}") // PRINTS: addIntFunc_4(444, 555) = 999
+end main
+------------------------------------------------------------------------------
+
 
 ======================================================================
 ETA EXPANSION
