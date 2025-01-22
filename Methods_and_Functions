@@ -504,6 +504,9 @@ end main
 ======================================================================
 NULLARY FUNCTIONS
 =================
+
+A nullary function is a function that accepts no arguments.
+
 Recall that all functions have a data type.  A function's data type
 always includes the rocket symbol (=>).  When a method/function is
 written, and it accepts argument(s), the name and data type of each
@@ -558,8 +561,8 @@ The following program demonstrates a nullary function.
 Read in-line comments for details.
 ------------------------------------------------------------------------------
 
-// The blockOfCode argument passed to myMethod is a NULLARY FUNCTION,
-// because blockOfCode is a function, but it has no data type.
+// The blockOfCode argument passed to myMethod is a NULLARY FUNCTION
+// because blockOfCode is a function that accepts no arguments.
 def myMethod(blockOfCode: => Boolean): Unit =
   // The following line executes the block of code passed to
   // this method, and assigns its returned value to val result.
