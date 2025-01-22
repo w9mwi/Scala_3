@@ -516,16 +516,15 @@ end main
 ------------------------------------------------------------------------------
 This section demonstrates that a block of executable Scala code can be passed
 as an argument to a method/function.  When a block of executable code is passed
-as an argument to a method/function, that argument will reference the executable
-code, which makes it a function.  Therefore, that argument will also have a
-function data type, which always includes the rocket symbol (=>).  Since a
-block of executable code has no arguments, that argument qualifies as
-a nullary function.
+as an argument to a method/function, that argument is a function because it
+references the executable code.  Therefore, that argument will also have a
+function data type, which includes the rocket symbol (=>).  When an argument
+references a block of code, that argument qualifies as a nullary function.
 
-Recall that all functions have a data type.  A function's data type
-always includes the rocket symbol (=>).  When a method/function is
-written, and it accepts argument(s), the name and data type of each
-argument must be specified in the method's/function's argument list.
+Recall that all functions have a data type.  A function data type always
+includes the rocket symbol (=>).  When a method/function is written, and
+it accepts argument(s), the name and data type of each argument must be
+specified in the method's/function's argument list.
 
 Below are three examples of a method that accepts a function as an
 argument.  The first two examples serve as a reminder of how function
@@ -571,6 +570,11 @@ blockOfCode: => Boolean   // This code reads as follows:
                           // "blockOfCode is a function that references a block of code.
                           //  blockOfCode has no arguments (because a block of code
                           //  can't have arguments), and it returns the type Boolean."
+
+IMPORTANT: When passing a block of code to an argument, the block of code must be enclosed
+           between a braces pair {}, and not between parenthesis ().  The exception is a
+           one-line expression such as: (idx == 0)
+           It's best to always use the braces pair {} because that always works.
 
 The following program demonstrates a nullary function.
 Read in-line comments for details.
