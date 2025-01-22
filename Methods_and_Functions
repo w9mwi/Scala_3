@@ -508,55 +508,74 @@ Recall that all functions have a data type.  A function's data type
 always includes the rocket symbol (=>).  When a method/function is
 written, and it accepts argument(s), the name and data type of each
 argument must be specified in the method's/function's argument list.
-Here are two examples of a method that accepts a function as an argument.
 
-   // Data type of the func argument is: Int=>String
-   // It accepts one argument with an Int type, and returns a String.
+Below are three examples of a method that accepts a function as an
+argument.  The first two examples serve as a reminder of how function
+data types are written.  The third example demonstrates a NULLARY FUNCTION.
+
+   // EXAMPLE 1)
+   // The func argument is a function that accepts an Int argument,
+   // and returns a String.  So its data type is:  Int=>String
    def myMethod(func:Int => String):String = { "This is a test." }
 
-   // Data type of the func argument is: (Char,Boolean)=>(Int,Float)
-   // It accepts two arguments of types Char and Boolean, and returns an (Int, Float) tuple.
-   def myMethod_2(func:(Char, Boolean) => (Int, Float)):String = { "This is a test." }
+   // EXAMPLE 2)
+   // The func argument is a function that accepts two arguments
+   // of type Char and Boolean, and returns an (Int, Float) tuple.
+   // So its data type is:  (Char, Boolean) => (Int, Float)
+   def myMethod(func:(Char, Boolean) => (Int, Float)):String = { "This is a test." }
 
-   The following method also accepts a function as an argument.
-
-   // Data type of the blockOfCode argument is:  => Boolean
-   // It accepts argument , returns an (Int, Float) tuple.
+   // EXAMPLE 3)
+   // THIS IS A NULLARY FUNCTION.
+   // The func argument is a function that ACCEPTS NO ARGUMENTS, and
+   // returns a Boolean.  So its data type is just:  =>Boolean
    def myMethod(blockOfCode: => Boolean):String = { "This is a test." }
 
-   Notice the function's "blockOfCode" argument appears to be missing the data type 
+In EXAMPLE 3 above, the function passed to myMethod is named "blockOfCode",
+and it accepts NO ARGUMENTS.  A function can't have a data type for its
+argument when it accepts no argument!  This is why the data type of the
+"blockOfCode" argument contains only whitespace between the colon char (:)
+and the rocket symbol (=>).  That whitespace is what designates the
+"blockOfCode" function has no arguments.
 
+The "blockOfCode" function that gets passed to myMethod is literally
+"a block of executable Scala code."  A block of code consists of one
+or more lines of executable code.  When you envision a block of code,
+it's easy to understand that "a block of code" can't have a data type.
+However, every block of code always has some return type, even if it's
+return type is Unit.
 
+Looking again at the argument passed to myMethod, we see the following.
 
+blockOfCode: => Boolean
 
-In previous examples, function data type have always included one or more arguments
-passed to the function.  Hovever, it's possible for a function to have a data type
-that looks like this:
+NOTE: There MUST be whitespace between the colon char (:) and the
+      rocket symbol (=>), because that whitespace is what designates
+      the blockOfCode function has NO ARGUMENTS.
 
-   blockOfCode: => Boolean
+blockOfCode: => Boolean   // This code reads as follows:
+                          // "blockOfCode is a function that references a block of code.
+                          //  blockOfCode has no arguments (because a block of code
+                          //  can't have arguments), and it returns the type Boolean."
 
-Where "blockOfCode" is the name of the argument passed to the function,
-and the function returns a Boolean.  Notice there is no type 
+The following program demonstrates a nullary function.
+Read in-line comments for details.
 ------------------------------------------------------------------------------
 
-
+// The blockOfCode argument passed to myMethod is a NULLARY FUNCTION,
+// because blockOfCode is a function, but it has no data type.
 def myMethod(blockOfCode: => Boolean): Unit =
-  // The following line executes the block of code passed as an
-  // argument, and assigns its returned value to val result.
+  // The following line executes the block of code passed to
+  // this method, and assigns its returned value to val result.
   val result: Boolean = blockOfCode
   println(s"result = $result") // PRINTS: result = true
 end myMethod
 
 @main def main() =
   // The following code shows that a block of Scala code (not a value)
-  // gets passed as an argument to the myMethod method.  A block of Scala
-  // code consists of one or more lines of executable Scala code.  A block
-  // of Scala code will always return some data type, but the block of code
-  // (which gets passed as an argument) does NOT have a data type.  This is
-  // why the argument declared in the myMethod method specifies no data
-  // type between the colon char (:) and the rocket symbol (=>).
-  // NOTICE: When a block of executable Scala code is passed as an argument
-  //         (as shown below), it must be wrapped inside a braces pair {}.
+  // gets passed as an argument to myMethod.  A block of Scala code
+  // consists of one or more lines of executable Scala code.
+  // NOTE: When a block of executable Scala code is passed as an argument
+  //       (as shown below), it must be wrapped inside a braces pair {}.
   myMethod {
     val number = 123
     if (number == 123) true
