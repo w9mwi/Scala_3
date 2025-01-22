@@ -508,9 +508,16 @@ Recall that all functions have a data type.  A function's data type
 always includes the rocket symbol (=>).  When a method/function is
 written, and it accepts argument(s), the name and data type of each
 argument must be specified in the method's/function's argument list.
-Here are some examples of a method that accepts a function as an argument.
+Here are some examples of a method that accepts a function as an
+argument.
 
-   def myMethod(number:Int => Boolean) = {}
+   // The data type of the func argument is: Int=>String
+   // It accepts an Int argument, returns a String.
+   def myMethod(func:Int => String):String = { "This is a test." }
+
+   // The data type of the func argument is: (Char, Boolean) => (Int, Float)
+   // It accepts arguments (Char, Boolean), returns an (Int, Float) tuple.
+   def myMethod_2(func:(Char, Boolean) => (Int, Float)):String = { "This is a test." }
 
 
 
