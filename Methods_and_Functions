@@ -601,14 +601,75 @@ end myMethod
     else false
   }
 end main
+------------------------------------------------------------------------------
+
+The following program demonstrates another nullary function example.
 
 ------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
+/**********************
+* Class: LoopUntilCond
+* The blockOfCode argument gets passed a Nullary Function.
+**********************/
+class LoopUntilCond(blockOfCode: => Unit):
+  def until(cond: => Boolean): Unit =
+    blockOfCode // Executes the code contained in the blockOfCode argument.
+
+    if (cond == false) // When cond == true, the recursion terminates.
+      until(cond) // Recursively call the above LoopUntilCond.until() method.
+end LoopUntilCond
+
+/**********************
+* Method: loop()
+**********************/
+def loop(blockOfCode: => Unit):LoopUntilCond =
+  new LoopUntilCond(blockOfCode)
+end loop
+
+@main def main() =
+  var idx:Int = 5
+  // **************************************************************************************
+  // EXAMPLE 1)
+  // 1) The loop() method is invoked, which invokes a new instance of class LoopUntilCond.
+  // 2) This new instance of class LoopUntilCond gets passed the 2 lines of executable code
+  //    (shown below), which is assigned to the blockOfCode argument.
+  // 3) Because loop below references an instance of LoopUntilCond, it can invoke
+  //    the LoopUntilCond.until() method.  It does that at the end of this code.
+  // 4) The last line below contains this text:  }.until(idx == 0)
+  //    That line could be rewritten as this:    } until idx == 0
+  loop {
+    // The following 2 lines of executable Scala code get passed
+    // to the blockOfCode argument in the loop() method.
+    print("idx = " + idx + ", ") // PRINTS: idx = 5, idx = 4, idx = 3, idx = 2, idx = 1,
+    idx -= 1
+  } until idx == 0 // This line can be rewritten as:  until{idx == 0}
+                   //                                .until{idx == 0}
+                   //                                 until(idx == 0)
+                   //                                .until(idx == 0)
+  println()
+
+  // **************************************************************************************
+  // EXAMPLE 2)
+  // Identical behavior to EXAMPLE 1) above.  But this section is written so the
+  // class LoopUntilCond (returned by invoking the loop() method) is assigned
+  // to val myLoop.
+  idx = 5 // Reset the idx value.
+  val myLoop:LoopUntilCond =
+    loop {
+    print("idx = " + idx + ", ")
+    idx -= 1
+  }
+  myLoop.until(idx == 0) // This line can be rewritten as:  myLoop until idx == 0
+                         //                                 myLoop until{idx == 0}
+                         //                                 myLoop.until{idx == 0}
+                         //                                 myLoop until(idx == 0)
+                         //                                 myLoop.until(idx == 0)
+end main
 ------------------------------------------------------------------------------
 
 
 ======================================================================
 ======================================================================
 
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
