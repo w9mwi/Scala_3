@@ -504,12 +504,22 @@ end main
 ======================================================================
 NULLARY FUNCTIONS
 =================
-Recall that all functions have a data type, and the data type of a function
-always includes the rocket symbol (=>).  These are some possible function
-data types:
+Recall that all functions have a data type.  A function's data type
+always includes the rocket symbol (=>).  When a method/function is
+written, and it accepts argument(s), the name and data type of each
+argument must be specified in the method's/function's argument list.
+Here are some examples of a method that accepts a function as an argument.
+
+   def myMethod(number:Int => Boolean) = {}
+
+
 
    (Int)=>String                           - The function accepts an Int argument, returns a String value.
    (Boolean, Float, String)=>(Int, String) - The function accepts 3 arguments, returns an (Int, String) tuple.
+
+
+
+
 
 In previous examples, function data type have always included one or more arguments
 passed to the function.  Hovever, it's possible for a function to have a data type
