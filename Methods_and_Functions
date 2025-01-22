@@ -503,8 +503,49 @@ end main
 
 ======================================================================
 NULLARY FUNCTIONS
+=================
+Recall that all functions have a data type, and the data type of a function
+always includes the rocket symbol (=>).  These are some possible function
+data types:
 
+   (Int)=>String                           - The function accepts an Int argument, returns a String value.
+   (Boolean, Float, String)=>(Int, String) - The function accepts 3 arguments, returns an (Int, String) tuple.
+
+In previous examples, function data type have always included one or more arguments
+passed to the function.  Hovever, it's possible for a function to have a data type
+that looks like this:
+
+   blockOfCode: => Boolean
+
+Where "blockOfCode" is the name of the argument passed to the function,
+and the function returns a Boolean.  Notice there is no type 
 ------------------------------------------------------------------------------
+
+
+def myMethod(blockOfCode: => Boolean): Unit =
+  // The following line executes the block of code passed as an
+  // argument, and assigns its returned value to val result.
+  val result: Boolean = blockOfCode
+  println(s"result = $result") // PRINTS: result = true
+end myMethod
+
+@main def main() =
+  // The following code shows that a block of Scala code (not a value)
+  // gets passed as an argument to the myMethod method.  A block of Scala
+  // code consists of one or more lines of executable Scala code.  A block
+  // of Scala code will always return some data type, but the block of code
+  // (which gets passed as an argument) does NOT have a data type.  This is
+  // why the argument declared in the myMethod method specifies no data
+  // type between the colon char (:) and the rocket symbol (=>).
+  // NOTICE: When a block of executable Scala code is passed as an argument
+  //         (as shown below), it must be wrapped inside a braces pair {}.
+  myMethod {
+    val number = 123
+    if (number == 123) true
+    else false
+  }
+end main
+
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
