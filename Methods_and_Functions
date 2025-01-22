@@ -530,27 +530,24 @@ data types are written.  The third example demonstrates a NULLARY FUNCTION.
    // returns a Boolean.  So its data type is just:  =>Boolean
    def myMethod(blockOfCode: => Boolean):String = { "This is a test." }
 
-In EXAMPLE 3 above, the function passed to myMethod is named "blockOfCode",
-and it accepts NO ARGUMENTS.  A function can't have a data type for its
-argument when it accepts no argument!  This is why the data type of the
-"blockOfCode" argument contains only whitespace between the colon char (:)
-and the rocket symbol (=>).  That whitespace is what designates the
-"blockOfCode" function has no arguments.
-
-The "blockOfCode" function that gets passed to myMethod is literally
-"a block of executable Scala code."  A block of code consists of one
-or more lines of executable code.  When you envision a block of code,
-it's easy to understand that "a block of code" can't have a data type.
-However, every block of code always has some return type, even if it's
-return type is Unit.
-
-Looking again at the argument passed to myMethod, we see the following.
+In EXAMPLE 3 above, we see the argument passed to myMethod is written like this:
 
 blockOfCode: => Boolean
 
-NOTE: There MUST be whitespace between the colon char (:) and the
-      rocket symbol (=>), because that whitespace is what designates
-      the blockOfCode function has NO ARGUMENTS.
+We know the blockOfCode argument is a function because its data type specifies the
+rocket symbol (=>).  However, notice the whitespace between the colon char (:) and
+the rocket symbol (=>).  That whitespace is usually occupied by some data type like
+Int, String, etc., which would specify the data type of the argument passed to
+the blockOfCode function.  When that data type is missing (it's replaced by
+whitespace), it designates the blockOfCode function accepts NO AGRUMENTS.
+
+The blockOfCode function that gets passed to myMethod is literally
+"a block of executable Scala code."  A block of code consists of one
+or more lines of executable code.  When you envision a block of code,
+it's easy to understand that a block of code has no arguments.  Since
+a block of code has no arguments, it can't have a data type for its
+argument.  Therefore, the data type of that non-existent argument
+must be replaced by whitespace, again shown here.
 
 blockOfCode: => Boolean   // This code reads as follows:
                           // "blockOfCode is a function that references a block of code.
