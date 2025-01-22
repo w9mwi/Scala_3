@@ -508,22 +508,23 @@ Recall that all functions have a data type.  A function's data type
 always includes the rocket symbol (=>).  When a method/function is
 written, and it accepts argument(s), the name and data type of each
 argument must be specified in the method's/function's argument list.
-Here are some examples of a method that accepts a function as an
-argument.
+Here are two examples of a method that accepts a function as an argument.
 
-   // The data type of the func argument is: Int=>String
-   // It accepts an Int argument, returns a String.
+   // Data type of the func argument is: Int=>String
+   // It accepts one argument with an Int type, and returns a String.
    def myMethod(func:Int => String):String = { "This is a test." }
 
-   // The data type of the func argument is: (Char, Boolean) => (Int, Float)
-   // It accepts arguments (Char, Boolean), returns an (Int, Float) tuple.
+   // Data type of the func argument is: (Char,Boolean)=>(Int,Float)
+   // It accepts two arguments of types Char and Boolean, and returns an (Int, Float) tuple.
    def myMethod_2(func:(Char, Boolean) => (Int, Float)):String = { "This is a test." }
 
+   The following method also accepts a function as an argument.
 
+   // Data type of the blockOfCode argument is:  => Boolean
+   // It accepts argument , returns an (Int, Float) tuple.
+   def myMethod(blockOfCode: => Boolean):String = { "This is a test." }
 
-   (Int)=>String                           - The function accepts an Int argument, returns a String value.
-   (Boolean, Float, String)=>(Int, String) - The function accepts 3 arguments, returns an (Int, String) tuple.
-
+   Notice the function's "blockOfCode" argument appears to be missing the data type 
 
 
 
