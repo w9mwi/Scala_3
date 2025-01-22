@@ -184,6 +184,7 @@ Scala methods that contain no arguments can be written these 2 ways:
 adhere to this convention, it doesn't mean other programmers will do the
 same.  Don't assume code you didn't write follows this convention.
 
+
 ======================================================================
 FUNCTIONS
 =========
@@ -265,8 +266,6 @@ end main
 ------------------------------------------------------------------------------
 
 
-
-
 ======================================================================
 ETA EXPANSION
 =============
@@ -344,6 +343,7 @@ transforming Scala methods into Scala functions.
 end main
 ------------------------------------------------------------------------------
 
+
 ======================================================================
 ANONYMOUS FUNCTIONS
 ===================
@@ -393,10 +393,12 @@ function as an argument, you can pass it in any of these 3 ways:
 
 
 ======================================================================
-
-======================================================================
 PARTIAL FUNCTIONS
 =================
+See the following web pages for more info. on partial functions.
+
+https://docs.scala-lang.org/scala3/book/fun-partial-functions.html
+https://www.scala-lang.org/files/archive/api/3.3.1/scala/PartialFunction.html#
 
 IMPORTANT:  Don't confuse partial functions with partially-applied functions.
             Partial functions aren't related to partially-applied functions;
@@ -420,8 +422,8 @@ using the "def" keyword.  As the "def" keyword in Scala is used to define method
 not values.
 
 The following program is self-explanatory.  Read in-line comments for details.
-------------------------------------------------------------------------------
 
+------------------------------------------------------------------------------
 // As stated above, a partial function is always assigned to a val/var,
 // and is never written using the "def" keyword.
 val doubleOddNumbers: PartialFunction[Int, Int] =
@@ -455,12 +457,10 @@ end doubleOddNumbers
 
 ------------------------------------------------------------------------------
 
-See the following web pages for more info. on partial functions.
-https://docs.scala-lang.org/scala3/book/fun-partial-functions.html
-https://www.scala-lang.org/files/archive/api/3.3.1/scala/PartialFunction.html#
 
 ======================================================================
 FUNCTIONS BUILT WITH ONLY CASE STATEMENTS
+=========================================
 
 The following program demonstrates how a set of case statements
 can be used as the body of executable code that gets assigned
@@ -514,12 +514,13 @@ and includes no parenthesis () in its definition.  A simple example:
   println(s"result = $result") // PRINTS: result = -420
 end main
 ------------------------------------------------------------------------------
-This section demonstrates that a block of executable Scala code can be passed
+
+Below we demonstrate that a block of executable Scala code can be passed
 as an argument to a method/function.  When a block of executable code is passed
 as an argument to a method/function, that argument is a function because it
-references the executable code.  Therefore, that argument will also have a
-function data type, which includes the rocket symbol (=>).  When an argument
-references a block of code, that argument qualifies as a nullary function.
+references executable code.  Therefore, that argument will also have a
+function data type.  When an argument references a block of code, that
+argument qualifies as a nullary function.
 
 Recall that all functions have a data type.  A function data type always
 includes the rocket symbol (=>).  When a method/function is written, and
