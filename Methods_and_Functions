@@ -83,7 +83,7 @@ end addMethod // This line is optional in Scala 3
 
 // main()
 @main def main() =
-  // Here, we just confirm the addMethod method works.
+  // Confirm the addMethod method works...
   var result:Double = addMethod(123.456D, 654.321D)
   println(s"1) result = $result") // PRINTS: 1) result = 777.777
 
@@ -94,6 +94,7 @@ end addMethod // This line is optional in Scala 3
   // automatically performs an "eta expansion" on arguments that
   // reference methods, so the following line of code works.
   result = myMethod(addMethod)
+
   // The following line is functionally identical to the line above.
   // The underscore char (_) manually performs the "eta expansion",
   // but it's optional.
@@ -106,10 +107,12 @@ end addMethod // This line is optional in Scala 3
   // line of code, the Scala compiler automatically performs an
   // "eta expansion" on the method, transforming it into a function.
   var function:(Double, Double) => Double = addMethod
+
   // The following line is functionally identical to the line above.
   // The underscore char (_) manually performs the "eta expansion",
   // but it's optional.
   function = addMethod _
+
   result = myMethod(function)
   println(s"3) result = $result") // PRINTS: 3) result = 777.777
 end main  // This line is optional in Scala 3
