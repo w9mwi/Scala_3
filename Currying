@@ -34,6 +34,10 @@ def method_4(number1:Int, number2:Int)(number3:Int):Int = number1 + number2 + nu
 end main
 ----------------------------------------------------------------------------------------------
 
+In the above program it appears that methods having multiple argument lists behave no
+differently than methods containing a single argument list.  That is, a method can
+access any argument, whether all arguments are contained in a single argument list,
+or the arguments are contained across multiple argument lists.
 
 
 ----------------------------------------------------------------------------------------------
