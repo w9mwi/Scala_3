@@ -39,6 +39,10 @@ differently than methods containing a single argument list.  That is, a method c
 access any argument, whether all arguments are contained in a single argument list,
 or the arguments are contained across multiple argument lists.
 
+Multiple argument lists are required when a method implements a process known as currying.
+
+
+
 
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
