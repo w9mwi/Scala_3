@@ -1,3 +1,8 @@
+
+Partially-Applied functions aren't covered by this web page.
+See the web page titled "Currying" for information about
+partially-applied functions.
+
 This web page covers the following topics, all of which are related to
 Scala methods and functions.  Each of these topics contains its own
 section below, with a heading of the same name.
@@ -665,12 +670,4 @@ end loop
                          //                                 myLoop until(idx == 0)
                          //                                 myLoop.until(idx == 0)
 end main
-------------------------------------------------------------------------------
-
-
-======================================================================
-======================================================================
-
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
