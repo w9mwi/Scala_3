@@ -46,6 +46,16 @@ or the arguments are contained across multiple argument lists.
 
 Multiple argument lists are required when a method implements a process known as currying.
 
+When a method contains multiple argument lists, and you invoke that method by passing it
+all its argument lists at once (as was done in the above program), that method returns
+a final value, and is NOT curried.
+
+When a method contains multiple argument lists, and you invoke that method by passing it
+fewer than all of its argument lists, that method returns a function, and IS curried.
+The program below demonstrates this.
+
+
+
 CURRYING DEFINITION 1
 =====================
 Currying is the process of converting a function having multiple argument lists
@@ -63,6 +73,8 @@ a function that accepts a single argument list.  When a curried function is fina
 called with its last argument list, the curried function becomes fully applied, and
 returns not a function, but a final value.  Any function that returns a function
 having an argument list is a curried function.
+
+
 
 When a method containing multiple argument lists implements currying, it does the following:
 
