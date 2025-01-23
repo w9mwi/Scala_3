@@ -5,10 +5,10 @@ CURRYING
 NOTE:  This web page coveres the topic of partially-applied functions.  Partially-applied
        functions are NOT covered the "Methods_and_Functions" web page.
 
-mOST Scala methods have a single argument list, which can contain zero, one, or
+Most Scala methods have a single argument list, which can contain zero, one, or
 multiple arguments.  Scala also allows methods to have multiple argument lists,
-where each argument list can contain zero, one, or multiple arguments.
-The following program demonstrates this.
+where each argument list can contain zero, one, or multiple arguments.  The
+following program demonstrates this.
 
 ----------------------------------------------------------------------------------------------
 // METHODS CONTAINING SINGLE-ARGUMENT LISTS  *****************************
