@@ -2,8 +2,8 @@
 CURRYING
 ========
 
-NOTE:  The topic of partially-applied functions is covered on this web page;
-       and not on the "Methods_and_Functions" web page.
+NOTE:  This web page coveres the topic of partially-applied functions.  Partially-applied
+       functions are NOT covered the "Methods_and_Functions" web page.
 
 The vast majority of all Scala methods have a single argument list, which
 can contain one or more arguments.  The following program demonstrates this.
