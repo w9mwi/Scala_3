@@ -2,5 +2,22 @@
 CURRYING
 ========
 
-The topic of partially-applied functions is covered on this web page;
-and not on the "Methods_and_Functions" web page.
+NOTE:  The topic of partially-applied functions is covered on this web page;
+       and not on the "Methods_and_Functions" web page.
+
+The vast majority of all Scala methods have a single argument list, which
+can contain one or more arguments.  The following program demonstrates this.
+
+---------------------------------------------------------------------
+def method_1_Argument(number:Int):Int =
+  number + 1
+def method_3_Arguments(number1:Int, number2:Int, number3:Int):Int =
+  number1 + number2 + number3 + 1
+
+@main def main() =
+  var intResult = method_1_Argument(123)
+  println(s"1) intResult = $intResult") // PRINTS: 1) intResult = 124
+  intResult = method_3_Arguments(111, 222, 333)
+  println(s"2) intResult = $intResult") // PRINTS: 2) intResult = 667
+
+end main
