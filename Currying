@@ -10,6 +10,11 @@ multiple arguments.  Scala also allows methods to have multiple argument lists,
 where each argument list can contain zero, one, or multiple arguments.  The
 following program demonstrates this.
 
+NOTE:  In this section, the words "method" and "function" are used interchangably
+       because their differences aren't in this context aren't that important.
+       To understand the difference between a Scala method and a Scala function
+       see the web page titled:  Methods_and_Functions
+
 ----------------------------------------------------------------------------------------------
 // METHODS CONTAINING SINGLE-ARGUMENT LISTS  *****************************
 def method_1(number:Int):Int = number + 1
