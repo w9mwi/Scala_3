@@ -41,6 +41,43 @@ or the arguments are contained across multiple argument lists.
 
 Multiple argument lists are required when a method implements a process known as currying.
 
+CURRYING DEFINITION 1
+=====================
+Currying is the process of converting a function having multiple argument lists
+into a sequence of functions that accepts only one argument list.  Each function,
+when invoked, returns another function that consumes the next argument list.
+The sequence of function calls terminates when the last function in the sequence
+returns a value, instead of a function.  Any function that returns a function
+having an argument list is a curried function.
+
+CURRYING DEFINITION 2
+=====================
+Currying transforms a method that has multiple argument lists into a chain of functions.
+Where each function in the chain gets passed a single argument list, and returns
+a function that accepts a single argument list.  When a curried function is finally
+called with its last argument list, the curried function becomes fully applied, and
+returns not a function, but a final value.  Any function that returns a function
+having an argument list is a curried function.
+
+When a method containing multiple argument lists implements currying, it does the following:
+
+1) The left-most argument list is consumed first.
+
+
+consumes the
+right-most argument list first, and working right to left, it consumes the
+left-most argument last.
+
+
+Whenever a Scala curried function is invoked, that function becomes
+either a partially-applied function, or a fully-applied function.
+
+PARTIALLY-APPLIED FUNCTION - Invoking a curried function with fewer than all its argument
+                             lists will return a function (not a value); which means the
+                             function is partially applied.
+
+FULLY-APPLIED FUNCTION - When a curried function returns a value (a List, Array, Int, etc.),
+                         instead of a function, that function becomes fully applied.
 
 
 
