@@ -5,19 +5,42 @@ CURRYING
 NOTE:  This web page coveres the topic of partially-applied functions.  Partially-applied
        functions are NOT covered the "Methods_and_Functions" web page.
 
-The vast majority of all Scala methods have a single argument list, which
-can contain one or more arguments.  The following program demonstrates this.
+mOST Scala methods have a single argument list, which can contain zero, one, or
+multiple arguments.  Scala also allows methods to have multiple argument lists,
+where each argument list can contain zero, one, or multiple arguments.
+The following program demonstrates this.
 
----------------------------------------------------------------------
-def method_1_Argument(number:Int):Int =
-  number + 1
-def method_3_Arguments(number1:Int, number2:Int, number3:Int):Int =
-  number1 + number2 + number3 + 1
+----------------------------------------------------------------------------------------------
+// METHODS CONTAINING SINGLE-ARGUMENT LISTS  *****************************
+def method_1(number:Int):Int = number + 1
+def method_2(number1:Int, number2:Int, number3:Int):Int = number1 + number2 + number3 + 1
+
+// METHODS CONTAINING MULTIPLE-ARGUMENT LISTS  ***************************
+def method_3(number1:Int)(number2:Int, number3:Int):Int = number1 + number2 + number3 + 1
+def method_4(number1:Int, number2:Int)(number3:Int):Int = number1 + number2 + number3 + 1
 
 @main def main() =
-  var intResult = method_1_Argument(123)
+  // CALL THE SINGLE-ARGUMENT LIST METHODS.
+  var intResult = method_1(123)
   println(s"1) intResult = $intResult") // PRINTS: 1) intResult = 124
-  intResult = method_3_Arguments(111, 222, 333)
+  intResult = method_2(111, 222, 333)
   println(s"2) intResult = $intResult") // PRINTS: 2) intResult = 667
 
+  // CALL THE MULTIPLE-ARGUMENT LIST METHODS.
+  intResult = method_3(111)(222, 333)
+  println(s"3) intResult = $intResult") // PRINTS: 3) intResult = 667
+  intResult = method_4(222, 333)(111)
+  println(s"4) intResult = $intResult") // PRINTS: 4) intResult = 667
 end main
+----------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
