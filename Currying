@@ -54,6 +54,47 @@ When a method contains multiple argument lists, and you invoke that method by pa
 fewer than all of its argument lists, that method returns a function, and IS curried.
 The next Scala program shown further below demonstrates this.
 
+----------------------------------------------------------------------------------------------
+@main def main() =
+  // This add method is a curried function because it has 2 argument lists.
+  def add(x:Int)(y:Int):Int = x + y
+
+  // When the add method is invoked by supplying both of its argument lists
+  // at once, it becomes "fully applied" and returns the final result.
+  var result:Int = add(88)(12)
+  println(s"add(88)(12) = $result") // PRINTS: func(12) = 100
+
+  // A curried function becomes "partially applied" by invoking it with fewer
+  // than all of its argument lists.  When a curried function is "partially
+  // applied", it returns a function, not a value.
+  //
+  // The following 3 lines of code have identical behavior; only the syntax is
+  // different.  The way the code is written, each of the following 3 lines
+  // invokes the add method for "THE FIRST TIME", because only its LEFT-MOST
+  // argument list is supplied.  When a curried method has processed fewer
+  // than all of its argument lists, it is "partially applied."
+  var func:(Int => Int) = add(88) // This line makes the add method partially-applied.
+  func = add(88)_                 // This line makes the add method partially-applied.
+  func = add(88)(_)               // This line makes the add method partially-applied.
+
+  // To make the add method "fully applied", the function returned
+  // above must be invoked with its final argument list, like this:
+  result = func(12)
+  println(s"func(12) = $result") // PRINTS: func(12) = 100
+
+  // The following code creates two curried functions, both of which
+  // are identical to each other, and identical to sum method above.
+  val curriedSum_0: Int =>  Int => Int   =   x =>  y => x + y
+  val curriedSum_1:(Int => (Int => Int)) = { x => (y => x + y) } // parens () and braces {} makes it easier to read.
+
+  result = curriedSum_0(88)(12)
+  println(s"curriedSum_0(88)(12) = $result") // PRINTS: curriedSum_0(88)(12) = 100
+
+  result = curriedSum_1(88)(12)
+  println(s"curriedSum_1(88)(12) = $result") // PRINTS: curriedSum_1(88)(12) = 100
+end main
+----------------------------------------------------------------------------------------------
+
 
 
 CURRYING DEFINITION 1
