@@ -59,42 +59,54 @@ The next Scala program shown further below demonstrates this.
 
 ----------------------------------------------------------------------------------------------
 @main def main() =
-  // This add method is a curried function because it has 2 argument lists.
-  def add(x:Int)(y:Int):Int = x + y
+  // A method/function that has multiple argument lists is a curried
+  // method/function.  So this add method is a curried method.
+  def add(x:Int)(y:Int)(z:Int):Int = x + y + z
 
-  // When the add method is invoked by supplying both of its argument lists
-  // at once, it becomes "fully applied" and returns the final result.
-  var result:Int = add(88)(12)
-  println(s"add(88)(12) = $result") // PRINTS: func(12) = 100
+  // When a curried method/function is supplied with all its arguments at once
+  // (as shown here), it processes all of them.  This makes it "fully applied."
+  // A fully-applied method/function returns a final result, not a function.
+  var intResult:Int = add(77)(12)(11)   // 77 + 12 + 11 = 100
+  println(s"1) intResult = $intResult") // PRINTS: 1) intResult = 100
 
-  // A curried function becomes "partially applied" by invoking it with fewer
-  // than all of its argument lists.  When a curried function is "partially
-  // applied", it returns a function, not a value.
-  //
-  // The following 3 lines of code have identical behavior; only the syntax is
-  // different.  The way the code is written, each of the following 3 lines
-  // invokes the add method for "THE FIRST TIME", because only its LEFT-MOST
-  // argument list is supplied.  When a curried method has processed fewer
-  // than all of its argument lists, it is "partially applied."
-  var func:(Int => Int) = add(88) // This line makes the add method partially-applied.
-  func = add(88)_                 // This line makes the add method partially-applied.
-  func = add(88)(_)               // This line makes the add method partially-applied.
+  // When a curried method/function has processed at least one of its
+  // argument lists, but not all of its argument lists, it returns
+  // a partially-applied function, as demonstrated here.
+  var partiallyAppliedFunc_1:Int=>(Int => Int) = add(77)
+  var partiallyAppliedFunc_2:Int=>Int          = partiallyAppliedFunc_1(12)
+  intResult = partiallyAppliedFunc_2(11)
+  println(s"2) intResult = $intResult") // PRINTS: 2) intResult = 100
 
-  // To make the add method "fully applied", the function returned
-  // above must be invoked with its final argument list, like this:
-  result = func(12)
-  println(s"func(12) = $result") // PRINTS: func(12) = 100
+  // The above example calls the add method 3 separate times, each time
+  // supplying it with a single argument list, until it becomes fully applied.
+  // The following code demonstrates the add method becomea fully applied
+  // by calling only twice.  The first time with 1 argument list; the second
+  // time with 2 argument lists.
+  partiallyAppliedFunc_1 = add(77)
+  intResult = partiallyAppliedFunc_1(12)(11)
+  println(s"3) intResult = $intResult") // PRINTS: 3) intResult = 100
+  
+  // This also works...
+  partiallyAppliedFunc_2 = add(77)(12)
+  intResult = partiallyAppliedFunc_2(11)
+  println(s"4) intResult = $intResult") // PRINTS: 4) intResult = 100
 
-  // The following code creates two curried functions, both of which
-  // are identical to each other, and identical to sum method above.
-  val curriedSum_0: Int =>  Int => Int   =   x =>  y => x + y
-  val curriedSum_1:(Int => (Int => Int)) = { x => (y => x + y) } // parens () and braces {} makes it easier to read.
 
-  result = curriedSum_0(88)(12)
-  println(s"curriedSum_0(88)(12) = $result") // PRINTS: curriedSum_0(88)(12) = 100
+  // curriedSum_1 and curriedSum_2 below are both functions that are
+  // identical to each other, and identical to sum method defined above.
+  // curriedSum_1 is written with parentheses () and braces {} making
+  // it easier to read.
+  val curriedSum_1:Int =>   Int => Int   =   x =>  y => x + y
+  val curriedSum_2:(Int => (Int => Int)) = { x => (y => x + y) } // parens () and braces {} makes it easier to read.
+  intResult = curriedSum_1(88)(12)
+  println(s"curriedSum_0(88)(12) = $intResult") // PRINTS: curriedSum_0(88)(12) = 100
 
-  result = curriedSum_1(88)(12)
-  println(s"curriedSum_1(88)(12) = $result") // PRINTS: curriedSum_1(88)(12) = 100
+  intResult = curriedSum_2(88)(12)
+  println(s"curriedSum_1(88)(12) = $intResult") // PRINTS: curriedSum_1(88)(12) = 100
+
+//  val curriedSum_1:Int =>   Int => Int   =   x =>  y => x + y
+//  val curriedSum_2:(Int => (Int => Int)) = { x => (y => x + y) } // parens () and braces {} makes it easier to read.
+
 end main
 ----------------------------------------------------------------------------------------------
 
