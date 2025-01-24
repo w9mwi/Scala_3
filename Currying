@@ -50,6 +50,8 @@ When a method contains multiple argument lists, and you invoke that method by pa
 all its argument lists at once (as was done in the above program), that method returns
 a final value, and is NOT curried.
 
+FIX -->  Doesn't appear as it's curried, but internally, it is currued.
+
 When a method contains multiple argument lists, and you invoke that method by passing it
 fewer than all of its argument lists, that method returns a function, and IS curried.
 The next Scala program shown further below demonstrates this.
