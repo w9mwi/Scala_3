@@ -45,30 +45,20 @@ differently than a method containing a single argument list.  That's true only w
 invoke the method with all of its argument lists in a single call, as was done in the
 above program.
 
-When a method/function has multiple argument lists, it can be invoked by supplying 
-it with fewer than all of its argument lists.  When that happens, the method processes
-only the argument list(s) supplied, and it returns a function, instead of a final
-result.  You can invoke the returned function with any number of argument lists,
-until you have finally supplied all of the method's argument lists.  Only when you
-have supplied all of the method's argument lists will a final result be returned,
-instead of a function.
+When a method/function has multiple argument lists, it can be invoked by supplying it
+with fewer than all of its argument lists.  When that happens, the method processes
+only the argument list(s) supplied, and it returns a function, instead of a final result.
+
+You can then invoke the returned function with any number of argument lists, until you
+have finally supplied all of the method's argument lists.  Only when you have supplied
+all of the method's argument lists will a final result be returned, instead of a function.
 
 A method/function that has multiple argument lists is known as a CURRIED METHOD/FUNCTION.
 When it's invoked with fewer than all of its argument lists, it returns not a final value,
 but a function; which makes it a PARTIALLY-APPLIED FUNCTION.  Once it's supplied with
-all of its argument lists, it returns not a function, bu a final value; which makes
-it FULLY-APPLIED.
-
-
-When a method contains multiple argument lists, and you invoke that method by passing it
-all its argument lists at once (as was done in the above program), that method returns
-a final value, and is NOT curried.
-
-FIX -->  Doesn't appear as it's curried, but internally, it is currued.
-
-When a method contains multiple argument lists, and you invoke that method by passing it
-fewer than all of its argument lists, that method returns a function, and IS curried.
-The next Scala program shown further below demonstrates this.
+all of its argument lists, it returns not a function, but a final value; which makes
+it FULLY-APPLIED.  The following program demonstrates this.  Read in-line comments
+for details
 
 ----------------------------------------------------------------------------------------------
 @main def main() =
