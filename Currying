@@ -90,8 +90,8 @@ for details
   println(s"3) intResult = $intResult") // PRINTS: 3) intResult = 100
   
   // This also works...
-  partiallyAppliedFunc_2 = add(77)(12)
-  intResult = partiallyAppliedFunc_2(11)
+  partiallyAppliedFunc_2 = add(12)(11)
+  intResult = partiallyAppliedFunc_2(77)
   println(s"4) intResult = $intResult") // PRINTS: 4) intResult = 100
 
 
