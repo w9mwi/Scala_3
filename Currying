@@ -52,7 +52,7 @@ a final value, and is NOT curried.
 
 When a method contains multiple argument lists, and you invoke that method by passing it
 fewer than all of its argument lists, that method returns a function, and IS curried.
-The program futher below demonstrates this.
+The next Scala program shown further below demonstrates this.
 
 
 
@@ -74,17 +74,14 @@ called with its last argument list, the curried function becomes fully applied, 
 returns not a function, but a final value.  Any function that returns a function
 having an argument list is a curried function.
 
-
-
-When a method containing multiple argument lists implements currying, it does the following:
-
-1) The left-most argument list is consumed first.
-
-
-consumes the
-right-most argument list first, and working right to left, it consumes the
-left-most argument last.
-
+HOW CURRYING WORKS
+==================
+The first time the method executes it processes only its RIGHT-MOST argument list.
+When that RIGHT-MOST argument list is processed (consumed), the method executes
+again, processing its remaining RIGHT-MOST argument list.  This process repeats
+until the method's LEFT-MOST argument list remains.  When the method's LEFT-MOST
+argument list has been consumed (processed), the method returns a final value
+and terminates.
 
 Whenever a Scala curried function is invoked, that function becomes
 either a partially-applied function, or a fully-applied function.
