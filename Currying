@@ -121,7 +121,7 @@ end main
 
 In most cases a curried method/function is written with multiple argument
 lists.  However, it's possible for a curried method/function to have only
-one argument list.  The following program demonstrates this.
+one argument list.  The following 2 programs demonstrates this.
 
 ----------------------------------------------------------------------------------------------
 @main def main() =
@@ -152,6 +152,45 @@ one argument list.  The following program demonstrates this.
   func = subtractCurried_2(_)(2) // Invoke as a partially-applied function.
   result = func(1) // Calling func(1) makes it fully applied.
   println(s"5) result = $result") // PRINTS: 5) result = -1
+end main
+----------------------------------------------------------------------------------------------
+@main def main() =
+  // Although the following 2 functions are written with only
+  // one argument list, they are both curried functions because
+  // they return a function that accepts a single argument list.  
+  val plus5Func:(Double=>Double)  = { (x:Double) => x+5.0D }
+  val squareFunc:(Double=>Double) = { (x:Double) => x*x }
+
+  // The following line of code can be rewritten as this:
+  // def funcOfGunc[A](func:(A=>A), gunc:(A=>A)):(A=>A) = { x=>func(gunc(x)) }
+  // Because A, B, and C all have the same data type.
+  def funcOfGunc[A,B,C](func:(B=>C), gunc:(A=>B)):(A=>C) = { x=>func(gunc(x)) }
+
+  // funcOfGunc(plus5Func, squareFunc) returns a function that accepts
+  // a single argument of type Double.  When it's called with a second
+  // argument list (on the following line of code), it's invoking the
+  // returned function by passing to it an argument of type Double.
+  var result:Double = funcOfGunc(plus5Func, squareFunc)(7.0D)
+  println("1) result = " + result) // PRINTS: 1) result = 54.0
+  var func:Double=>Double = funcOfGunc(plus5Func, squareFunc)
+  result = func(7.0D)
+  println("2) result = " + result) // PRINTS: 2) result = 54.0
+  func = funcOfGunc(plus5Func, squareFunc)(_)
+  result = func(7.0D)
+  println("3) result = " + result) // PRINTS: 3) result = 54.0
+
+  // funcOfGunc(squareFunc, plus5Func) returns a function that accepts
+  // a single argument of type Double.  When it's called with a second
+  // argument list (on the following line of code), it's invoking the
+  // returned function by passing to it an argument of type Double.
+  result = funcOfGunc(squareFunc, plus5Func)(7.0D)
+  println("4) result = " + result) // PRINTS: 4) result = 144.0
+  func = funcOfGunc(squareFunc, plus5Func)
+  result = func(7.0D)
+  println("5) result = " + result) // PRINTS: 5) result = 144.0
+  func = funcOfGunc(squareFunc, plus5Func)(_)
+  result = func(7.0D)
+  println("6) result = " + result) // PRINTS: 6) result = 144.0
 end main
 ----------------------------------------------------------------------------------------------
 
