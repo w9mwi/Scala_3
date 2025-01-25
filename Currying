@@ -161,6 +161,10 @@ end main
   val plus5Func:(Double=>Double)  = { (x:Double) => x+5.0D }
   val squareFunc:(Double=>Double) = { (x:Double) => x*x }
 
+  // The funcOfGunc method defined below is also written with only
+  // one argument list.  But it too is a curried function because
+  // it returns a function that accepts a single argument list.
+  //
   // The following line of code can be rewritten as this:
   // def funcOfGunc[A](func:(A=>A), gunc:(A=>A)):(A=>A) = { x=>func(gunc(x)) }
   // Because A, B, and C all have the same data type.
