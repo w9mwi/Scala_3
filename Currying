@@ -1,20 +1,14 @@
 CURRYING
 ========
-Before reading this web page read the web page titled:
-METHODS VS. FUNCTIONS
-
-NOTE:  This web page coveres the topic of partially-applied functions.  Partially-applied
-       functions are NOT covered the "Methods_and_Functions" web page.
+In this section, the words "method" and "function" are used interchangably
+because their differences aren't in this context aren't that important.
+To understand the difference between a Scala method and a Scala function
+see the web page titled:  Methods_and_Functions
 
 Most Scala methods have a single argument list, which can contain zero, one, or
 multiple arguments.  Scala also allows methods to have multiple argument lists,
 where each argument list can contain zero, one, or multiple arguments.  The
 following program demonstrates this.
-
-NOTE:  In this section, the words "method" and "function" are used interchangably
-       because their differences aren't in this context aren't that important.
-       To understand the difference between a Scala method and a Scala function
-       see the web page titled:  Methods_and_Functions
 
 ----------------------------------------------------------------------------------------------
 // METHODS CONTAINING SINGLE-ARGUMENT LISTS  *****************************
@@ -46,12 +40,12 @@ invoke the method with all of its argument lists in a single call, as was done i
 above program.
 
 When a method/function has multiple argument lists, it can be invoked by supplying it
-with fewer than all of its argument lists.  When that happens, the method processes
+with fewer than all of its argument lists.  When that happens the method processes
 only the argument list(s) supplied, and it returns a function, instead of a final result.
 
 You can then invoke the returned function with any number of argument lists, until you
-have finally supplied all of the method's argument lists.  Only when you have supplied
-all of the method's argument lists will a final result be returned, instead of a function.
+have supplied all of the method's argument lists.  Only when you have supplied all of
+the method's argument lists will a final result be returned, instead of a function.
 
 A method/function that has multiple argument lists is known as a CURRIED METHOD/FUNCTION.
 When it's invoked with fewer than all of its argument lists, it returns not a final value,
