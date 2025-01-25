@@ -10,6 +10,11 @@ multiple arguments.  Scala also allows methods to have multiple argument lists,
 where each argument list can contain zero, one, or multiple arguments.  The
 following program demonstrates this.
 
+WARNING: When a method/function definition contains multiple argument lists,
+         and one those argument lists contains the Scala keyword "implicit",
+         that method/function is NOT a curried function.  The information
+         on this web page doesn't apply to implicit arguments.
+
 ----------------------------------------------------------------------------------------------
 // METHODS CONTAINING SINGLE-ARGUMENT LISTS  *****************************
 def method_1(number:Int):Int = number + 1
