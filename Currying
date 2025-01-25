@@ -157,12 +157,12 @@ end main
 @main def main() =
   // Although the following 2 functions are written with only
   // one argument list, they are both curried functions because
-  // they return a function that accepts a single argument list.  
+  // they return a function that accepts a single argument list.
   val plus5Func:(Double=>Double)  = { (x:Double) => x+5.0D }
   val squareFunc:(Double=>Double) = { (x:Double) => x*x }
 
-  // The funcOfGunc method defined below is also written with only
-  // one argument list.  But it too is a curried function because
+  // Although the funcOfGunc method defined below is written with
+  // only one argument list, it is a curried function because
   // it returns a function that accepts a single argument list.
   //
   // The following line of code can be rewritten as this:
@@ -170,10 +170,9 @@ end main
   // Because A, B, and C all have the same data type.
   def funcOfGunc[A,B,C](func:(B=>C), gunc:(A=>B)):(A=>C) = { x=>func(gunc(x)) }
 
-  // funcOfGunc(plus5Func, squareFunc) returns a function that accepts
-  // a single argument of type Double.  When it's called with a second
-  // argument list (on the following line of code), it's invoking the
-  // returned function by passing to it an argument of type Double.
+  // SECTION 1) ************************************************************
+  // Demonstrate that funcOfGunc(plus5Func, squareFunc) can be invoked
+  // 3 different ways to obtain the same result.
   var result:Double = funcOfGunc(plus5Func, squareFunc)(7.0D)
   println("1) result = " + result) // PRINTS: 1) result = 54.0
   var func:Double=>Double = funcOfGunc(plus5Func, squareFunc)
@@ -183,10 +182,11 @@ end main
   result = func(7.0D)
   println("3) result = " + result) // PRINTS: 3) result = 54.0
 
-  // funcOfGunc(squareFunc, plus5Func) returns a function that accepts
-  // a single argument of type Double.  When it's called with a second
-  // argument list (on the following line of code), it's invoking the
-  // returned function by passing to it an argument of type Double.
+  // SECTION 2) ************************************************************
+  // This section is identical to SECTION 1) above, except that it
+  // swaps the order of the 2 arguments passed to funcOfGunc.
+  // Demonstrate that funcOfGunc(squareFunc, plus5Func) can be invoked
+  // 3 different ways to obtain the same result.
   result = funcOfGunc(squareFunc, plus5Func)(7.0D)
   println("4) result = " + result) // PRINTS: 4) result = 144.0
   func = funcOfGunc(squareFunc, plus5Func)
