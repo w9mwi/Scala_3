@@ -119,9 +119,41 @@ for details
 end main
 ----------------------------------------------------------------------------------------------
 
-In most cases, a curried method/function will have multiple argument lists.
-However, it's possible for a method/function with only one argument list
-to be a curried method/function.  The following program demonstrates this.
+In most cases a curried method/function is written with multiple argument
+lists.  However, it's possible for a curried method/function to have only
+one argument list.  The following program demonstrates this.
+
+----------------------------------------------------------------------------------------------
+@main def main() =
+  // subtractCurried_1 is a curried method defined with 2 argument lists.
+  def subtractCurried_1(x:Int)(y:Int):Int = { x - y }
+
+  // subtractCurried_2 is defined with 1 argument list, but
+  // it's a curried function because it returns a function
+  // that accepts a single argument list.
+  def subtractCurried_2(x:Int):(Int => Int) = { (y:Int) => x - y }
+
+  // Invoke the subtractCurried_1 method. ******************************************
+  var result:Int = subtractCurried_1(1)(2) // Invoke as a fully-applied function.
+  println(s"1) result = $result") // PRINTS: 1) result = -1
+
+  var func:(Int=>Int) = subtractCurried_1(1) // Invoke as a partially-applied function.
+  result = func(2) // Calling func(2) makes it fully applied.
+  println(s"2) result = $result") // PRINTS: 2) result = -1
+
+  // Invoke the subtractCurried_2 method. ******************************************
+  result = subtractCurried_2(1)(2) // Invoke as a fully-applied function.
+  println(s"3) result = $result") // PRINTS: 3) result = -1
+
+  func = subtractCurried_2(1) // Invoke as a partially-applied function.
+  result = func(2) // Calling func(2) makes it fully applied.
+  println(s"4) result = $result") // PRINTS: 4) result = -1
+
+  func = subtractCurried_2(_)(2) // Invoke as a partially-applied function.
+  result = func(1) // Calling func(1) makes it fully applied.
+  println(s"5) result = $result") // PRINTS: 5) result = -1
+end main
+----------------------------------------------------------------------------------------------
 
 
 
