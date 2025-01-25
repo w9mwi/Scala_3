@@ -66,9 +66,9 @@ for details
   // method/function.  So this add method is a curried method.
   def add(x:Int)(y:Int)(z:Int):Int = x + y + z
 
-  // When a curried method/function is supplied with all its arguments at once
-  // (as shown here), it processes all of them.  This makes it "fully applied."
-  // A fully-applied method/function returns a final result, not a function.
+  // When a curried method/function is supplied with all its argument lists
+  // at once (as shown here), it processes all of them.  This makes it a
+  // fully-applied function, which returns a final result, not a function.
   var intResult:Int = add(77)(12)(11)   // 77 + 12 + 11 = 100
   println(s"1) intResult = $intResult") // PRINTS: 1) intResult = 100
 
@@ -82,34 +82,43 @@ for details
 
   // The above example calls the add method 3 separate times, each time
   // supplying it with a single argument list, until it becomes fully applied.
-  // The following code demonstrates the add method becomea fully applied
+  // The following code demonstrates the add method becomes fully applied
   // by calling only twice.  The first time with 1 argument list; the second
   // time with 2 argument lists.
   partiallyAppliedFunc_1 = add(77)
   intResult = partiallyAppliedFunc_1(12)(11)
   println(s"3) intResult = $intResult") // PRINTS: 3) intResult = 100
-  
+
   // This also works...
   partiallyAppliedFunc_2 = add(12)(11)
   intResult = partiallyAppliedFunc_2(77)
   println(s"4) intResult = $intResult") // PRINTS: 4) intResult = 100
 
 
-  // curriedSum_1 and curriedSum_2 below are both functions that are
-  // identical to each other, and identical to sum method defined above.
-  // curriedSum_1 is written with parentheses () and braces {} making
-  // it easier to read.
-  val curriedSum_1:Int =>   Int => Int   =   x =>  y => x + y
-  val curriedSum_2:(Int => (Int => Int)) = { x => (y => x + y) } // parens () and braces {} makes it easier to read.
-  intResult = curriedSum_1(88)(12)
-  println(s"curriedSum_0(88)(12) = $intResult") // PRINTS: curriedSum_0(88)(12) = 100
+  // On the following line of code, the Scala compiler automatically
+  // transforms the add method into a function by performing an
+  // "eta expansion" on it, and assigns it to the var curriedSum.
+  // We know curriedSum is a function (not a method) because its
+  // data type contains the rocket symbol (=>).  The parenthesis ()
+  // used on the following line are added to make it more readable
+  // and can be removed.
+  var curriedSum:Int => (Int => (Int => Int)) = add
 
-  intResult = curriedSum_2(88)(12)
-  println(s"curriedSum_1(88)(12) = $intResult") // PRINTS: curriedSum_1(88)(12) = 100
+  // The curriedSum function works exactly like the add method above.
+  partiallyAppliedFunc_1 = curriedSum(77)
+  intResult = partiallyAppliedFunc_1(12)(11)
+  println(s"5) intResult = $intResult") // PRINTS: 5) intResult = 100
 
-//  val curriedSum_1:Int =>   Int => Int   =   x =>  y => x + y
-//  val curriedSum_2:(Int => (Int => Int)) = { x => (y => x + y) } // parens () and braces {} makes it easier to read.
 
+  // Here we write our own function and assign it to the var curriedSum.
+  // It's identical to the curriedSum function above, which was obtained
+  // by transforming the add method into a function.  The parenthesis()
+  // used on the following line are added to make it more readable
+  // and can be removed.
+  curriedSum = (x => (y => (z => x + y + z)))
+  partiallyAppliedFunc_2 = add(12)(11)
+  intResult = partiallyAppliedFunc_2(77)
+  println(s"6) intResult = $intResult") // PRINTS: 6) intResult = 100
 end main
 ----------------------------------------------------------------------------------------------
 
