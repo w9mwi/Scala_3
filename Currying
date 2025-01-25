@@ -1,9 +1,9 @@
 CURRYING
 ========
-In this section, the words "method" and "function" are used interchangably
-because their differences aren't in this context aren't that important.
-To understand the difference between a Scala method and a Scala function
-see the web page titled:  Methods_and_Functions
+On this web page the words "method" and "function" are used interchangably
+because their differences aren't important regarding the topic of currying.
+The differences between a Scala method and a Scala function are explained
+on the web page titled:  Methods_and_Functions
 
 Most Scala methods have a single argument list, which can contain zero, one, or
 multiple arguments.  Scala also allows methods to have multiple argument lists,
