@@ -93,7 +93,6 @@ for details
   intResult = partiallyAppliedFunc_2(77)
   println(s"4) intResult = $intResult") // PRINTS: 4) intResult = 100
 
-
   // On the following line of code, the Scala compiler automatically
   // transforms the add method into a function by performing an
   // "eta expansion" on it, and assigns it to the var curriedSum.
@@ -108,7 +107,6 @@ for details
   intResult = partiallyAppliedFunc_1(12)(11)
   println(s"5) intResult = $intResult") // PRINTS: 5) intResult = 100
 
-
   // Here we write our own function and assign it to the var curriedSum.
   // It's identical to the curriedSum function above, which was obtained
   // by transforming the add method into a function.  The parenthesis()
@@ -120,6 +118,10 @@ for details
   println(s"6) intResult = $intResult") // PRINTS: 6) intResult = 100
 end main
 ----------------------------------------------------------------------------------------------
+
+In most cases, a curried method/function will have multiple argument lists.
+However, it's possible for a method/function with only one argument list
+to be a curried method/function.  The following program demonstrates this.
 
 
 
