@@ -294,11 +294,11 @@ is also a recursive function because they return a function that
 calls itself.
 
 The first argument list of these fold functions gets passed an
-"initial value", or "start value."  The second argument list of
-these fold functions gets passed a function that performs an
-operation on the intital/start value, plus all elements contained
-in the collection.  The function passed to these fold functions
-is frequently short and simple, so it's usually an anonymous function.
+"initial value", or "start value."  The second argument list gets
+passed a function that performs an operation on the intital value,
+plus all elements contained in the collection.  The function passed
+to these fold functions is frequently short and simple, so it's
+usually an anonymous function.
 
 
 
