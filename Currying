@@ -295,7 +295,7 @@ calls itself.
 
 The first argument list of these fold functions gets passed an
 "initial value", or "start value."  The second argument list gets
-passed a function that performs an operation on the intital value,
+passed a function that performs an operation on the intitial value,
 plus all elements contained in the collection.  The function passed
 to these fold functions is frequently short and simple, so it's
 usually an anonymous function.
@@ -304,6 +304,62 @@ usually an anonymous function.
 
 
 ----------------------------------------------------------------------------------------------
+
+@main def main() =
+  // The math operation performed by foldLeft below is:
+  // 0−7−6−5-4−3−2−1 = -28
+  val intList:List[Int] = List[Int](7, 6, 5, 4, 3, 2, 1)
+//val intList:List[Int] = List[Int](6, 4, 7)
+  var intResult:Int = intList.foldLeft(0)(_-_)  // _-_ is an anonymous function
+  println(s"1) intResult = $intResult") // PRINTS: 1) intResult = -28
+  intResult = intList.foldLeft(0)((x,y) => x-y)  // (x, y)=>x-y is an anonymous function
+  println(s"2) intResult = $intResult") // PRINTS: 2) intResult = -28
+
+  // The math operation performed by foldRight below is:
+  // (1-(2-(3-(4-(5-(6-7))))))-0 = 4
+  intResult = intList.foldRight(0)(_-_) // _-_ is an anonymous function
+  println(s"3) intResult = $intResult") // PRINTS: 3) intResult = 4
+  intResult = intList.foldRight(0)((x,y)=>x-y) // (x,y)=>x-y is an anonymous function
+  println(s"4) intResult = $intResult") // PRINTS: 4) intResult = 4
+
+
+  // ******************************************************************************
+  // In this section we show how to count the number of characters in the following
+  // wordList, using the List.foldLeft and List.foldRight functions.  Notice we
+  // demonstrate TWO (2) different ways of obtaining this character count for
+  // foldLeft and foldRight that return the same result.
+  val wordList:List[String] = List[String]("How", "many", "characters", "are", "in", "this", "wordList?")
+  intResult = wordList.foldLeft(0)((count:Int, word:String) => count + word.length)
+  println("foldLeft #1 = " + intResult) // PRINTS: foldLeft #1 = 35
+  intResult = wordList.foldLeft(0)(_ + _.length)
+  println("foldLeft #2 = " + intResult) // PRINTS: foldLeft #2 = 35
+
+  intResult = wordList.foldRight(0)((word:String, count:Int) => count + word.length)
+  println("foldRight #1 = " + intResult) // PRINTS: foldRight #1 = 35
+  intResult = wordList.foldRight(0)(_.length + _)
+  println("foldRight #2 = " + intResult) // PRINTS: foldRight #2 = 35
+
+  // ******************************************************************************
+  // In this section we call the foldLeft and FoldRight functions on the
+  // following strList.
+  val strList:List[String] = List[String]("ABC", "DEF", "GHI", "JKL", "MNO")
+  var strResult:String = strList.foldLeft("START")(myFunc)
+  println(strResult) // PRINTS: START-ABC-DEF-GHI-JKL-MNO
+
+  strResult = strList.foldRight("BEGIN")(myFunc)
+  println(strResult) // PRINTS: ABC-DEF-GHI-JKL-MNO-BEGIN
+end main
+
+/**
+ * NOTE: Scala defines List.foldLeft as this:   def foldLeft[B](z: B)(op: (B, A) => B): B
+ *       Scala defines List.foldRight as this:  def foldRight[B](z: B)(op: (A, B) => B): B
+ *
+ * Therefore, this myFunc function satisfies the 2nd parameter list of foldLeft and foldRight,
+ * because myFunc gets passed 2 values as a single parameter list, and returns a value.
+ */
+def myFunc(str1:String, str2:String):String =
+  str1.concat("-").concat(str2)
+
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
