@@ -171,8 +171,9 @@ end main
   def funcOfGunc[A,B,C](func:(B=>C), gunc:(A=>B)):(A=>C) = { x=>func(gunc(x)) }
 
   // SECTION 1) ************************************************************
-  // Demonstrate that funcOfGunc(plus5Func, squareFunc) can be invoked
-  // 3 different ways to obtain the same result.
+  // This demonstrates that funcOfGunc(plus5Func, squareFunc) can
+  // be invoked 3 different ways to obtain the same result.
+  //
   var result:Double = funcOfGunc(plus5Func, squareFunc)(7.0D)
   println("1) result = " + result) // PRINTS: 1) result = 54.0
   var func:Double=>Double = funcOfGunc(plus5Func, squareFunc)
@@ -185,8 +186,9 @@ end main
   // SECTION 2) ************************************************************
   // This section is identical to SECTION 1) above, except that it
   // swaps the order of the 2 arguments passed to funcOfGunc.
-  // Demonstrate that funcOfGunc(squareFunc, plus5Func) can be invoked
-  // 3 different ways to obtain the same result.
+  //
+  // This demonstrates that funcOfGunc(squareFunc, plus5Func) can
+  // be invoked 3 different ways to obtain the same result.
   result = funcOfGunc(squareFunc, plus5Func)(7.0D)
   println("4) result = " + result) // PRINTS: 4) result = 144.0
   func = funcOfGunc(squareFunc, plus5Func)
