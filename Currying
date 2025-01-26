@@ -271,9 +271,27 @@ end main
 
 ----------------------------------------------------------------------------------------------
 
+SCALA FOLD FUNCTIONS
+====================
+The following Scala collections can implement the fold, foldRight, and foldLeft functions.
 
+Sequence Collections: Array          Set Collections: HashSet
+                      ArrayBuffer                     LinkedHashSet
+                      List                            Set
+                      ListBuffer                      TreeSet
+                      Queue
+                      Stack
+                      Vector
 
+Map Collections: HashMap              Other Collections: Either
+                 LinkedHashMap                           LazyList
+                 Map                                     Option
+                 TreeMap                                 BitSet
 
+These fold, foldRight, and foldLeft functions have 2 argument lists,
+which makes them curried functions.  Recall that a curried function
+is also a recursive function because they return a function that
+calls itself.
 
 
 
