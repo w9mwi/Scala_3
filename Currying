@@ -309,7 +309,6 @@ usually an anonymous function.
   // The math operation performed by foldLeft below is:
   // 0−7−6−5-4−3−2−1 = -28
   val intList:List[Int] = List[Int](7, 6, 5, 4, 3, 2, 1)
-//val intList:List[Int] = List[Int](6, 4, 7)
   var intResult:Int = intList.foldLeft(0)(_-_)  // _-_ is an anonymous function
   println(s"1) intResult = $intResult") // PRINTS: 1) intResult = -28
   intResult = intList.foldLeft(0)((x,y) => x-y)  // (x, y)=>x-y is an anonymous function
