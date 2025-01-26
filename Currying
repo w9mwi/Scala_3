@@ -15,8 +15,8 @@ CURRYING DEFINITION - Currying transforms a method that has multiple argument li
                       a curried function.
 
 PARTIALLY-APPLIED FUNCTION - Invoking a curried function with fewer than all its argument
-                             lists will return a function (not a value); which makes it
-                             a partially-applied function.
+                             lists will return a function (not a final value); which makes
+                             it a partially-applied function.
 
 FULLY-APPLIED FUNCTION - When a curried function processes all of its argument lists it
                          returns a final value (i.e., Int, List, Array, Float, etc.)
