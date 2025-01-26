@@ -5,15 +5,30 @@ because their differences aren't important regarding the topic of currying.
 The differences between a Scala method and a Scala function are explained
 on the web page titled:  Methods_and_Functions
 
+CURRYING DEFINITION - Currying transforms a method that has multiple argument lists
+                      into a chain of functions.  Where each function in the chain
+                      gets passed an argument list, and returns a function that
+                      accepts an argument list.  When a curried function is supplied
+                      with the last of its multiple argument lists, it becomes fully
+                      applied, and returns not a function, but a final value.  Any
+                      function that returns a function having an argument list is
+                      a curried function.
+
+PARTIALLY-APPLIED FUNCTION - Invoking a curried function with fewer than all its argument
+                             lists will return a function (not a value); which means the
+                             function is partially applied.
+
+FULLY-APPLIED FUNCTION - When a curried function returns a final value (i.e., Int, List,
+                         Array, Float, etc.), instead of a function, it function becomes
+                         fully applied.
+
 Most Scala methods have a single argument list, which can contain zero, one, or
-multiple arguments.  Scala also allows methods to have multiple argument lists,
-where each argument list can contain zero, one, or multiple arguments.  The
-following program demonstrates this.
+multiple arguments.  Scala also allows methods to have multiple argument lists.
+The following program demonstrates this.
 
 WARNING: When a method/function definition contains multiple argument lists,
          and one those argument lists contains the Scala keyword "implicit",
-         that method/function is NOT a curried function.  The information
-         on this web page doesn't apply to implicit arguments.
+         that method/function is NOT a curried function.
 
 ----------------------------------------------------------------------------------------------
 // METHODS CONTAINING SINGLE-ARGUMENT LISTS  *****************************
@@ -254,42 +269,7 @@ end main
 
 
 
-CURRYING DEFINITION 1
-=====================
-Currying is the process of converting a function having multiple argument lists
-into a sequence of functions that accepts only one argument list.  Each function,
-when invoked, returns another function that consumes the next argument list.
-The sequence of function calls terminates when the last function in the sequence
-returns a value, instead of a function.  Any function that returns a function
-having an argument list is a curried function.
 
-CURRYING DEFINITION 2
-=====================
-Currying transforms a method that has multiple argument lists into a chain of functions.
-Where each function in the chain gets passed a single argument list, and returns
-a function that accepts a single argument list.  When a curried function is finally
-called with its last argument list, the curried function becomes fully applied, and
-returns not a function, but a final value.  Any function that returns a function
-having an argument list is a curried function.
-
-HOW CURRYING WORKS
-==================
-The first time the method executes it processes only its RIGHT-MOST argument list.
-When that RIGHT-MOST argument list is processed (consumed), the method executes
-again, processing its remaining RIGHT-MOST argument list.  This process repeats
-until the method's LEFT-MOST argument list remains.  When the method's LEFT-MOST
-argument list has been consumed (processed), the method returns a final value
-and terminates.
-
-Whenever a Scala curried function is invoked, that function becomes
-either a partially-applied function, or a fully-applied function.
-
-PARTIALLY-APPLIED FUNCTION - Invoking a curried function with fewer than all its argument
-                             lists will return a function (not a value); which means the
-                             function is partially applied.
-
-FULLY-APPLIED FUNCTION - When a curried function returns a value (a List, Array, Int, etc.),
-                         instead of a function, that function becomes fully applied.
 
 
 
