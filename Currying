@@ -15,12 +15,12 @@ CURRYING DEFINITION - Currying transforms a method that has multiple argument li
                       a curried function.
 
 PARTIALLY-APPLIED FUNCTION - Invoking a curried function with fewer than all its argument
-                             lists will return a function (not a value); which means the
-                             function is partially applied.
+                             lists will return a function (not a value); which makes it
+                             a partially-applied function.
 
-FULLY-APPLIED FUNCTION - When a curried function returns a final value (i.e., Int, List,
-                         Array, Float, etc.), instead of a function, it function becomes
-                         fully applied.
+FULLY-APPLIED FUNCTION - When a curried function processes all of its argument lists it
+                         returns a final value (i.e., Int, List, Array, Float, etc.)
+                         instead of a function, and becomes a fully-applied function.
 
 Most Scala methods have a single argument list, which can contain zero, one, or
 multiple arguments.  Scala also allows methods to have multiple argument lists.
