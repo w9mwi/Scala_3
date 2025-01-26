@@ -257,7 +257,7 @@ def wrapWithDiv:(String => String) = wrap("<div>")(_)("</div>")
 * times it's invoked with a single argument list.  Or, it will return
 * a partially-applied function when it's supplied with two argument
 * lists in a single call.  When its third (final) argument list is
-* is supplied, it becomes fully-applied and returns a String result.
+* supplied, it becomes fully-applied and returns a String result.
 *********************************************************************/
 def wrap(prefix:String)(html:String)(suffix:String) = prefix + html + suffix
 
