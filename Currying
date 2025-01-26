@@ -14,6 +14,10 @@ CURRYING DEFINITION - Currying transforms a method that has multiple argument li
                       function that returns a function having an argument list is
                       a curried function.
 
+                      A curried function is also a recursive function.  Because when
+                      it returns a function, the function returned is another call
+                      to itself.
+
 PARTIALLY-APPLIED FUNCTION - Invoking a curried function with fewer than all its argument
                              lists will return a function (not a final value); which makes
                              it a partially-applied function.
