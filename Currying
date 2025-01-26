@@ -153,7 +153,9 @@ one argument list.  The following 2 programs demonstrates this.
   result = func(1) // Calling func(1) makes it fully applied.
   println(s"5) result = $result") // PRINTS: 5) result = -1
 end main
+
 ----------------------------------------------------------------------------------------------
+
 @main def main() =
   // Although the following 2 functions are written with only
   // one argument list, they are both curried functions because
@@ -198,6 +200,51 @@ end main
   result = func(7.0D)
   println("6) result = " + result) // PRINTS: 6) result = 144.0
 end main
+----------------------------------------------------------------------------------------------
+The following program demonstrates a peculiar way of using
+a curried function.  Read in-line comments for details.
+
+/*********************************************************************
+* THIS METHOD IS DIFFICULT TO UNDERSTAND!  HERE'S THE EXPLANATION:
+* 
+* PART 1)
+* Notice that this wrapWithDiv method does nothing more than call
+* the wrap method with 2 of its 3 argument lists, at which point
+* the wrap method becomes partially applied; therefore, returning
+* a function.
+*
+* PART 2)
+* The returned function is the wrap function.  Since two of its
+* argument lists are now processed, the returned wrap function
+* accepts only one argument list, which (when supplied) will
+* fulfill the last of its 3 argument lists.
+*
+* PART 3)
+* The call to wrapWithDiv("ABC") in the main() function below
+* passes to the returned wrap function the string "ABC", as
+* its third (and final) argument list.  This makes the wrap
+* function fully applied, so it returns a string value.
+*
+* PARTS 1, 2, and 3 above all happen when this single method
+* is called in the main() function below:  wrapWithDiv("ABC")
+*
+*********************************************************************/
+def wrapWithDiv:(String => String) = wrap("<div>")(_)("</div>")
+
+/*********************************************************************
+* This wrap function is a curried function because it has 3 argument
+* lists.  It will return a partially-applied function the first two
+* times it's invoked with a single argument list.  Or, it will return
+* a partially-applied function when it's supplied with two argument
+* lists in a single call.  When its third (final) argument list is
+* is supplied, it becomes fully-applied and returns a String result.
+*********************************************************************/
+def wrap(prefix:String)(html:String)(suffix:String) = prefix + html + suffix
+
+@main def main() =
+  println(wrapWithDiv("ABC"))  // PRINTS: <div>ABC</div>
+end main
+
 ----------------------------------------------------------------------------------------------
 
 
