@@ -201,12 +201,13 @@ end main
   println("6) result = " + result) // PRINTS: 6) result = 144.0
 end main
 ----------------------------------------------------------------------------------------------
+
 The following program demonstrates a peculiar way of using
 a curried function.  Read in-line comments for details.
 
 /*********************************************************************
 * THIS METHOD IS DIFFICULT TO UNDERSTAND!  HERE'S THE EXPLANATION:
-* 
+*
 * PART 1)
 * Notice that this wrapWithDiv method does nothing more than call
 * the wrap method with 2 of its 3 argument lists, at which point
@@ -224,10 +225,14 @@ a curried function.  Read in-line comments for details.
 * passes to the returned wrap function the string "ABC", as
 * its third (and final) argument list.  This makes the wrap
 * function fully applied, so it returns a string value.
-*
+* 
 * PARTS 1, 2, and 3 above all happen when this single method
 * is called in the main() function below:  wrapWithDiv("ABC")
-*
+* 
+* NOTE: To have the wrap method (called below) return the correct
+*       string result, the empty argument list (_) must appear
+*       between the 2 supplied argument lists.
+*  
 *********************************************************************/
 def wrapWithDiv:(String => String) = wrap("<div>")(_)("</div>")
 
