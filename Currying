@@ -300,15 +300,32 @@ plus all elements contained in the collection.  The function passed
 to these fold functions is frequently short and simple, so it's
 usually an anonymous function.
 
+When the fold and foldRight functions operate on an identical collection,
+they frequently return an identical result.  Leading one to ask:
+What's the difference between the fold and foldRight functions?
 
+foldRight always processes the collection's elements from right to left;
+which means it processes the last element of the collection first, and
+its first element last.
 
+fold may process the collection's elements in any order, which can be
+more efficient for some operations, like parallel processing.  When
+the order in which elements of a collection are processed DO MATTER
+(i.e., mathematical subtraction) then DON'T use the fold function!
+
+When the order in which elements of a collection are processed DON'T
+MATTER, (i.e., mathematical addition) then it's OK to use the
+fold function, as it may be more efficient.
+
+The following program demostrates the use of the fold, foldLeft,
+and foldRight functions.
 
 ----------------------------------------------------------------------------------------------
 
 @main def main() =
   // SECTION 1) *************************************************************
   // This section demonstrates that when a collection is EMPTY, the fold
-  // foldLeft, and foldRight functions returns only the "initial value",
+  // foldLeft, and foldRight functions return only the "initial value",
   // which is the value passed to the function's first argument list.
   var intList:List[Int] = List[Int]()        // An EMPTY List[Int].
   var intResult: Int = intList.fold(77)(_-_) // _-_ is an anonymous function
@@ -320,13 +337,18 @@ usually an anonymous function.
 
   // SECTION 2) *************************************************************
   intList = List[Int](7, 6, 5, 4, 3, 2, 1)
-  // Given identical inputs, the fold and foldLeft functions always return
-  // the same result.  In this example, they both perform this math operation:
-  // 77−7−6−5−4−3−2−1 = 49
+  // Given identical inputs, the fold and foldLeft functions often return
+  // the same result.  However, the fold function doesn't guarantee the
+  // order in which a collection's elements are processed; therefore,
+  // NEVER use the fold function when processing order matters!
   intResult = intList.fold(77)(_-_)      // _-_ is an anonymous function
   println(s"4) intResult = $intResult")  // PRINTS: 4) intResult = 49
+
+  // The math operation performed by foldLeft is:
+  // 77−7−6−5−4−3−2−1 = 49
   intResult = intList.foldLeft(77)(_-_)  // _-_ is an anonymous function
   println(s"5) intResult = $intResult")  // PRINTS: 5) intResult = 49
+
   // The math operation performed by foldRight is:
   // (1-(2-(3-(4-(5-(6-7))))))-77 = -73
   intResult = intList.foldRight(77)(_-_) // _-_ is an anonymous function
