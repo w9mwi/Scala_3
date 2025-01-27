@@ -414,6 +414,48 @@ and foldRight functions.
 end main
 
 ----------------------------------------------------------------------------------------------
+
+def myFoldLeftFunc[A,B](list:List[A], base:B)(funcOperation:(B,A)=>B):B =
+  if (list.isEmpty)
+    base
+  else
+    funcOperation(myFoldLeftFunc(list.tail, base)(funcOperation),   list.head)
+
+def myFoldRightFunc[A, B](list: List[A], base: B)(funcOperation: (A, B) => B): B =
+  if (list.isEmpty)
+    base
+  else
+    funcOperation(list.head, myFoldRightFunc(list.tail, base)(funcOperation))
+
+def concat2Strings(str1:String, str2:String):String =
+  str1.concat("-").concat(str2)
+
+
+@main def main() =
+  val floatList:List[Float] = List[Float](7.7F, 4.9F, 6.6F, 3.5F, 9.2F, 1.4F)
+
+  // ********************************************************************************
+  // In this section we demonstrate calling the myFoldRightFunc and myFoldLeftFunc
+  // functions (defined below) on floatList.
+  // The math operation performed by myFoldRightFunc is:  0.0-(1.4−(9.2−(3.5−(6.6−(4.9−7.7))))) = 13.7
+  var floatResult:Float = myFoldRightFunc(floatList, 0.0F)(_ - _)
+  println("floatResult = " + floatResult) // PRINTS: floatResult = 13.7
+
+  // The math operation performed by myFoldLeftFunc is:  0.0 − 7.7 − 4.9 − 6.6 − 3.5 − 9.2 − 1.4 = -33.3
+  floatResult = myFoldLeftFunc(floatList, 0.0F)(_ - _)
+  println("floatResult = " + floatResult) // PRINTS: floatResult = -33.3
+
+  // ********************************************************************************
+  // In this section we demonstrate calling the myFoldLeftFunc and myFoldRightFunc
+  // functions (defined below) on strList.
+  val strList:List[String] = List[String]("ABC", "DEF", "GHI", "JKL", "MNO")
+  var strResult:String = myFoldLeftFunc(strList, "START")(concat2Strings)
+  println(strResult) // PRINTS: START-ABC-DEF-GHI-JKL-MNO
+
+  strResult = myFoldRightFunc(strList, "BEGIN")(concat2Strings)
+  println(strResult) // PRINTS: ABC-DEF-GHI-JKL-MNO-BEGIN
+end main
+
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
