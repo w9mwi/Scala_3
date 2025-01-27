@@ -306,58 +306,90 @@ usually an anonymous function.
 ----------------------------------------------------------------------------------------------
 
 @main def main() =
-  // The math operation performed by foldLeft below is:
-  // 0−7−6−5-4−3−2−1 = -28
-  val intList:List[Int] = List[Int](7, 6, 5, 4, 3, 2, 1)
-  var intResult:Int = intList.foldLeft(0)(_-_)  // _-_ is an anonymous function
-  println(s"1) intResult = $intResult") // PRINTS: 1) intResult = -28
-  intResult = intList.foldLeft(0)((x,y) => x-y)  // (x, y)=>x-y is an anonymous function
-  println(s"2) intResult = $intResult") // PRINTS: 2) intResult = -28
+  // SECTION 1) *************************************************************
+  // This section demonstrates that when a collection is EMPTY, the fold
+  // foldLeft, and foldRight functions returns only the "initial value",
+  // which is the value passed to the function's first argument list.
+  var intList:List[Int] = List[Int]()        // An EMPTY List[Int].
+  var intResult: Int = intList.fold(77)(_-_) // _-_ is an anonymous function
+  println(s"1) intResult = $intResult")      // PRINTS: 1) intResult = 77
+  intResult = intList.foldLeft(77)(_-_)      // _-_ is an anonymous function
+  println(s"2) intResult = $intResult")      // PRINTS: 2) intResult = 77
+  intResult = intList.foldRight(77)(_-_)     // _-_ is an anonymous function
+  println(s"3) intResult = $intResult")      // PRINTS: 3) intResult = 77
 
-  // The math operation performed by foldRight below is:
-  // (1-(2-(3-(4-(5-(6-7))))))-0 = 4
-  intResult = intList.foldRight(0)(_-_) // _-_ is an anonymous function
-  println(s"3) intResult = $intResult") // PRINTS: 3) intResult = 4
-  intResult = intList.foldRight(0)((x,y)=>x-y) // (x,y)=>x-y is an anonymous function
-  println(s"4) intResult = $intResult") // PRINTS: 4) intResult = 4
+  // SECTION 2) *************************************************************
+  intList = List[Int](7, 6, 5, 4, 3, 2, 1)
+  // Given identical inputs, the fold and foldLeft functions always return
+  // the same result.  In this example, they both perform this math operation:
+  // 77−7−6−5−4−3−2−1 = 49
+  intResult = intList.fold(77)(_-_)      // _-_ is an anonymous function
+  println(s"4) intResult = $intResult")  // PRINTS: 4) intResult = 49
+  intResult = intList.foldLeft(77)(_-_)  // _-_ is an anonymous function
+  println(s"5) intResult = $intResult")  // PRINTS: 5) intResult = 49
+  // The math operation performed by foldRight is:
+  // (1-(2-(3-(4-(5-(6-7))))))-77 = -73
+  intResult = intList.foldRight(77)(_-_) // _-_ is an anonymous function
+  println(s"6) intResult = $intResult")  // PRINTS: 6) intResult = -73
 
+  // SECTION 3) *************************************************************
+  // This section is identical to SECTION 2) above except for this one
+  // difference; the anonymous function passed to the 3 fold functions is:
+  // (x,y)=>x-y
+  // This anonymous function is functionally equivalent the _-_ anonymous
+  // function used in SECTION 2) above.
+  intResult = intList.fold(77)((x,y)=>x-y)      // (x,y)=>x-y is an anonymous function
+  println(s"7) intResult = $intResult")         // PRINTS: 7) intResult = 49
+  intResult = intList.foldLeft(77)((x,y)=>x-y)  // (x,y)=>x-y is an anonymous function
+  println(s"8) intResult = $intResult")         // PRINTS: 8) intResult = 49
+  intResult = intList.foldRight(77)((x,y)=>x-y) // (x,y)=>x-y is an anonymous function
+  println(s"9) intResult = $intResult")         // PRINTS: 9) intResult = -73
 
-  // ******************************************************************************
-  // In this section we show how to count the number of characters in the following
-  // wordList, using the List.foldLeft and List.foldRight functions.  Notice we
-  // demonstrate TWO (2) different ways of obtaining this character count for
-  // foldLeft and foldRight that return the same result.
+  // SECTION 4) *************************************************************
+  // This sections demonstrates how to count the number of characters in the
+  // val wordList; using the foldLeft and foldRight functions.
   val wordList:List[String] = List[String]("How", "many", "characters", "are", "in", "this", "wordList?")
-  intResult = wordList.foldLeft(0)((count:Int, word:String) => count + word.length)
-  println("foldLeft #1 = " + intResult) // PRINTS: foldLeft #1 = 35
-  intResult = wordList.foldLeft(0)(_ + _.length)
-  println("foldLeft #2 = " + intResult) // PRINTS: foldLeft #2 = 35
 
-  intResult = wordList.foldRight(0)((word:String, count:Int) => count + word.length)
-  println("foldRight #1 = " + intResult) // PRINTS: foldRight #1 = 35
-  intResult = wordList.foldRight(0)(_.length + _)
-  println("foldRight #2 = " + intResult) // PRINTS: foldRight #2 = 35
+  val foldLeftFunc:(Int,String)=>Int = (count:Int, word:String) => count + word.length
+  intResult = wordList.foldLeft(0)(foldLeftFunc)
+  println(s"10) intResult = $intResult")         // PRINTS: 10) intResult = 35
+  intResult = wordList.foldLeft(0)(_ + _.length) // This anonymous function is equivalent to foldLeftFunc.
+  println(s"11) intResult = $intResult")         // PRINTS: 11) intResult = 35
 
-  // ******************************************************************************
-  // In this section we call the foldLeft and FoldRight functions on the
-  // following strList.
+  // foldRightFunc below is equivalent to foldLeftFunc above, except the
+  // order of its argument list is swapped, so it'll work with foldRight.
+  // The anonymous function below must also be written differently than
+  // the one above, to make it work with foldRight.
+  val foldRightFunc:(String,Int)=>Int = (word:String, count:Int) => count + word.length
+  intResult = wordList.foldRight(0)(foldRightFunc)
+  println(s"12) intResult = $intResult")          // PRINTS: 12) intResult = 35
+  intResult = wordList.foldRight(0)(_.length + _) // This anonymous function is equivalent to foldRightFunc.
+  println(s"13) intResult = $intResult")          // PRINTS: 13) intResult = 35
+
+  // SECTION 5) *************************************************************
+  // This section demonstrates how to concatenate all strings contained in a
+  // List[String] using foldLeft and foldRight; and how their results differ.
+  //
+  // strConcatMethod and strConcatFunc defined here are functionally equivalent.
+  def strConcatMethod(str1:String, str2:String):String = str1.concat("-").concat(str2)
+  val strConcatFunc:(str1:String, str2:String)=>String =
+      (str1:String, str2:String) => str1.concat("-").concat(str2)
+
+  // Perform a string concat using both foldLeft and foldRight;
+  // passing to them strConcatMethod as an argument.
   val strList:List[String] = List[String]("ABC", "DEF", "GHI", "JKL", "MNO")
-  var strResult:String = strList.foldLeft("START")(myFunc)
-  println(strResult) // PRINTS: START-ABC-DEF-GHI-JKL-MNO
+  var strResult:String = strList.foldLeft("BEGIN")(strConcatMethod)
+  println(s"14) strResult = $strResult") // PRINTS: 14) strResult = BEGIN-ABC-DEF-GHI-JKL-MNO
+  strResult = strList.foldRight("END")(strConcatMethod)
+  println(s"15) strResult = $strResult") // PRINTS: 15) strResult = ABC-DEF-GHI-JKL-MNO-END
 
-  strResult = strList.foldRight("BEGIN")(myFunc)
-  println(strResult) // PRINTS: ABC-DEF-GHI-JKL-MNO-BEGIN
+  // Perform a string concat using both foldLeft and foldRight;
+  // passing to them strConcatFunc as an argument.
+  strResult = strList.foldLeft("BEGIN")(strConcatFunc)
+  println(s"16) strResult = $strResult") // PRINTS: 16) strResult = BEGIN-ABC-DEF-GHI-JKL-MNO
+  strResult = strList.foldRight("END")(strConcatFunc)
+  println(s"17) strResult = $strResult") // PRINTS: 17) strResult = ABC-DEF-GHI-JKL-MNO-END
 end main
-
-/**
- * NOTE: Scala defines List.foldLeft as this:   def foldLeft[B](z: B)(op: (B, A) => B): B
- *       Scala defines List.foldRight as this:  def foldRight[B](z: B)(op: (A, B) => B): B
- *
- * Therefore, this myFunc function satisfies the 2nd parameter list of foldLeft and foldRight,
- * because myFunc gets passed 2 values as a single parameter list, and returns a value.
- */
-def myFunc(str1:String, str2:String):String =
-  str1.concat("-").concat(str2)
 
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
