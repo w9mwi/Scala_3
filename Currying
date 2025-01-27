@@ -324,7 +324,7 @@ and foldRight functions.
 
 @main def main() =
   // SECTION 1) *************************************************************
-  // This section demonstrates that when a collection is EMPTY, the fold
+  // This section demonstrates that when a collection is EMPTY, the fold,
   // foldLeft, and foldRight functions return only the "initial value",
   // which is the value passed to the function's first argument list.
   var intList:List[Int] = List[Int]()        // An EMPTY List[Int].
