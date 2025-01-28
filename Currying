@@ -415,8 +415,8 @@ end main
 
 ----------------------------------------------------------------------------------------------
 
-The following program demonstrates how to write a custom foldLeft function
-and a custom and foldRight function.
+The following program demonstrates how to write a custom foldLeft function,
+and a custom foldRight function.  Both of which are recursive functions.
 
 ----------------------------------------------------------------------------------------------
 
