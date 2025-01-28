@@ -1,8 +1,9 @@
-This web page covers the Scala object, where "object" is a keyword.
-Both of the following items have a dedicated section below.
+This web page covers the Scala object, where "object" is a Scala keyword.
+The following topics are related to the Scala object and have a dedicated
+section below.
 
-* Object
-* Case Object
+* OBJECT
+* CASE OBJECT
 
 
 OBJECT
