@@ -415,52 +415,9 @@ end main
 
 ----------------------------------------------------------------------------------------------
 
-def myFoldLeftFunc[A,B](list:List[A], base:B)(funcOperation:(B,A)=>B):B =
-  if (list.isEmpty)
-    base
-  else
-    funcOperation(myFoldLeftFunc(list.tail, base)(funcOperation),   list.head)
+The following program demonstrates how to write a custom foldLeft function
+and a custom and foldRight function.
 
-def myFoldRightFunc[A, B](list: List[A], base: B)(funcOperation: (A, B) => B): B =
-  if (list.isEmpty)
-    base
-  else
-    funcOperation(list.head, myFoldRightFunc(list.tail, base)(funcOperation))
-
-def concat2Strings(str1:String, str2:String):String =
-  str1.concat("-").concat(str2)
-
-
-@main def main() =
-  val floatList:List[Float] = List[Float](7.7F, 4.9F, 6.6F, 3.5F, 9.2F, 1.4F)
-
-  // ********************************************************************************
-  // In this section we demonstrate calling the myFoldRightFunc and myFoldLeftFunc
-  // functions (defined below) on floatList.
-  // The math operation performed by myFoldRightFunc is:  0.0-(1.4−(9.2−(3.5−(6.6−(4.9−7.7))))) = 13.7
-  var floatResult:Float = myFoldRightFunc(floatList, 0.0F)(_ - _)
-  println("floatResult = " + floatResult) // PRINTS: floatResult = 13.7
-
-  // The math operation performed by myFoldLeftFunc is:  0.0 − 7.7 − 4.9 − 6.6 − 3.5 − 9.2 − 1.4 = -33.3
-  floatResult = myFoldLeftFunc(floatList, 0.0F)(_ - _)
-  println("floatResult = " + floatResult) // PRINTS: floatResult = -33.3
-
-  // ********************************************************************************
-  // In this section we demonstrate calling the myFoldLeftFunc and myFoldRightFunc
-  // functions (defined below) on strList.
-  val strList:List[String] = List[String]("ABC", "DEF", "GHI", "JKL", "MNO")
-  var strResult:String = myFoldLeftFunc(strList, "START")(concat2Strings)
-  println(strResult) // PRINTS: START-ABC-DEF-GHI-JKL-MNO
-
-  strResult = myFoldRightFunc(strList, "BEGIN")(concat2Strings)
-  println(strResult) // PRINTS: ABC-DEF-GHI-JKL-MNO-BEGIN
-end main
-
-----------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
 
 def myFoldLeft[A,B](list:List[A], initialValue:B)(function:(B,A)=>B):B =
@@ -470,43 +427,48 @@ def myFoldLeft[A,B](list:List[A], initialValue:B)(function:(B,A)=>B):B =
     function(myFoldLeft(list.tail, initialValue)(function), list.head)
 end myFoldLeft
 
-def myFoldRight[A, B](list: List[A], initialValue:B)(function: (A, B) => B): B =
+def myFoldRight[A,B](list:List[A], initialValue:B)(function:(A,B)=>B):B =
   if (list.isEmpty)
     initialValue
   else
     function(list.head, myFoldRight(list.tail, initialValue)(function))
 end myFoldRight
 
-def concatStrings(str1:String, str2:String):String =
+def concatStr(str1:String, str2:String):String =
   str1.concat("-").concat(str2)
-end concatStrings
+end concatStr
 
 @main def main() =
   // ********************************************************************************
-  // This section calls the myFoldRight and myFoldLeft functions on a List[Int].
-  // The math operation performed by myFoldRight is:
-  // (1-(2-(3-(4-(5-(6-7))))))-77 = -73
+  // This section calls myFoldLeft and myFoldRight on a List[Int].
   val intList:List[Int] = List[Int](7, 6, 5, 4, 3, 2, 1)
-  var intResult:Int = myFoldRight(intList, 77)(_-_)
-  println(s"intResult = $intResult") // PRINTS:
-
   // The math operation performed by myFoldLeft is:
   // 77−7−6−5−4−3−2−1 = 49
-  intResult = myFoldLeft(intList, 77)(_-_)
-  println(s"intResult = $intResult") // PRINTS:
+  var intResult:Int = myFoldLeft(intList, 77)(_-_)
+  println(s"1) intResult = $intResult") // PRINTS: 1) intResult = 49
+  // The math operation performed by myFoldRight is:
+  // (1-(2-(3-(4-(5-(6-7))))))-77 = -73
+  intResult = myFoldRight(intList, 77)(_-_)
+  println(s"2) intResult = $intResult") // PRINTS: 2) intResult = -73
 
   // ********************************************************************************
-  // This section calls the myFoldRight and myFoldLeft functions on a List[String].
-  // The operation performed by myFoldLeft is:
-  // "BEGIN".
-  // 77−7−6−5−4−3−2−1 = 49
+  // This section calls myFoldLeft and myFoldRight on a List[String].
   val strList:List[String] = List[String]("ABC", "DEF", "GHI", "JKL", "MNO")
-  var strResult:String = myFoldLeft(strList, "BEGIN")(concatStrings)
-  println(strResult) // PRINTS: BEGIN-ABC-DEF-GHI-JKL-MNO
+  // The following line of code replicates the operation performed by myFoldLeft below.
+  var strResult:String = concatStr(concatStr(concatStr(concatStr(concatStr("BEGIN", "MNO"), "JKL"), "GHI"), "DEF"), "ABC")
+  println(s"3) strResult = $strResult") // PRINTS: 3) strResult = BEGIN-MNO-JKL-GHI-DEF-ABC
+  strResult = myFoldLeft(strList, "BEGIN")(concatStr)
+  println(s"4) strResult = $strResult") // PRINTS: 4) strResult = BEGIN-MNO-JKL-GHI-DEF-ABC
 
-  // The operation performed by myFoldRight is:
-
-  // (1-(2-(3-(4-(5-(6-7))))))-77 = -73
-  strResult = myFoldRight(strList, "END")(concatStrings)
-  println(strResult) // PRINTS: ABC-DEF-GHI-JKL-MNO-END
+  // The following line of code replicates the operation performed by myFoldRight below.
+  strResult = concatStr(concatStr(concatStr(concatStr(concatStr("ABC", "DEF"), "GHI"), "JKL"), "MNO"), "END")
+  println(s"5) strResult = $strResult") // PRINTS: 5) strResult = ABC-DEF-GHI-JKL-MNO-END
+  strResult = myFoldRight(strList, "END")(concatStr)
+  println(s"6) strResult = $strResult") // PRINTS: 6) strResult = ABC-DEF-GHI-JKL-MNO-END
 end main
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
