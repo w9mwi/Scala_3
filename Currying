@@ -462,3 +462,51 @@ end main
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
+
+def myFoldLeft[A,B](list:List[A], initialValue:B)(function:(B,A)=>B):B =
+  if (list.isEmpty)
+    initialValue
+  else
+    function(myFoldLeft(list.tail, initialValue)(function), list.head)
+end myFoldLeft
+
+def myFoldRight[A, B](list: List[A], initialValue:B)(function: (A, B) => B): B =
+  if (list.isEmpty)
+    initialValue
+  else
+    function(list.head, myFoldRight(list.tail, initialValue)(function))
+end myFoldRight
+
+def concatStrings(str1:String, str2:String):String =
+  str1.concat("-").concat(str2)
+end concatStrings
+
+@main def main() =
+  // ********************************************************************************
+  // This section calls the myFoldRight and myFoldLeft functions on a List[Int].
+  // The math operation performed by myFoldRight is:
+  // (1-(2-(3-(4-(5-(6-7))))))-77 = -73
+  val intList:List[Int] = List[Int](7, 6, 5, 4, 3, 2, 1)
+  var intResult:Int = myFoldRight(intList, 77)(_-_)
+  println(s"intResult = $intResult") // PRINTS:
+
+  // The math operation performed by myFoldLeft is:
+  // 77−7−6−5−4−3−2−1 = 49
+  intResult = myFoldLeft(intList, 77)(_-_)
+  println(s"intResult = $intResult") // PRINTS:
+
+  // ********************************************************************************
+  // This section calls the myFoldRight and myFoldLeft functions on a List[String].
+  // The operation performed by myFoldLeft is:
+  // "BEGIN".
+  // 77−7−6−5−4−3−2−1 = 49
+  val strList:List[String] = List[String]("ABC", "DEF", "GHI", "JKL", "MNO")
+  var strResult:String = myFoldLeft(strList, "BEGIN")(concatStrings)
+  println(strResult) // PRINTS: BEGIN-ABC-DEF-GHI-JKL-MNO
+
+  // The operation performed by myFoldRight is:
+
+  // (1-(2-(3-(4-(5-(6-7))))))-77 = -73
+  strResult = myFoldRight(strList, "END")(concatStrings)
+  println(strResult) // PRINTS: ABC-DEF-GHI-JKL-MNO-END
+end main
