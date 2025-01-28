@@ -43,7 +43,7 @@ a function that should be understood, which are described here.
 Here are 5 other distinctions between a Scala method and a Scala function.
 
 1) Methods are part of a class and have access to the class's internal state,
-   while functions are standalone objects13. This separation allows for better
+   while functions are standalone objects. This separation allows for better
    encapsulation and object-oriented design.
 
 2) Functions in Scala are first-class citizens, meaning they can be assigned
