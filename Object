@@ -28,8 +28,8 @@ The following 4 items are true of a Scala object:
 
 4) A Scala object is often used as a "companion object" to a class.
    An object becomes a "companion object" to a class when the
-   object's name is identical to the class name, and it resides in
-   the same file as the class.
+   object's name is identical to the class name, and it resides
+   in the same file as its companion class.
 
 5) Scala 3 added the 'enum' keyword.  In Scala 3, an object can also
    become a "companion object" to an enum.  An object becomes a
