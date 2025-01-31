@@ -3,27 +3,45 @@ a result which gets assigned to the val combinedLists_1.
 Notice that the result assigned to val combinedLists_2
 is eqivalent to the result stored in val combinedLists_1.
 
----------------------------------------------------------------------------------------------------
 @main def main() =
-  println("main()")
-  val intList = List(1,2,3)
+  val intList:List[Int] = List(1,2,3)
   val combinedLists_1 =
-  for
-    num <- intList
-    char <- List('a','b')
-  yield s"$num-$char"
+    for
+      num <- intList
+      char <- List('a','b')
+    yield s"$num-$char"
+  end combinedLists_1
+  println(combinedLists_1) // PRINTS: List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
 
-  println(combinedLists_1)
-  // PRINTS: List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
-
-  // The following line of code generates the same result
-  // as the for comprehension above.
+  // The following line of code generates the same
+  // result as the above for comprehension.
   val combinedLists_2 =
-      intList.flatMap(num => List('a','b').map(char => s"$num-$char"))
-  println(combinedLists_2)
-// PRINTS: List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
+    intList.flatMap(num => List('a','b').map(char => s"$num-$char"))
+  end combinedLists_2
+  println(combinedLists_2) // PRINTS: List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
 end main
 ---------------------------------------------------------------------------------------------------
+
+The map() function is available on many Scala collections.  The following
+program demonstrates a custom map() function that also works on Scala
+collections; where this custom map() implements a for comprehension.
+
+def map[A, B](func:(B) => A, xs:List[B]):List[A] =
+  for x <- xs yield func(x)
+end map
+
+def double(intNumber:Int): Int = intNumber * 2
+def strlen(str:String):Int = str.length
+
+@main def main() =
+  var intList:List[Int] = map(double, List(1, 2, 3))
+  println(s"1) intList = $intList") // PRINTS: 1) intList = List(2, 4, 6)
+
+  intList = map(strlen, List("a", "bb", "ccc"))
+  println(s"2) intList = $intList") // PRINTS: 2) intList = List(1, 2, 3)
+end main
+
 ---------------------------------------------------------------------------------------------------
+
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
