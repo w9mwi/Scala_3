@@ -1,0 +1,18 @@
+The following two packages are implicitly imported into the scope of all Scala source code files.
+
+1) java.lang.*
+2) scala.*
+
+MENTION HOW TO RESOLVE CONFLICTS BETWEEN PACKAGES, like List in both Java and Scala.
+
+By convention, Scala package names should be all lower case.
+The formal naming convention is:
+
+<top-level-domain>.<domain-name>.<project-name>.<module-name>...
+
+For example:  package io.github.w9mwi.Demo
+
+Although it’s not required, package names typically follow directory structure
+names.  Following this convention, a Person class in a Scala project could be
+found in this directory:  io/github/w9mwi/myapp/Person.scala
+
