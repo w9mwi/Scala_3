@@ -55,7 +55,7 @@ Here are 5 other distinctions between a Scala method and a Scala function.
    This provides more flexibility in method definitions for generic programming.
 
 4) Functions consume more memory than methods due to the creation of additional
-   objects. Methods are more memory-efficient for simple operations.
+   objects.  Methods are more memory-efficient for simple operations.
 
 5) Methods can implement features like multiple argument lists and default
    arguments more easily than functions.
