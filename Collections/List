@@ -28,32 +28,32 @@ The following program demonstrates how to do the following:
 
 @main def main() =
   var intList:List[Int] = List(-666, 2, 3)
-  println(s"intList = $intList") // PRINTS: intList = List(-666, 2, 3)
+  println(s"1) intList = $intList") // PRINTS: intList = List(-666, 2, 3)
 
-  // To "update" a single element of a List, call the List.updated method.
+  // To "UPDATE" ONE ELEMENT of a List, call the List.updated method.
   // Because a List is immutable, this actually returns a new List.
   intList = intList.updated(0, 1) // 0 = the List index, 1 = the value
-  println(s"intList = $intList") // PRINTS: intList = List(1, 2, 3)
+  println(s"2) intList = $intList") // PRINTS: intList = List(1, 2, 3)
 
   // To PREPEND ONE ELEMENT to a List, use the :: operator, or the +: operator.
   // The :: operator is called the "cons" operator; short for the word "construct."
   // The +: operator is known as the "list prepend operator."
   // Both these operators return a new List.
   intList = 0 :: intList
-  println(s"intList = $intList") // PRINTS: intList = List(0, 1, 2, 3)
+  println(s"3) intList = $intList") // PRINTS: intList = List(0, 1, 2, 3)
   intList = -1 +: intList
-  println(s"intList = $intList") // PRINTS: intList = List(-1, 0, 1, 2, 3)
+  println(s"4) intList = $intList") // PRINTS: intList = List(-1, 0, 1, 2, 3)
 
   // To APPEND ONE ELEMENT to a List, use the :+ operator.
   // The :+ operator is known as the "list append operator."
   // This returns a new List.
   intList = intList :+ 4
-  println(s"intList = $intList") // PRINTS: intList = List(-1, 0, 1, 2, 3, 4)
+  println(s"5) intList = $intList") // PRINTS: intList = List(-1, 0, 1, 2, 3, 4)
 
   // To CONCAT A LIST to a List, use the ::: operator.  The ::: operator is
   // known as the "list concatenation operator."  This returns a new List.
   intList = List(-4, -3, -2) ::: intList ::: List(5, 6, 7)
-  println(s"intList = $intList") // PRINTS: intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
+  println(s"6) intList = $intList") // PRINTS: intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
 
 =============================================================================
 
