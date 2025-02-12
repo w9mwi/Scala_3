@@ -16,3 +16,5 @@ Although it’s not required, package names typically follow directory structure
 names.  Following this convention, a Person class in a Scala project could be
 found in this directory:  io/github/w9mwi/myapp/Person.scala
 
+To learn more about Scala packages read...
+--> https://docs.scala-lang.org/scala3/book/packaging-imports.html
