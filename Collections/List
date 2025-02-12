@@ -1,6 +1,59 @@
 SCALA LIST COLLECTION
 =====================
+A Scala List cannot be altered/changed after it's been created.  If you want to
+"change" a Scala List, you actually need to create a new List.  The following
+program demostrates how to do that.
+
+A Scala List is a linked-list.  Generally, you shouldn’t access elements
+of a large list via an index value.  Like this, for example...
+
+   myList(999999)
+
+Accessing a List element via an index can take a long time because all elements in
+the List (up to the index value) must first be traversed.  If you have a large collection
+and want to access its elements via an index, you should use a Vector or an ArrayBuffer
+collection instead of a List.
 
 The following link contains a summary of some commonly-used Scala collections.
 
 https://docs.scala-lang.org/scala3/book/collections-classes.html
+
+=============================================================================
+
+The following program demonstrates how to do the following:
+
+  1) Update a single element in a List.
+  2) Append/Prepend a single element to a List.
+  3) Concatenate (append or prepend) a List to a List.
+
+@main def main() =
+  var intList:List[Int] = List(-666, 2, 3)
+  println(s"intList = $intList") // PRINTS: intList = List(-666, 2, 3)
+
+  // To "update" a single element of a List, call the List.updated method.
+  // Because a List is immutable, this actually returns a new List.
+  intList = intList.updated(0, 1) // 0 = the List index, 1 = the value
+  println(s"intList = $intList") // PRINTS: intList = List(1, 2, 3)
+
+  // To PREPEND ONE ELEMENT to a List, use the :: operator, or the +: operator.
+  // The :: operator is called the "cons" operator; short for the word "construct."
+  // The +: operator is known as the "list prepend operator."
+  // Both these operators return a new List.
+  intList = 0 :: intList
+  println(s"intList = $intList") // PRINTS: intList = List(0, 1, 2, 3)
+  intList = -1 +: intList
+  println(s"intList = $intList") // PRINTS: intList = List(-1, 0, 1, 2, 3)
+
+  // To APPEND ONE ELEMENT to a List, use the :+ operator.
+  // The :+ operator is known as the "list append operator."
+  // This returns a new List.
+  intList = intList :+ 4
+  println(s"intList = $intList") // PRINTS: intList = List(-1, 0, 1, 2, 3, 4)
+
+  // To CONCAT A LIST to a List, use the ::: operator.  The ::: operator is
+  // known as the "list concatenation operator."  This returns a new List.
+  intList = List(-4, -3, -2) ::: intList ::: List(5, 6, 7)
+  println(s"intList = $intList") // PRINTS: intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
+
+=============================================================================
+
