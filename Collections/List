@@ -15,6 +15,9 @@ and want to access its elements via an index, you should use a Vector or an Arra
 collection instead of a List.
 
 An empty List in Scala is designated by the keyword "Nil"; which is equivalent to: List()
+In functional programming, Scala Lists are often constructed recursively using the
+"cons" (::) operator.  Nil serves as the terminating condition for recursive operations
+on Scala Lists.
 
 The following link contains a summary of some commonly-used Scala collections.
 
