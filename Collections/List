@@ -18,10 +18,8 @@ element; its tail references an empty List.  Here's an example:
    println(s"intList.head = ${intList.head}") // PRINTS: intList.head = 999
    println(s"intList.tail = ${intList.tail}") // PRINTS: intList.tail = List()
 
-
-Generally, you shouldn’t access elements of
-a large List via an index value.  For example, you shouldn't do something
-like this...
+Generally, you shouldn’t access elements of a large List via an index value.
+For example, you shouldn't do something like this...
 
    myList(999999)
 
@@ -29,8 +27,6 @@ Accessing a List element via an index can take a long time because all elements 
 the List (up to the index value) must be traversed.  If you have a large collection
 and want to access its elements via an index, you should use a Vector or an ArrayBuffer
 collection instead of a List.
-
-
 
 =============================================================================
 
