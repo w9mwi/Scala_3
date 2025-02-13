@@ -1,16 +1,17 @@
 SCALA LIST COLLECTION
 =====================
-A Scala List cannot be altered/changed after it's been created.  If you want to
-"change" a Scala List, you actually need to create a new List.  The following
-program demostrates how to do that.
+A Scala List is immutable, so it cannot be altered/changed/updated after it's created.
+If you want to alter/change/update a Scala List, you actually need to create a new List.
+The following program demonstrates how to do that.
 
-A Scala List is a linked-list.  Generally, you shouldn’t access elements
-of a large list via an index value.  Like this, for example...
+A Scala List is a linked list.  Generally, you shouldn’t access elements of
+a large List via an index value.  For example, you shouldn't do something
+like this...
 
    myList(999999)
 
 Accessing a List element via an index can take a long time because all elements in
-the List (up to the index value) must first be traversed.  If you have a large collection
+the List (up to the index value) must be traversed.  If you have a large collection
 and want to access its elements via an index, you should use a Vector or an ArrayBuffer
 collection instead of a List.
 
@@ -18,10 +19,6 @@ An empty List in Scala is designated by the keyword "Nil"; which is equivalent t
 In functional programming, Scala Lists are often constructed recursively using the
 "cons" (::) operator.  Nil serves as the terminating condition for recursive operations
 on Scala Lists.
-
-The following link contains a summary of some commonly-used Scala collections.
-
-https://docs.scala-lang.org/scala3/book/collections-classes.html
 
 =============================================================================
 
