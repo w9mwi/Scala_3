@@ -26,7 +26,7 @@ The following program demonstrates how to do the following:
 
   1) Update a single element in a List.
   2) Append/Prepend a single element to a List.
-  3) Concatenate (append or prepend) a List to a List.
+  3) Concatenate (append or prepend) a List to another List.
   4) Use Nil and List() to designate an empty List.
 
 @main def main() =
