@@ -3,6 +3,8 @@ how a regular Scala List works by reading this section:
 
 https://github.com/w9mwi/Scala_3/blob/main/Collections/List
 
+Like a regular Scala List, a LazyList is also immutable.
+
 A Scala LazyList generates/computes its elements not when it's constructed/built,
 but only when one or more of its elements is referenced at runtime.  (See the
 following code sample to see this demonstrated.)  This allows for efficient
