@@ -14,6 +14,8 @@ the List (up to the index value) must first be traversed.  If you have a large c
 and want to access its elements via an index, you should use a Vector or an ArrayBuffer
 collection instead of a List.
 
+An empty List in Scala is designated by the Scala keyword "Nil"; which is equivalent to: List()
+
 The following link contains a summary of some commonly-used Scala collections.
 
 https://docs.scala-lang.org/scala3/book/collections-classes.html
@@ -25,6 +27,7 @@ The following program demonstrates how to do the following:
   1) Update a single element in a List.
   2) Append/Prepend a single element to a List.
   3) Concatenate (append or prepend) a List to a List.
+  4) Use Nil and List() to designate an empty List.
 
 @main def main() =
   var intList:List[Int] = List(-666, 2, 3)
@@ -54,5 +57,23 @@ The following program demonstrates how to do the following:
   // known as the "list concatenation operator."  This returns a new List.
   intList = List(-4, -3, -2) ::: intList ::: List(5, 6, 7)
   println(s"6) intList = $intList") // PRINTS: 6) intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
+
+  // An EMPTY LIST in Scala is designated by the "Nil" keyword, and is equivalent to: List()
+  intList = Nil
+  println(s"7) intList == $intList") // PRINTS: 7) intList == List()
+  intList = List()
+  println(s"8) intList == $intList") // PRINTS: 8) intList == List()
+
+  // Nil can be used in pattern matching, like this...
+  intList match
+    case head :: tail => println(s"9) intList is NOT empty.")
+    case Nil          => println(s"9) intList IS empty.") // PRINTS: 9) intList IS empty.
+
+  // When constructing a List using only "cons" operators (::), the last element
+  // in the List must be an empty List; designated by either List() or Nil.
+  intList = -9 :: -8 :: -7 :: List()
+  println(s"10) intList = $intList") // PRINTS: 10) intList = List(-9, -8, -7)
+  intList = 7 :: 8 :: 9 :: Nil
+  println(s"11) intList = $intList") // PRINTS: 11) intList = List(7, 8, 9)
 
 =============================================================================
