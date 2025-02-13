@@ -1,12 +1,17 @@
-SCALA LIST COLLECTION
-=====================
+This web page demonstrates the following two Scala List collections:
+
+* List
+* LazyList
+
+LIST
+====
 A Scala List is immutable, so it cannot be altered/changed/updated after it's created.
 If you want to alter/change/update a Scala List, you actually need to create a new List.
 The following program demonstrates how to do that.
 
 An empty List in Scala is designated by the keyword "Nil"; which is equivalent to: List()
-In functional programming, Scala Lists are often constructed recursively using the
-"cons" (::) operator.  Nil serves as the terminating condition for recursive operations
+In functional programming, Scala Lists are sometimes constructed recursively using the
+"cons" operator (::).  Nil serves as the terminating condition for recursive operations
 on Scala Lists.
 
 A Scala List is a linked list which consists of a head and a tail.  A List's head
@@ -32,14 +37,14 @@ and want to access its elements via an index, you should use a Vector or an Arra
 collection instead of a List.
 
 =============================================================================
-This program demonstrates how to do the following:
+The following program demonstrates how to do the following:
 
   1) Update a single element in a List.
   2) Append/Prepend a single element to a List.
   3) Concatenate (append or prepend) a List to another List.
   4) Use Nil and List() to designate an empty List.
 
-
+-----------------------------------------------------------------------------------
 @main def main() =
   var intList:List[Int] = List(-666, 2, 3)
   println(s"1) intList = $intList") // PRINTS: 1) intList = List(-666, 2, 3)
@@ -86,5 +91,32 @@ This program demonstrates how to do the following:
   println(s"10) intList = $intList") // PRINTS: 10) intList = List(-9, -8, -7)
   intList = 7 :: 8 :: 9 :: Nil
   println(s"11) intList = $intList") // PRINTS: 11) intList = List(7, 8, 9)
+-----------------------------------------------------------------------------------
 
 =============================================================================
+
+LAZY LIST
+=========
+
+A Scala LazyList generates/computes its elements not when it's constructed/built,
+but only when one or more of its elements is referenced at runtime.  (See the
+following code sample to see this demonstrated.)  This allows for efficient
+handling of large or even infinite sequences.  This "lazy evaluation" is the
+primary reason for using a LazyList.
+
+The #:: operator is used to prepend a single element to an existing LazyList.
+This #:: prepend operator is also demonstrated in the following code sample.
+
+-----------------------------------------------------------------------------------
+@main def main() =
+  // This section demonstrates that a LazyList doesn't get computed when
+  // it's constructed; as the following two println statements reveal.
+  val lazyList_1 = 1 #:: 2 #:: 3 #:: LazyList.empty
+  println(s"lazyList_1 = $lazyList_1") // PRINTS: lazyList_1 = LazyList(<not computed>)
+  val lazyList_2 = -1 #:: 0 #:: lazyList_1
+  println(s"lazyList_2 = $lazyList_2") // PRINTS: lazyList_2 = LazyList(<not computed>)
+
+  // This section demonstrates the contents of lazyList_2 are
+  // generated (computed) when its elements are referenced.
+  for (x <- lazyList_2) print(s"x = $x, ") // PRINTS: x = -1, x = 0, x = 1, x = 2, x = 3,
+-----------------------------------------------------------------------------------
