@@ -11,8 +11,8 @@ following code sample to see this demonstrated.)  This allows for efficient
 handling of large or even infinite sequences.  This "lazy evaluation" is the
 primary reason for using a LazyList.
 
-The #:: operator is used to prepend a single element to an existing LazyList.
-This #:: prepend operator is also demonstrated in the following code sample.
+The #:: operator is used to prepend a single element to an existing LazyList,
+and is demonstrated in the following program.
 
 ===================================================================================
 @main def main() =
