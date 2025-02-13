@@ -109,14 +109,20 @@ This #:: prepend operator is also demonstrated in the following code sample.
 
 -----------------------------------------------------------------------------------
 @main def main() =
+  // *******************************************************************
   // This section demonstrates that a LazyList doesn't get computed when
-  // it's constructed; as the following two println statements reveal.
-  val lazyList_1 = 1 #:: 2 #:: 3 #:: LazyList.empty
+  // it's constructed, as the following two println statements reveal.
+  val lazyList_1:LazyList[Int] = 1 #:: 2 #:: 3 #:: LazyList.empty
   println(s"lazyList_1 = $lazyList_1") // PRINTS: lazyList_1 = LazyList(<not computed>)
-  val lazyList_2 = -1 #:: 0 #:: lazyList_1
+
+  val lazyList_2:LazyList[Int] = -1 #:: 0 #:: lazyList_1
   println(s"lazyList_2 = $lazyList_2") // PRINTS: lazyList_2 = LazyList(<not computed>)
 
-  // This section demonstrates the contents of lazyList_2 are
-  // generated (computed) when its elements are referenced.
+  // *******************************************************************
+  // This section demonstrates the contents of lazyList_2 are generated
+  // (computed) only when its elements are referenced, as the following
+  // two println statements reveal.
   for (x <- lazyList_2) print(s"x = $x, ") // PRINTS: x = -1, x = 0, x = 1, x = 2, x = 3,
+
+  println(s"\nlazyList_2 = $lazyList_2") // PRINTS: lazyList_2 = LazyList(-1, 0, 1, 2, 3)
 -----------------------------------------------------------------------------------
