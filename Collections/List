@@ -14,7 +14,7 @@ the List (up to the index value) must first be traversed.  If you have a large c
 and want to access its elements via an index, you should use a Vector or an ArrayBuffer
 collection instead of a List.
 
-An empty List in Scala is designated by the Scala keyword "Nil"; which is equivalent to: List()
+An empty List in Scala is designated by the keyword "Nil"; which is equivalent to: List()
 
 The following link contains a summary of some commonly-used Scala collections.
 
@@ -58,7 +58,7 @@ The following program demonstrates how to do the following:
   intList = List(-4, -3, -2) ::: intList ::: List(5, 6, 7)
   println(s"6) intList = $intList") // PRINTS: 6) intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
 
-  // An EMPTY LIST in Scala is designated by the "Nil" keyword, and is equivalent to: List()
+  // An EMPTY LIST in Scala is designated by the keyword "Nil"; which is equivalent to: List()
   intList = Nil
   println(s"7) intList == $intList") // PRINTS: 7) intList == List()
   intList = List()
