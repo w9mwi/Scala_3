@@ -32,13 +32,13 @@ and want to access its elements via an index, you should use a Vector or an Arra
 collection instead of a List.
 
 =============================================================================
-
-The following program demonstrates how to do the following:
+This program demonstrates how to do the following:
 
   1) Update a single element in a List.
   2) Append/Prepend a single element to a List.
   3) Concatenate (append or prepend) a List to another List.
   4) Use Nil and List() to designate an empty List.
+
 
 @main def main() =
   var intList:List[Int] = List(-666, 2, 3)
