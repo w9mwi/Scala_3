@@ -128,3 +128,42 @@ This #:: prepend operator is also demonstrated in the following code sample.
 
   println(s"\nlazyList_2 = $lazyList_2") // PRINTS: lazyList_2 = LazyList(-1, 0, 1, 2, 3)
 -----------------------------------------------------------------------------------
+
+The following program uses a LazyList and a recursive method to compute
+a fibonacci number,
+
+-----------------------------------------------------------------------------------
+/**********************************************************
+* This fib() method is RECURSIVE
+***********************************************************/
+def fib(a: BigInt, b: BigInt): LazyList[BigInt] =
+  a #:: fib(b, a + b)
+end fib
+
+/***********************************************************
+* This fibonacci() method calls the RECURSIVE fib() method.
+************************************************************/
+def fibonacci: LazyList[BigInt] = fib(0, 1)
+end fibonacci
+
+@main def main() =
+  // The following call to take(11) constructs a LazyList of 11 elements.
+  // This is the number (11) that forces the recursive fib() method to
+  // terminate when it's invoked for the 11th time.
+  val lazyListResult: LazyList[BigInt] = fibonacci.take(11)
+
+  // At this point lazyListResult won't show the result because
+  // it doesn't get generated/computed until one or more of its
+  // elements are accessed.
+  println(s"lazyListResult = $lazyListResult,  lazyListResult.size = ${lazyListResult.size}")
+  // PRINTS: lazyListResult = LazyList(<not computed>),  lazyListResult.size = 11
+
+  for (x <- lazyListResult) print(s"x = $x, ")
+  // PRINTS: x = 0, x = 1, x = 1, x = 2, x = 3, x = 5, x = 8, x = 13, x = 21, x = 34, x = 55,
+
+  // Convert the LazyList to a regular List.
+  val listResult: List[BigInt] = lazyListResult.toList
+  println(s"\nlistResult = $listResult")
+  // PRINTS: listResult = List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
+end main
+-----------------------------------------------------------------------------------
