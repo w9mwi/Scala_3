@@ -4,7 +4,22 @@ A Scala List is immutable, so it cannot be altered/changed/updated after it's cr
 If you want to alter/change/update a Scala List, you actually need to create a new List.
 The following program demonstrates how to do that.
 
-A Scala List is a linked list.  Generally, you shouldn’t access elements of
+An empty List in Scala is designated by the keyword "Nil"; which is equivalent to: List()
+In functional programming, Scala Lists are often constructed recursively using the
+"cons" (::) operator.  Nil serves as the terminating condition for recursive operations
+on Scala Lists.
+
+A Scala List is a linked list which consists of a head and a tail.  A List's head
+consists of only its first element; its tail consists of all remaining elements.
+When a Scala List contains only a single element its head references that single
+element; its tail references an empty List.  Here's an example:
+
+   val intList:List[Int] = 999 :: Nil  // Nil designates an empty List and is equivalent to: List()
+   println(s"intList.head = ${intList.head}") // PRINTS: intList.head = 999
+   println(s"intList.tail = ${intList.tail}") // PRINTS: intList.tail = List()
+
+
+Generally, you shouldn’t access elements of
 a large List via an index value.  For example, you shouldn't do something
 like this...
 
@@ -15,10 +30,7 @@ the List (up to the index value) must be traversed.  If you have a large collect
 and want to access its elements via an index, you should use a Vector or an ArrayBuffer
 collection instead of a List.
 
-An empty List in Scala is designated by the keyword "Nil"; which is equivalent to: List()
-In functional programming, Scala Lists are often constructed recursively using the
-"cons" (::) operator.  Nil serves as the terminating condition for recursive operations
-on Scala Lists.
+
 
 =============================================================================
 
