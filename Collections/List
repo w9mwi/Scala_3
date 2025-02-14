@@ -1,3 +1,5 @@
+LIST
+====
 A Scala List is immutable, so it cannot be altered/changed/updated after it's created.
 If you want to alter/change/update a Scala List, you actually need to create a new List.
 The following program demonstrates how to do that.
