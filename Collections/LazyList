@@ -36,7 +36,7 @@ and is demonstrated in the following program.
   println(s"\nlazyList_2 = $lazyList_2") // PRINTS: lazyList_2 = LazyList(-1, 0, 1, 2, 3)
 ===================================================================================
 
-The following program uses a LazyList and the recursive fib() method
+The following program uses a LazyList and the recursive fibonacci() method
 to compute fibonacci numbers.
 
 ===================================================================================
