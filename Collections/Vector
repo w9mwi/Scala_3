@@ -1,5 +1,5 @@
 VECTOR
 ======
-The Vector class is immutable; so unlike an Array, you can't change any of
-its elements.  A Vector also inherits from the IndexedSeq trait, which
-means that accessing any of its elements via an index is fast and efficient.
+The Vector class is immutable; so unlike an Array, once a Vector is initialized
+you can't change any of its elements.  A Vector inherits from the IndexedSeq trait,
+which means that accessing any of its elements via an index is fast and efficient.
