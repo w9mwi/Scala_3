@@ -55,8 +55,8 @@ end fibonacci
   val fibonacciLazyList: LazyList[BigInt] = fibonacci(0, 1).take(11)
 
   // At this point fibonacciLazyList won't show the result because
-  // that result doesn't get generated/computed until one or more
-  // of its elements are accessed.
+  // that result doesn't get generated/computed until at least one
+  // element of the LazyList is accessed.
   println(s"fibonacciLazyList = $fibonacciLazyList,  fibonacciLazyList.size = ${fibonacciLazyList.size}")
   // PRINTS: fibonacciLazyList = LazyList(<not computed>),  fibonacciLazyList.size = 11
 
