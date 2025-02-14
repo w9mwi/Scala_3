@@ -1,2 +1,5 @@
 VECTOR
 ======
+The Vector class is immutable.  A Vector also inherits from the
+IndexedSeq trait, which means that accessing any of its elements
+via an index is fast and efficient.
