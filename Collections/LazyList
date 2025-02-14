@@ -41,35 +41,32 @@ to compute fibonacci numbers.
 
 ===================================================================================
 /**********************************************************
-* This fib() method is RECURSIVE
+* This fibonacci() method is RECURSIVE
 **********************************************************/
-def fib(a: BigInt, b: BigInt): LazyList[BigInt] =
-  a #:: fib(b, a + b)
-end fib
-
-/***********************************************************
-* This fibonacci() method calls the RECURSIVE fib() method.
-***********************************************************/
-def fibonacci: LazyList[BigInt] = fib(0, 1)
+def fibonacci(a: BigInt, b: BigInt): LazyList[BigInt] =
+  a #:: fibonacci(b, a + b)
 end fibonacci
 
 @main def main() =
   // The following call to take(11) constructs a LazyList of 11 elements.
   // The number passed to the take() method is what forces the recursive
-  // fib() method to terminate, as it reaches the last element of the LazyList.
-  val lazyListResult: LazyList[BigInt] = fibonacci.take(11)
+  // fibonacci() method to terminate when it reaches the last element
+  // of the LazyList.
+  val fibonacciLazyList: LazyList[BigInt] = fibonacci(0, 1).take(11)
 
-  // At this point lazyListResult won't show the result because
-  // it doesn't get generated/computed until one or more of its
-  // elements are accessed.
-  println(s"lazyListResult = $lazyListResult,  lazyListResult.size = ${lazyListResult.size}")
-  // PRINTS: lazyListResult = LazyList(<not computed>),  lazyListResult.size = 11
+  // At this point fibonacciLazyList won't show the result because
+  // that result doesn't get generated/computed until one or more
+  // of its elements are accessed.
+  println(s"fibonacciLazyList = $fibonacciLazyList,  fibonacciLazyList.size = ${fibonacciLazyList.size}")
+  // PRINTS: fibonacciLazyList = LazyList(<not computed>),  fibonacciLazyList.size = 11
 
-  for (x <- lazyListResult) print(s"x = $x, ")
+  // Here we finally access elements of fibonacciLazyList;
+  // which triggers the result to be generated/computed.
+  for (x <- fibonacciLazyList) print(s"x = $x, ")
   // PRINTS: x = 0, x = 1, x = 1, x = 2, x = 3, x = 5, x = 8, x = 13, x = 21, x = 34, x = 55,
 
   // Convert the LazyList to a regular List.
-  val listResult: List[BigInt] = lazyListResult.toList
+  val listResult: List[BigInt] = fibonacciLazyList.toList
   println(s"\nlistResult = $listResult")
   // PRINTS: listResult = List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
 end main
