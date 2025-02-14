@@ -21,15 +21,16 @@ element; its tail references an empty List.  Here's an example:
    println(s"intList.head = ${intList.head}") // PRINTS: intList.head = 987
    println(s"intList.tail = ${intList.tail}") // PRINTS: intList.tail = List()
 
-Generally, you shouldn’t access elements of a large List via an index value.
-For example, you shouldn't do something like this...
+The List class inherits from the LinearSeq trait; NOT from the IndexedSeq trait.  This means
+that accessing a List element via an index can take a long time because all elements in the
+List (up to the index value) must be traversed.  So generally, you should avoid accessing
+elements of a large List via an index value, like this...
 
    myList(999999)
 
-Accessing a List element via an index can take a long time because all elements in
-the List (up to the index value) must be traversed.  If you have a large collection
-and want to access its elements via an index, you should use a Vector or an ArrayBuffer
-collection instead of a List.
+If you have a large collection and want to access its elements via an index, instead
+of using the List class, you should use a collection class that inherits from the
+IndexedSeq trait, such an ArrayBuffer, Vector, etc.
 
 =============================================================================
 The following program demonstrates how to do the following:
