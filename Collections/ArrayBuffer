@@ -1,3 +1,79 @@
 An ArrayBuffer is a mutable collection that inherits from the IndexedBuffer trait;
 so its elements can be accessed fast and efficiently via an index.  An ArrayBuffer
 can also grow/shink in size, so you can add/delete elements.
+
+The following program demonstrates how various ArrayBuffer operators work.
+
+====================================================================
+import scala.collection.mutable.ArrayBuffer
+
+@main def main() =
+  val arrayBuf_1 = ArrayBuffer(1, 2, 3, 4, 5)
+  println(s"1) arrayBuf_1 = $arrayBuf_1")
+
+  // += operator: Add a single element
+  arrayBuf_1 += 6
+  println(s"2) arrayBuf_1 = $arrayBuf_1")
+
+  // ++= operator: Add multiple elements from another collection; where
+  //               the collection CAN BE DIFFERENT from an ArrayBuffer.
+  arrayBuf_1 ++= List(7, 8, 9)
+  println(s"3) arrayBuf_1 = $arrayBuf_1")
+
+  // -= operator: Remove a SINGLE element.  If there are multiple elements
+  //              with this value, only the first instance will be removed.
+  //              If there are no instances of this value, the ArrayBuffer
+  //              remains unchanged.
+  arrayBuf_1 -= 1
+  println(s"4) arrayBuf_1 = $arrayBuf_1")
+
+  // --= operator: Remove multiple elements.  The elements removed from the
+  //               ArrayBuffer can be specified from a collection that is,
+  //               or isn't, an ArrayBuffer.  If there are multiple elements
+  //               with these values, only the first instance of each value
+  //               will be removed.  If there are no instances of these values,
+  //               the ArrayBuffer remains unchanged.
+  arrayBuf_1 --=  Set(2, 3)
+  println(s"5) arrayBuf_1 = $arrayBuf_1")
+
+  // +: operator: Prepend a single element to an ArrayBuffer.
+  val arrayBuf_2 = 0 +: arrayBuf_1
+  println(s"6) arrayBuf_2 = $arrayBuf_2")
+
+  // :+ operator: Append a single element to an ArrayBuffer.
+  val arrayBuf_3 = arrayBuf_2 :+ 10
+  println(s"7) arrayBuf_2 = $arrayBuf_3")
+
+  // ++ operator: Concatenate two ArrayBuffers
+  val arrayBuf_4 = ArrayBuffer(11, 12, 13)
+  val combinedBuffer = arrayBuf_1 ++ arrayBuf_2
+  println(s"8) combinedBuffer = $combinedBuffer")
+
+  // Updated buffer for the following operations
+  arrayBuf_1.clear()
+  arrayBuf_1 ++= (1 to 5)
+  println(s"9) arrayBuf_1 = $arrayBuf_1")
+
+  // mapInPlace method: Apply a function to all elements
+  arrayBuf_1.mapInPlace(_ * 2)
+  println(s"10) arrayBuf_1 = $arrayBuf_1")
+
+  // filterInPlace method: Keep elements that satisfy a predicate
+  arrayBuf_1.filterInPlace(_ % 4 == 0)
+  println(s"11) arrayBuf_1 = $arrayBuf_1")
+
+  // sortInPlace method: Sort the buffer in-place
+  arrayBuf_1.clear()
+  arrayBuf_1 ++= List(3, 1, 4, 1, 5, 9, 2, 6)
+  arrayBuf_1.sortInPlace()
+  println(s"12) arrayBuf_1 = $arrayBuf_1")
+
+  // reverse method: Returns a new ArrayBuffer with the
+  //                 order of its elements reversed.
+  println(s"13) arrayBuf_1.reverse = ${arrayBuf_1.reverse}")
+
+  // clear method: Removes all elements from the ArrayBuffer.
+  arrayBuf_1.clear()
+  println(s"14) arrayBuf_1 = $arrayBuf_1")
+end main
+====================================================================
