@@ -8,4 +8,6 @@ elements via an index is fast and efficient.
 Use a Vector (instead of an Array) when you want an immutable collection that
 can be accessed fast and efficiently via an index.
 
+The following program demonstrates how various ArrayBuffer operators
+and ArrayBuffer methods work.
 
