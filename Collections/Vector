@@ -3,3 +3,6 @@ VECTOR
 The Vector class is immutable; so unlike an Array, once a Vector is initialized
 you can't change any of its elements.  A Vector inherits from the IndexedSeq trait,
 which means that accessing any of its elements via an index is fast and efficient.
+
+Use a Vector (instead of an Array) when you want an immutable collection that can
+be accessed fast and efficiently accessed via an index.
