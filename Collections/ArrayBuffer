@@ -2,7 +2,8 @@ An ArrayBuffer is a mutable collection that inherits from the IndexedBuffer trai
 so its elements can be accessed fast and efficiently via an index.  An ArrayBuffer
 can also grow/shink in size, so you can add/delete elements.
 
-The following program demonstrates how various ArrayBuffer operators work.
+The following program demonstrates how various ArrayBuffer operators
+and ArrayBuffer methods work.
 
 ====================================================================
 import scala.collection.mutable.ArrayBuffer
