@@ -11,3 +11,86 @@ can be accessed fast and efficiently via an index.
 The following program demonstrates how various ArrayBuffer operators
 and ArrayBuffer methods work.
 
+===================================================================================
+
+@main def main() =
+  // Initialize a Vector
+  val fruits = Vector("apple", "banana", "cherry", "date")
+  println(s"Original Vector: $fruits")
+
+  // Append elements
+  val fruitsWithElderberry = fruits :+ "elderberry"
+  println(s"Append 'elderberry': $fruitsWithElderberry")
+
+  // Prepend elements
+  val fruitsWithApricot = "apricot" +: fruits
+  println(s"Prepend 'apricot': $fruitsWithApricot")
+
+  // Concatenate Vectors
+  val moreFruits = Vector("fig", "grape")
+  val combinedFruits = fruits ++ moreFruits
+  println(s"Concatenate with $moreFruits: $combinedFruits")
+
+  // Access elements
+  println(s"First fruit: ${fruits(0)}")
+  println(s"Last fruit: ${fruits.last}")
+
+  // Slice
+  val middleFruits = fruits.slice(1, 3)
+  println(s"Middle fruits (slice): $middleFruits")
+
+  // Take and Drop
+  println(s"First two fruits (take): ${fruits.take(2)}")
+  println(s"All but first two (drop): ${fruits.drop(2)}")
+
+  // Map transformation
+  val upperFruits = fruits.map(_.toUpperCase)
+  println(s"Uppercase fruits: $upperFruits")
+
+  // Filter
+  val longFruits = fruits.filter(_.length > 5)
+  println(s"Fruits with more than 5 characters: $longFruits")
+
+  // Fold (left and right)
+  val concatenated = fruits.foldLeft("")((acc, fruit) => acc + fruit.charAt(0))
+  println(s"First letters concatenated: $concatenated")
+
+  // Reduce
+  val longestFruit = fruits.reduce((a, b) => if (a.length > b.length) a else b)
+  println(s"Longest fruit: $longestFruit")
+
+  // Collect
+  val fruitLengths = fruits.collect { case f if f.length % 2 == 0 => f.length }
+  println(s"Lengths of fruits with even-length names: $fruitLengths")
+
+  // GroupBy
+  val groupedByLength = fruits.groupBy(_.length)
+  println(s"Grouped by length: $groupedByLength")
+
+  // Zip
+  val numbers = Vector(1, 2, 3, 4)
+  val fruitsWithNumbers = fruits.zip(numbers)
+  println(s"Fruits zipped with numbers: $fruitsWithNumbers")
+
+  // Distinct
+  val repeatedFruits = Vector("apple", "banana", "apple", "cherry", "banana")
+  println(s"Distinct fruits: ${repeatedFruits.distinct}")
+
+  // Reverse
+  println(s"Reversed fruits: ${fruits.reverse}")
+
+  // Contains
+  println(s"Contains 'banana': ${fruits.contains("banana")}")
+
+  // IndexOf
+  println(s"Index of 'cherry': ${fruits.indexOf("cherry")}")
+
+  // Head and Tail
+  println(s"Head: ${fruits.head}, Tail: ${fruits.tail}")
+
+  // IsEmpty
+  println(s"Is empty: ${fruits.isEmpty}")
+
+  // Size
+  println(s"Size: ${fruits.size}")
+end main
