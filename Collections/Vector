@@ -15,82 +15,81 @@ and ArrayBuffer methods work.
 
 @main def main() =
   // Initialize a Vector
-  val fruits = Vector("apple", "banana", "cherry", "date")
-  println(s"Original Vector: $fruits")
+  var fruits_1:Vector[String] = Vector("apple", "banana", "cherry", "date")
+  println(s"1) fruits_1 = $fruits_1")
 
   // Append elements
-  val fruitsWithElderberry = fruits :+ "elderberry"
-  println(s"Append 'elderberry': $fruitsWithElderberry")
+  fruits_1 = fruits_1 :+ "elderberry"
+  println(s"2) fruits_1 = $fruits_1")
 
   // Prepend elements
-  val fruitsWithApricot = "apricot" +: fruits
-  println(s"Prepend 'apricot': $fruitsWithApricot")
+  fruits_1 = "apricot" +: fruits_1
+  println(s"3) fruits_1 = $fruits_1")
 
   // Concatenate Vectors
-  val moreFruits = Vector("fig", "grape")
-  val combinedFruits = fruits ++ moreFruits
-  println(s"Concatenate with $moreFruits: $combinedFruits")
+  var fruits_2:Vector[String] = Vector("fig", "grape")
+  fruits_2 = fruits_1 ++ fruits_2
+  println(s"4) fruits_2 = $fruits_2")
 
   // Access elements
-  println(s"First fruit: ${fruits(0)}")
-  println(s"Last fruit: ${fruits.last}")
+  println(s"5) fruits_1(0) = ${fruits_1(0)}")
+  println(s"6) fruits_1.last = ${fruits_1.last}")
 
   // Slice
-  val middleFruits = fruits.slice(1, 3)
-  println(s"Middle fruits (slice): $middleFruits")
+  fruits_2 = fruits_1.slice(1, 3)
+  println(s"7) fruits_1.slice(1, 3) $fruits_2")
 
   // Take and Drop
-  println(s"First two fruits (take): ${fruits.take(2)}")
-  println(s"All but first two (drop): ${fruits.drop(2)}")
+  println(s"8) fruits_1.take(2) = ${fruits_1.take(2)}")
+  println(s"9) fruits_1.drop(2) = ${fruits_1.drop(2)}")
 
   // Map transformation
-  val upperFruits = fruits.map(_.toUpperCase)
-  println(s"Uppercase fruits: $upperFruits")
+  fruits_2 = fruits_1.map(_.toUpperCase)
+  println(s"10) fruits_2 =  = $fruits_2")
 
   // Filter
-  val longFruits = fruits.filter(_.length > 5)
-  println(s"Fruits with more than 5 characters: $longFruits")
+  fruits_2 = fruits_1.filter(_.length > 5)
+  println(s"11) fruits_2 = $fruits_2")
 
   // Fold (left and right)
-  val concatenated = fruits.foldLeft("")((acc, fruit) => acc + fruit.charAt(0))
-  println(s"First letters concatenated: $concatenated")
+  var fruitString:String = fruits_1.foldLeft("")((acc, fruit) => acc + fruit.charAt(0))
+  println(s"12) fruitString = $fruitString")
 
   // Reduce
-  val longestFruit = fruits.reduce((a, b) => if (a.length > b.length) a else b)
-  println(s"Longest fruit: $longestFruit")
+  fruitString = fruits_1.reduce((a, b) => if (a.length > b.length) a else b)
+  println(s"13) fruitString = $fruitString")
 
   // Collect
-  val fruitLengths = fruits.collect { case f if f.length % 2 == 0 => f.length }
-  println(s"Lengths of fruits with even-length names: $fruitLengths")
+  var fruits_3:Vector[Int] = fruits_1.collect { case f if f.length % 2 == 0 => f.length }
+  println(s"14) fruits_3 = $fruits_3")
 
   // GroupBy
-  val groupedByLength = fruits.groupBy(_.length)
-  println(s"Grouped by length: $groupedByLength")
+  var fruits_4:Map[Int, Vector[String]] = fruits_1.groupBy(_.length)
+  println(s"15) fruits_4 = $fruits_4")
 
   // Zip
-  val numbers = Vector(1, 2, 3, 4)
-  val fruitsWithNumbers = fruits.zip(numbers)
-  println(s"Fruits zipped with numbers: $fruitsWithNumbers")
+  var fruits_5:Vector[(String, Int)] = fruits_1.zip(Vector(1, 2, 3, 4))
+  println(s"16) fruits_5 = $fruits_5")
 
   // Distinct
-  val repeatedFruits = Vector("apple", "banana", "apple", "cherry", "banana")
-  println(s"Distinct fruits: ${repeatedFruits.distinct}")
+  fruits_2 = Vector("apple", "banana", "apple", "cherry", "banana")
+  println(s"17) fruits_2 = ${fruits_2.distinct}")
 
   // Reverse
-  println(s"Reversed fruits: ${fruits.reverse}")
+  println(s"18) fruits_1.reverse ${fruits_1.reverse}")
 
   // Contains
-  println(s"Contains 'banana': ${fruits.contains("banana")}")
+  println(s"19) fruits_1.contains(banana) = ${fruits_1.contains("banana")}")
 
   // IndexOf
-  println(s"Index of 'cherry': ${fruits.indexOf("cherry")}")
+  println(s"20) fruits_1.indexOf(cherry) = ${fruits_1.indexOf("cherry")}")
 
   // Head and Tail
-  println(s"Head: ${fruits.head}, Tail: ${fruits.tail}")
+  println(s"21) fruits_1.head = ${fruits_1.head},  fruits_1.tail = ${fruits_1.tail}")
 
   // IsEmpty
-  println(s"Is empty: ${fruits.isEmpty}")
+  println(s"22) fruits_1.isEmpty = ${fruits_1.isEmpty}")
 
   // Size
-  println(s"Size: ${fruits.size}")
+  println(s"23) fruits_1.size = ${fruits_1.size}")
 end main
