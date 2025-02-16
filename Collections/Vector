@@ -51,45 +51,51 @@ and ArrayBuffer methods work.
   fruits_2 = fruits_1.filter(_.length > 5)
   println(s"11) fruits_2 = $fruits_2")
 
-  // Fold (left and right)
+  // foldLeft and foldRight
+  // At this point in the code...
+  // fruits_1 = Vector(apricot, apple, banana, cherry, date, elderberry)
+  // foldLeft prints the first char of each fruit, from left to right (aabcde)
+  // foldRight prints the first char of each fruit, from right to left (edcbaa)
   var fruitString:String = fruits_1.foldLeft("")((acc, fruit) => acc + fruit.charAt(0))
   println(s"12) fruitString = $fruitString")
+  fruitString = fruits_1.foldRight("")((fruit, acc) => acc + fruit.charAt(0))
+  println(s"13) fruitString = $fruitString")
 
   // Reduce
   fruitString = fruits_1.reduce((a, b) => if (a.length > b.length) a else b)
-  println(s"13) fruitString = $fruitString")
+  println(s"14) fruitString = $fruitString")
 
   // Collect
   var fruits_3:Vector[Int] = fruits_1.collect { case f if f.length % 2 == 0 => f.length }
-  println(s"14) fruits_3 = $fruits_3")
+  println(s"15) fruits_3 = $fruits_3")
 
   // GroupBy
   var fruits_4:Map[Int, Vector[String]] = fruits_1.groupBy(_.length)
-  println(s"15) fruits_4 = $fruits_4")
+  println(s"16) fruits_4 = $fruits_4")
 
   // Zip
   var fruits_5:Vector[(String, Int)] = fruits_1.zip(Vector(1, 2, 3, 4))
-  println(s"16) fruits_5 = $fruits_5")
+  println(s"17) fruits_5 = $fruits_5")
 
   // Distinct
   fruits_2 = Vector("apple", "banana", "apple", "cherry", "banana")
-  println(s"17) fruits_2 = ${fruits_2.distinct}")
+  println(s"18) fruits_2 = ${fruits_2.distinct}")
 
   // Reverse
-  println(s"18) fruits_1.reverse ${fruits_1.reverse}")
+  println(s"19) fruits_1.reverse ${fruits_1.reverse}")
 
   // Contains
-  println(s"19) fruits_1.contains(banana) = ${fruits_1.contains("banana")}")
+  println(s"20) fruits_1.contains(banana) = ${fruits_1.contains("banana")}")
 
   // IndexOf
-  println(s"20) fruits_1.indexOf(cherry) = ${fruits_1.indexOf("cherry")}")
+  println(s"21) fruits_1.indexOf(cherry) = ${fruits_1.indexOf("cherry")}")
 
   // Head and Tail
-  println(s"21) fruits_1.head = ${fruits_1.head},  fruits_1.tail = ${fruits_1.tail}")
+  println(s"22) fruits_1.head = ${fruits_1.head},  fruits_1.tail = ${fruits_1.tail}")
 
   // IsEmpty
-  println(s"22) fruits_1.isEmpty = ${fruits_1.isEmpty}")
+  println(s"23) fruits_1.isEmpty = ${fruits_1.isEmpty}")
 
   // Size
-  println(s"23) fruits_1.size = ${fruits_1.size}")
+  println(s"24) fruits_1.size = ${fruits_1.size}")
 end main
