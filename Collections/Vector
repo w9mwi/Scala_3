@@ -14,8 +14,39 @@ and ArrayBuffer methods work.
 ===================================================================================
 
 @main def main() =
-  // Initialize a Vector
-  var fruits_1:Vector[String] = Vector("apple", "banana", "cherry", "date")
+  // ******************************************************************
+  // This section demonstrates various ways to populate a Vector
+  // upon its initialization.
+
+  // Create an empty Vector.
+  var intVector:Vector[Int] = Vector[Int]()
+
+  // Create an initialized Vector.  Notice that the 3 numbers in the Vector
+  // are of 3 different data types.  The Scala compiler upcasts all 3 of
+  // those values to type Double.
+  val doubleVector = Vector(1, 1F, 1.0D)
+
+  // Here's a bunch more ways to initialize a Vector...
+  intVector = (1 to 5).toVector
+  println(s"1) intVector = $intVector")  // PRINTS: 1) intVector = Vector(1, 2, 3, 4, 5)
+  intVector = (1 until 10 by 2).toVector
+  println(s"2) intVector = $intVector")  // PRINTS: 2) intVector = Vector(1, 3, 5, 7, 9)
+  intVector = Vector.range(1, 6, 2)
+  println(s"3) intVector = $intVector")  // PRINTS: 3) intVector = Vector(1, 3, 5)
+  intVector = Vector.fill(3)(-987)
+  println(s"4) intVector = $intVector")  // PRINTS: 4) intVector = Vector(-987, -987, -987)
+  intVector = Vector.tabulate(3)(n=>n*n)
+  println(s"5) intVector = $intVector") // PRINTS: 5) intVector = Vector(0, 1, 4)
+  intVector = Vector.tabulate(4)(n=>n*n)
+  println(s"6) intVector = $intVector") // PRINTS: 6) intVector = Vector(0, 1, 4, 9)
+
+
+
+  var charVector:Vector[Char] = ('d' until 'h').toVector
+  println(s"3) charVector = $charVector")  // PRINTS: 3) charVector = Vector(d, e, f, g)
+  // ******************************************************************
+
+  var fruits_1: Vector[String] = Vector("apple", "banana", "cherry", "date")
   println(s"1) fruits_1 = $fruits_1")
 
   // Append elements
