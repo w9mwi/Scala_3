@@ -1,8 +1,4 @@
 
-
-https://alvinalexander.com/scala/vector-class-methods-syntax-examples/
-
-
 VECTOR
 ======
 The elements of an Array class are mutable.  Elements of the Vector class are
@@ -23,69 +19,74 @@ and ArrayBuffer methods work.
   // This section demonstrates various ways to populate a Vector
   // upon its initialization.
 
+  // Create an initialized Vector.  Notice that the 3 numbers in the Vector
+  // are of 3 different data types (Int, Float, Double).  The Scala compiler
+  // upcasts all 3 of those values to type Double.
+  val doubleVector:Vector[Double] = Vector(1, 1F, 1.0D)
+  println(s"1) doubleVector = $doubleVector") // PRINTS: 1) doubleVector = Vector(1, 1.0, 1.0)
+
   // Create an empty Vector.
   var intVector:Vector[Int] = Vector[Int]()
+  println(s"2) intVector = $intVector")  // PRINTS: 2) intVector = Vector()
 
-  // Create an initialized Vector.  Notice that the 3 numbers in the Vector
-  // are of 3 different data types.  The Scala compiler upcasts all 3 of
-  // those values to type Double.
-  val doubleVector = Vector(1, 1F, 1.0D)
-
-  // Here's a bunch more ways to initialize a Vector...
-  intVector = (1 to 5).toVector
-  println(s"1) intVector = $intVector")  // PRINTS: 1) intVector = Vector(1, 2, 3, 4, 5)
-  intVector = (1 until 10 by 2).toVector
-  println(s"2) intVector = $intVector")  // PRINTS: 2) intVector = Vector(1, 3, 5, 7, 9)
-  intVector = Vector.range(1, 6, 2)
-  println(s"3) intVector = $intVector")  // PRINTS: 3) intVector = Vector(1, 3, 5)
+  // More ways to initialize a Vector...
   intVector = Vector.fill(3)(-987)
-  println(s"4) intVector = $intVector")  // PRINTS: 4) intVector = Vector(-987, -987, -987)
+  println(s"3) intVector = $intVector")  // PRINTS: 3) intVector = Vector(-987, -987, -987)
+  intVector = (1 to 5).toVector
+  println(s"4) intVector = $intVector")  // PRINTS: 4) intVector = Vector(1, 2, 3, 4, 5)
   intVector = Vector.tabulate(3)(n=>n*n)
-  println(s"5) intVector = $intVector") // PRINTS: 5) intVector = Vector(0, 1, 4)
+  println(s"5) intVector = $intVector")  // PRINTS: 5) intVector = Vector(0, 1, 4)
   intVector = Vector.tabulate(4)(n=>n*n)
-  println(s"6) intVector = $intVector") // PRINTS: 6) intVector = Vector(0, 1, 4, 9)
-
-
+  println(s"6) intVector = $intVector")  // PRINTS: 6) intVector = Vector(0, 1, 4, 9)
+  intVector = (1 until 10 by 2).toVector
+  println(s"7) intVector = $intVector")  // PRINTS: 7) intVector = Vector(1, 3, 5, 7, 9)
+  intVector = Vector.range(1, 6, 2)
+  println(s"8) intVector = $intVector")  // PRINTS: 8) intVector = Vector(1, 3, 5)
 
   var charVector:Vector[Char] = ('d' until 'h').toVector
-  println(s"7) charVector = $charVector")  // PRINTS: 3) charVector = Vector(d, e, f, g)
+  println(s"9) charVector = $charVector")  // PRINTS: 9) charVector = Vector(d, e, f, g)
   // ******************************************************************
 
   var fruits_1: Vector[String] = Vector("apple", "banana", "cherry", "date")
-  println(s"8) fruits_1 = $fruits_1")
+  println(s"10) fruits_1 = $fruits_1")  // PRINTS: 10) fruits_1 = Vector(apple, banana, cherry, date)
 
   // Append elements
   fruits_1 = fruits_1 :+ "elderberry"
-  println(s"9) fruits_1 = $fruits_1")
+  println(s"11) fruits_1 = $fruits_1")  // PRINTS: 11) fruits_1 = Vector(apple, banana, cherry, date, elderberry)
 
   // Prepend elements
   fruits_1 = "apricot" +: fruits_1
-  println(s"10) fruits_1 = $fruits_1")
+  println(s"12) fruits_1 = $fruits_1")
+  // PRINTS: 12) fruits_1 = Vector(apricot, apple, banana, cherry, date, elderberry)
 
   // Concatenate Vectors
   var fruits_2:Vector[String] = Vector("fig", "grape")
   fruits_2 = fruits_1 ++ fruits_2
-  println(s"11) fruits_2 = $fruits_2")
+  println(s"13) fruits_2 = $fruits_2")
+  // PRINTS: 13) fruits_2 = Vector(apricot, apple, banana, cherry, date, elderberry, fig, grape)
 
   // Access elements
-  println(s"12) fruits_1(0) = ${fruits_1(0)}")
-  println(s"13) fruits_1.last = ${fruits_1.last}")
+  println(s"14) fruits_1(0) = ${fruits_1(0)},  fruits_1.last = ${fruits_1.last}")
+  // PRINTS: 14) fruits_1(0) = apricot,  fruits_1.last = elderberry
 
   // Slice
-  fruits_2 = fruits_1.slice(1, 3)
-  println(s"14) fruits_1.slice(1, 3) $fruits_2")
+  println(s"15) fruits_1.slice(1, 3) = ${fruits_1.slice(1, 3)}")
+  // PRINTS: 15) fruits_1.slice(1, 3) Vector(apple, banana)
 
   // Take and Drop
-  println(s"15) fruits_1.take(2) = ${fruits_1.take(2)}")
-  println(s"16) fruits_1.drop(2) = ${fruits_1.drop(2)}")
+  println(s"16) fruits_1.take(2) = ${fruits_1.take(2)}")
+  // PRINTS: 16) fruits_1.take(2) = Vector(apricot, apple)
+  println(s"17) fruits_1.drop(2) = ${fruits_1.drop(2)}")
+  // PRINTS: 17) fruits_1.drop(2) = Vector(banana, cherry, date, elderberry)
 
   // Map transformation
-  fruits_2 = fruits_1.map(_.toUpperCase)
-  println(s"17) fruits_2 =  = $fruits_2")
+  // fruits_2 = fruits_1.map(_.toUpperCase)
+  println(s"18) fruits_1.map(_.toUpperCase) = ${fruits_1.map(_.toUpperCase)}")
+  // PRINTS: 18) fruits_1.map(_.toUpperCase) = Vector(APRICOT, APPLE, BANANA, CHERRY, DATE, ELDERBERRY)
 
   // Filter
-  fruits_2 = fruits_1.filter(_.length > 5)
-  println(s"18) fruits_2 = $fruits_2")
+  println(s"19) fruits_1.filter(_.length > 5) = ${fruits_1.filter(_.length > 5)}")
+  // PRINTS: 19) fruits_1.filter(_.length > 5) = Vector(apricot, banana, cherry, elderberry)
 
   // foldLeft and foldRight
   // At this point in the code...
@@ -97,47 +98,56 @@ and ArrayBuffer methods work.
   // foldLeft prints the first char of each fruit, from left to right (aabcde)
   // foldRight prints the first char of each fruit, from right to left (edcbaa)
   var fruitString:String = fruits_1.fold("")((acc, fruit) => acc + fruit.charAt(0))
-  println(s"19) fruitString = $fruitString")
+  println(s"20) fruitString = $fruitString")  // PRINTS: 20) fruitString = aabcde
   fruitString = fruits_1.foldLeft("")((acc, fruit) => acc + fruit.charAt(0))
-  println(s"20) fruitString = $fruitString")
+  println(s"21) fruitString = $fruitString")  // PRINTS: 21) fruitString = aabcde
   fruitString = fruits_1.foldRight("")((fruit, acc) => acc + fruit.charAt(0))
-  println(s"21) fruitString = $fruitString")
+  println(s"22) fruitString = $fruitString")  // PRINTS: 22) fruitString = edcbaa
 
   // Reduce
   fruitString = fruits_1.reduce((a, b) => if (a.length > b.length) a else b)
-  println(s"22) fruitString = $fruitString")
+  println(s"23) fruitString = $fruitString")  // PRINTS: 23) fruitString = elderberry
 
   // Collect
   var fruits_3:Vector[Int] = fruits_1.collect { case f if f.length % 2 == 0 => f.length }
-  println(s"23) fruits_3 = $fruits_3")
+  println(s"24) fruits_3 = $fruits_3")  // PRINTS: 24) fruits_3 = Vector(6, 6, 4, 10)
 
   // GroupBy
   var fruits_4:Map[Int, Vector[String]] = fruits_1.groupBy(_.length)
-  println(s"24) fruits_4 = $fruits_4")
+  println(s"25) fruits_4 = $fruits_4")
+  // PRINTS: 25) fruits_4 = HashMap(5 -> Vector(apple), 10 -> Vector(elderberry), 6 -> Vector(banana, cherry), 7 -> Vector(apricot), 4 -> Vector(date))
 
   // Zip
   var fruits_5:Vector[(String, Int)] = fruits_1.zip(Vector(1, 2, 3, 4))
-  println(s"25) fruits_5 = $fruits_5")
+  println(s"26) fruits_5 = $fruits_5")
+  // PRINTS: 26) fruits_5 = Vector((apricot,1), (apple,2), (banana,3), (cherry,4))
 
   // Distinct
   fruits_2 = Vector("apple", "banana", "apple", "cherry", "banana")
-  println(s"26) fruits_2 = ${fruits_2.distinct}")
+  println(s"27) fruits_2 = ${fruits_2.distinct}")
+  // PRINTS: 27) fruits_2 = Vector(apple, banana, cherry)
 
   // Reverse
-  println(s"27) fruits_1.reverse ${fruits_1.reverse}")
+  println(s"28) fruits_1.reverse ${fruits_1.reverse}")
+  // PRINTS: 28) fruits_1.reverse Vector(elderberry, date, cherry, banana, apple, apricot)
 
   // Contains
-  println(s"28) fruits_1.contains(banana) = ${fruits_1.contains("banana")}")
+  println(s"29) fruits_1.contains(banana) = ${fruits_1.contains("banana")}")
+  // PRINTS: 29) fruits_1.contains(banana) = true
 
   // IndexOf
-  println(s"29) fruits_1.indexOf(cherry) = ${fruits_1.indexOf("cherry")}")
+  println(s"30) fruits_1.indexOf(cherry) = ${fruits_1.indexOf("cherry")}")
+  // PRINTS: 30) fruits_1.indexOf(cherry) = 3
 
   // Head and Tail
-  println(s"30) fruits_1.head = ${fruits_1.head},  fruits_1.tail = ${fruits_1.tail}")
+  println(s"31) fruits_1.head = ${fruits_1.head},  fruits_1.tail = ${fruits_1.tail}")
+  // PRINTS: 31) fruits_1.head = apricot,  fruits_1.tail = Vector(apple, banana, cherry, date, elderberry)
 
   // IsEmpty
-  println(s"31) fruits_1.isEmpty = ${fruits_1.isEmpty}")
+  println(s"32) fruits_1.isEmpty = ${fruits_1.isEmpty}")
+  // PRINTS: 32) fruits_1.isEmpty = false
 
   // Size
-  println(s"32) fruits_1.size = ${fruits_1.size}")
+  println(s"33) fruits_1.size = ${fruits_1.size}")
+  // PRINTS: 33) fruits_1.size = 6
 end main
