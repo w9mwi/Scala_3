@@ -1,3 +1,8 @@
+ARRAY BUFFER
+============
+
+ALSO SEE: https://alvinalexander.com/scala/arraybuffer-class-methods-syntax-examples-reference
+
 An ArrayBuffer is a mutable collection that inherits from the IndexedBuffer trait;
 so its elements can be accessed fast and efficiently via an index.  An ArrayBuffer
 can also grow/shink in size, so you can add/delete elements.
