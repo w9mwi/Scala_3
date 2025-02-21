@@ -11,27 +11,35 @@ The following program demonstrates how various ArrayBuffer operators
 and ArrayBuffer methods work.
 
 ====================================================================
+
 import scala.collection.mutable.ArrayBuffer
 
 @main def main() =
-  val arrayBuf_1 = ArrayBuffer(1, 2, 3, 4, 5)
-  println(s"1) arrayBuf_1 = $arrayBuf_1")
+  var arrayBuf_1:ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4, 5)
+  println(s"1) arrayBuf_1 = $arrayBuf_1")  // PRINTS: 1) arrayBuf_1 = ArrayBuffer(1, 2, 3, 4, 5)
 
   // += operator: Add a single element
   arrayBuf_1 += 6
-  println(s"2) arrayBuf_1 = $arrayBuf_1")
+  println(s"2) arrayBuf_1 = $arrayBuf_1")  // PRINTS: 2) arrayBuf_1 = ArrayBuffer(1, 2, 3, 4, 5, 6)
 
   // ++= operator: Add multiple elements from another collection; where
   //               the collection CAN BE DIFFERENT from an ArrayBuffer.
   arrayBuf_1 ++= List(7, 8, 9)
   println(s"3) arrayBuf_1 = $arrayBuf_1")
+  // PRINTS: 3) arrayBuf_1 = ArrayBuffer(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+  // Access elements
+  println(s"4) arrayBuf_1(0) = ${arrayBuf_1(0)},  arrayBuf_1.last = ${arrayBuf_1.last}")
+  // PRINTS: 4) arrayBuf_1(0) = 1,  arrayBuf_1.last = 9
+  println(s"5) arrayBuf_1.head = ${arrayBuf_1.head},  arrayBuf_1.tail = ${arrayBuf_1.tail}")
+  // PRINTS: 5) arrayBuf_1.head = 1,  arrayBuf_1.tail = ArrayBuffer(2, 3, 4, 5, 6, 7, 8, 9)
 
   // -= operator: Remove a SINGLE element.  If there are multiple elements
   //              with this value, only the first instance will be removed.
   //              If there are no instances of this value, the ArrayBuffer
   //              remains unchanged.
   arrayBuf_1 -= 1
-  println(s"4) arrayBuf_1 = $arrayBuf_1")
+  println(s"6) arrayBuf_1 = $arrayBuf_1") // PRINTS: 6) arrayBuf_1 = ArrayBuffer(2, 3, 4, 5, 6, 7, 8, 9)
 
   // --= operator: Remove multiple elements.  The elements removed from the
   //               ArrayBuffer can be specified from a collection that is,
@@ -39,47 +47,49 @@ import scala.collection.mutable.ArrayBuffer
   //               with these values, only the first instance of each value
   //               will be removed.  If there are no instances of these values,
   //               the ArrayBuffer remains unchanged.
-  arrayBuf_1 --=  Set(2, 3)
-  println(s"5) arrayBuf_1 = $arrayBuf_1")
+  arrayBuf_1 --= Set(2, 3)
+  println(s"7) arrayBuf_1 = $arrayBuf_1") // PRINTS: 7) arrayBuf_1 = ArrayBuffer(4, 5, 6, 7, 8, 9)
 
   // +: operator: Prepend a single element to an ArrayBuffer.
-  val arrayBuf_2 = 0 +: arrayBuf_1
-  println(s"6) arrayBuf_2 = $arrayBuf_2")
+  arrayBuf_1 = 0 +: arrayBuf_1
+  println(s"8) arrayBuf_1 = $arrayBuf_1") // PRINTS: 8) arrayBuf_1 = ArrayBuffer(0, 4, 5, 6, 7, 8, 9)
 
   // :+ operator: Append a single element to an ArrayBuffer.
-  val arrayBuf_3 = arrayBuf_2 :+ 10
-  println(s"7) arrayBuf_2 = $arrayBuf_3")
+  arrayBuf_1 = arrayBuf_1 :+ 10
+  println(s"9) arrayBuf_1 = $arrayBuf_1") // PRINTS: 9) arrayBuf_1 = ArrayBuffer(0, 4, 5, 6, 7, 8, 9, 10)
 
   // ++ operator: Concatenate two ArrayBuffers
-  val arrayBuf_4 = ArrayBuffer(11, 12, 13)
-  val combinedBuffer = arrayBuf_1 ++ arrayBuf_2
-  println(s"8) combinedBuffer = $combinedBuffer")
+  arrayBuf_1 = arrayBuf_1 ++ ArrayBuffer(11, 12, 13)
+  println(s"10) arrayBuf_1 = $arrayBuf_1")
+  // PRINTS: 10) arrayBuf_1 = ArrayBuffer(0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
 
   // Updated buffer for the following operations
   arrayBuf_1.clear()
   arrayBuf_1 ++= (1 to 5)
-  println(s"9) arrayBuf_1 = $arrayBuf_1")
+  println(s"11) arrayBuf_1 = $arrayBuf_1") // PRINTS: 11) arrayBuf_1 = ArrayBuffer(1, 2, 3, 4, 5)
 
-  // mapInPlace method: Apply a function to all elements
+  // mapInPlace() is equivalent to map(), except it changes the contents of ArrayBuffer,
+  // instead of returning a newly-created ArrayBuffer.
   arrayBuf_1.mapInPlace(_ * 2)
-  println(s"10) arrayBuf_1 = $arrayBuf_1")
+  println(s"12) arrayBuf_1 = $arrayBuf_1") // PRINTS: 12) arrayBuf_1 = ArrayBuffer(2, 4, 6, 8, 10)
 
-  // filterInPlace method: Keep elements that satisfy a predicate
-  arrayBuf_1.filterInPlace(_ % 4 == 0)
-  println(s"11) arrayBuf_1 = $arrayBuf_1")
+  // filterInPlace() is equivalent to filter(), except it changes the contents of ArrayBuffer,
+  // instead of returning a newly-created ArrayBuffer.
+  arrayBuf_1.filterInPlace(_ % 8 != 0)
+  println(s"13) arrayBuf_1 = $arrayBuf_1") // PRINTS: 13) arrayBuf_1 = ArrayBuffer(2, 4, 6, 10)
 
-  // sortInPlace method: Sort the buffer in-place
+  // sortInPlace() is equivalent to sort(), except it changes the contents of ArrayBuffer,
+  // instead of returning a newly-created ArrayBuffer.
   arrayBuf_1.clear()
-  arrayBuf_1 ++= List(3, 1, 4, 1, 5, 9, 2, 6)
+  arrayBuf_1 ++= List(3, 1, 4, 5, 2)
   arrayBuf_1.sortInPlace()
-  println(s"12) arrayBuf_1 = $arrayBuf_1")
+  println(s"14) arrayBuf_1 = $arrayBuf_1") // PRINTS: 14) arrayBuf_1 = ArrayBuffer(1, 2, 3, 4, 5)
 
-  // reverse method: Returns a new ArrayBuffer with the
-  //                 order of its elements reversed.
-  println(s"13) arrayBuf_1.reverse = ${arrayBuf_1.reverse}")
+  // Reverse the contents of ArrayBuffer.
+  println(s"15) arrayBuf_1.reverse = ${arrayBuf_1.reverse}")
+  // PRINTS: 15) arrayBuf_1.reverse = ArrayBuffer(5, 4, 3, 2, 1)
 
   // clear method: Removes all elements from the ArrayBuffer.
   arrayBuf_1.clear()
-  println(s"14) arrayBuf_1 = $arrayBuf_1")
+  println(s"16) arrayBuf_1 = $arrayBuf_1") // PRINTS: 16) arrayBuf_1 = ArrayBuffer()
 end main
-====================================================================
