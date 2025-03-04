@@ -2,6 +2,17 @@
 QUEUE
 =====
 
+The Scala Queue class is implemented as a pair of Lists.  One of these
+two Lists contains the 'IN ELEMENTS', and the other List contains the
+'OUT ELEMENTS'.
+
+* Dequeue - The process of removing element(s) from a Scala Queue's 'OUT LIST'.
+
+* Enqueue - The process of adding element(s) to a Scala Queue's 'IN LIST'.
+
+When the 'OUT LIST' becomes empty, the queue is pivoted by replacing the
+'OUT LIST' by in.reverse, and in by Nil.
+
 
 
 ==========================================================================
