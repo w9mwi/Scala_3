@@ -1,0 +1,38 @@
+
+QUEUE
+=====
+
+
+
+==========================================================================
+
+
+import scala.collection.immutable.Queue
+
+@main def main() =
+  // Initialize a Queue.
+  val queue_1:Queue[String] = Queue("Apple", "Banana", "Cherry")
+
+  // Add one element to a Queue via the enqueue method.
+  val queue_2:Queue[String] = queue_1.enqueue("Date")
+  println(s"queue_2 = $queue_2") // PRINTS: queue_2 = Queue(Apple, Banana, Cherry, Date)
+
+  // Add one element to a Queue via the :+ operator.
+  val queue_3:Queue[String] = queue_2 :+ "Elderberry"
+  println(s"queue_3 = $queue_3") // PRINTS: queue_3 = Queue(Apple, Banana, Cherry, Date, Elderberry)
+
+  val (firstElement, remainingQueue) = queue_3.dequeue
+  println(s"queue_3 = $queue_3") // PRINTS: queue_3 = Queue(Apple, Banana, Cherry, Date, Elderberry)
+  println(s"queue_2.head = ${queue_3.head}")
+  println(s"queue_2.tail = ${queue_3.tail}")
+
+  println(s"Dequeued element =  $firstElement")
+  println(s"Remaining queue = $remainingQueue")
+
+  queue_3.dequeue
+  println(s"queue_3 = $queue_3") // PRINTS: queue_3 = Queue(Apple, Banana, Cherry, Date, Elderberry)
+
+  // Remove a Queue element.
+
+
+end main
