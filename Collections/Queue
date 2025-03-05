@@ -26,17 +26,26 @@ import scala.collection.immutable.Queue
 
   // Add one element to a Queue via the enqueue method.
   var queVar:Queue[String] = queue_1.enqueue("Date")
-  println(s"1) queVar = $queVar") // PRINTS: 1) queVar = Queue(Apple, Banana, Cherry, Date)
+  // NOTICE: The enqueue method doesn't alter the contents of queue_1;
+  //         it only returns a new Queue collection.
+  println(s"1) queue_1 = $queue_1") // PRINTS: 1) queue_1 = Queue(Apple, Banana, Cherry)
+  println(s"2) queVar = $queVar")   // PRINTS: 2) queVar = Queue(Apple, Banana, Cherry, Date)
 
   // Add one element to a Queue via the :+ operator.
   queVar = queVar :+ "Elderberry"
-  println(s"2) queVar = $queVar") // PRINTS: 2) queVar = Queue(Apple, Banana, Cherry, Date, Elderberry)
+  println(s"3) queVar = $queVar") // PRINTS: 3) queVar = Queue(Apple, Banana, Cherry, Date, Elderberry)
 
   val (firstElement, remainingQueue) = queVar.dequeue
-  println(s"3) queVar = $queVar") // PRINTS: 3) queVar = Queue(Apple, Banana, Cherry, Date, Elderberry)
-  println(s"4) Dequeued element = $firstElement") // PRINTS:
-  println(s"5) Remaining queue = $remainingQueue") // PRINTS:
-  println(s"6) queVar.head = ${queVar.head}") // PRINTS:
-  println(s"7) queVar.tail = ${queVar.tail}") // PRINTS:
-  
+  println(s"4) queVar = $queVar") // PRINTS: 4) queVar = Queue(Apple, Banana, Cherry, Date, Elderberry)
+  println(s"5) Dequeued element = $firstElement")  // PRINTS: 5) Dequeued element = Apple
+  println(s"6) Remaining queue = $remainingQueue") // PRINTS: 6) Remaining queue = Queue(Banana, Cherry, Date, Elderberry)
+  println(s"7) queVar.head = ${queVar.head}")      // PRINTS: 7) queVar.head = Apple
+  println(s"8) queVar.tail = ${queVar.tail}")      // PRINTS: 8) queVar.tail = Queue(Banana, Cherry, Date, Elderberry)
+
+  queVar = Queue.empty[String]
+  // Enqueue elements (add to the "in" list)
+  queVar = queVar.enqueue("One")
+  queVar = queVar.enqueue("Two")
+  queVar = queVar.enqueue("Three")
+  println(s"9) queVar = $queVar") // PRINTS: 9) queVar = Queue(One, Two, Three)
 end main
