@@ -47,4 +47,9 @@ import scala.collection.immutable.Queue
   queVar = queVar.enqueue("Two")
   queVar = queVar.enqueue("Three")
   println(s"9) queVar = $queVar") // PRINTS: 9) queVar = Queue(One, Two, Three)
+
+  // The following List[String] passed to the enqueue method could be
+  // a different collection like an Array[String], Vector[String], etc. 
+  queVar = queVar.enqueueAll(List("Four", "Five", "Six"))
+  println(s"10) queVar = $queVar") // PRINTS: 10) queVar = Queue(One, Two, Three, Four, Five, Six)
 end main
