@@ -18,6 +18,7 @@ When the 'OUT LIST' becomes empty, the queue is pivoted by replacing the
 ==========================================================================
 
 import scala.collection.immutable.Queue
+// import scala.collection.mutable.Queue
 
 @main def main() =
   // Initialize a Queue.
