@@ -19,9 +19,9 @@ constructor, even when the class constructor accepts no arguments.
 
 A Scala 3 class or "case class" can be written with or without a braces
 pair {}.  If a Scala 3 class doesn't implement a braces pair {}, it must
-instead implement a colon char (:) at the termination of its argument list,
+instead implement a colon char (:) at the end of its argument list,
 with this exception...  A Scala class or "case class" that contains no body
-of executable code implements neither a braces pair {}, or a colon char (:).
+of executable code doesn't contain a braces pair {}, or a colon char (:).
 
 All of the code that follows the colon char (:) in a class or "case class"
 must appear on a new line below its argument list, and must be indented to
@@ -49,6 +49,9 @@ instead of a Scala class.
 A regular class isn't Serializable by default, while a "case class" is Serializable
 by default.  If you want to make a regular class Serializable, you need to add the
 text "extends Serializable" to the class definition.
+
+A Scala class can contain another class.  A Scala class defined within another
+Scala class is known as an "inner class."
 
 For every regular class and "case class" that you write, Scala automatically
 generates the following 4 methods.
