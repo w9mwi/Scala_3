@@ -5,30 +5,9 @@ because their differences aren't important regarding the topic of currying.
 The differences between a Scala method and a Scala function are explained
 on the web page titled:  Methods_and_Functions
 
-CURRYING DEFINITION - Currying transforms a method that has multiple argument lists
-                      into a chain of functions.  Where each function in the chain
-                      gets passed an argument list, and returns a function that
-                      accepts an argument list.  When a curried function is supplied
-                      with the last of its multiple argument lists, it becomes fully
-                      applied, and returns not a function, but a final value.  Any
-                      function that returns a function having an argument list is
-                      a curried function.
-
-                      A curried function is also a recursive function.  Because when
-                      it returns a function, the function returned is another call
-                      to itself.
-
-PARTIALLY-APPLIED FUNCTION - Invoking a curried function with fewer than all its argument
-                             lists will return a function (not a final value); which makes
-                             it a partially-applied function.
-
-FULLY-APPLIED FUNCTION - When a curried function processes all of its argument lists it
-                         returns a final value (i.e., Int, List, Array, Float, etc.)
-                         instead of a function, and becomes a fully-applied function.
-
-Most Scala methods have a single argument list, which can contain zero, one, or
-multiple arguments.  Scala also allows methods to have multiple argument lists.
-The following program demonstrates this.
+Most Scala methods/functions contain a single argument list.  An argument list can
+contain zero, one, or multiple arguments.  Scala methods/functions can also contain
+multiple argument lists.  The following program demonstrates this.
 
 WARNING: When a method/function definition contains multiple argument lists,
          and one those argument lists contains the Scala keyword "implicit",
@@ -58,24 +37,46 @@ def method_4(number1:Int, number2:Int)(number3:Int):Int = number1 + number2 + nu
 end main
 ----------------------------------------------------------------------------------------------
 
+CURRYING DEFINITION - Currying transforms a method that has multiple argument lists
+                      into a chain of functions.  Where each function in the chain
+                      gets passed an argument list, and returns a function that
+                      accepts an argument list.  When a curried function is supplied
+                      with the last of its multiple argument lists, it becomes fully
+                      applied, and returns not a function, but a final value.  Any
+                      function that returns a function containing an argument list
+                      is a curried function.
+
+                      A curried function is also a recursive function because it returns
+                      a call to itself.  This function gets invoked repeatedly until it
+                      is supplied with the last of its multiple argument lists, thus
+                      making it a reecursive function.
+
+PARTIALLY-APPLIED FUNCTION - Invoking a curried function with fewer than all its argument
+                             lists will return a function (not a final value); which makes
+                             it a partially-applied function.
+
+FULLY-APPLIED FUNCTION - When a curried function processes all of its argument lists it
+                         returns a final value (i.e., Int, List, Array, Float, etc.)
+                         instead of a function, and becomes a fully-applied function.
+
 In the above program it appears that a method having multiple argument lists behaves no
 differently than a method containing a single argument list.  That's true only when you
 invoke the method with all of its argument lists in a single call, as was done in the
 above program.
 
 When a method/function has multiple argument lists, it can be invoked by supplying it
-with fewer than all of its argument lists.  When that happens the method processes
-only the argument list(s) supplied, and it returns a function, instead of a final result.
+with fewer than all of its argument lists.  When that occurs the method processes only
+the argument list(s) supplied, and it returns a function, instead of a final result.
 
 You can then invoke the returned function with any number of argument lists, until you
 have supplied all of the method's argument lists.  Only when you have supplied all of
 the method's argument lists will a final result be returned, instead of a function.
 
-A method/function that has multiple argument lists is known as a CURRIED METHOD/FUNCTION.
-When it's invoked with fewer than all of its argument lists, it returns not a final value,
-but a function; which makes it a PARTIALLY-APPLIED FUNCTION.  Once it's supplied with
-all of its argument lists, it returns not a function, but a final value; which makes
-it FULLY-APPLIED.  The following program demonstrates this.  Read in-line comments
+A function that has multiple argument lists is known as a CURRIED FUNCTION.  When it's
+invoked with fewer than all of its argument lists, it returns NOT a final value, but
+a function; which makes it a PARTIALLY-APPLIED FUNCTION.  Once it's supplied with all
+of its argument lists, it returns not a function, but a final value; which makes it a
+FULLY-APPLIED FUNCTION.  The following program demonstrates this.  Read in-line comments
 for details
 
 ----------------------------------------------------------------------------------------------
