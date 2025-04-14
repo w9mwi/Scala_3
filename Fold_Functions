@@ -68,10 +68,11 @@ foldRight, and foldLeft functions.  Read the in-line comments for details.
 
 @main def main() =
   val doubleArray:Array[Double] = Array(1.23D, 3.45D, 6.78D)
-  // When performing addition/multiplication on doubleArray,
-  // fold, foldRight and foldLeft all return the same result
-  // because the order in which the doubleArray elements are
-  // added (or multiplied) doesn't change the result.
+
+  // When performing addition/multiplication on doubleArray, the
+  // fold, foldRight and foldLeft functions all return the same
+  // result because the order in which the doubleArray elements
+  // are processed doesn't change the result.
   // NOTE:  1.23 + 3.45 + 6.78 = 11.46
   var result:Double = doubleArray.fold(0.0D)(_+_)
   println(s"1) result = $result") // PRINTS: 1) result = 11.46
@@ -84,7 +85,7 @@ foldRight, and foldLeft functions.  Read the in-line comments for details.
   // and foldLeft return different results because the order in
   // which doubleArray elements implement subtraction and division
   // changes the result.  The fold function should NOT be used in
-  // instances like this, because the fold function doesn't
+  // instances like this because the fold function doesn't
   // guarantee the order of the elements processed.
   result = doubleArray.fold(1.0D)(_/_) // This result CAN'T BE TRUSTED because the fold function
                                        // doesn't guarantee the order of the elements processed.
@@ -93,10 +94,10 @@ foldRight, and foldLeft functions.  Read the in-line comments for details.
                                        //       example.  Again, you should NEVER use the fold
                                        //       function when the operation is associative.
   println(s"4) result = $result") // PRINTS: 4) result = 0.03475730537733747
-  result = doubleArray.foldRight(1.0D)(_/_) // (1.0 ÷ 6.78 ÷ 3.45 ÷ 1.23) = 2.4172173913043475
-  println(s"5) result = $result") // PRINTS: 5) result = 2.4172173913043475 
   result = doubleArray.foldLeft(1.0D)(_/_)  // (1.0 ÷ 1.23 ÷ 3.45 ÷ 6.78) = 0.03475730537733747
-  println(s"6) result = $result") // PRINTS: 6) result = 0.03475730537733747
+  println(s"5) result = $result") // PRINTS: 5) result = 0.03475730537733747
+  result = doubleArray.foldRight(1.0D)(_/_) // (1.0 ÷ 6.78 ÷ 3.45 ÷ 1.23) = 2.4172173913043475
+  println(s"6) result = $result") // PRINTS: 6) result = 2.4172173913043475
 end main
 ----------------------------------------------------------------------------------------------
 
