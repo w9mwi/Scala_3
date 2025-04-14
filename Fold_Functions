@@ -49,7 +49,7 @@ fold      - The fold function may process the collection's elements in any order
             When the operations performed on a collection is COMMUTATIVE (THE ORDER
             DOESN'T MATTER), you can use the fold, foldRight, or foldLeft functions.
             But you should use the fold function in this case (when order doesn't
-            matter), as it's more efficient than foldRight and foldLeft.
+            matter), as it may be more efficient than foldRight and foldLeft.
 
             COMMUTATIVE vs. ASSOCIATIVE
  
