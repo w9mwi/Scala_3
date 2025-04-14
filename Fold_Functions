@@ -22,56 +22,32 @@ is also a recursive function because a curried function returns a
 function that calls itself.
 
 The first argument list supplied to the fold, foldRight, and foldLeft
-functions contains an "initial value", or a "start value."  The second
-argument list supplied to fold, foldRight, and foldLeft functions
+functions contains the "initial value", or a "start value."  The second
+argument list supplied to the fold, foldRight, and foldLeft functions
 contains the function to be invoked on every element of the collection.
 
-The function that gets passed to the fold, foldRight, and foldLeft
-functions is often times a short/simple function that's written as
-anonymous function.  The following explains the differences between
-the 3 fold functions.
+The function that gets passed as an argument list to the fold, foldRight, and
+foldLeft functions is often times a short/simple function that's written
+as an anonymous function.  The following explains the differences between
+the fold, foldRight, and foldLeft functions.
 
-fold -      This function may process the collection's elements in an
-            undetermined order; which can be more efficient for some
-            operations like parallel processing.  Therefore, the fold
-            function should be used only when the order in which elements
-            of a collection are processed DON'T MATTER (i.e. mathematical
-            addition or multiplication, etc.).
+fold -       The fold function may process the collection's elements in any order.
+             (An undetermined order.)  So use the fold function only when the
+             processing order of the collection's elements doesn't matter (i.e.
+             mathematical addition, multiplication, etc.).
 
-(i.e., mathematical subtraction or division) then use the foldRight
-or foldLeft functions, instead of the fold dunction.
+             Only when the processing order of a collection doesn't matter (i.e.
+             mathematical addition, multiplication, etc.), is it OK to use the
+             fold function.  When the processing order of a collection does
+             matter, use the foldRight or foldLeft functions instead of fold.
 
-foldRight - This function always processes the collection's elements from
-            RIGHT TO LEFT.  Which means it processes the last element of
+foldRight - The foldRight function always processes the collection's elements
+            from RIGHT TO LEFT.  Which means it processes the last element of
             the collection first, and its first element last.
 
-foldLeft -
-
-The fold and foldRight functions will often generate identical results on
-the same collection; which should make you to ask the following question:
-
-QUESTION:
-When the fold and foldRight functions both return an identical result on
-the same collection, then what's the difference between the fold and
-foldRight functions?
-
-   ANSWER:
-   The foldRight function always processes the collection's elements from
-   right to left; which means it processes the last element of the collection
-   first, and its first element last.
-
-fold may process the collection's elements in any order, which can be
-more efficient for some operations, like parallel processing.  When
-the order in which elements of a collection are processed DO MATTER
-(i.e., mathematical subtraction or division) then use the foldRight
-or foldLeft functions, instead of the fold dunction.
-
-
-When the order in which elements of a collection are processed DOESN'T MATTER
-(i.e., mathematical addition or multiplication), then it's OK to use the fold
-function, as it may be more efficient.  When the order in which elements of a
-collection are processed DO MATTER, 
-
+foldLeft  - The foldLeft function always processes the collection's elements
+            from LEFT TO RIGHT.  Which means it processes the last element of
+            the collection first, and its first element last.
 
 The following program demostrates the use of the fold, foldLeft,
 and foldRight functions.
