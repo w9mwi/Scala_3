@@ -16,13 +16,13 @@ Map Collections: HashMap              Other Collections: Either
                  Map                                     Option
                  TreeMap                                 BitSet
 
-The fold, foldRight, and foldLeft functions each have 2 argument lists,
+The fold, foldRight, and foldLeft functions each accept 2 argument lists,
 which makes them curried functions.  Recall that a curried function
 is also a recursive function because a curried function returns a
 function that calls itself.
 
 The first argument list supplied to the fold, foldRight, and foldLeft
-functions contains the "initial value", or a "start value."  The second
+functions contains an "initial value", or a "start value."  The second
 argument list supplied to the fold, foldRight, and foldLeft functions
 contains the function to be invoked on every element of the collection.
 
