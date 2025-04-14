@@ -26,14 +26,14 @@ functions contains the "initial value", or a "start value."  The second
 argument list supplied to the fold, foldRight, and foldLeft functions
 contains the function to be invoked on every element of the collection.
 
-The function that gets passed as an argument list to the fold, foldRight, and
-foldLeft functions is often times a short/simple function that's written
+The function that gets passed (as an argument list) to the fold, foldRight,
+and foldLeft functions is often times a short/simple function that's written
 as an anonymous function.  The following explains the differences between
 the fold, foldRight, and foldLeft functions.
 
 fold -       The fold function may process the collection's elements in any order.
              (An undetermined order.)  So use the fold function only when the
-             processing order of a collection doesn't matter.
+             processing order of a collection doesn't matter.  For example...
 
              You CAN use the fold function to perform mathematical addition or
              multiplication across all elements of a collection, because the
@@ -59,6 +59,7 @@ The following program demonstrates the fold, foldRight, and foldLeft concepts ju
   // fold, foldRight and foldLeft all return the same result
   // because the order in which the doubleArray elements are
   // added (or multiplied) doesn't change the result.
+  // NOTE: 1.23 + 3.45 + 6.78 = 11.46
   var result:Double = doubleArray.fold(0.0D)(_+_)
   println(s"1) result = $result") // PRINTS: 1) result = 11.46
   result = doubleArray.foldRight(0.0D)(_+_)
@@ -74,8 +75,9 @@ The following program demonstrates the fold, foldRight, and foldLeft concepts ju
   // doesn't guarantee the order of the elements processed.
   result = doubleArray.fold(1.0D)(_/_) // This result CAN'T BE TRUSTED because the fold function
                                        // doesn't guarantee the order of the elements processed.
-                                       // NOTE: The fold function often generates the same result
-                                       //       as foldRight, as it does in this example shown below.
+                                       // NOTE: The fold function often (but not always) generates
+                                       //       the same result as foldRight; as it does in this
+                                       //       example, shown further below.
   println(s"4) result = $result") // PRINTS: 4) result = 0.03475730537733747
   result = doubleArray.foldRight(1.0D)(_/_) // (1.0 ÷ 6.78 ÷ 3.45 ÷ 1.23) = 2.4172173913043475
   println(s"5) result = $result") // PRINTS: 5) result = 2.4172173913043475 
