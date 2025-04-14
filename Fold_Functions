@@ -33,13 +33,15 @@ the fold, foldRight, and foldLeft functions.
 
 fold -       The fold function may process the collection's elements in any order.
              (An undetermined order.)  So use the fold function only when the
-             processing order of the collection's elements doesn't matter (i.e.
-             mathematical addition, multiplication, etc.).
+             processing order of a collection doesn't matter.
 
-             Only when the processing order of a collection doesn't matter (i.e.
-             mathematical addition, multiplication, etc.), is it OK to use the
-             fold function.  When the processing order of a collection does
-             matter, use the foldRight or foldLeft functions instead of fold.
+             You CAN use the fold function to perform mathematical addition or
+             multiplication across all elements of a collection, because the
+             order in which addition/multiplication is performed doesn't matter.
+
+             You CAN'T use the fold function to perform mathematical subtraction
+             or division across all elements of a collection, because the order
+             in which subtraction/division is performed does matter.
 
 foldRight - The foldRight function always processes the collection's elements
             from RIGHT TO LEFT.  Which means it processes the last element of
@@ -49,11 +51,42 @@ foldLeft  - The foldLeft function always processes the collection's elements
             from LEFT TO RIGHT.  Which means it processes the last element of
             the collection first, and its first element last.
 
-The following program demostrates the use of the fold, foldLeft,
-and foldRight functions.
+The following program demonstrates the fold, foldRight, and foldLeft concepts just discussed.
 
+@main def main() =
+  val doubleArray:Array[Double] = Array(1.23D, 3.45D, 6.78D)
+  // When performing addition (or multiplication) on doubleArray,
+  // fold, foldRight and foldLeft all return the same result
+  // because the order in which the doubleArray elements are
+  // added (or multiplied) doesn't change the result.
+  var result:Double = doubleArray.fold(0.0D)(_+_)
+  println(s"1) result = $result") // PRINTS: 1) result = 11.46
+  result = doubleArray.foldRight(0.0D)(_+_)
+  println(s"2) result = $result") // PRINTS: 2) result = 11.46
+  result = doubleArray.foldLeft(0.0D)(_+_)
+  println(s"3) result = $result") // PRINTS: 3) result = 11.46
+
+  // When performing subtraction (or division) on doubleArray,
+  // foldRight and foldLeft return different results because
+  // the order in which doubleArray elements implement subtraction
+  // and division changes the result.  The fold function should NOT
+  // be used in instances like this, because the fold function
+  // doesn't guarantee the order of the elements processed.
+  result = doubleArray.fold(1.0D)(_/_) // This result CAN'T BE TRUSTED because the fold function
+                                       // doesn't guarantee the order of the elements processed.
+                                       // NOTE: The fold function often generates the same result
+                                       //       as foldRight, as it does in this example shown below.
+  println(s"4) result = $result") // PRINTS: 4) result = 0.03475730537733747
+  result = doubleArray.foldRight(1.0D)(_/_) // (1.0 ÷ 6.78 ÷ 3.45 ÷ 1.23) = 2.4172173913043475
+  println(s"5) result = $result") // PRINTS: 5) result = 2.4172173913043475 
+  result = doubleArray.foldLeft(1.0D)(_/_)  // (1.0 ÷ 1.23 ÷ 3.45 ÷ 6.78) = 0.03475730537733747
+  println(s"6) result = $result") // PRINTS: 6) result = 0.03475730537733747
+end main
 ----------------------------------------------------------------------------------------------
 
+The following programs demonstrate more examples of using fold, foldRight, and foldLeft.
+
+----------------------------------------------------------------------------------------------
 @main def main() =
   // SECTION 1) *************************************************************
   // This section demonstrates that when a collection is EMPTY, the fold,
