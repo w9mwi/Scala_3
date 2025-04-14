@@ -31,16 +31,16 @@ and foldLeft functions is often times a short/simple function that's written
 as an anonymous function.  The following explains the differences between
 the fold, foldRight, and foldLeft functions.
 
-fold -       The fold function may process the collection's elements in any order.
+fold       - The fold function may process the collection's elements in any order.
              (An undetermined order.)  So use the fold function only when the
              processing order of a collection doesn't matter.  For example...
 
              You CAN use the fold function to perform mathematical addition or
-             multiplication across all elements of a collection, because the
+             multiplication across all elements of a collection because the
              order in which addition/multiplication is performed doesn't matter.
 
              You CAN'T use the fold function to perform mathematical subtraction
-             or division across all elements of a collection, because the order
+             or division across all elements of a collection because the order
              in which subtraction/division is performed does matter.
 
 foldRight - The foldRight function always processes the collection's elements
