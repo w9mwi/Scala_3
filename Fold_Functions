@@ -48,10 +48,11 @@ foldRight - The foldRight function always processes the collection's elements
             the collection first, and its first element last.
 
 foldLeft  - The foldLeft function always processes the collection's elements
-            from LEFT TO RIGHT.  Which means it processes the last element of
-            the collection first, and its first element last.
+            from LEFT TO RIGHT.  Which means it processes the first element of
+            the collection first, and its last element last.
 
-The following program demonstrates the fold, foldRight, and foldLeft concepts just discussed.
+The following program demonstrates the just-discussed concepts of the fold,
+foldRight, and foldLeft functions.  Read the in-line comments for details.
 
 @main def main() =
   val doubleArray:Array[Double] = Array(1.23D, 3.45D, 6.78D)
@@ -59,7 +60,7 @@ The following program demonstrates the fold, foldRight, and foldLeft concepts ju
   // fold, foldRight and foldLeft all return the same result
   // because the order in which the doubleArray elements are
   // added (or multiplied) doesn't change the result.
-  // NOTE: 1.23 + 3.45 + 6.78 = 11.46
+  // NOTE:  1.23 + 3.45 + 6.78 = 11.46
   var result:Double = doubleArray.fold(0.0D)(_+_)
   println(s"1) result = $result") // PRINTS: 1) result = 11.46
   result = doubleArray.foldRight(0.0D)(_+_)
