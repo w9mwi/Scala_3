@@ -53,11 +53,13 @@ fold      - The fold function may process the collection's elements in any order
 
             COMMUTATIVE vs. ASSOCIATIVE
  
-            COMMUTATIVE: When the order of a mathematical operation DOESN'T matter, it's commutative.
+            COMMUTATIVE: When the order of an operation DOESN'T matter, (i.e.
+                         multiplication/addition) it's commutative.
             Example:     (4 X 3 X 2)  =  (2 X 3 X 4)  =  (3 X 2 X 4) = 24
                          (4 + 3 + 2)  =  (2 + 3 + 4)  =  (3 + 2 + 4) = 9
 
-            ASSOCIATIVE: When the order of a mathematical operation DOES matter, it's associative.
+            ASSOCIATIVE: When the order of an operation DOES matter (i.e.
+                         division/subtaction), it's associative.
             Example:     (4 ÷ 3 ÷ 2)  ≠  (2 ÷ 3 ÷ 4)  ≠  (3 ÷ 2 ÷ 4)
                          (4 - 3 - 2)  ≠  (2 - 3 - 4)  ≠  (3 - 2 - 4)
 
