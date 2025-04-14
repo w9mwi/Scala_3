@@ -48,8 +48,8 @@ fold      - The fold function may process the collection's elements in any order
 
             When the operations performed on a collection is COMMUTATIVE (THE ORDER
             DOESN'T MATTER), you can use the fold, foldRight, or foldLeft functions.
-            But you should use the fold function in this instance (when order doesn't
-            matter) as it's more efficient than the foldRight or foldLeft functions.
+            But you should use the fold function in this case (when order doesn't
+            matter), as it's more efficient than foldRight and foldLeft.
 
             COMMUTATIVE vs. ASSOCIATIVE
  
@@ -68,7 +68,7 @@ foldRight, and foldLeft functions.  Read the in-line comments for details.
 
 @main def main() =
   val doubleArray:Array[Double] = Array(1.23D, 3.45D, 6.78D)
-  // When performing addition (or multiplication) on doubleArray,
+  // When performing addition/multiplication on doubleArray,
   // fold, foldRight and foldLeft all return the same result
   // because the order in which the doubleArray elements are
   // added (or multiplied) doesn't change the result.
@@ -80,17 +80,18 @@ foldRight, and foldLeft functions.  Read the in-line comments for details.
   result = doubleArray.foldLeft(0.0D)(_+_)
   println(s"3) result = $result") // PRINTS: 3) result = 11.46
 
-  // When performing subtraction (or division) on doubleArray,
-  // foldRight and foldLeft return different results because
-  // the order in which doubleArray elements implement subtraction
-  // and division changes the result.  The fold function should NOT
-  // be used in instances like this, because the fold function
-  // doesn't guarantee the order of the elements processed.
+  // When performing subtraction/division on doubleArray, foldRight
+  // and foldLeft return different results because the order in
+  // which doubleArray elements implement subtraction and division
+  // changes the result.  The fold function should NOT be used in
+  // instances like this, because the fold function doesn't
+  // guarantee the order of the elements processed.
   result = doubleArray.fold(1.0D)(_/_) // This result CAN'T BE TRUSTED because the fold function
                                        // doesn't guarantee the order of the elements processed.
                                        // NOTE: The fold function often (but not always) generates
                                        //       the same result as foldRight; as it does in this
-                                       //       example.
+                                       //       example.  Again, you should NEVER use the fold
+                                       //       function when the operation is associative.
   println(s"4) result = $result") // PRINTS: 4) result = 0.03475730537733747
   result = doubleArray.foldRight(1.0D)(_/_) // (1.0 ÷ 6.78 ÷ 3.45 ÷ 1.23) = 2.4172173913043475
   println(s"5) result = $result") // PRINTS: 5) result = 2.4172173913043475 
