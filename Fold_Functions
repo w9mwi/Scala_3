@@ -31,18 +31,6 @@ and foldLeft functions is often times a short/simple function that's written
 as an anonymous function.  The following explains the differences between
 the fold, foldRight, and foldLeft functions.
 
-fold       - The fold function may process the collection's elements in any order.
-             (The order is undetermined.)  So use the fold function only when the
-             processing order of a collection doesn't matter.  For example...
-
-             You CAN use the fold function to perform mathematical addition or
-             multiplication across all elements of a collection because the
-             order in which addition/multiplication is performed doesn't matter.
-
-             You CAN'T use the fold function to perform mathematical subtraction
-             or division across all elements of a collection because the order
-             in which subtraction/division is performed does matter.
-
 foldRight - The foldRight function always processes the collection's elements
             from RIGHT TO LEFT.  Which means it processes the last element of
             the collection first, and its first element last.
@@ -50,6 +38,36 @@ foldRight - The foldRight function always processes the collection's elements
 foldLeft  - The foldLeft function always processes the collection's elements
             from LEFT TO RIGHT.  Which means it processes the first element of
             the collection first, and its last element last.
+
+fold      - The fold function may process the collection's elements in any order.
+            (The order is undetermined.)  So use the fold function only when the
+            processing order of a collection doesn't matter.  For example...
+
+            You CAN use the fold function to perform mathematical addition or
+            multiplication across all elements of a collection, because the
+            order in which addition/multiplication is performed doesn't matter.
+
+            You CAN'T use the fold function to perform mathematical subtraction
+            or division across all elements of a collection, because the order
+            in which subtraction/division is performed does matter.  To sum up...
+
+            When the operations performed on a collection is ASSOCIATIVE (THE ORDER
+            MATTERS), never use the fold function.  Use foldRight or foldLeft instead.
+
+            When the operations performed on a collection is COMMUTATIVE (THE ORDER
+            DOESN'T MATTER), you can use the fold, foldRight, or foldLeft functions.
+            But you should use the fold method in this instance (when order doesn't
+            matter) as it's more efficient than the foldRight or foldLeft functions.
+
+            COMMUTATIVE vs. ASSOCIATIVE
+ 
+            COMMUTATIVE: When the order of a mathematical operation DOESN'T matter, it's commutative.
+            Example:     (4 X 3 X 2)  =  (2 X 3 X 4)  =  (3 X 2 X 4) = 24
+                         (4 + 3 + 2)  =  (2 + 3 + 4)  =  (3 + 2 + 4) = 9
+
+            ASSOCIATIVE: When the order of a mathematical operation DOES matter, it's associative.
+            Example:     (4 ÷ 3 ÷ 2)  ≠  (2 ÷ 3 ÷ 4)  ≠  (3 ÷ 2 ÷ 4)
+                         (4 - 3 - 2)  ≠  (2 - 3 - 4)  ≠  (3 - 2 - 4)
 
 The following program demonstrates the just-discussed concepts of the fold,
 foldRight, and foldLeft functions.  Read the in-line comments for details.
