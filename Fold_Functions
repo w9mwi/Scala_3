@@ -66,6 +66,7 @@ fold      - The fold function may process the collection's elements in any order
 The following program demonstrates the just-discussed concepts of the fold,
 foldRight, and foldLeft functions.  Read the in-line comments for details.
 
+----------------------------------------------------------------------------------------------
 @main def main() =
   val doubleArray:Array[Double] = Array(1.23D, 3.45D, 6.78D)
 
