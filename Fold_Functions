@@ -1,7 +1,7 @@
 SCALA FOLD FUNCTIONS
 ====================
-All Scala collections classes (including the following classes)
-contain the fold, foldRight, and foldLeft functions.
+All Scala collections classes (including the listed collection
+classes contain the fold, foldRight, and foldLeft functions.
 
 Sequence Collections: Array          Set Collections: HashSet
                       ArrayBuffer                     LinkedHashSet
