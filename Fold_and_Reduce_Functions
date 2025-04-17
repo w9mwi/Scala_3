@@ -1,7 +1,7 @@
-SCALA FOLD FUNCTIONS
-====================
-All Scala collections classes (including the collection classes
-listed here) contain the fold, foldRight, and foldLeft functions.
+SCALA FOLD AND REDUCE FUNCTIONS
+===============================
+All Scala collections classes (including the collection classes listed
+here) contain the fold, foldRight, foldLeft and reduce functions.
 
 Sequence Collections: Array          Set Collections: HashSet
                       ArrayBuffer                     LinkedHashSet
@@ -16,10 +16,10 @@ Map Collections: HashMap              Other Collections: Either
                  Map                                     Option
                  TreeMap                                 BitSet
 
-The fold, foldRight, and foldLeft functions each accept 2 argument lists,
-which makes them curried functions.  Recall that a curried function
-is also a recursive function because a curried function returns a
-function that calls itself.
+Although the fold, foldRight, and foldLeft functions each contain two
+argument lists, they're NOT curried functions.  (A curried function
+returns a partially-applied function for every operation performed;
+until it returns a final value instead of a partially-applied function.)
 
 The first argument list supplied to the fold, foldRight, and foldLeft
 functions contains an "initial value", or a "start value."  The second
@@ -65,8 +65,8 @@ fold      - The fold function may process the collection's elements in any order
 
 reduce - The reduce function is very similar to the 3 fold functions mentioned above.
          If you can use the reduce function instead of a fold function, do so
-         because the reduce function is more efficient than the fold functions.
-         Here are 3 differences between the reduce and fold functions:
+         because the reduce function is most efficient.  Here are 3 differences
+         between the reduce and fold functions:
 
          1) The reduce function CAN'T be run on an empty collection, or it'll throw an exception.
 
@@ -88,6 +88,7 @@ reduce - The reduce function is very similar to the 3 fold functions mentioned a
 
             The 3 fold functions can return a data type that's different than the collection's data type;
             thus enabling data type transformations.
+
 
 The following program demonstrates the just-discussed concepts of the fold,
 foldRight, and foldLeft functions.  Read the in-line comments for details.
