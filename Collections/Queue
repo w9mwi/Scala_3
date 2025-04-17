@@ -1,6 +1,10 @@
 
 QUEUE
 =====
+In Scala, the Queue collection is a data structure that follows the
+First-In-First-Out (FIFO) principle.  It allows elements to be added
+to the end of the queue, and removed from the front of the queue.
+Scala provides both mutable and immutable versions of Queue.
 
 The Scala Queue class is implemented as a pair of Lists.  One of these
 two Lists contains the 'IN ELEMENTS', and the other List contains the
