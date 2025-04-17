@@ -1,7 +1,7 @@
 SCALA FOLD FUNCTIONS
 ====================
-All Scala collections classes (including the listed collection
-classes contain the fold, foldRight, and foldLeft functions.
+All Scala collections classes (including the collection classes
+listed here) contain the fold, foldRight, and foldLeft functions.
 
 Sequence Collections: Array          Set Collections: HashSet
                       ArrayBuffer                     LinkedHashSet
@@ -31,16 +31,16 @@ and foldLeft functions is often times a short/simple function that's written
 as an anonymous function.  The differences between the fold, foldRight, and
 foldLeft functions are explained here...
 
-foldRight - The foldRight function ALWAYS processes the collection's elements
+foldRight - The foldRight function always processes the collection's elements
             from RIGHT TO LEFT.  Which means it processes the last element of
             the collection first, and its first element last.
 
-foldLeft  - The foldLeft function ALWAYS processes the collection's elements
+foldLeft  - The foldLeft function always processes the collection's elements
             from LEFT TO RIGHT.  Which means it processes the first element of
             the collection first, and its last element last.
 
 fold      - The fold function may process the collection's elements in any order.
-            (The order is undetermined!)  So use the fold function only when the
+            (The order is undetermined.)  So use the fold function only when the
             processing order of a collection doesn't matter.  For example...
 
             When the operations performed on a collection is ASSOCIATIVE (THE ORDER
