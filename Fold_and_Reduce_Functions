@@ -64,19 +64,18 @@ fold      - The fold function may process the collection's elements in any order
                          (4 - 3 - 2)  ≠  (2 - 3 - 4)  ≠  (3 - 2 - 4)
 
 reduce - The reduce function is very similar to the 3 fold functions mentioned above.
-         If you can use the reduce function instead of a fold function, do so
-         because the reduce function is most efficient.  Here are 3 differences
-         between the reduce and fold functions:
+         When possible, use the reduce function instead of a fold function because reduce
+         is most efficient.  Here are 3 differences between the reduce and fold functions:
 
          1) The reduce function CAN'T be run on an empty collection, or it'll throw an exception.
 
             The 3 fold functions CAN be run on an empty collection because the first of their
             two argument lists contains an initial/start value.  This initial/start value is
-            used with the first operation performed on the collection.  If the collection is
-            empty, the 3 fold functions return only the initial/start value.
+            used in the first operation performed on the collection.  If the collection is
+            empty, the 3 fold functions return only this initial/start value.
 
-         2) The reduce function operates on the collection in only one direction, from
-            Left-To-Right (beginning with element index zero).
+         2) The reduce function operates on the collection in only one direction,
+            from Left-To-Right (beginning with element index zero).
 
             The 3 fold functions operate on the collection in two directions:
 
