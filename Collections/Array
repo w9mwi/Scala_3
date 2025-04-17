@@ -1,1 +1,6 @@
 ARRAY
+=====
+
+NOTE: The Scala 3 Array class is mutable.  Scala 3 contains an
+      immutable array object (not a class) with the name IArray.
+      If you need an immutable array, use the IArray object.
