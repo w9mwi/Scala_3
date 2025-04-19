@@ -5,13 +5,14 @@ because their differences aren't important regarding the topic of currying.
 The differences between a Scala method and a Scala function are explained
 on the web page titled:  Methods_and_Functions
 
-Most Scala methods/functions contain a single argument list.  An argument list can
-contain zero, one, or multiple arguments.  Scala methods/functions can also contain
-multiple argument lists.  The following program demonstrates this.
-
-WARNING: When a method/function definition contains multiple argument lists,
-         and one those argument lists contains the Scala keyword "implicit",
-         that method/function is NOT a curried function.
+Scala methods/functions can contain zero, one, or multiple argument lists.
+Often times, a method/function that contains multiple argument lists is a
+HINT that it MIGHT be a curried function.  However, it's important to note
+that a curried method/function can contain only a single argument list,
+or multiple argument lists.  It's also possible for a method/function to
+have multiple argument lists and NOT be a curried function.  There are
+two programs below that demonstrate a curried function having a single
+argument list.
 
 ----------------------------------------------------------------------------------------------
 // METHODS CONTAINING SINGLE-ARGUMENT LISTS  *****************************
