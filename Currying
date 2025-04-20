@@ -7,12 +7,11 @@ on the web page titled:  Methods_and_Functions
 
 Scala methods/functions can contain zero, one, or multiple argument lists.
 Often times, a method/function that contains multiple argument lists is a
-HINT that it MIGHT be a curried function.  However, it's important to note
-that a curried method/function can contain only a single argument list,
-or multiple argument lists.  It's also possible for a method/function to
-have multiple argument lists and NOT be a curried function.  There are
-two programs below that demonstrate a curried function having a single
-argument list.
+HINT that it MIGHT be a curried function.  However, a curried method/function
+can contain only a single argument list, or multiple argument lists.  It's
+also possible for a method/function to have multiple argument lists and NOT
+be a curried function.  Two programs further below demonstrate a curried
+function that has only a single argument list.
 
 ----------------------------------------------------------------------------------------------
 // METHODS CONTAINING SINGLE-ARGUMENT LISTS  *****************************
