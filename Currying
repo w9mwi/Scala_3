@@ -5,13 +5,8 @@ because their differences aren't important regarding the topic of currying.
 The differences between a Scala method and a Scala function are explained
 on the web page titled:  Methods_and_Functions
 
-Scala methods/functions can contain zero, one, or multiple argument lists.
-Often times, a method/function that contains multiple argument lists is a
-HINT that it MIGHT be a curried function.  However, a curried method/function
-can contain only a single argument list, or multiple argument lists.  It's
-also possible for a method/function to have multiple argument lists and NOT
-be a curried function.  Two programs further below demonstrate a curried
-function that has only a single argument list.
+The following program demonstrates several Scala methods containing a different
+number of argument lists.
 
 ----------------------------------------------------------------------------------------------
 // METHODS CONTAINING SINGLE-ARGUMENT LISTS  *****************************
@@ -72,12 +67,12 @@ You can then invoke the returned function with any number of argument lists, unt
 have supplied all of the method's argument lists.  Only when you have supplied all of
 the method's argument lists will a final result be returned, instead of a function.
 
-A function that has multiple argument lists is known as a CURRIED FUNCTION.  When it's
-invoked with fewer than all of its argument lists, it returns NOT a final value, but
-a function; which makes it a PARTIALLY-APPLIED FUNCTION.  Once it's supplied with all
-of its argument lists, it returns not a function, but a final value; which makes it a
-FULLY-APPLIED FUNCTION.  The following program demonstrates this.  Read in-line comments
-for details
+A function that has multiple argument lists can be a CURRIED FUNCTION.  When a curried
+function is invoked with fewer than all of its argument lists, it returns NOT a final
+value, but a function; which makes it a PARTIALLY-APPLIED FUNCTION.  Once it's supplied
+with all of its argument lists, it returns not a function, but a final value; which
+makes it a FULLY-APPLIED FUNCTION.  The following program demonstrates this.  Read
+in-line comments for details.
 
 ----------------------------------------------------------------------------------------------
 @main def main() =
