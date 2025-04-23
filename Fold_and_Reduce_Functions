@@ -77,7 +77,7 @@ reduce    - The reduce function is very similar to the 3 fold functions mentione
             2) The reduce function operates on the collection in only one direction,
                from Left-To-Right (beginning with element index zero).
 
-               The 3 fold functions operate on the collection in two directions:
+               The 3 fold functions operate on the collection in these 3 different orders:
 
                foldLeft  = Left-To-Right       - Begins by processing the collection's FIRST element first.
                foldRight = Right-To-Left       - Begins by processing the collection's LAST element first.
