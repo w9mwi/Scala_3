@@ -89,31 +89,24 @@ reduce    - The reduce function is very similar to the 3 fold functions mentione
                thus enabling data type transformations.
 
 
-The following program demonstrates the just-discussed concepts of the fold,
-foldRight, and foldLeft functions.  Read the in-line comments for details.
+The following program demonstrates the just-discussed concepts of the fold, foldRight,
+foldLeft, and reduce functions.  Read the in-line comments for details.
 
 ----------------------------------------------------------------------------------------------
 @main def main() =
   val doubleArray:Array[Double] = Array(1.23D, 3.45D, 6.78D)
 
-  // When performing addition/multiplication on doubleArray, the
-  // fold, foldRight and foldLeft functions all return the same
-  // result because the order in which the doubleArray elements
-  // are processed doesn't change the result.
   // NOTE:  1.23 + 3.45 + 6.78 = 11.46
-  var result:Double = doubleArray.fold(0.0D)(_+_)
+  var result:Double = doubleArray.fold(0.0D)(_+_) // When the operation performed on the collection by the
+                                                  // fold function is ASSOCIATIVE (the order doesn't matter),
+                                                  // the fold function returns the same result as the foldRight
+                                                  // function.
   println(s"1) result = $result") // PRINTS: 1) result = 11.46
   result = doubleArray.foldRight(0.0D)(_+_)
   println(s"2) result = $result") // PRINTS: 2) result = 11.46
   result = doubleArray.foldLeft(0.0D)(_+_)
   println(s"3) result = $result") // PRINTS: 3) result = 11.46
 
-  // When performing subtraction/division on doubleArray, foldRight
-  // and foldLeft return different results because the order in
-  // which doubleArray elements implement subtraction and division
-  // changes the result.  The fold function should NOT be used in
-  // instances like this because the fold function doesn't
-  // guarantee the order of the elements processed.
   result = doubleArray.fold(1.0D)(_/_) // This result CAN'T BE TRUSTED because the fold function
                                        // doesn't guarantee the order of the elements processed.
                                        // NOTE: The fold function often (but not always) generates
