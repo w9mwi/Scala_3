@@ -94,30 +94,44 @@ foldLeft, and reduce functions.  Read the in-line comments for details.
 
 ----------------------------------------------------------------------------------------------
 @main def main() =
-  val doubleArray:Array[Double] = Array(1.23D, 3.45D, 6.78D)
+  val doubleArray:Array[Double] = Array(1.23D, 4.56D, 7.89D)
 
-  // NOTE:  1.23 + 3.45 + 6.78 = 11.46
-  var result:Double = doubleArray.fold(0.0D)(_+_) // When the operation performed on the collection by the
-                                                  // fold function is ASSOCIATIVE (the order doesn't matter),
-                                                  // the fold function returns the same result as the foldRight
-                                                  // function.
-  println(s"1) result = $result") // PRINTS: 1) result = 11.46
-  result = doubleArray.foldRight(0.0D)(_+_)
-  println(s"2) result = $result") // PRINTS: 2) result = 11.46
-  result = doubleArray.foldLeft(0.0D)(_+_)
-  println(s"3) result = $result") // PRINTS: 3) result = 11.46
+  // When performing addition/multiplication on doubleArray, the
+  // fold, foldRight and foldLeft functions all return the same
+  // result because the order in which the doubleArray elements
+  // are processed doesn't change the result.
+  // NOTE:  1.23 + 4.56 + 7.89 = 13.68
+  var result:Double = doubleArray.fold(0.0D)(_+_) // The result obtained by calling the fold function can be
+                                                  // trusted only when the operation performed is ASSOCIATIVE
+                                                  // (i.e. addition/multiplication), NOT when the operation
+                                                  // performed is COMMUTATIVE (i.e. subtraction/division).
+  println(s"1) result = $result") // PRINTS: 1) result = 13.68
+  result = doubleArray.foldRight(0.0D)(_+_) // (((0.0 + 7.89) + 4.56) + 1.23) = 13.68
+  println(s"2) result = $result") // PRINTS: 2) result = 13.68
+  result = doubleArray.foldLeft(0.0D)(_+_)  // (((0.0 + 1.23) + 4.56) + 7.89) = 13.68
+  println(s"3) result = $result") // PRINTS: 3) result = 13.68
 
-  result = doubleArray.fold(1.0D)(_/_) // This result CAN'T BE TRUSTED because the fold function
-                                       // doesn't guarantee the order of the elements processed.
-                                       // NOTE: The fold function often (but not always) generates
-                                       //       the same result as foldRight; as it does in this
-                                       //       example.  Again, you should NEVER use the fold
-                                       //       function when the operation is associative.
-  println(s"4) result = $result") // PRINTS: 4) result = 0.03475730537733747
-  result = doubleArray.foldLeft(1.0D)(_/_)  // (1.0 ÷ 1.23 ÷ 3.45 ÷ 6.78) = 0.03475730537733747
-  println(s"5) result = $result") // PRINTS: 5) result = 0.03475730537733747
-  result = doubleArray.foldRight(1.0D)(_/_) // (1.0 ÷ 6.78 ÷ 3.45 ÷ 1.23) = 2.4172173913043475
-  println(s"6) result = $result") // PRINTS: 6) result = 2.4172173913043475
+  // When performing subtraction/division on doubleArray, foldRight
+  // and foldLeft return different results because the order in
+  // which doubleArray elements implement subtraction and division
+  // changes the result.  The fold function should NOT be used in
+  // instances like this because the fold function doesn't
+  // guarantee the order of the elements processed.
+  result = doubleArray.fold(1.0D)(_/_) // The result obtained by calling the fold function can be
+                                       // trusted only when the operation performed is ASSOCIATIVE
+                                       // (i.e. addition/multiplication), NOT when the operation
+                                       // performed is COMMUTATIVE (i.e. subtraction/division).
+  // NOTE: The fold function often (but not always) generates
+  //       the same result as foldRight; as it does in this
+  //       example.  Again, NEVER use the fold function when
+  //       the operation is associative.
+  println(s"4) result = $result") // PRINTS: 4) result = 0.022597117439388657
+  result = doubleArray.foldLeft(1.0D)(_/_)  // (1.0 ÷ 1.23 ÷ 4.56 ÷ 7.89) = 0.022597117439388657
+  println(s"5) result = $result") // PRINTS: 5) result = 0.022597117439388657
+  result = doubleArray.foldRight(1.0D)(_/_) // 1.23 ÷ (4.56 ÷ (7.89 ÷ 1.0)) = 2.1282236842105267
+  println(s"6) result = $result") // PRINTS: 6) result = 2.1282236842105267
+  result = doubleArray.reduce(_/_) // (1.23 ÷ 4.56 ÷ 7.89) = 0.022597117439388657
+  println(s"7) result = $result") // PRINTS: 7) result = 0.0341871789740511
 end main
 ----------------------------------------------------------------------------------------------
 
