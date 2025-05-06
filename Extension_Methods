@@ -1,7 +1,7 @@
-In Scala 3 you can add new methods to any Scala class that has already been
-defined.  This includes not just Scala classes that you have written, but
-any Scala class that your code can access; including classes defined in
-the Scala 3 language.
+In Scala 3 you can add new methods to any Scala class that already exists.
+This includes not just Scala classes that you have written, but any Scala
+class that your code can access; including classes defined in the Scala 3
+API.
 
 The following program shows...
 
