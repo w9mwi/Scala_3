@@ -14,11 +14,15 @@ or some "entity".  When there can exist more than one of these things
 one of a "thing" can exist (i.e., planet Earth, a mathematical constant,
 etc.), a Scala object should be used.
 
+Scala has no static variables or methods. Instead, it has singleton objects,
+which are essentially classes with only one instance.
+
 The following 4 items are true of a Scala object:
 
-1) A Scala object accepts no arguments and can't be instantiated.
-   This is because a Scala object represents a "singleton", which
-   means it can represent only one of something.
+1) A Scala object accepts no arguments and can't be instantiated.  A Scala
+   object is essentially a Scala class with only one instance.  A Scala
+   object always represents a "singleton", which means it represents
+   only a single instance of something.
 
 2) A Scala object is "lazy", which means it gets created the first
    time it's referenced.  (Recall, an object isn't instantiated).
