@@ -17,7 +17,7 @@ etc.), a Scala object should be used.
 Scala has no static variables or methods. Instead, it has singleton objects,
 which are essentially classes with only one instance.
 
-The following 4 items are true of a Scala object:
+The following 5 items are true of a Scala object:
 
 1) A Scala object accepts no arguments and can't be instantiated.  A Scala
    object is essentially a Scala class with only one instance.  A Scala
@@ -39,6 +39,7 @@ The following 4 items are true of a Scala object:
    become a "companion object" to an enum.  An object becomes a
    "companion object" to an enum when the object's name is identical
    to the enum name, and it resides in the same file as the enum.
+
 
 A Scala object should be used to...
 
