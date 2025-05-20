@@ -9,20 +9,21 @@ section below.
 OBJECT
 ======
 Both a Scala class and Scala object are used to represent some "thing",
-or some "entity".  When there can exist more than one of these things
-(i.e., people, houses, automobiles), a Scala class is used.  When only
-one of a "thing" can exist (i.e., planet Earth, a mathematical constant,
+or some "entity".  When there can exist more than one of these "things"
+(i.e., person, business, automobile), a Scala class is used.  When only
+one of some "thing" can exist (i.e., planet Earth, a mathematical constant,
 etc.), a Scala object should be used.
 
-Scala has no static variables or methods. Instead, it has singleton objects,
-which are essentially classes with only one instance.
+Unlike Java, Scala has no static variables and no static methods.  Instead
+of implementing static variables/methods, a Scala object should be used.
+A Scala object is essentially a Scala class having only one instance.
 
 The following 5 items are true of a Scala object:
 
-1) A Scala object accepts no arguments and can't be instantiated.  A Scala
-   object is essentially a Scala class with only one instance.  A Scala
-   object always represents a "singleton", which means it represents
-   only a single instance of something.
+1) Unlike a Scala class, a Scala object accepts no arguments and can't be
+   instantiated.  A Scala object is essentially a Scala class with only
+   one instance.  Therefore, a Scala object always represents a "singleton",
+   which means it represents only a single instance of the object.
 
 2) A Scala object is "lazy", which means it gets created the first
    time it's referenced.  (Recall, an object isn't instantiated).
