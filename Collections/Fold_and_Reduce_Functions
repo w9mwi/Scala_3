@@ -63,11 +63,16 @@ fold      - The fold function may process the collection's elements in any order
             Example:     (4 ÷ 3 ÷ 2)  ≠  (2 ÷ 3 ÷ 4)  ≠  (3 ÷ 2 ÷ 4)
                          (4 - 3 - 2)  ≠  (2 - 3 - 4)  ≠  (3 - 2 - 4)
 
-reduce    - The reduce function is very similar to the 3 fold functions mentioned above.
+reduce    - The reduce function is very similar to the 3 fold functions mentioned above,
+            but it accepts only one argument list, which is the function applied to all
+            elements of the collection.  The reduce function differs from the three fold
+            functions in that it doesn't accept an initial/start value argument, and it
+            must be invoked on non-empty collection, or it will throw an exception.
+
             When possible, use the reduce function instead of a fold function because reduce
             is more efficient.  Here are 3 differences between the reduce and fold functions:
 
-            1) The three fold functions accept two argument lists; where one argument list
+            1) The three fold functions accept two argument lists.  One of its argument lists
                accepts an initial/start value.  This allows the three fold functions to work
                on an empty collection, by returning the initial/start value as the final result.
                If the collection isn't empty, the initial/start value is used in the first
@@ -82,12 +87,11 @@ reduce    - The reduce function is very similar to the 3 fold functions mentione
 
                The 3 fold functions operate on the collection in these 3 different orders:
 
-               foldLeft  = Left-To-Right       - Begins by processing the collection's FIRST element first.
-               foldRight = Right-To-Left       - Begins by processing the collection's LAST element first.
+               foldLeft  = Left-To-Right       - Begins by processing the collection's FIRST ELEMENT first.
+               foldRight = Right-To-Left       - Begins by processing the collection's LAST ELEMENT first.
                fold      = Indeterminate Order - Use fold only when processing order of the collection doesn't matter.
 
             3) The reduce function always returns a value having the same data type as the collection.
-
                The 3 fold functions can return a data type that's different than the collection's data type;
                thus enabling data type transformations.
 
