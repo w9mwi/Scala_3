@@ -130,7 +130,7 @@ foldLeft, and reduce functions.  Read the in-line comments for details.
   intResult = intList.foldLeft(77)(_-_)  // _-_ is an anonymous function
   println(s"5) intResult = $intResult")  // PRINTS: 5) intResult = 83
 
-  // The ORDER of the math operation performed by foldLeft is:
+  // The ORDER of the math operation performed by foldRight is:
   // 77−(-1)-2-3-(4)-(-5)-6-(-7) = -91
   intResult = intList.foldRight(77)(_-_) // _-_ is an anonymous function
   println(s"6) intResult = $intResult")  // PRINTS: 6) intResult = -91
