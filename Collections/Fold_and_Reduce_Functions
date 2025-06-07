@@ -159,36 +159,40 @@ The following programs demonstrate more examples of using fold, foldRight, and f
   println(s"3) intResult = $intResult")      // PRINTS: 3) intResult = 77
 
   // SECTION 2) *************************************************************
-  intList = List[Int](7, 6, 5, 4, 3, 2, 1)
-  // Given identical inputs, the fold and foldLeft functions often return
-  // the same result.  However, the fold function doesn't guarantee the
-  // order in which a collection's elements are processed; therefore,
-  // NEVER use the fold function when processing order matters!
+  // intList = List[Int](7, 6, 5, 4, 3, 2, 1)
+  intList = List[Int](-7, 6, -5, -4, 3, 2, -1)
+  // When the two argument lists passed to the fold and foldLeft functions
+  // are identical, they may return identical results.  However, the fold
+  // function doesn't guarantee the order in which a collection's elements
+  // are processed.  Therefore, NEVER use the fold function when the
+  // collection's processing order is COMMUTATIVE (when the processing
+  // order of the collection's elements do matter).
+  // The math operation performed by fold is: UNKNOWN
   intResult = intList.fold(77)(_-_)      // _-_ is an anonymous function
-  println(s"4) intResult = $intResult")  // PRINTS: 4) intResult = 49
+  println(s"4) intResult = $intResult")  // PRINTS: 4) intResult = 83
 
   // The math operation performed by foldLeft is:
-  // 77−7−6−5−4−3−2−1 = 49
+  // 77−(-7)−6−(-5)−(-4)−3−2−(-1) = 83
   intResult = intList.foldLeft(77)(_-_)  // _-_ is an anonymous function
-  println(s"5) intResult = $intResult")  // PRINTS: 5) intResult = 49
+  println(s"5) intResult = $intResult")  // PRINTS: 5) intResult = 83
 
-  // The math operation performed by foldRight is:
-  // (1-(2-(3-(4-(5-(6-7))))))-77 = -73
+  // The math operation performed by foldLeft is:
+  // 77−(-1)-2-3-(4)-(-5)-6-(-7) = -91
   intResult = intList.foldRight(77)(_-_) // _-_ is an anonymous function
-  println(s"6) intResult = $intResult")  // PRINTS: 6) intResult = -73
+  println(s"6) intResult = $intResult")  // PRINTS: 6) intResult = -91
+
 
   // SECTION 3) *************************************************************
   // This section is identical to SECTION 2) above except for this one
-  // difference; the anonymous function passed to the 3 fold functions is:
-  // (x,y)=>x-y
-  // This anonymous function is functionally equivalent the _-_ anonymous
-  // function used in SECTION 2) above.
+  // difference.  The anonymous function passed to the 3 fold functions
+  // is: (x,y)=>x-y    This anonymous function is functionally equivalent
+  // the _-_ anonymous function used in SECTION 2) above.
   intResult = intList.fold(77)((x,y)=>x-y)      // (x,y)=>x-y is an anonymous function
-  println(s"7) intResult = $intResult")         // PRINTS: 7) intResult = 49
+  println(s"7) intResult = $intResult")         // PRINTS: 7) intResult = 83
   intResult = intList.foldLeft(77)((x,y)=>x-y)  // (x,y)=>x-y is an anonymous function
-  println(s"8) intResult = $intResult")         // PRINTS: 8) intResult = 49
+  println(s"8) intResult = $intResult")         // PRINTS: 8) intResult = 83
   intResult = intList.foldRight(77)((x,y)=>x-y) // (x,y)=>x-y is an anonymous function
-  println(s"9) intResult = $intResult")         // PRINTS: 9) intResult = -73
+  println(s"9) intResult = $intResult")         // PRINTS: 9) intResult = -91
 
   // SECTION 4) *************************************************************
   // This sections demonstrates how to count the number of characters in the
@@ -218,7 +222,7 @@ The following programs demonstrate more examples of using fold, foldRight, and f
   // strConcatMethod and strConcatFunc defined here are functionally equivalent.
   def strConcatMethod(str1:String, str2:String):String = str1.concat("-").concat(str2)
   val strConcatFunc:(str1:String, str2:String)=>String =
-      (str1:String, str2:String) => str1.concat("-").concat(str2)
+    (str1:String, str2:String) => str1.concat("-").concat(str2)
 
   // Perform a string concat using both foldLeft and foldRight;
   // passing to them strConcatMethod as an argument.
