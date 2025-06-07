@@ -67,12 +67,15 @@ reduce    - The reduce function is very similar to the 3 fold functions mentione
             When possible, use the reduce function instead of a fold function because reduce
             is most efficient.  Here are 3 differences between the reduce and fold functions:
 
-            1) The reduce function CAN'T be run on an empty collection, or it'll throw an exception.
+            1) The three fold functions contain two argument lists; where one argument list
+               accepts an initial/start value.  This allows the three fold functions to work
+               on an empty collection, by returning the initial/start value as the final result.
+               If the collection isn't empty, the initial/start value is used in the first
+               operation performed on the collection.
 
-               The 3 fold functions CAN be run on an empty collection because the first of their
-               two argument lists contains an initial/start value.  This initial/start value is
-               used in the first operation performed on the collection.  If the collection is
-               empty, the 3 fold functions return only this initial/start value.
+               The reduce function accepts only one argument list, so it accepts no initial/start
+               value.  The reduce function will throw an exception if you attempt to invoke it on
+               an empty collection.
 
             2) The reduce function operates on the collection in only one direction,
                from Left-To-Right (beginning with element index zero).
