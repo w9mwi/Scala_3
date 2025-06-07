@@ -114,7 +114,6 @@ foldLeft, and reduce functions.  Read the in-line comments for details.
   println(s"3) intResult = $intResult")      // PRINTS: 3) intResult = 77
 
   // SECTION 2) *************************************************************
-  // intList = List[Int](7, 6, 5, 4, 3, 2, 1)
   intList = List[Int](-7, 6, -5, -4, 3, 2, -1)
   // When the two argument lists passed to the fold and foldLeft functions
   // are identical, they may return identical results.  However, the fold
