@@ -16,10 +16,10 @@ Map Collections: HashMap              Other Collections: Either
                  Map                                     Option
                  TreeMap                                 BitSet
 
-Although the fold, foldRight, and foldLeft functions each contain two
-argument lists, they're NOT curried functions.  (A curried function
-returns a partially-applied function for every operation performed;
-until it returns a final value instead of a partially-applied function.)
+Although the fold, foldRight, and foldLeft functions contain two argument
+lists, they're NOT curried functions.  (A curried function returns a
+partially-applied function for every operation performed; until it
+returns a final value instead of a partially-applied function.)
 
 The first argument list supplied to the fold, foldRight, and foldLeft
 functions contains an "initial value", or a "start value."  The second
@@ -65,9 +65,9 @@ fold      - The fold function may process the collection's elements in any order
 
 reduce    - The reduce function is very similar to the 3 fold functions mentioned above.
             When possible, use the reduce function instead of a fold function because reduce
-            is most efficient.  Here are 3 differences between the reduce and fold functions:
+            is more efficient.  Here are 3 differences between the reduce and fold functions:
 
-            1) The three fold functions contain two argument lists; where one argument list
+            1) The three fold functions accept two argument lists; where one argument list
                accepts an initial/start value.  This allows the three fold functions to work
                on an empty collection, by returning the initial/start value as the final result.
                If the collection isn't empty, the initial/start value is used in the first
