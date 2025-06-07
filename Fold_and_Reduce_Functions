@@ -43,10 +43,10 @@ fold      - The fold function may process the collection's elements in any order
             (The order is undetermined.)  So use the fold function only when the
             processing order of a collection doesn't matter.  For example...
 
-            When the operations performed on a collection is ASSOCIATIVE (THE ORDER
+            When the operation performed on a collection is ASSOCIATIVE (THE ORDER
             MATTERS), never use the fold function.  Use foldRight or foldLeft instead.
 
-            When the operations performed on a collection is COMMUTATIVE (THE ORDER
+            When the operation performed on a collection is COMMUTATIVE (THE ORDER
             DOESN'T MATTER), you can use the fold, foldRight, or foldLeft functions.
             But you should use the fold function in this case (when order doesn't
             matter), as it may be more efficient than foldRight and foldLeft.
