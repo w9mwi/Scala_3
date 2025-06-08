@@ -28,8 +28,8 @@ contains the function to be invoked on every element of the collection.
 
 The function that gets passed (as an argument list) to the fold, foldRight,
 and foldLeft functions is often times a short/simple function that's written
-as an anonymous function.  The differences between the fold, foldRight, and
-foldLeft functions are explained here...
+as an anonymous function.  The differences between the fold, foldRight,
+foldLeft, and reduce functions are explained here.
 
 foldRight - The foldRight function always processes the collection's elements
             from RIGHT TO LEFT.  Which means it processes the last element of
@@ -118,7 +118,7 @@ foldLeft, and reduce functions.  Read the in-line comments for details.
   // When the two argument lists passed to the fold and foldLeft functions
   // are identical, they may return identical results.  However, the fold
   // function doesn't guarantee the order in which a collection's elements
-  // are processed.  Therefore, NEVER use the fold function when the
+  // are processed.  Therefore, NEVER use the fold function when the                        
   // collection's processing order is COMMUTATIVE (when the processing
   // order of the collection's elements do matter).
   // The ORDER of the math operation performed by fold is: UNKNOWN
@@ -131,7 +131,7 @@ foldLeft, and reduce functions.  Read the in-line comments for details.
   println(s"5) intResult = $intResult")  // PRINTS: 5) intResult = 83
 
   // The ORDER of the math operation performed by foldRight is:
-  // 77−(-1)-2-3-(4)-(-5)-6-(-7) = -91
+  // 77-(-1)-2-3-(-4)-(-5)-6-(-7) = -91
   intResult = intList.foldRight(77)(_-_) // _-_ is an anonymous function
   println(s"6) intResult = $intResult")  // PRINTS: 6) intResult = -91
 
