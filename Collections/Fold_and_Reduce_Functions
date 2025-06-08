@@ -113,25 +113,24 @@ foldLeft, and reduce functions.  Read the in-line comments for details.
   intResult = intList.foldRight(77)(_-_)     // _-_ is an anonymous function
   println(s"3) intResult = $intResult")      // PRINTS: 3) intResult = 77
 
+
   // SECTION 2) *************************************************************
   intList = List[Int](-7, 6, -5, -4, 3, 2, -1)
-  // When the two argument lists passed to the fold and foldLeft functions
-  // are identical, they may return identical results.  However, the fold
-  // function doesn't guarantee the order in which a collection's elements
-  // are processed.  Therefore, NEVER use the fold function when the                        
-  // collection's processing order is COMMUTATIVE (when the processing
-  // order of the collection's elements do matter).
-  // The ORDER of the math operation performed by fold is: UNKNOWN
+  // Use Scala's fold function ONLY when the collection's processing order
+  // is COMMUTATIVE.  In other words, when the processing order of the
+  // collection's elements DON'T MATTER, as with addition and multiplication.
+  //
+  // The ORDER of the math operation performed by fold is: ALWAYS UNKNOWN
   intResult = intList.fold(77)(_-_)      // _-_ is an anonymous function
   println(s"4) intResult = $intResult")  // PRINTS: 4) intResult = 83
 
-  // The ORDER of the math operation performed by foldLeft is:
+  // The ORDER of the math operation performed by foldLeft on intList is:
   // 77−(-7)−6−(-5)−(-4)−3−2−(-1) = 83
   intResult = intList.foldLeft(77)(_-_)  // _-_ is an anonymous function
   println(s"5) intResult = $intResult")  // PRINTS: 5) intResult = 83
 
-  // The ORDER of the math operation performed by foldRight is:
-  // 77-(-1)-2-3-(-4)-(-5)-6-(-7) = -91
+  // The ORDER of the math operation performed by foldRight on intList is:
+  // -7−(6−(-5−(-4−(3−(2−(-1-77)))) = -91
   intResult = intList.foldRight(77)(_-_) // _-_ is an anonymous function
   println(s"6) intResult = $intResult")  // PRINTS: 6) intResult = -91
 
@@ -148,46 +147,49 @@ foldLeft, and reduce functions.  Read the in-line comments for details.
   intResult = intList.foldRight(77)((x,y)=>x-y) // (x,y)=>x-y is an anonymous function
   println(s"9) intResult = $intResult")         // PRINTS: 9) intResult = -91
 
+
   // SECTION 4) *************************************************************
-  // This sections demonstrates how to count the number of characters in the
-  // val wordList; using the foldLeft and foldRight functions.
+  // This section demonstrates how to count the number of characters contained
+  // in val wordList.  This character count is obtained in these two ways:
+  // 1) Pass foldLeftFunc as an argument to Scala's Scala's foldLeft function.
+  // 2) Pass foldRightFunc as an argument to Scala's Scala's foldRight function.
   val wordList:List[String] = List[String]("How", "many", "characters", "are", "in", "this", "wordList?")
 
+  // NOTE: foldLeftFunc is defined here as a Scala function, NOT a Scala method.
   val foldLeftFunc:(Int,String)=>Int = (count:Int, word:String) => count + word.length
   intResult = wordList.foldLeft(0)(foldLeftFunc)
   println(s"10) intResult = $intResult")         // PRINTS: 10) intResult = 35
   intResult = wordList.foldLeft(0)(_ + _.length) // This anonymous function is equivalent to foldLeftFunc.
   println(s"11) intResult = $intResult")         // PRINTS: 11) intResult = 35
 
-  // foldRightFunc below is equivalent to foldLeftFunc above, except the
-  // order of its argument list is swapped, so it'll work with foldRight.
-  // The anonymous function below must also be written differently than
-  // the one above, to make it work with foldRight.
+  // NOTE: foldRightFunc is defined here as a Scala function, NOT a Scala method.
   val foldRightFunc:(String,Int)=>Int = (word:String, count:Int) => count + word.length
   intResult = wordList.foldRight(0)(foldRightFunc)
   println(s"12) intResult = $intResult")          // PRINTS: 12) intResult = 35
   intResult = wordList.foldRight(0)(_.length + _) // This anonymous function is equivalent to foldRightFunc.
   println(s"13) intResult = $intResult")          // PRINTS: 13) intResult = 35
 
+
   // SECTION 5) *************************************************************
   // This section demonstrates how to concatenate all strings contained in a
-  // List[String] using foldLeft and foldRight; and how their results differ.
-  //
-  // strConcatMethod and strConcatFunc defined here are functionally equivalent.
-  def strConcatMethod(str1:String, str2:String):String = str1.concat("-").concat(str2)
-  val strConcatFunc:(str1:String, str2:String)=>String =
-    (str1:String, str2:String) => str1.concat("-").concat(str2)
+  // List[String], using Scala's foldLeft and foldRight functions.
 
-  // Perform a string concat using both foldLeft and foldRight;
-  // passing to them strConcatMethod as an argument.
+  // The strConcatMethod and strConcatFunc defined here are functionally identical.
+  def strConcatMethod(str1:String, str2:String):String = str1.concat("-").concat(str2)
+  val strConcatFunc:(str1:String, str2:String)=>String = (str1:String, str2:String) => str1.concat("-").concat(str2)
+
+  // Perform 2 separate concats on strList by doing the following:
+  // 1) Pass strConcatMethod as an argument to Scala's foldLeft method.
+  // 2) Pass strConcatMethod as an argument to Scala's foldRight method.
   val strList:List[String] = List[String]("ABC", "DEF", "GHI", "JKL", "MNO")
   var strResult:String = strList.foldLeft("BEGIN")(strConcatMethod)
   println(s"14) strResult = $strResult") // PRINTS: 14) strResult = BEGIN-ABC-DEF-GHI-JKL-MNO
   strResult = strList.foldRight("END")(strConcatMethod)
   println(s"15) strResult = $strResult") // PRINTS: 15) strResult = ABC-DEF-GHI-JKL-MNO-END
 
-  // Perform a string concat using both foldLeft and foldRight;
-  // passing to them strConcatFunc as an argument.
+  // Perform 2 separate concats on strList by doing the following:
+  // 1) Pass strConcatFunc as an argument to Scala's foldLeft method.
+  // 2) Pass strConcatFunc as an argument to Scala's foldRight method.
   strResult = strList.foldLeft("BEGIN")(strConcatFunc)
   println(s"16) strResult = $strResult") // PRINTS: 16) strResult = BEGIN-ABC-DEF-GHI-JKL-MNO
   strResult = strList.foldRight("END")(strConcatFunc)
