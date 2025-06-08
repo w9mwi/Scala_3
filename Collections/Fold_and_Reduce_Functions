@@ -136,10 +136,9 @@ foldLeft, and reduce functions.  Read the in-line comments for details.
 
 
   // SECTION 3) *************************************************************
-  // This section is identical to SECTION 2) above except for this one
-  // difference.  The anonymous function passed to the 3 fold functions
-  // is: (x,y)=>x-y    This anonymous function is functionally equivalent
-  // the _-_ anonymous function used in SECTION 2) above.
+  // This section is identical to SECTION 2) above except that the anonymous
+  // function passed to the 3 fold functions is: (x,y)=>x-y
+  // Which is functionally equivalent to: _-_
   intResult = intList.fold(77)((x,y)=>x-y)      // (x,y)=>x-y is an anonymous function
   println(s"7) intResult = $intResult")         // PRINTS: 7) intResult = 83
   intResult = intList.foldLeft(77)((x,y)=>x-y)  // (x,y)=>x-y is an anonymous function
