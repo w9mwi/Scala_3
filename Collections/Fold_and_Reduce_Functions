@@ -87,7 +87,7 @@ reduce    - The reduce function is very similar to the 3 fold functions mentione
 
                The 3 fold functions operate on the collection in these 3 different orders:
 
-               foldLeft  = Left-To-Right       - Begins by processing the collection's FIRST ELEMENT first.
+               foldLeft  = Left-To-Right       - Begins by processing the collection's FIRST ELEMENT first,
                foldRight = Right-To-Left       - Begins by processing the collection's LAST ELEMENT first.
                fold      = Indeterminate Order - Use fold only when processing order of the collection doesn't matter.
 
