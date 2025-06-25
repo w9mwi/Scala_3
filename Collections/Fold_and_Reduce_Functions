@@ -223,15 +223,15 @@ end concatStr
 @main def main() =
   // ********************************************************************************
   // This section calls myFoldLeft and myFoldRight on a List[Int].
-  val intList:List[Int] = List[Int](7, 6, 5, 4, 3, 2, 1)
+  val intList:List[Int] = List[Int](-7, 6, -5, -4, 3, 2, -1)
   // The math operation performed by myFoldLeft is:
-  // 77−7−6−5−4−3−2−1 = 49
+  // 77−(-7)−6−(-5)−(-4)−3−2−(-1) = 83
   var intResult:Int = myFoldLeft(intList, 77)(_-_)
-  println(s"1) intResult = $intResult") // PRINTS: 1) intResult = 49
+  println(s"1) intResult = $intResult") // PRINTS: 1) intResult = 83
   // The math operation performed by myFoldRight is:
-  // (1-(2-(3-(4-(5-(6-7))))))-77 = -73
+  // -7−(6−(-5−(-4−(3−(2−(-1-77)))) = -91
   intResult = myFoldRight(intList, 77)(_-_)
-  println(s"2) intResult = $intResult") // PRINTS: 2) intResult = -73
+  println(s"2) intResult = $intResult") // PRINTS: 2) intResult = -91
 
   // ********************************************************************************
   // This section calls myFoldLeft and myFoldRight on a List[String].
