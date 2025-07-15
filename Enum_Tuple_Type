@@ -12,8 +12,8 @@ has a dedicated section below.
    as a tuple, like this:
    (Int, String, List[Double])
 
-3) Types.  You can create a new data type name by preceding it with
-   the Scala keyword 'type'.   The following code defines a data
+3) Types.  You can create your own data type name by preceding that name
+   with the Scala keyword 'type'.  The following example defines a data
    type named Score, which has a tuple type of (Int, Int).
 
      type Score = (Int, Int) // Defines a data type named 'Score'.
