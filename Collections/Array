@@ -9,18 +9,17 @@ If you need an immutable array, use the IArray object.
 
 Difference Between Array and ArrayBuffer
 ========================================
-A Scala Array is a fixed-size array.  Once an Array is created, its
-size (the number of elements it contains) cannot be changed.  The Scala
-ArrayBuffer is variable in size; so even after it's created, you can
-increase or decrease its size (the number of elements it contains)
-dynamically.
+A Scala Array has a fixed number of elements.  Once an Array is
+declared, its size (the number of elements it contains) cannot be
+changed.  The Scala ArrayBuffer is variable in size; so even after
+it's declared, you can increase or decrease its size (the number of
+elements it contains) dynamically.
 
 In Scala, Arrays are SEQUENCES, which means data is stored in elements
 that can be accessed via a sequential Integer index.  When an Array is
 declared as a "val" you cannot reassign that "val" to point to a
 different Array, but you can reassign its elements to store different
-values.  An Array can't be declared as immutable.  If you need an
-immutable Array, use the IArray object instead.
+values.
 
 Read in-line comments in the following sample programs
 to understand some Array fundamentals.
