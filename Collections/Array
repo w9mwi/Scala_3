@@ -153,7 +153,77 @@ MULTI-DIMENSIONAL ARRAYS - PART 1
 Read in-line comments in the following code sample to understand
 the fundamentals of multi-dimensional arrays.
 
+@main def main():Unit =
+  val columns:Int = 3
+  val rows:Int = 4
+  // Declare an uninitialized 2-dimensional Array.
+  val matrix2X2: Array[Array[Int]] = Array.ofDim[Int](rows, columns)
 
+  // The following 2 nested for loops initialize every element
+  // of the matrix2X2 Int Array.
+  for (idx <- matrix2X2.indices) {
+    for (jdx <- matrix2X2(idx).indices) {
+      matrix2X2(idx)(jdx) =
+        if (idx == 0)
+        { idx + jdx }
+        else if (jdx == 0)
+        { matrix2X2(idx - 1)(columns - 1) + 1 }
+        else
+        { matrix2X2(idx)(jdx - 1) + 1 }
+    }
+  }
+
+  // *******************************************************************
+  // EXAMPLE 1 and EXAMPLE 2 below show two examples that traverse all
+  // elements of the matrix2X2 Int Array; and print the contents of each
+  // element.  EXAMPLE 1 is the preferred way of doing it.
+  print("EXAMPLE 1) ")
+  matrix2X2.foreach {
+    x => x.foreach(x => print(s"$x, ")) // PRINTS:  EXAMPLE 1) 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+  }
+
+  print("\nEXAMPLE 2) ")
+  matrix2X2.foreach {
+  for (elem <- _) {
+    print(s"$elem, ") // PRINTS:  EXAMPLE 2) 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+    }
+  }
+  println
+
+  /**
+   *
+   * @param matrix2D
+   *
+   * Print the contents of a 2-dimensional Int Array in a format
+   * that displays the Array as a matrix or rows and columns.
+   * For example, a two-dimensional Array of size 3X4 will be
+   * printed like this:
+   * 0 1 2
+   * 3 4 5
+   * 6 7 8
+   * 9 10 11
+   */
+  def print2DMatrix(matrix2D: Array[Array[Int]]): Unit =
+    // EXAMPLE A) and EXAMPLE B) below print the entire two-dimensional
+    // Int Array in a matrix format.  EXAMPLE A) is the preferred way
+    // of doing it.
+    println("EXAMPLE A) of printing a matrix.")
+    matrix2D.foreach {
+      x => x.foreach(x => print(s"$x "))
+      println
+    }
+
+    println("EXAMPLE B) of printing a matrix.")
+    for (idx <- matrix2D.indices) {
+      for (jdx <- matrix2D(idx).indices)
+        print(" " + matrix2D(idx)(jdx))
+      println
+    }
+  end print2DMatrix
+
+  print2DMatrix(matrix2X2)
+  print2DMatrix(matrix2X2)
+end main
 
 
 ===========================================================
