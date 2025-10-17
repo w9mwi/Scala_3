@@ -25,7 +25,7 @@ Read in-line comments in the following sample programs
 to understand some Array fundamentals.
 
 ===========================================================
-@main def main() =
+@main def main():Unit =
   // An UN-initialized Array REQUIRES the "new" keyword in its declaration,
   // as in EXAMPLE 1), EXAMPLE 2) and EXAMPLE 3) below.  When an Array is
   // initialized upon its declaration, the declaration CAN'T use the "new"
@@ -78,7 +78,7 @@ its values later (one element at a time), it's possible to declare an Array
 and initialize all of its elements in a single line.  Read in-line comments
 in the below code sample for details.
 
-@main def main() =
+@main def main():Unit =
   // EXAMPLE 1)
   // Create a 10-element Array of Int values, and initialize each element with the Int value of 4.
   var intArray:Array[Int] = Array.fill(10)(4)
@@ -233,6 +233,67 @@ Read in-line comments in the following code sample.  This code shows how
 to populate a 100-element 2-dimensional Array with Array[Double] arrays
 that have a RANDOM NUMBER of elements.  And where each number in the
 Array[Double] is populated with a RANDOM NUMBER.
+
+@main def main():Unit =
+  // This program creates Arrays having a RANDOM NUMBER of Array elements.
+  // Change the following two values to set the minimum and maximum number
+  // of elements contained in the Arrays.
+  val minNoOfElems:Int = 3
+  val maxNoOfElems:Int = 6
+  if (minNoOfElems < 2) {
+    println(s"ERROR: minNoOfElems ($minNoOfElems) can't be less than 2.")
+    return;
+  }
+  if (maxNoOfElems < minNoOfElems) {
+    println(s"ERROR: maxNoOfElems ($maxNoOfElems) can't be less than minNoOfElems ($minNoOfElems).")
+    return;
+  }
+
+  // HOW THE FOLLOWING LINE OF CODE WORKS:
+  // 1) Array.fill(100) creates a 100-element Array that will hold
+  //    an Array of type Array[Double].
+  // 2) When EACH of the 100 Array elements is created, the block
+  //    of code between the braces {} executes.
+  // 3) Read comments below for further details.
+  val array2D:Array[Array[Double]] =
+    Array.fill(100) {
+      // THIS BLOCK OF CODE EXECUTES ONCE FOR EACH OF THE 100 ARRAY ELEMENTS CREATED.
+
+      // randNumOfElems is the number of elements the Array[Double] will contain.
+      val randNumOfElems:Int = util.Random.nextInt(maxNoOfElems+1)
+
+      // Create an Array[Double] with the appropriate number of elements,
+      // and populate each element with a RANDOM NUMBER (of type Double)
+      // from 0.0 to < 1.0.  NOTE: If randNumOfElems < minNoOfElems,
+      // minNoOfElems becomes the size of the Array[Double].
+      if (randNumOfElems < minNoOfElems)
+        Array.fill(minNoOfElems)(math.random)
+      else
+        Array.fill(randNumOfElems)(math.random)
+    }
+
+  var count:Int = 0;
+
+  // Loop through every element in array2D and print its contents...
+  for (idx <- array2D.indices) {
+    for (jdx <- array2D(idx).indices)  {
+      count += 1
+      println(s"array2D($idx)($jdx) = array2D(idx)(jdx) (Element #$count)")
+    }
+  }
+
+  println("===========================================")
+  println("Loop through every element in array2D that contains a 3-element Array.")
+  println("Then, calculate and print the average of those 3 numbers for each element.")
+  var result:Array[Double] = for (Array(d1, d2, d3) <- array2D) yield (d1 + d2 + d3) / 3
+  result.foreach(println)
+
+  println("===========================================")
+  println("Loop through every element in array2D that contains a 4-element Array.")
+  println("Then, calculate and print the average of those 4 numbers for each element.")
+  result = for (Array(d1, d2, d3, d4) <- array2D) yield (d1 + d2 + d3 + d4) / 4
+  result.foreach(println)
+end main
 
 ===========================================================
 RECURSION - The following code sample demonstrates how to use a recursive
