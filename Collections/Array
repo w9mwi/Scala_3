@@ -2,7 +2,7 @@ ARRAY
 =====
 
 The Scala 3 Array class is mutable.  Scala 3 also contains an
-immutable array object (not a class) with the name IArray.
+immutable array object (not a class) having the name IArray.
 
 If you need a mutable array, use the Array class.
 If you need an immutable array, use the IArray object.
