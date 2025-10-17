@@ -148,4 +148,34 @@ in the below code sample for details.
   intArray.foreach(x => print(s"$x ")) // PRINTS:  EXAMPLE 12) 0 1 2 3 4 5 6 7 8 9 10 11
 end main
 ===========================================================
+MULTI-DIMENSIONAL ARRAYS - PART 1
+
+Read in-line comments in the following code sample to understand
+the fundamentals of multi-dimensional arrays.
+
+
+
+
+===========================================================
+MULTI-DIMENSIONAL ARRAYS - PART 2
+
+Read in-line comments in the following code sample.  This code shows how
+to populate a 100-element 2-dimensional Array with Array[Double] arrays
+that have a RANDOM NUMBER of elements.  And where each number in the
+Array[Double] is populated with a RANDOM NUMBER.
+
+===========================================================
+RECURSION - The following code sample demonstrates how to use a recursive
+            function to obtain the result of multiplying the contents of
+            an Array[Int].
+
+
+
+===========================================================
+Go to the following web link ('Annual Percent Growth') to see another
+example of how to use a Scala Array.
+
+--> https://github.com/w9mwi/Scala/blob/master/Demos/Annual_Percent_Growth
+
+===========================================================
 
