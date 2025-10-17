@@ -17,11 +17,10 @@ dynamically.
 
 In Scala, Arrays are SEQUENCES, which means data is stored in elements
 that can be accessed via a sequential Integer index.  When an Array is
-declared as a "val" you can't reassign that "val" to points to a
+declared as a "val" you cannot reassign that "val" to point to a
 different Array, but you can reassign its elements to store different
-values.  Unlike many Scala collections, an Array can't be declared as
-immutable.  If you need an immutable Array, use the IArray object instead
-of the Array class.
+values.  An Array can't be declared as immutable.  If you need an
+immutable Array, use the IArray object instead.
 
 Read in-line comments in the following sample programs
 to understand some Array fundamentals.
