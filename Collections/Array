@@ -72,3 +72,10 @@ to understand some Array fundamentals.
 end main
 ===========================================================
 
+HOW TO INITIALIZE ARRAYS (AND LISTS) UPON THEIR DECLARATION.
+
+Instead of declaring an Array in one line of code, and then initializing
+its values later (one element at a time), it's possible to declare an Array
+and initialize all of its elements in a single line.  Read in-line comments
+in the below code sample for details.
+
