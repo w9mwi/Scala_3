@@ -229,69 +229,48 @@ end main
 ===========================================================
 MULTI-DIMENSIONAL ARRAYS - PART 2
 
-Read in-line comments in the following code sample.  This code shows how
-to populate a 100-element 2-dimensional Array with Array[Double] arrays
-that have a RANDOM NUMBER of elements.  And where each number in the
-Array[Double] is populated with a RANDOM NUMBER.
-
 @main def main():Unit =
-  // This program creates Arrays having a RANDOM NUMBER of Array elements.
-  // Change the following two values to set the minimum and maximum number
-  // of elements contained in the Arrays.
   val minNoOfElems:Int = 3
   val maxNoOfElems:Int = 6
   if (minNoOfElems < 2) {
+    // It makes no sense for an Array to contain less than 2 elements.
+    // So exit the program if it does.
     println(s"ERROR: minNoOfElems ($minNoOfElems) can't be less than 2.")
-    return;
+    return // Exit the program.
   }
   if (maxNoOfElems < minNoOfElems) {
     println(s"ERROR: maxNoOfElems ($maxNoOfElems) can't be less than minNoOfElems ($minNoOfElems).")
-    return;
+    return // Exit the program.
   }
 
-  // HOW THE FOLLOWING LINE OF CODE WORKS:
-  // 1) Array.fill(100) creates a 100-element Array that will hold
-  //    an Array of type Array[Double].
-  // 2) When EACH of the 100 Array elements is created, the block
-  //    of code between the braces {} executes.
-  // 3) Read comments below for further details.
+  // 1) Create a new 100-element Array, and assign it to val array2D.
+  // 2) For each element in array2D, create a new Array that has a random
+  //    number of elements (ranging from minNoOfElems to maxNoOfElems).
+  // 3) Next, assign each of those elements a random number.
+  // 4) Finally, assign this newly-created Array to the current index of array2D.
   val array2D:Array[Array[Double]] =
     Array.fill(100) {
       // THIS BLOCK OF CODE EXECUTES ONCE FOR EACH OF THE 100 ARRAY ELEMENTS CREATED.
 
       // randNumOfElems is the number of elements the Array[Double] will contain.
+      // We want randNumOfElems to obtain a random Int value ranging from 0 to
+      // maxNoOfElems.  If we don't add 1 to maxNoOfElems (as is done below),
+      // randNumOfElems would instead obtain an Int value from 0 to (maxNoOfElems-1)
+      // instead.
       val randNumOfElems:Int = util.Random.nextInt(maxNoOfElems+1)
 
       // Create an Array[Double] with the appropriate number of elements,
-      // and populate each element with a RANDOM NUMBER (of type Double)
-      // from 0.0 to < 1.0.  NOTE: If randNumOfElems < minNoOfElems,
-      // minNoOfElems becomes the size of the Array[Double].
+      // and populate each element with a random number from 0.0 to < 1.0.
       if (randNumOfElems < minNoOfElems)
         Array.fill(minNoOfElems)(math.random)
       else
         Array.fill(randNumOfElems)(math.random)
     }
 
-  var count:Int = 0;
-
-  // Loop through every element in array2D and print its contents...
-  for (idx <- array2D.indices) {
-    for (jdx <- array2D(idx).indices)  {
-      count += 1
-      println(s"array2D($idx)($jdx) = array2D(idx)(jdx) (Element #$count)")
-    }
-  }
-
   println("===========================================")
   println("Loop through every element in array2D that contains a 3-element Array.")
   println("Then, calculate and print the average of those 3 numbers for each element.")
-  var result:Array[Double] = for (Array(d1, d2, d3) <- array2D) yield (d1 + d2 + d3) / 3
-  result.foreach(println)
-
-  println("===========================================")
-  println("Loop through every element in array2D that contains a 4-element Array.")
-  println("Then, calculate and print the average of those 4 numbers for each element.")
-  result = for (Array(d1, d2, d3, d4) <- array2D) yield (d1 + d2 + d3 + d4) / 4
+  var result:Array[Double] = for (myArray <- array2D) yield myArray(0) + myArray(1) + myArray(2) / 3.0D
   result.foreach(println)
 end main
 
