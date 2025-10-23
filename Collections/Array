@@ -243,10 +243,11 @@ MULTI-DIMENSIONAL ARRAYS - PART 2
     return // Exit the program.
   }
 
-  // 1) Create a new 100-element Array, and assign it to val array2D.
-  // 2) For each element in array2D, create a new Array that has a random
-  //    number of elements (ranging from minNoOfElems to maxNoOfElems).
-  // 3) Next, assign each of those elements a random number.
+  // 1) Create a new 100-element 2-dimensional Array of type Array[Array[Double]],
+  //    and assign it to val array2D.
+  // 2) For each element in array2D, create a new Array having a random
+  //    number of elements (that range from minNoOfElems to maxNoOfElems).
+  // 3) Next, assign each element of this new Array a random number.
   // 4) Finally, assign this newly-created Array to the current index of array2D.
   val array2D:Array[Array[Double]] =
     Array.fill(100) {
