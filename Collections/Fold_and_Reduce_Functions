@@ -16,10 +16,14 @@ Map Collections: HashMap              Other Collections: Either
                  Map                                     Option
                  TreeMap                                 BitSet
 
-Although the fold, foldRight, and foldLeft functions contain two argument
-lists, they're NOT curried functions.  (A curried function returns a
-partially-applied function for every operation performed; until it
-returns a final value instead of a partially-applied function.)
+The fold, foldRight, and foldLeft are functions that perform an operation
+(i.e., addition, subtraction, etc.) on every value contained in a collection,
+and returns a final result.
+
+NOTE: The fold, foldRight, and foldLeft are NOT curried functions.  A curried
+      function returns a partially-applied function every time it's invoked on
+      a member of the collection until it returns a final value, instead of a
+      partially-applied function.
 
 The first argument list supplied to the fold, foldRight, and foldLeft
 functions contains an "initial value", or a "start value."  The second
