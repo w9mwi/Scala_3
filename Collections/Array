@@ -1,11 +1,17 @@
 ARRAY
 =====
-
-The Scala 3 Array class is mutable.  Scala 3 also contains an
-immutable array object (not a class) having the name IArray.
-
 If you need a mutable array, use the Array class.
-If you need an immutable array, use the IArray object.
+If you need an immutable array, use the IArray object,
+or the Vector class.
+
+The Scala 3 Vector class is similar to the Array class
+as they're both indexed Seq types.  However, a Vector
+is immutable, while an Array is mutable.  A Vector is
+represented internally as a tree-based structure, making
+it less memory efficient than an Array.  An Array is
+represented as a flat Java Array.  Therefore, an Array
+offers Java interoperability, while a Vector does not.
+
 
 Difference Between Array and ArrayBuffer
 ========================================
@@ -14,12 +20,6 @@ declared, its size (the number of elements it contains) cannot be
 changed.  The Scala ArrayBuffer is variable in size; so even after
 it's declared, you can increase or decrease its size (the number of
 elements it contains) dynamically.
-
-In Scala, Arrays are SEQUENCES, which means data is stored in elements
-that can be accessed via a sequential Integer index.  When an Array is
-declared as a "val" you cannot reassign that "val" to point to a
-different Array, but you can reassign its elements to store different
-values.
 
 Read in-line comments in the following sample programs
 to understand some Array fundamentals.
