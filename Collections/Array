@@ -243,11 +243,10 @@ MULTI-DIMENSIONAL ARRAYS - PART 2
     return // Exit the program.
   }
 
-  // 1) Create a new 100-element 2-dimensional Array of type Array[Array[Double]],
-  //    and assign it to val array2D.
-  // 2) For each element in array2D, create a new Array having a random
-  //    number of elements (that range from minNoOfElems to maxNoOfElems).
-  // 3) Next, assign each element of this new Array a random number.
+  // 1) Create a new 100-element Array, and assign it to val array2D.
+  // 2) For each element in array2D, create a new Array that has a random
+  //    number of elements (ranging from minNoOfElems to maxNoOfElems).
+  // 3) Next, assign each of those elements a random number.
   // 4) Finally, assign this newly-created Array to the current index of array2D.
   val array2D:Array[Array[Double]] =
     Array.fill(100) {
@@ -273,6 +272,83 @@ MULTI-DIMENSIONAL ARRAYS - PART 2
   println("Then, calculate and print the average of those 3 numbers for each element.")
   var result:Array[Double] = for (myArray <- array2D) yield myArray(0) + myArray(1) + myArray(2) / 3.0D
   result.foreach(println)
+
+
+  // *********************************************************
+  // The below section shows how to declare and initialize
+  // a 1-dimensional, 2-dimensional, 3-dimensional,
+  // 4-dimensional, and 5-dimensional Array using the
+  // Array.fill() method.  Following those declarations we
+  // demonstrate how to iterate through all elements in
+  // the Array to print the contents of every element.
+  // *********************************************************
+
+  // Declare a 1-dimensional Array having 2 elements,
+  // and initialize all its elements with the value 2.2D
+  val array1Dim = Array.fill(2)(2.2D)
+  // Declare a 2-dimensional Array, with the first Array
+  // having 2 elements, the second Array having 3 elements,
+  // and initialize all those elements with the value 3.3D.
+  val array2Dim = Array.fill(2, 3)(3.3)
+
+  // ******************************************************
+  // Extrapolate the above 2-dimensional Array example to a
+  // 3-dimensional, 4-dimensional, and 5-dimensional Array.
+  val array3Dim = Array.fill(2, 3, 4)(4.4D)
+  // Declare a 4-dimensional Array.
+  val array4Dim = Array.fill(2, 3, 4, 5)(5.5D)
+  // Declare a 5-dimensional Array.
+  val array5Dim = Array.fill(2, 3, 4, 5, 6)(6.6)
+
+
+  println("\n================")
+  println("PRINT THE VALUE OF EVERY ELEMENT CONTAINED IN array1Dim:")
+  array1Dim.foreach{
+    x => print(x.toString + ", ")
+  }
+
+  println("\n================")
+  println("PRINT THE VALUE OF EVERY ELEMENT CONTAINED IN array2Dim:")
+  array2Dim.foreach {
+    x => x.foreach {
+      x => print(x.toString + ", ")
+    }
+  }
+
+  println("\n================")
+  println("PRINT THE VALUE OF EVERY ELEMENT CONTAINED IN array3Dim:")
+  array3Dim.foreach {
+    x => x.foreach {
+      x => x.foreach {
+        x => print(x.toString + ", ")
+      }}
+  }
+
+  println("\n================")
+  println("PRINT THE VALUE OF EVERY ELEMENT CONTAINED IN array4Dim:")
+  array4Dim.foreach {
+    x => x.foreach {
+      x => x.foreach {
+        x => x.foreach {
+          x => print(x.toString + ", ")
+        }
+      }
+    }
+  }
+
+  println("\n================")
+  println("PRINT THE VALUE OF EVERY ELEMENT CONTAINED IN array5Dim:")
+  array5Dim.foreach {
+    x => x.foreach {
+      x => x.foreach {
+        x => x.foreach {
+          x => x.foreach {
+            x => print(x.toString + ", ")
+          }
+        }
+      }
+    }
+  }
 end main
 
 ===========================================================
