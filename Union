@@ -1,0 +1,12 @@
+In Scala 3 the '|' character can be an operator, dependent on the
+data types that surround it.  For example, '|' is bitwise or operator
+if the data types surounding it reference a number, a char, or a
+Boolean value.
+
+If the '|' operator is surrounded by a data type reference (i.e.,
+Int, Boolean, Float, etc.) it becomes a union operator.
+
+val things: List[String | Int | Double] = List(1, "two", 3.0) // with union types
+
+
+
