@@ -23,14 +23,14 @@ element; its tail references an empty List.  Here's an example:
 
 The List class inherits from the LinearSeq trait; NOT from the IndexedSeq trait.  This means
 that accessing a List element via an index can take a long time because all elements in the
-List (up to the index value) must be traversed.  So generally, you should avoid accessing
-elements of a large List via an index value, like this...
+List (up to the index value) must be traversed.  You should avoid accessing elements of a
+List via an index value, like this...
 
-   myList(999999)
+   myList(99)
 
-If you have a large collection and want to access its elements via an index, instead
-of using the List class, you should use a collection class that inherits from the
-IndexedSeq trait, such an ArrayBuffer, Vector, etc.
+If you have a large collection and want to access its elements via an index use
+a collection class that inherits from the IndexedSeq trait, such an ArrayBuffer,
+Vector, etc.
 
 =============================================================================
 The following program demonstrates how to do the following:
