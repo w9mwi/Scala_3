@@ -70,30 +70,31 @@ The following program demonstrates how to do the following:
   intList = List(-4, -3, -2) ::: intList ::: List(5, 6, 7)
   println(s"6) intList = $intList") // PRINTS: 6) intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
 
-  // THIS WON'T COMPILE  -->  val intList2:List[Int] = intList1 :: List(333, 666)
-  // The above commented-out line won't compile because every List ends
-  // with an empty List (a Nil), and the cons operator (::) requires the
-  // first operand to be a value, NOT a List.
-  val intList2: List[Int] = intList ::: List(333, 666)
-
+  // THIS WON'T COMPILE  -->  val intList2:List[Int] = intList1 :: List(8, 9)
+  // The above commented-out line won't compile because the cons operator (::)
+  // requires the first operand to be a value, not a List.  To make the above
+  // line compile, change the cons operator (::) to the list contact operator
+  // (:::) as shown in the following line of code.
+  val intList2: List[Int] = intList ::: List(8, 9)
+  println(s"7) intList2 == $intList2") // PRINTS: 7) intList2 == List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 
   // An EMPTY LIST in Scala is designated by the keyword "Nil"; which is equivalent to: List()
   intList = Nil
-  println(s"7) intList == $intList") // PRINTS: 7) intList == List()
-  intList = List()
   println(s"8) intList == $intList") // PRINTS: 8) intList == List()
+  intList = List()
+  println(s"9) intList == $intList") // PRINTS: 9) intList == List()
 
   // Nil can be used in pattern matching, like this...
   intList match
-    case head :: tail => println(s"9) intList is NOT empty.")
-    case Nil          => println(s"9) intList IS empty.") // PRINTS: 9) intList IS empty.
+    case head :: tail => println(s"10) intList is NOT empty.")
+    case Nil          => println(s"10) intList IS empty.") // PRINTS: 10) intList IS empty.
 
   // When constructing a List using only "cons" operators (::), the last element
   // in the List must be an empty List; designated by either List() or Nil.
   intList = -9 :: -8 :: -7 :: List()
-  println(s"10) intList = $intList") // PRINTS: 10) intList = List(-9, -8, -7)
+  println(s"11) intList = $intList") // PRINTS: 11) intList = List(-9, -8, -7)
   intList = 7 :: 8 :: 9 :: Nil
-  println(s"11) intList = $intList") // PRINTS: 11) intList = List(7, 8, 9)
+  println(s"12) intList = $intList") // PRINTS: 12) intList = List(7, 8, 9)
 -----------------------------------------------------------------------------------
 
 =============================================================================
