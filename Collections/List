@@ -33,7 +33,7 @@ a collection class that inherits from the IndexedSeq trait, such an ArrayBuffer,
 Vector, etc.
 
 =============================================================================
-@main def main() =
+@main def main():Unit =
   var intList:List[Int] = List(-666, 2, 3)
   println(s"1) intList = $intList") // PRINTS: 1) intList = List(-666, 2, 3)
 
@@ -87,6 +87,41 @@ Vector, etc.
   println(s"11) intList = $intList") // PRINTS: 11) intList = List(-9, -8, -7)
   intList = 7 :: 8 :: 9 :: Nil
   println(s"12) intList = $intList") // PRINTS: 12) intList = List(7, 8, 9)
+end main
 =============================================================================
 
+@main def main():Unit =
+  val myList: List[Int] = List[Int](1, 2, 3, 4, 5, 6, 7);
+
+  println("operateOnList_1() result = " + operateOnList_1(myList, _ + _))
+  println("operateOnList_2() result = " + operateOnList_2(myList, _ + _))
+
+  /**
+   * THIS IS A RECURSIVE FUNCTION!
+   * This function is identical in behavior to
+   * the operateOnList_2() function below.
+   */
+  def operateOnList_1(list:List[Int], func:(Int, Int) => Int):Int = {
+    if (list.tail.isEmpty)
+      list.head
+    else
+      func(list.head, operateOnList_1(list.tail, func))
+  }
+
+  /**
+   * THIS IS A RECURSIVE FUNCTION!
+   * This function is identical in behavior to the
+   * operateOnList_1() function above.
+   */
+  def operateOnList_2(list:List[Int], func:(Int, Int) => Int):Int = {
+    list match {
+      case head::Nil  => head  // This line executes when there's only one element in the List.
+      case head::tail => func(head, operateOnList_2(tail, func))
+      // NOTE: In this example, the following line never executes
+      //       because the first two lines of this match statement
+      //       match all possible scenarios.
+      case _ => 0
+    }
+  }
+end main
 
