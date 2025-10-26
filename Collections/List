@@ -45,12 +45,12 @@ The following program demonstrates how to do the following:
   var intList:List[Int] = List(-666, 2, 3)
   println(s"1) intList = $intList") // PRINTS: 1) intList = List(-666, 2, 3)
 
-  // To "UPDATE" ONE ELEMENT of a List, call the List.updated method.
-  // Because a List is immutable, this actually returns a new List.
+  // To UPDATE ONE ELEMENT OF A LIST, call the List.updated() method.
+  // The updated() method returns a new List.
   intList = intList.updated(0, 1) // 0 = the List index, 1 = the value
   println(s"2) intList = $intList") // PRINTS: 2) intList = List(1, 2, 3)
 
-  // To PREPEND ONE ELEMENT to a List, use the :: operator, or the +: operator.
+  // To PREPEND ONE ELEMENT TO A LIST, use the :: operator, or the +: operator.
   // The :: operator is called the "cons" operator; short for the word "construct."
   // The +: operator is known as the "list prepend operator."
   // Both these operators return a new List.
@@ -69,7 +69,7 @@ The following program demonstrates how to do the following:
   // is known as the "list concatenation operator."  This returns a new List.
   intList = List(-4, -3, -2) ::: intList ::: List(5, 6, 7)
   println(s"6) intList = $intList") // PRINTS: 6) intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
-
+  
   // THIS WON'T COMPILE  -->  val intList2:List[Int] = intList1 :: List(8, 9)
   // The above commented-out line won't compile because the cons operator (::)
   // requires the first operand to be a value, not a List.  To make the above
