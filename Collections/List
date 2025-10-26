@@ -70,11 +70,11 @@ The following program demonstrates how to do the following:
   intList = List(-4, -3, -2) ::: intList ::: List(5, 6, 7)
   println(s"6) intList = $intList") // PRINTS: 6) intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
 
-  // The following commented-out line won't compile because every List ends
-  // with an empty List (a Nil), and the cons
-  // operator (::) requires the first operand to be a value, NOT a List.
-  // THIS WON'T COMPILE  -->  val myList2:List[Int] = myList1 :: List(333, 666)
-  val myList2: List[Int] = myList1 ::: List(333, 666)
+  // THIS WON'T COMPILE  -->  val intList2:List[Int] = intList1 :: List(333, 666)
+  // The above commented-out line won't compile because every List ends
+  // with an empty List (a Nil), and the cons operator (::) requires the
+  // first operand to be a value, NOT a List.
+  val intList2: List[Int] = intList ::: List(333, 666)
 
 
   // An EMPTY LIST in Scala is designated by the keyword "Nil"; which is equivalent to: List()
