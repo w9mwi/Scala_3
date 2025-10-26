@@ -33,14 +33,6 @@ a collection class that inherits from the IndexedSeq trait, such an ArrayBuffer,
 Vector, etc.
 
 =============================================================================
-The following program demonstrates how to do the following:
-
-  1) Update a single element in a List.
-  2) Append/Prepend a single element to a List.
-  3) Concatenate (append or prepend) a List to another List.
-  4) Use Nil and List() to designate an empty List.
-
------------------------------------------------------------------------------------
 @main def main() =
   var intList:List[Int] = List(-666, 2, 3)
   println(s"1) intList = $intList") // PRINTS: 1) intList = List(-666, 2, 3)
@@ -70,7 +62,7 @@ The following program demonstrates how to do the following:
   intList = List(-4, -3, -2) ::: intList ::: List(5, 6, 7)
   println(s"6) intList = $intList") // PRINTS: 6) intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
   
-  // THIS WON'T COMPILE  -->  intList = intList :: List(8, 9)
+  // THIS LINE WON'T COMPILE  -->  intList = intList :: List(8, 9)
   // The above commented-out line won't compile because the cons operator (::)
   // requires the first operand to be a value, not a List.  To make the above
   // line compile, change the cons operator (::) to the list contact operator
@@ -84,7 +76,7 @@ The following program demonstrates how to do the following:
   intList = List()
   println(s"9) intList == $intList") // PRINTS: 9) intList == List()
 
-  // Nil can be used in pattern matching, like this...
+  // Nil can be used in PATTERN MATCHING, like this...
   intList match
     case head :: tail => println(s"10) intList is NOT empty.")
     case Nil          => println(s"10) intList IS empty.") // PRINTS: 10) intList IS empty.
@@ -95,7 +87,6 @@ The following program demonstrates how to do the following:
   println(s"11) intList = $intList") // PRINTS: 11) intList = List(-9, -8, -7)
   intList = 7 :: 8 :: 9 :: Nil
   println(s"12) intList = $intList") // PRINTS: 12) intList = List(7, 8, 9)
------------------------------------------------------------------------------------
-
 =============================================================================
+
 
