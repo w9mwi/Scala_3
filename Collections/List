@@ -70,13 +70,13 @@ The following program demonstrates how to do the following:
   intList = List(-4, -3, -2) ::: intList ::: List(5, 6, 7)
   println(s"6) intList = $intList") // PRINTS: 6) intList = List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7)
   
-  // THIS WON'T COMPILE  -->  val intList2:List[Int] = intList1 :: List(8, 9)
+  // THIS WON'T COMPILE  -->  intList = intList :: List(8, 9)
   // The above commented-out line won't compile because the cons operator (::)
   // requires the first operand to be a value, not a List.  To make the above
   // line compile, change the cons operator (::) to the list contact operator
   // (:::) as shown in the following line of code.
-  val intList2: List[Int] = intList ::: List(8, 9)
-  println(s"7) intList2 == $intList2") // PRINTS: 7) intList2 == List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+  intList = intList ::: List(8, 9)
+  println(s"7) intList == $intList") // PRINTS: 7) intList == List(-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 
   // An EMPTY LIST in Scala is designated by the keyword "Nil"; which is equivalent to: List()
   intList = Nil
