@@ -31,7 +31,6 @@ code sample below to understand how this works.
   println(s"number_1 = $number_1,  number_2 = $number_2")
   // PRINTS: number_1 = 111,  number_2 = 222
 end main
-
 =======================================================================
 
 LazyList
@@ -68,7 +67,18 @@ define an infinite series and then take only a finite portion of the
 collection to work with.  The following code sample demonstrates using
 a LazyList for this purpose.
 
+import scala.collection.immutable.LazyList
+@main def main():Unit =
+  // Define an infinite Fibonacci sequence, assigning it to the val fibs.
+  // Notice the val fibs appears on both sides of the equals sign (=).
+  lazy val fibs:LazyList[BigInt] =
+    BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map { case (a, b) => a + b }
 
+  // Take the first 10 elements of fibs for evaluation...
+  var tenFibs = fibs.take(10).toList
+  println(tenFibs) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
+end main
+=======================================================================
 
 
 LAZY LIST
