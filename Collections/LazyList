@@ -31,10 +31,17 @@ code sample below to understand how this works.
   println(s"number_1 = $number_1,  number_2 = $number_2")
   // PRINTS: number_1 = 111,  number_2 = 222
 end main
+
 =======================================================================
 
 LazyList
 ========
+Recall, the reason for using a lazy declaration instead of a regular
+declaration has to do with memory and performance issues.  A lazy
+declaration has the capability to store only the computed parts (the
+results) of the collection in memory, instead of storing all elements
+of the collection in memory, most of which could be empty.
+
 A Scala lazy List can be declared using the "lazy" keyword, or by
 declaring a LazyList, which is a Scala class.  For example...
 
@@ -51,7 +58,8 @@ Scala's LazyList class instead of declaring a regular List as "lazy."
 The reason for using a lazy declaration instead of a regular declaration
 has to do with memory and performance issues.  A lazy declaration has
 the capability to store only the computed parts (the results) of the
-collection in memory.
+collection in memory, instead of the entire collection all its
+elements, most of which could be empty.
 
 The most common use for a lazy declaration is to represent a sequence
 that is theoretically infinite, or finite but extremely large.  Since
