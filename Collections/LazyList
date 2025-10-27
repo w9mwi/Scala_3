@@ -18,7 +18,7 @@ comments to understand the difference.
   // reference to number_1, which forces the code associated
   // with the number_1 declaration to be executed.
   println(s"number_1 = $number_1")  // PRINTS: This line prints SECOND.
-                                    //         number_1 = 99
+                                    //         number_1 = 111
 
   // The following line of code demonstrates the println statement
   // contained within the declaration of number_1 and number_2 will
