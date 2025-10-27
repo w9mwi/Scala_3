@@ -27,7 +27,7 @@ code sample below to understand how this works.
   // The following line of code demonstrates the println statement
   // contained within the declaration of number_1 and number_2 will
   // no longer execute because declarations are executed only one
-  // time, whether it's lazy or not.
+  // time, whether a declaration is lazy or not.
   println(s"number_1 = $number_1,  number_2 = $number_2")
   // PRINTS: number_1 = 111,  number_2 = 222
 end main
