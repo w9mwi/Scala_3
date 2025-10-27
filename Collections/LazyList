@@ -3,8 +3,8 @@ LAZY LIST
 A Scala 3 LazyList generates/computes its elements not when it's declared/constructed,
 but only when one or more of its elements is referenced at runtime.  (The following
 code sample demonstrates this.)  This allows for efficient handling of large, or even
-infinite, sequences.  This "is the primary reason for using a LazyList instead of
-a List.
+infinite, sequences.  This is the primary reason for using a LazyList instead of
+a regular List.
 
 The #:: operator is used to prepend a single element to an existing LazyList,
 and is demonstrated in the following program.
