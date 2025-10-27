@@ -48,6 +48,20 @@ is related to performance (memory usage and execution speed), which
 isn't covered here.  Generally, if you want to use a "lazy" List, use
 Scala's LazyList class instead of declaring a regular List as "lazy."
 
+The reason for using a lazy declaration instead of a regular declaration
+has to do with memory and performance issues.  A lazy declaration has
+the capability to store only the computed parts (the results) of the
+collection in memory.
+
+The most common use for a lazy declaration is to represent a sequence
+that is theoretically infinite, or finite but extremely large.  Since
+the collection's elements are only computed when requested, you can
+define an infinite series and then take only a finite portion of the
+collection to work with.  The following code sample demonstrates using
+a LazyList for this purpose.
+
+
+
 
 LAZY LIST
 =========
