@@ -1,17 +1,10 @@
 LAZY LIST
 =========
-Before reading this LazyList section you should understand
-how a regular Scala List works by reading this section:
-
-https://github.com/w9mwi/Scala_3/blob/main/Collections/List
-
-Like a regular Scala List, a LazyList is also immutable.
-
-A Scala LazyList generates/computes its elements not when it's constructed/built,
-but only when one or more of its elements is referenced at runtime.  (See the
-following code sample to see this demonstrated.)  This allows for efficient
-handling of large or even infinite sequences.  This "lazy evaluation" is the
-primary reason for using a LazyList.
+A Scala 3 LazyList generates/computes its elements not when it's declared/constructed,
+but only when one or more of its elements is referenced at runtime.  (The following
+code sample demonstrates this.)  This allows for efficient handling of large, or even
+infinite, sequences.  This "is the primary reason for using a LazyList instead of
+a List.
 
 The #:: operator is used to prepend a single element to an existing LazyList,
 and is demonstrated in the following program.
