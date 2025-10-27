@@ -1,8 +1,8 @@
 LAZY EVALUATION
 ===============
-The following code sample demonstrates the lazy declaration
-of an Int value versus a regular declaration of an Int value.
-Read in-line comments to understand the difference.
+The following code sample demonstrates a lazy declaration of
+an Int versus a regular declaration of an Int.  Read in-line
+comments to understand the difference.
 
 @main def main():Unit =
   // The following line of code won't execute upon its declaration
