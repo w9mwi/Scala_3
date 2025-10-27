@@ -33,6 +33,21 @@ code sample below to understand how this works.
 end main
 =======================================================================
 
+LazyList
+========
+A Scala lazy List can be declared using the "lazy" keyword, or by
+declaring a LazyList, which is a Scala class.  For example...
+
+lazy val intList_1:List[Int] = List(1, 2, 3)
+val intList_2:LazyList[Int]  = LazyList(1, 2, 3)
+
+intList_1 and intList_2 both represent a "lazy" List because their
+declarations are not executed until the lists are referenced.  Either
+declaration can be used.  The difference between the two declarations
+is related to performance (memory usage and execution speed), which
+isn't covered here.  Generally, if you want to use a "lazy" List, use
+Scala's LazyList class instead of declaring a regular List as "lazy."
+
 
 LAZY LIST
 =========
