@@ -1,12 +1,12 @@
 LAZY EVALUATION
 ===============
-When you declare a val or var, you can prepend the Scala "lazy" keyword
-to the declaration, as is demonstrated in the following code sample.
+When you declare a val, you can prepend the Scala "lazy" keyword
+to the declaration, as demonstrated in the following code sample.
 
 Lazy evaluation means that the code associated with a lazy declaration
 isn't executed when it's declared; it's executed only when the declared
-val or var is referenced the first time.  Read in-line comments in the
-code sample below to understand how this works.
+val is referenced the first time.  Read in-line comments in the following
+code sample.
 
 @main def main():Unit =
   // The following line of code won't execute upon its declaration
