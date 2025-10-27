@@ -1,6 +1,38 @@
+LAZY EVALUATION
+===============
+The following code sample demonstrates the lazy declaration
+of an Int value versus a regular declaration of an Int value.
+Read in-line comments to understand the difference.
+
+@main def main():Unit =
+  // The following line of code won't execute upon its declaration
+  // because number_1 is a "lazy" declaration.
+  lazy val number_1:Int = { println("This line prints SECOND."); 111 }
+
+  // The following line of code will execute upon its declaration
+  // because number_2 is a regular (not lazy) declaration.
+  val number_2:Int = { println("This line prints FIRST."); 222 }
+
+  // A lazy declaration executes only when it's referenced the
+  // first time.  The following line of code contains the first
+  // reference to number_1, which forces the code associated
+  // with the number_1 declaration to be executed.
+  println(s"number_1 = $number_1")  // PRINTS: This line prints SECOND.
+                                    //         number_1 = 99
+
+  // The following line of code demonstrates the println statement
+  // contained within the declaration of number_1 and number_2 will
+  // no longer execute because declarations are executed only one
+  // time, whether it's lazy or not.
+  println(s"number_1 = $number_1,  number_2 = $number_2")
+  // PRINTS: number_1 = 111,  number_2 = 222
+end main
+=======================================================================
+
+
 LAZY LIST
 =========
-A Scala 3 LazyList generates/computes its elements not when it's declared/constructed,
+A LazyList generates/computes its elements not when it's declared/constructed,
 but only when one or more of its elements is referenced at runtime.  (The following
 code sample demonstrates this.)  This allows for efficient handling of large, or even
 infinite, sequences.  This is the primary reason for using a LazyList instead of
