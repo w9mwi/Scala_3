@@ -4,10 +4,6 @@ Lazy evaluation means that the code associated with a lazy declaration
 isn't executed when it's declared; it's executed only when the declared
 val is referenced the first time.
 
-When a val/var is declared without the 'lazy' keyword, the declaration
-is executed immediately.  This is known as "EAGER EVALUATION", which
-applies to the vast majority of declarations.
-
 To declare a val as 'lazy', you must prepend the Scala "lazy" keyword
 to its declaration, as shown in the code sample below.
 
@@ -18,6 +14,10 @@ NOTE:  Only a Scala val (not a var) can be declared as 'lazy'.
 
        // The following line WILL COMPILE because a val can be declared as lazy.
        lazy val number:Int = 111
+
+When a val/var is declared without the 'lazy' keyword, the declaration
+is executed immediately.  This is known as "EAGER EVALUATION", which
+applies to the vast majority of val/var declarations.
 
 =======================================================================
 @main def main():Unit =
