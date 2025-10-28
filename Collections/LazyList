@@ -95,12 +95,13 @@ NOTE: The following code sample uses the #:: operator, which prepends
 import scala.collection.immutable.LazyList
 
 @main def main():Unit =
-  // Define an infinite Fibonacci sequence, and assign it to lazy val fibs.
-  // NOTE:  When the val "fibs" is declared in the following line of code,
-  //        "fibs" appears on BOTH SIDES of the equals sign (=).  That
-  //        line of code WON'T COMPILE if you remove the keyword "lazy".
-  //        Only when the val "fibs" is declared "lazy" can "fibs"
-  //        appear on both sides of the equals sign (=).
+  // NOTES REGARDING THE FOLLOWING LINE OF CODE:
+  // 1) It define an infinite Fibonacci sequence, and assigns
+  //    it to the lazy val fibs.
+  // 2) "fibs" appears on BOTH SIDES of the equals sign (=).
+  //    The "lazy" keyword is what permits that behavior.
+  //    That line of code won't compile if you remove the keyword lazy.
+  // 3) The #:: operator prepends a single element to an existing LazyList.
   lazy val fibs:LazyList[BigInt] =
     BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map { case (a, b) => a + b }
   println(fibs.take(10).toList) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
