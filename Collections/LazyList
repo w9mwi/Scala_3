@@ -55,46 +55,40 @@ list in memory.
 
 The following three declarations demonstrate two different forms of lazy
 evaluation.  The first form of lazy evaluation occurs by prepending the
-'lazy' keyword to the val declaration.  The second form of lazy evaluation
-occurs when the val's type is a LazyList.
+'lazy' keyword to the "val intlist" declaration.  The second form of lazy
+evaluation occurs when using a LazyList.
 
-1)  val intlist:LazyList[Int] = LazyList(1, 2, 3)
+1)  lazy val intlist:List[Int] = List(1, 2, 3)
 
-    The val intList is not declared 'lazy', so intList gets initialized upon
-    its declaration.  The elements of a LazyList are always 'lazy', so each
-    element of LazyList is computed only the first time the element referenced.
+    The val intList is declared 'lazy', which means means intList gets initialized
+    not when it's declared, but only the first time intList is referenced.  Since
+    intList points to a regular List (not a LazyList), there is no lazy evaluation
+    performed on the List.
 
-2)  lazy val intlist:List[Int] = List(1, 2, 3)
+2)  val intlist:LazyList[Int] = LazyList(1, 2, 3)
 
-    The val intList is declared 'lazy'.  This means intList gets initialized
-    not when it's declared, but only the first time intList is referenced.
-    Since intList points to a regular List (not a LazyList), all elements of
-    List are computed and stored in memory the first time intList is referenced.
+    The val intList is not declared 'lazy', so intList gets initialized upon its
+    declaration.  The elements of a LazyList are always 'lazy', so LazyList
+    allocates memory for each element only the first time that element is
+    referenced; instead of allocating memory for all its elements as a List does.
 
 3)  lazy val intlist:LazyList[Int] = LazyList(1, 2, 3)
 
-    The val intList is declared 'lazy'.  This means intList gets initialized
-    not when it's declared, but only the first time intList is referenced.
-    The elements of a LazyList are always 'lazy', so each element of LazyList
-    is computed only the first time the element referenced.
+    The val intList is declared 'lazy', which means means intList gets initialized
+    not when it's declared, but only the first time intList is referenced.  The
+    elements of a LazyList are always 'lazy', so LazyList allocates memory for
+    each element only the first time that element is referenced; instead of
+    allocating memory for all its elements as a List does.
 
-NOTE: When using a LazyList, you should always declare the val to which
-      the LazyList gets assigned as lazy; as shown in example 3) above.
+NOTE: When declaring a LazyList, you should always prepend the 'lazy'
+      keyword to the val, as shown in example 3) above.
 
-The reason for using a lazy declaration (instead of a regular declaration)
-has to do with memory and performance issues.  A lazy declaration will
-store only the computed parts (the results) of a val, or a collection,
-in memory; instead of allocating all memory space when it's declared.
-
-The most common use for a lazy declaration is to represent a sequence
-that's extremely large, or theoretically infinite.  Since the collection's
-elements are only computed when requested, you can define an infinite
-series and then take only a finite portion of the collection to work with.
-The following code sample demonstrates using a LazyList for this purpose.
+The reason for using a LazyList instead of a List has to do with memory
+and performance issues.  A LazyList allocates memory for each of its
+elements only when the element is referenced; instead of allocating
+memory for all its elements as a List does.
 
 =======================================================================
-import scala.collection.immutable.LazyList
-
 import scala.collection.immutable.LazyList
 
 @main def main():Unit =
@@ -112,7 +106,6 @@ import scala.collection.immutable.LazyList
   println(tenFibs) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
 end main
 =======================================================================
-
 
 LAZY LIST
 =========
