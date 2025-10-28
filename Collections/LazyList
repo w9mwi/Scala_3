@@ -88,6 +88,9 @@ and performance issues.  A LazyList allocates memory for each of its
 elements only when the element is referenced; instead of allocating
 memory for all its elements as a List does.
 
+NOTE: The following code sample uses the #:: operator, which prepends
+      a single element to an existing LazyList.
+
 =======================================================================
 import scala.collection.immutable.LazyList
 
@@ -100,78 +103,19 @@ import scala.collection.immutable.LazyList
   //        appear on both sides of the equals sign (=).
   lazy val fibs:LazyList[BigInt] =
     BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map { case (a, b) => a + b }
+  println(fibs.take(10).toList) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
 
-  // Take the first 10 elements of fibs for evaluation...
-  var tenFibs = fibs.take(10).toList
-  println(tenFibs) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
+  // The following 2 lines of code obtain the same result as
+  // the above 2 lines of code.  Here, the fibonacci numbers
+  // are obtained via the RECURSIVE fibonacci method below.
+  lazy val fibs2:LazyList[BigInt] = fibonacci(0, 1).take(10)
+  println(fibs2.toList) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
+
+  /**********************************************************
+  * This fibonacci() method is RECURSIVE.
+  **********************************************************/
+  def fibonacci(a: BigInt, b: BigInt): LazyList[BigInt] =
+    a #:: fibonacci(b, a + b)
+  end fibonacci
 end main
 =======================================================================
-
-LAZY LIST
-=========
-A LazyList generates/computes its elements not when it's declared/constructed,
-but only when one or more of its elements is referenced at runtime.  (The following
-code sample demonstrates this.)  This allows for efficient handling of large, or even
-infinite, sequences.  This is the primary reason for using a LazyList instead of
-a regular List.
-
-The #:: operator is used to prepend a single element to an existing LazyList,
-and is demonstrated in the following program.
-
-===================================================================================
-@main def main() =
-  // *******************************************************************
-  // This section demonstrates that a LazyList doesn't get computed when
-  // it's constructed, as the following two println statements reveal.
-  // NOTICE:  The Scala keyword "Nil" cannot be used with a LazyList.
-  //          Instead, LazyList.empty is used, as shown here...
-  val lazyList_1:LazyList[Int] = 1 #:: 2 #:: 3 #:: LazyList.empty
-  println(s"lazyList_1 = $lazyList_1") // PRINTS: lazyList_1 = LazyList(<not computed>)
-
-  val lazyList_2:LazyList[Int] = -1 #:: 0 #:: lazyList_1
-  println(s"lazyList_2 = $lazyList_2") // PRINTS: lazyList_2 = LazyList(<not computed>)
-
-  // *******************************************************************
-  // This section demonstrates the contents of lazyList_2 are generated
-  // (computed) only when its elements are referenced, as the following
-  // two println statements reveal.
-  for (x <- lazyList_2) print(s"x = $x, ") // PRINTS: x = -1, x = 0, x = 1, x = 2, x = 3,
-
-  println(s"\nlazyList_2 = $lazyList_2") // PRINTS: lazyList_2 = LazyList(-1, 0, 1, 2, 3)
-===================================================================================
-
-The following program uses a LazyList and the recursive fibonacci() method
-to compute fibonacci numbers.
-
-===================================================================================
-/**********************************************************
-* This fibonacci() method is RECURSIVE
-**********************************************************/
-def fibonacci(a: BigInt, b: BigInt): LazyList[BigInt] =
-  a #:: fibonacci(b, a + b)
-end fibonacci
-
-@main def main() =
-  // The following call to take(11) constructs a LazyList of 11 elements.
-  // The number passed to the take() method is what forces the recursive
-  // fibonacci() method to terminate when it reaches the last element
-  // of the LazyList.
-  val fibonacciLazyList: LazyList[BigInt] = fibonacci(0, 1).take(11)
-
-  // At this point fibonacciLazyList won't show the result because
-  // that result doesn't get generated/computed until at least one
-  // element of the LazyList is accessed.
-  println(s"fibonacciLazyList = $fibonacciLazyList,  fibonacciLazyList.size = ${fibonacciLazyList.size}")
-  // PRINTS: fibonacciLazyList = LazyList(<not computed>),  fibonacciLazyList.size = 11
-
-  // Here we finally access elements of fibonacciLazyList;
-  // which triggers the result to be generated/computed.
-  for (x <- fibonacciLazyList) print(s"x = $x, ")
-  // PRINTS: x = 0, x = 1, x = 1, x = 2, x = 3, x = 5, x = 8, x = 13, x = 21, x = 34, x = 55,
-
-  // Convert the LazyList to a regular List.
-  val listResult: List[BigInt] = fibonacciLazyList.toList
-  println(s"\nlistResult = $listResult")
-  // PRINTS: listResult = List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
-end main
-===================================================================================
