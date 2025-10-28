@@ -10,10 +10,10 @@ to its declaration, as shown in the code sample below.
 NOTE:  Only a Scala val (not a var) can be declared as 'lazy'.
 
        // The following line WON'T COMPILE because a var can't be declared as lazy.
-       lazy var number_1:Int =  111
+       lazy var number:Int = 111
 
        // The following line WILL COMPILE because a val can be declared as lazy.
-       lazy val number_1:Int =  111
+       lazy val number:Int = 111
 
 =======================================================================
 @main def main():Unit =
