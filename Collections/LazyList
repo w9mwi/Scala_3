@@ -43,17 +43,19 @@ end main
 
 LazyList
 ========
-The reason to use a lazy declaration (instead of a regular declaration)
-has to do with memory and performance issues.  A lazy declaration has
-the capability to store only the computed parts (the results) of the
-collection in memory, instead of storing all elements of the collection
-in memory.
+Scala contains a LazyList class that differs from the regular List class.
+The reason to use a LazyList (instead of a regular List) has to do with
+memory and performance issues.  A LazyList can store only the computed
+parts (the results) of the list in memory, instead of storing all elements
+of the list in memory.
 
-A Scala lazy List can be declared using the "lazy" keyword, or by
-declaring a LazyList, which is a Scala class.  For example...
+A Scala LazyList can be declared using the "lazy" keyword, or without using
+the "lazy" keyword, as the following two lines of code demonstrate.
 
 lazy val intList_1:List[Int] = List(1, 2, 3)
 val intList_2:LazyList[Int]  = LazyList(1, 2, 3)
+
+...CONTINUE HERE...
 
 intList_1 and intList_2 both represent a "lazy" List because their
 declarations are not executed until the lists are referenced.  Either
