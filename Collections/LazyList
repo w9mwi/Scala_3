@@ -43,11 +43,11 @@ end main
 
 LazyList
 ========
-Recall, the reason for using a lazy declaration instead of a regular
-declaration has to do with memory and performance issues.  A lazy
-declaration has the capability to store only the computed parts (the
-results) of the collection in memory, instead of storing all elements
-of the collection in memory, most of which could be empty.
+The reason to use a lazy declaration (instead of a regular declaration)
+has to do with memory and performance issues.  A lazy declaration has
+the capability to store only the computed parts (the results) of the
+collection in memory, instead of storing all elements of the collection
+in memory.
 
 A Scala lazy List can be declared using the "lazy" keyword, or by
 declaring a LazyList, which is a Scala class.  For example...
