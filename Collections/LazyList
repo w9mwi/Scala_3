@@ -83,6 +83,7 @@ elements are only computed when requested, you can define an infinite
 series and then take only a finite portion of the collection to work with.
 The following code sample demonstrates using a LazyList for this purpose.
 
+=======================================================================
 import scala.collection.immutable.LazyList
 @main def main():Unit =
   // Define an infinite Fibonacci sequence, assigning it to the val fibs.
