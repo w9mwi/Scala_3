@@ -13,7 +13,7 @@ NOTE:  Only a Scala val (not a var) can be declared as 'lazy'.
        lazy var number_1:Int =  111
 
        // The following line WILL COMPILE because a val can be declared as lazy.
-       lazy var number_1:Int =  111
+       lazy val number_1:Int =  111
 
 =======================================================================
 @main def main():Unit =
