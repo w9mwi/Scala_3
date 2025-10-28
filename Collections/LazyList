@@ -93,11 +93,11 @@ import scala.collection.immutable.LazyList
 
 @main def main():Unit =
   // Define an infinite Fibonacci sequence, and assign it to lazy val fibs.
-  //
-  // NOTICE:  The lazy val "fibs" appears on BOTH SIDES of the equals sign (=).
-  //          The following line of code WON'T COMPILE if you remove the
-  //          keyword "lazy".  Only when the val "fibs" is declared "lazy"
-  //          can "fibs" appear on both sides of the equals sign (=).
+  // NOTE:  When the val "fibs" is declared in the following line of code,
+  //        "fibs" appears on BOTH SIDES of the equals sign (=).  That
+  //        line of code WON'T COMPILE if you remove the keyword "lazy".
+  //        Only when the val "fibs" is declared "lazy" can "fibs"
+  //        appear on both sides of the equals sign (=).
   lazy val fibs:LazyList[BigInt] =
     BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map { case (a, b) => a + b }
 
