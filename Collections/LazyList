@@ -102,6 +102,7 @@ import scala.collection.immutable.LazyList
   //    The "lazy" keyword is what permits that behavior.
   //    That line of code won't compile if you remove the keyword lazy.
   // 3) The #:: operator prepends a single element to an existing LazyList.
+  // 4) Removing the keyword case doesn't change behavior, so it's not required.
   lazy val fibs:LazyList[BigInt] =
     BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map { case (a, b) => a + b }
   println(fibs.take(10).toList) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
