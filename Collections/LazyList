@@ -49,33 +49,39 @@ memory and performance issues.  A LazyList can store only the computed
 parts (the results) of the list in memory, instead of storing all elements
 of the list in memory.
 
-A Scala LazyList can be declared using the "lazy" keyword, or without using
-the "lazy" keyword, as the following two lines of code demonstrate.
+The following three List declarations are "lazy", but their "lazy" behavior
+differs as explained below.
 
-lazy val intList_1:List[Int] = List(1, 2, 3)
-val intList_2:LazyList[Int]  = LazyList(1, 2, 3)
+1)  lazy val intlist:List[Int] = List(1, 2, 3)
 
-...CONTINUE HERE...
+    The val intList is declared 'lazy'.  This means intList gets initialized
+    not when it's declared, but only the first time intList is referenced.
+    Since intList points to a regular List (not a LazyList), all elements of
+    List are computed and stored in memory the first time intList is referenced.
 
-intList_1 and intList_2 both represent a "lazy" List because their
-declarations are not executed until the lists are referenced.  Either
-declaration can be used.  The difference between the two declarations
-is related to performance (memory usage and execution speed), which
-isn't covered here.  Generally, if you want to use a "lazy" List, use
-Scala's LazyList class instead of declaring a regular List as "lazy."
+2)  val intlist:LazyList[Int] = LazyList(1, 2, 3)
 
-The reason for using a lazy declaration instead of a regular declaration
-has to do with memory and performance issues.  A lazy declaration has
-the capability to store only the computed parts (the results) of the
-collection in memory, instead of the entire collection all its
-elements, most of which could be empty.
+    The val intList is not declared 'lazy', so intList gets initialized upon
+    its declaration.  The elements of a LazyList are always 'lazy', so each
+    element of LazyList is computed only the first time the element referenced.
+
+3)  lazy val intlist:LazyList[Int] = LazyList(1, 2, 3)
+
+    The val intList is declared 'lazy'.  This means intList gets initialized
+    not when it's declared, but only the first time intList is referenced.
+    The elements of a LazyList are always 'lazy', so each element of LazyList
+    is computed only the first time the element referenced.
+
+The reason for using a lazy declaration (instead of a regular declaration)
+has to do with memory and performance issues.  A lazy declaration will
+store only the computed parts (the results) of a val, or a collection,
+in memory; instead of allocating all memory space when it's declared.
 
 The most common use for a lazy declaration is to represent a sequence
-that is theoretically infinite, or finite but extremely large.  Since
-the collection's elements are only computed when requested, you can
-define an infinite series and then take only a finite portion of the
-collection to work with.  The following code sample demonstrates using
-a LazyList for this purpose.
+that's extremely large, or theoretically infinite.  Since the collection's
+elements are only computed when requested, you can define an infinite
+series and then take only a finite portion of the collection to work with.
+The following code sample demonstrates using a LazyList for this purpose.
 
 import scala.collection.immutable.LazyList
 @main def main():Unit =
