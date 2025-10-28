@@ -5,8 +5,19 @@ to the declaration, as demonstrated in the following code sample.
 
 Lazy evaluation means that the code associated with a lazy declaration
 isn't executed when it's declared; it's executed only when the declared
-val is referenced the first time.  Read in-line comments in the following
-code sample.
+val is referenced the first time.
+
+NOTE:  Only a Scala val (not a var) can be declared as 'lazy'.
+
+       // The following line WON'T COMPILE because a var can't be declared as lazy.
+       lazy var number_1:Int =  111
+
+       // The following line WILL COMPILE because a val can be declared as lazy.
+       lazy var number_1:Int =  111
+
+
+Read in-line comments in the following
+code sample.  NOTE
 
 @main def main():Unit =
   // The following line of code won't execute upon its declaration
