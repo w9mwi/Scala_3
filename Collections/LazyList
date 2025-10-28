@@ -72,6 +72,9 @@ differs as explained below.
     The elements of a LazyList are always 'lazy', so each element of LazyList
     is computed only the first time the element referenced.
 
+NOTE: When using a LazyList, you should always declare the val to which
+      the LazyList gets assigned as lazy; as shown in example 3) above.
+
 The reason for using a lazy declaration (instead of a regular declaration)
 has to do with memory and performance issues.  A lazy declaration will
 store only the computed parts (the results) of a val, or a collection,
