@@ -56,7 +56,7 @@ list in memory.
 The following three declarations demonstrate two different forms of lazy
 evaluation.  The first form of lazy evaluation occurs by prepending the
 'lazy' keyword to the val declaration.  The second form of lazy evaluation
-occurs by using a LazyList.
+occurs when the val's type is a LazyList.
 
 1)  val intlist:LazyList[Int] = LazyList(1, 2, 3)
 
