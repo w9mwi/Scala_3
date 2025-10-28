@@ -53,21 +53,23 @@ memory and performance issues.  A LazyList stores only the computed
 elements of the list in memory, instead of storing all elements of the
 list in memory.
 
-The following three List declarations are "lazy"; however, their "lazy"
-behavior differs as explained below.
+The following three declarations demonstrate two different forms of lazy
+evaluation.  The first form of lazy evaluation occurs by prepending the
+'lazy' keyword to the val declaration.  The second form of lazy evaluation
+occurs by using a LazyList.
 
-1)  lazy val intlist:List[Int] = List(1, 2, 3)
+1)  val intlist:LazyList[Int] = LazyList(1, 2, 3)
+
+    The val intList is not declared 'lazy', so intList gets initialized upon
+    its declaration.  The elements of a LazyList are always 'lazy', so each
+    element of LazyList is computed only the first time the element referenced.
+
+2)  lazy val intlist:List[Int] = List(1, 2, 3)
 
     The val intList is declared 'lazy'.  This means intList gets initialized
     not when it's declared, but only the first time intList is referenced.
     Since intList points to a regular List (not a LazyList), all elements of
     List are computed and stored in memory the first time intList is referenced.
-
-2)  val intlist:LazyList[Int] = LazyList(1, 2, 3)
-
-    The val intList is not declared 'lazy', so intList gets initialized upon
-    its declaration.  The elements of a LazyList are always 'lazy', so each
-    element of LazyList is computed only the first time the element referenced.
 
 3)  lazy val intlist:LazyList[Int] = LazyList(1, 2, 3)
 
