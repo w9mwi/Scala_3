@@ -95,14 +95,34 @@ NOTE: The following code sample uses the #:: operator, which prepends
 import scala.collection.immutable.LazyList
 
 @main def main():Unit =
-  // NOTES REGARDING THE FOLLOWING LINE OF CODE:
-  // 1) It define an infinite Fibonacci sequence, and assigns
-  //    it to the lazy val fibs.
-  // 2) "fibs" appears on BOTH SIDES of the equals sign (=).
-  //    The "lazy" keyword is what permits that behavior.
-  //    That line of code won't compile if you remove the keyword lazy.
+  // The following line of code defines and calculates a Fibonacci
+  // sequence from 0 to the value passed to the fibs.take() method
+  // in the println() below.  This is how it works:
+  // 1) The first two numbers of a Fibonnacci sequence are always
+  //    0 and 1 because Fibonnacci(0) = 0, Fibonnacci(1) = 1.
+  //    Therefore, the val fibs gets initialized to this:
+  //    BigInt(0) #:: BigInt(1) #:: fibs
+  //    (The size of fibs isn't specified, which is what we want.)
+  // 2) When fibs.zip(fibs.tail) is invoked, the zip function returns
+  //    a LazyList with each of its elements containing a BigInt
+  //    tuple, like this:
+  //   (0,1)
+  //   (1,1)
+  //   (1,2)
+  //   (2,3)
+  //   ...
+  // 3) For each BigInt tuple element in fibs, the map() function
+  //    is invoked, returning the sum of the tuple in a single
+  //    element of LazyList.  That's how each element of fibs
+  //    gets constructed.
+  //
+  // MORE NOTES REGARDING THE FOLLOWING LINE OF CODE
+  // 1) The val fibs appears on BOTH SIDES of the equals sign (=).
+  //    The lazy keyword is what permits that behavior.  This
+  //    line of code won't compile if you remove the keyword lazy.
   // 3) The #:: operator prepends a single element to an existing LazyList.
-  // 4) Removing the keyword case doesn't change behavior, so it's not required.
+  // 4) The 'case' keyword appears in the following line, but removing
+  //    it doesn't change behavior, so it's not required.
   lazy val fibs:LazyList[BigInt] =
     BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map { case (a, b) => a + b }
   println(fibs.take(10).toList) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
