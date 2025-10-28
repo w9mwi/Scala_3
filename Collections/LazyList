@@ -58,7 +58,7 @@ evaluation.  The first form of lazy evaluation occurs by prepending the
 'lazy' keyword to the "val intlist" declaration.  The second form of lazy
 evaluation occurs when using a LazyList.
 
-1)  lazy val intlist:List[Int] = List(1, 2, 3)
+1)  lazy val intList:List[Int] = List(1, 2, 3)
 
     The val intList is declared 'lazy', which means means intList gets initialized
     not when it's declared, but only the first time intList is referenced.  Since
@@ -72,7 +72,7 @@ evaluation occurs when using a LazyList.
     allocates memory for each element only the first time that element is
     referenced; instead of allocating memory for all its elements as a List does.
 
-3)  lazy val intlist:LazyList[Int] = LazyList(1, 2, 3)
+3)  lazy val intList:LazyList[Int] = LazyList(1, 2, 3)
 
     The val intList is declared 'lazy', which means means intList gets initialized
     not when it's declared, but only the first time intList is referenced.  The
