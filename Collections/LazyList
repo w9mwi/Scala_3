@@ -86,7 +86,7 @@ NOTE: When declaring a LazyList, you should always prepend the 'lazy'
 The reason for using a LazyList instead of a List has to do with memory
 and performance issues.  A LazyList allocates memory for each of its
 elements only when the element is referenced; instead of allocating
-memory for all its elements as a List does.
+memory for all its elements upon its declaration, as a List does.
 
 NOTE: The following code sample uses the #:: operator, which prepends
       a single element to an existing LazyList.
