@@ -49,12 +49,12 @@ LazyList
 ========
 Scala contains a LazyList class that differs from the regular List class.
 The reason to use a LazyList (instead of a regular List) has to do with
-memory and performance issues.  A LazyList can store only the computed
-parts (the results) of the list in memory, instead of storing all elements
-of the list in memory.
+memory and performance issues.  A LazyList stores only the computed
+elements of the list in memory, instead of storing all elements of the
+list in memory.
 
-The following three List declarations are "lazy", but their "lazy" behavior
-differs as explained below.
+The following three List declarations are "lazy"; however, their "lazy"
+behavior differs as explained below.
 
 1)  lazy val intlist:List[Int] = List(1, 2, 3)
 
