@@ -92,8 +92,6 @@ NOTE: The following code sample uses the #:: operator, which prepends
       a single element to an existing LazyList.
 
 =======================================================================
-import scala.collection.immutable.LazyList
-
 @main def main():Unit =
   // The following line of code defines and calculates a Fibonacci
   // sequence from 0 to the value passed to the fibs.take() method
@@ -121,10 +119,8 @@ import scala.collection.immutable.LazyList
   //    The lazy keyword is what permits that behavior.  This
   //    line of code won't compile if you remove the keyword lazy.
   // 3) The #:: operator prepends a single element to an existing LazyList.
-  // 4) The 'case' keyword appears in the following line, but removing
-  //    it doesn't change behavior, so it's not required.
   lazy val fibs:LazyList[BigInt] =
-    BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map { case (a, b) => a + b }
+    BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map { (a, b) => a + b }
   println(fibs.take(10).toList) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
 
   // The following 2 lines of code obtain the same result as
@@ -134,8 +130,8 @@ import scala.collection.immutable.LazyList
   println(fibs2.toList) // PRINTS:  List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
 
   /**********************************************************
-  * This fibonacci() method is RECURSIVE.
-  **********************************************************/
+   * This fibonacci() method is RECURSIVE.
+   **********************************************************/
   def fibonacci(a: BigInt, b: BigInt): LazyList[BigInt] =
     a #:: fibonacci(b, a + b)
   end fibonacci
