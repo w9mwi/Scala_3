@@ -57,8 +57,8 @@ you'll know how to use them on other collections.
   // ============================================================
   // The unzip method can be called on any List that has been
   // zipped, which means any List that contains a tuple pair
-  // in each of its elements.  The unzip method returns two
-  // Lists in a tuple pair, as shown here.
+  // of Lists in each of its elements.  The unzip method returns
+  // two Lists in a tuple pair, as shown here.
   val unzippedList:(List[Int], List[Int]) = zippedList.unzip
   println(s"7) unzippedList = $unzippedList")
   // PRINTS: 7) unzippedList = (List(600, 700, -1, -1, -1),List(100, 200, 300, 400, 500))
