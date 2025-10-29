@@ -1,6 +1,7 @@
-To understand the concepts listed below, see this web page:
-https://github.com/w9mwi/Scala_3/tree/main/Collections
+To understand theese concepts...
 
 1) Lazy Evaluation versus Eager/Strict Evaluation
 2) The Scala keyword 'lazy'
 3) The Scala class LazyList
+
+SEE --> https://github.com/w9mwi/Scala_3/tree/main/Collections
