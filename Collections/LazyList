@@ -139,19 +139,21 @@ end main
 =======================================================================
 
 The following code sample shows how to generate a list of
-prime numbers using a LazyList.  Where, as usual, the size
-of the LazyList is undefined until it's executed.
+prime numbers using a LazyList.  Notice tat the size of
+the LazyList is undefined in its declaration.
 
 @main def main():Unit =
   // isPrime determines if the Int value passed to it is a prime number.
   def isPrime(n: Int): Boolean = (2 to Math.sqrt(n).toInt).forall(n % _ != 0)
 
-  // The following LazyList represents all prime numbers.
+  // The following LazyList declaration represents all prime numbers.
+  // The LazyList.from method creates an infinite LazyList starting
+  // at 2 and incrementing by 1.
   val primes: LazyList[Int] = LazyList.from(2).filter(isPrime)
 
   // Take the first 10 prime numbers.
   val firstTenPrimes = primes.take(10).toList
   println(s"firstTenPrime =  $firstTenPrimes")
-  // PRINTS:  firstTenPrime =  List(2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
+// PRINTS:  firstTenPrime =  List(2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
 end main
 =======================================================================
