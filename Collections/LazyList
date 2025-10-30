@@ -4,7 +4,7 @@ Lazy evaluation means that the code associated with a lazy declaration
 isn't executed when it's declared; it's executed only when the declared
 val is referenced the first time.
 
-To declare a val as 'lazy', you must prepend the Scala "lazy" keyword
+To declare a val as 'lazy', you must prepend the Scala keyword 'lazy'
 to its declaration, as shown in the code sample below.
 
 NOTE:  Only a Scala val (not a var) can be declared as 'lazy'.
@@ -47,7 +47,7 @@ end main
 
 LazyList
 ========
-Scala contains a LazyList class that differs from the regular List class.
+Scala has a LazyList class that differs from the regular List class.
 The reason to use a LazyList (instead of a regular List) has to do with
 memory and performance issues.  A LazyList stores only the computed
 elements of the list in memory, instead of storing all elements of the
@@ -56,7 +56,7 @@ list in memory.
 The following three declarations demonstrate two different forms of lazy
 evaluation.  The first form of lazy evaluation occurs by prepending the
 'lazy' keyword to the "val intlist" declaration.  The second form of lazy
-evaluation occurs when using a LazyList.
+evaluation occurs when a LazyList class is used.
 
 1)  lazy val intList:List[Int] = List(1, 2, 3)
 
