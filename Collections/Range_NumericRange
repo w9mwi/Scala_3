@@ -1,6 +1,26 @@
 Scala 3 contains a Range class and a NumericRange class.  The Range class
-works exclusively with Int values.  The NumericRange class is more generic,
-as it works with other numeric types like Char, Long, BigInt, and BigDecimal.
+works exclusively with Int values.  The NumericRange class works with
+other numeric types like Long, BigInt, and BigDecimal.
 
 When you need a range that works with Int values, use the Range class.
 When you need a range that works with non-Int numeric types, use the NumericRange class.
+
+
+@main def main():Unit =
+  // A Range specified with the word 'until' has a data type of
+  // Range; which doesn't include the value appearing after the
+  // word 'until'.
+  var myRange_1:Range = 1 until 5
+  myRange_1.foreach {
+    x => print(x + ", ")  // PRINTS: 1, 2, 3, 4,
+  }
+  println
+  // A Range specified with the word 'to' has a data type of
+  // Range.Inclusive; which includes the value appearing after
+  // the word 'to'.
+  var myRange_2:Range.Inclusive = 1 to 5
+  myRange_2.foreach {
+    x => print(x + ", ") // PRINTS: 1, 2, 3, 4, 5,
+  }
+
+end main
