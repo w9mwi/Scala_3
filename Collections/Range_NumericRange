@@ -6,6 +6,8 @@ When you need a range that works with Int values, use the Range class.
 When you need a range that works with non-Int numeric types, use the NumericRange class.
 
 ========================================================
+The following program demonstrates several ways to use
+the Range class.
 
 @main def main():Unit =
   print("1) myRange_1 = ")
@@ -60,4 +62,44 @@ When you need a range that works with non-Int numeric types, use the NumericRang
   // myRange_2 = 1 to 6 by 1  // WON'T COMPILE
   // myRange_2 = 1 until 6    // WON'T COMPILE
 end main
+
 ========================================================
+The following program demonstrates several ways to use
+the NumericRange class.
+
+import scala.collection.immutable.NumericRange
+
+@main def main():Unit =
+  val charRange:NumericRange.Inclusive[Char] = 'a' to 'm'
+  println(s"1) charRange = $charRange")
+  // PRINTS: 1) charRange = NumericRange a to m
+
+  print(s"2) charRange = ")
+  charRange.foreach {
+    x => print(x + ", ")
+    // PRINTS: 2) charRange = a, b, c, d, e, f, g, h, i, j, k, l, m,
+  }
+  println
+
+  val bigDecimalRange:NumericRange.Exclusive[BigDecimal] =
+      BigDecimal("0.0") until BigDecimal("1.0") by BigDecimal("0.1")
+  println(s"3) bigDecimalRange = $bigDecimalRange")
+  // PRINTS: 3) bigDecimalRange = NumericRange 0.0 until 1.0 by 0.1
+
+  print("4) bigDecimalRange = ")
+  bigDecimalRange.foreach {
+    x => print(x.toString() + ", ")
+    // PRINTS: 4) bigDecimalRange = 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
+  }
+  println
+
+  print("5) longRange = ")
+  val longRange:NumericRange[Long] = 0L to 12L by 3
+  longRange.foreach {
+    x => print(x + ", ")
+    // PRINTS: 5) longRange = 0, 3, 6, 9, 12,
+  }
+end main
+========================================================
+
+
