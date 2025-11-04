@@ -1,6 +1,6 @@
 Scala 3 contains a Range class and a NumericRange class.  The Range class
 works exclusively with Int values.  The NumericRange class works with
-other numeric types like Long, BigInt, and BigDecimal.
+other numeric types like Char, Long, BigInt, and BigDecimal.
 
 When you need a range that works with Int values, use the Range class.
 When you need a range that works with non-Int numeric types, use the NumericRange class.
