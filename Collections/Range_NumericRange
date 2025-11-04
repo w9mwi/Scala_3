@@ -5,6 +5,9 @@ other numeric types like Char, Long, BigInt, and BigDecimal.
 When you need a range that works with Int values, use the Range class.
 When you need a range that works with non-Int numeric types, use the NumericRange class.
 
+All Ranges is Scala are 'lazy', which means the elements of the Range
+are calculated only when they are referenced.
+
 ========================================================
 The following program demonstrates several ways to use
 the Range class.
