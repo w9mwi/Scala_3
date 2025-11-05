@@ -71,7 +71,6 @@ The following program demonstrates several ways to use
 the NumericRange class.
 
 import scala.collection.immutable.NumericRange
-
 @main def main():Unit =
   val charRange:NumericRange.Inclusive[Char] = 'a' to 'm'
   println(s"1) charRange = $charRange")
@@ -104,5 +103,46 @@ import scala.collection.immutable.NumericRange
   }
 end main
 ========================================================
+The following program demonstrates how to obtain the
+indicies of all elements in a collection by invoking the
+indicies method; and how to initialize an ArrayBuffer
+and a ListBuffer by invoking the range method.
+
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
+@main def main():Unit =
+  // *********************************************************
+  // The code in this section demonstrates that invoking the
+  // indices method on a collection returns a Range value
+  // corresponding to the element indices of that collection.
+  val charList:List[Char] = List('a', 'b', 'c', 'x', 'y', 'z')
+  println(s"1) charList = $charList") // PRINTS: 1) charList = List(a, b, c, x, y, z)
+  var myRange:Range = charList.indices
+  println(s"2) myRange = $myRange") // PRINTS: 2) myRange = Range 0 until 6
+
+  val floatVector:Vector[Float]= Vector(-4.4F, -3.3F, -2.2F, -1.1F, 0.0F)
+  println(s"3) floatVector = $floatVector") // PRINTS: 3) floatVector = Vector(-4.4, -3.3, -2.2, -1.1, 0.0)
+  myRange = floatVector.indices
+  println(s"4) myRange = $myRange") // PRINTS: 4) myRange = Range 0 until 5
+
+  val intList = List(1, 2, 3, 4, 5)
+  println(s"5) intList = $intList") // PRINTS: 5) intList = List(1, 2, 3, 4, 5)
+  myRange = intList.indices
+  println(s"6) myRange = $myRange") // PRINTS: 6) myRange = Range 0 until 5
 
 
+  // *********************************************************
+  // The code in this section demonstrates...
+  // 1) How to initialize the contents of an ArrayBuffer and
+  //    a ListBuffer by invoking the range method.
+  // 2) How to obtain the element indices of those two
+  //    collections by invoking the indices method.
+  val arrayBuf:ArrayBuffer[Int] = ArrayBuffer.range(-3, 3)
+  println(s"7) arrayBuf = $arrayBuf") // PRINTS: 7) arrayBuf = ArrayBuffer(-3, -2, -1, 0, 1, 2)
+  myRange = arrayBuf.indices
+  println(s"8) myRange = $myRange") // PRINTS: 8) myRange = Range 0 until 6
+
+  val listBuf:ListBuffer[Int] = ListBuffer.range(-3, 3, 2)
+  println(s"9) listBuf = $listBuf") // PRINTS: 9) listBuf = ListBuffer(-3, -1, 1)
+  myRange = listBuf.indices
+  println(s"10) myRange = $myRange") // PRINTS: 10) myRange = Range 0 until 3
+end main
