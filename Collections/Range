@@ -97,7 +97,7 @@ import scala.collection.immutable.NumericRange
   println
 
   print("5) longRange = ")
-  val longRange:NumericRange[Long] = 0L to 12L by 3
+  val longRange:NumericRange[Long] = 0L to 12L by 3L
   longRange.foreach {
     x => print(x + ", ")
     // PRINTS: 5) longRange = 0, 3, 6, 9, 12,
