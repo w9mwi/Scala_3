@@ -7,7 +7,7 @@ that work on the Scala List class also work on other Scala collections
 you understand how these operators work on a List class, you'll understand
 how they work on other collection classes.
 
-The following five List operators work on the Scala 3 List class.
+The following five operators work on the Scala 3 List class.
 
 1) ::   Constructs a List.  Often called the "cons" operator.  Use it to
         prepend one or more elements to a List.  The right-most operand
