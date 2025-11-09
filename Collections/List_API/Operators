@@ -1,0 +1,4 @@
+The following operators (which are actually methods) work
+on the Scala 3 List class.
+
+1)  ::  (The "cons" operator)
