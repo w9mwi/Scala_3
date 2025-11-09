@@ -10,7 +10,7 @@ how they work on other collection classes.
 The following five List operators work on the Scala 3 List class.
 
 1) ::   Constructs a List.  Often called the "cons" operator.  Use it to
-        prepend one or more values to a List.  The last operand in the
+        prepend one or more elements to a List.  The last operand in the
         line of code must evaluate to a List; all other operands must
         evaluate to a value.
 
@@ -31,8 +31,8 @@ The following five List operators work on the Scala 3 List class.
         functionality as the ++ operator.
 
 3) ++   Concatenates two Lists.
-        This operator concatenates two Scala collections of the same type that
-        are of type type Seq.  Therefore, it works with many Scala collections,
+        This operator concatenates two Scala collections of the same type, that
+        inherit from type Seq.  Therefore, it works with many Scala collections,
         including the List class.
 
         @main def main():Unit =
@@ -64,9 +64,9 @@ The following five List operators work on the Scala 3 List class.
           println(s"intList = $intList") // PRINTS: intList = List(111, 222, 333, 444, 555)
         end main
 
-5) :+   Appends one or more elements to the end of a List.  The element must be
-        on the right side of the operator, the List on the left side.  This is
-        an O(n) operation (the larger the List, the less efficient it becomes).
+5) :+   Appends one or more elements to the end of a List.  The left-most operator
+        must evaluate to a List.  All other operators must evaluate to a value.
+        This is an O(n) operation (the larger the List, the less efficient it becomes).
         So avoid using the :+ operator on large lists.
 
         @main def main():Unit =
