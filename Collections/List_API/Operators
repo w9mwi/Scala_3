@@ -1,26 +1,59 @@
 LIST OPERATORS
 ==============
 
-Many of the operators that work on the Scala List class also work on other
-Scala collections (i.e, Vectors, ArrayBuffers, ListBuffers, etc.) in a
-similar way.  So once you understand how these operators work on a List
-class, you'll understand how they work on other collection classes.
+All Scala operators are actually Scala methods.  Many of the operators
+that work on the Scala List class also work on other Scala collections
+(i.e, Vectors, ArrayBuffers, ListBuffers, etc.) in a similar way.  Once
+you understand how these operators work on a List class, you'll understand
+how they work on other collection classes.
 
 When a List operator contains a colon char (:), it means the operand closest
 to the colon char (:) must evaluate to a List, which means the following.
 
    * When the left-most char in a List operator is a colon (:), the operand
      immediately to the left of the operator must evaluate to a List.
+
    * When the right-most char in a List operator is a colon (:), the operand
      immediately to the right of the operator must evaluate to a List.
 
-The following ___ List operators (which are actually methods) work on the
-Scala 3 List class.
+   WARNING: This rule doesn't apply to the :: operator.  When the :: operator
+            is used to generate a List, the operand left must be a
+            a value; the operand to its right must be a List.
 
-1) ::  (Construct a List.  Often called the "cons" operator.)
+The following ___ List operators work on the Scala 3 List class.
 
-2) ::: (Concatenate two Lists.)
+1) ::  Constructs a List.  Often called the "cons" operator.  Use it to
+       prepend one or more values to a List.  The last operand in the
+       line of code must evaluate to a List; all other operands must
+       evaluate to a value.
 
-3) ++  (Concatenate two Lists.)
-       This operator concatenates any two Scala classe that are of type Seq.
-       It works with many other Scala collections, including the List class.
+       @main def main():Unit =
+         var intList:List[Int] = 333 :: List(444, 555)
+         println(s"intList = $intList")  // PRINTS: intList = List(333, 444, 555)
+         intList = 111 :: 222 :: intList // intList
+         println(s"intList = $intList")  // PRINTS: intList = List(111, 222, 333, 444, 555)
+       end main
+
+2) :::  Concatenates two Lists.  See code example in 3) below.
+
+3) ++   Concatenates two Lists.
+        This operator concatenates two Scala classes of the same type that are
+        also of type Seq.  Therefore, it works with many Scala collections,
+        including the List class.
+
+        @main def main():Unit =
+          var intList:List[Int] = List(333, 444)
+          intList = intList ::: List(555, 666)
+          println(s"intList = $intList")  // PRINTS: intList = List(333, 444, 555, 666)
+          intList = List(111, 222) ++ intList
+          println(s"intList = $intList")  // PRINTS: intList = List(111, 222, 333, 444, 555, 666)
+        end main
+
+
+4) +:	  Prepends a single element to the beginning of a List. The element must
+        be on the left side of the operator, the List on the right side.
+
+5) :+	  Appends a single element to the end of a List.  The element must be
+        on the right side of the operator, the List on the left side.  This
+        is an O(n) operation, so it should be avoided for use on large lists.
+
