@@ -7,32 +7,19 @@ that work on the Scala List class also work on other Scala collections
 you understand how these operators work on a List class, you'll understand
 how they work on other collection classes.
 
-When a List operator contains a colon char (:), it means the operand closest
-to the colon char (:) must evaluate to a List, which means the following.
+The following five List operators work on the Scala 3 List class.
 
-   * When the left-most char in a List operator is a colon (:), the operand
-     immediately to the left of the operator must evaluate to a List.
+1) ::   Constructs a List.  Often called the "cons" operator.  Use it to
+        prepend one or more values to a List.  The last operand in the
+        line of code must evaluate to a List; all other operands must
+        evaluate to a value.
 
-   * When the right-most char in a List operator is a colon (:), the operand
-     immediately to the right of the operator must evaluate to a List.
-
-   WARNING: This rule doesn't apply to the :: operator.  When the :: operator
-            is used to generate a List, the operand left must be a
-            a value; the operand to its right must be a List.
-
-The following ___ List operators work on the Scala 3 List class.
-
-1) ::  Constructs a List.  Often called the "cons" operator.  Use it to
-       prepend one or more values to a List.  The last operand in the
-       line of code must evaluate to a List; all other operands must
-       evaluate to a value.
-
-       @main def main():Unit =
-         var intList:List[Int] = 333 :: List(444, 555)
-         println(s"intList = $intList")  // PRINTS: intList = List(333, 444, 555)
-         intList = 111 :: 222 :: intList
-         println(s"intList = $intList")  // PRINTS: intList = List(111, 222, 333, 444, 555)
-       end main
+        @main def main():Unit =
+          var intList:List[Int] = 333 :: List(444, 555)
+          println(s"intList = $intList")  // PRINTS: intList = List(333, 444, 555)
+          intList = 111 :: 222 :: intList
+          println(s"intList = $intList")  // PRINTS: intList = List(111, 222, 333, 444, 555)
+        end main
 
 2) :::  Concatenates two Lists.  See code example in 3) below.
 
@@ -50,8 +37,18 @@ The following ___ List operators work on the Scala 3 List class.
         end main
 
 
-4) +:	  Prepends a single element to the beginning of a List. The element must
-        be on the left side of the operator, the List on the right side.
+4) +:	  Prepends one or more elements to a List.  The last operand in the
+        line of code must evaluate to a List; all other operands must
+        evaluate to a value.  NOTICE: The +: and :: operators can be used
+        interchangeably, as they return the same result.
+
+        @main def main():Unit =
+          var intList:List[Int] = List(444, 555)
+          intList = 333 +: intList
+          println(s"intList = $intList") // PRINTS: intList = List(333, 444, 555, 666)
+          intList = 111 +: 222 +: intList
+          println(s"intList = $intList") // PRINTS: intList = List(111, 222, 333, 444, 555)
+        end main
 
 5) :+	  Appends a single element to the end of a List.  The element must be
         on the right side of the operator, the List on the left side.  This
