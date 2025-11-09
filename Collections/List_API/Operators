@@ -17,6 +17,10 @@ to the colon char (:) must evaluate to a List, which means the following.
 The following ___ List operators (which are actually methods) work on the
 Scala 3 List class.
 
-1) ::  (Used to construct a List.  Often called the "cons" operator.)
+1) ::  (Construct a List.  Often called the "cons" operator.)
 
-2) ::: (Used to concatenate two Lists.)
+2) ::: (Concatenate two Lists.)
+
+3) ++  (Concatenate two Lists.)
+       This operator concatenates any two Scala classe that are of type Seq.
+       It works with many other Scala collections, including the List class.
