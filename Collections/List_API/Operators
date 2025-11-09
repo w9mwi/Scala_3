@@ -1,4 +1,6 @@
 The following ___ operators (which are actually methods) work
 on the Scala 3 List class.
 
-1) ::  (The "cons" operator, which means construct.)
+1) ::  (Used to construct a List.  It's often called the "cons" operator.)
+
+2) ::: (Used to concatenate two Lists.)
