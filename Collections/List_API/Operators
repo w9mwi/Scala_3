@@ -10,9 +10,9 @@ how they work on other collection classes.
 The following five List operators work on the Scala 3 List class.
 
 1) ::   Constructs a List.  Often called the "cons" operator.  Use it to
-        prepend one or more elements to a List.  The last operand in the
-        line of code must evaluate to a List; all other operands must
-        evaluate to a value.
+        prepend one or more elements to a List.  The right-most operand
+        must evaluate to a List.  All other operands must evaluate to
+        a value.
 
         NOTE: The :: and +: operators can be used interchangeably, as they return
               the same result.  The :: operator works only on a List collection.
@@ -27,7 +27,7 @@ The following five List operators work on the Scala 3 List class.
           println(s"intList = $intList")  // PRINTS: intList = List(111, 222, 333, 444, 555)
         end main
 
-2) :::  Concatenates two Lists.  Works only on the List class, but has the same
+2) :::  Concatenates two Lists.  Works only on the List class.  Has the same
         functionality as the ++ operator.
 
 3) ++   Concatenates two Lists.
@@ -46,9 +46,8 @@ The following five List operators work on the Scala 3 List class.
         end main
 
 
-4) +:	Prepends one or more elements to a List.  The last operand in the
-        line of code must evaluate to a List; all other operands must
-        evaluate to a value.
+4) +:	Prepends one or more elements to a List.  The right-most operand must
+        evaluate to a List.  All other operands must evaluate to a value.
 
         NOTE: The +: and :: operators can be used interchangeably, as they return
               the same result.  The :: operator works only on a List collection.
@@ -64,10 +63,10 @@ The following five List operators work on the Scala 3 List class.
           println(s"intList = $intList") // PRINTS: intList = List(111, 222, 333, 444, 555)
         end main
 
-5) :+   Appends one or more elements to the end of a List.  The left-most operator
-        must evaluate to a List.  All other operators must evaluate to a value.
-        This is an O(n) operation (the larger the List, the less efficient it becomes).
-        So avoid using the :+ operator on large lists.
+5) :+   Appends one or more elements to a List.  The left-most operand must evaluate to
+        a List.  All other operands must evaluate to a value. This is an O(n) operation
+        (the larger the List, the less efficient it becomes).  Avoid using the :+ operator
+        on large lists.
 
         @main def main():Unit =
           var intList:List[Int] = List(111, 222)
