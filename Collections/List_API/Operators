@@ -1,7 +1,7 @@
 Many of the operators that work on the Scala List class also work on other
-Scala collections, such as Vectors, ArrayBuffers, ListBuffers, etc.  in a
-similar way.  So once you understand how these operators work on a List class,
-you'll understand how they work on other collection classes.
+Scala collections (i.e, Vectors, ArrayBuffers, ListBuffers, etc.) in a
+similar way.  So once you understand how these operators work on a List
+class, you'll understand how they work on other collection classes.
 
 When a List operator contains a colon char (:), it means the operand closest
 to the colon char (:) must evaluate to a List, which means the following.
