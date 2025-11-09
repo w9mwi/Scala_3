@@ -14,6 +14,12 @@ The following five List operators work on the Scala 3 List class.
         line of code must evaluate to a List; all other operands must
         evaluate to a value.
 
+        NOTE: The :: and +: operators can be used interchangeably, as they return
+              the same result.  The :: operator works only on a List collection.
+              The +: operator works on any Scala collection of type IterableOnce.
+              When working with Lists, use the :: operator because it's commonly
+              used in recursive functions and for pattern matching (head :: tail).
+
         @main def main():Unit =
           var intList:List[Int] = 333 :: List(444, 555)
           println(s"intList = $intList")  // PRINTS: intList = List(333, 444, 555)
@@ -21,26 +27,34 @@ The following five List operators work on the Scala 3 List class.
           println(s"intList = $intList")  // PRINTS: intList = List(111, 222, 333, 444, 555)
         end main
 
-2) :::  Concatenates two Lists.  See code example in 3) below.
+2) :::  Concatenates two Lists.  Works only on the List class, but has the same
+        functionality as the ++ operator.
 
 3) ++   Concatenates two Lists.
-        This operator concatenates two Scala classes of the same type that are
-        also of type Seq.  Therefore, it works with many Scala collections,
+        This operator concatenates two Scala collections of the same type that
+        are of type type Seq.  Therefore, it works with many Scala collections,
         including the List class.
 
         @main def main():Unit =
           var intList:List[Int] = List(333, 444)
+          // Use the ::: operator to concat two Lists...
           intList = intList ::: List(555, 666)
           println(s"intList = $intList")  // PRINTS: intList = List(333, 444, 555, 666)
+          // Use the ++ operator to concat two Lists...
           intList = List(111, 222) ++ intList
           println(s"intList = $intList")  // PRINTS: intList = List(111, 222, 333, 444, 555, 666)
         end main
 
 
-4) +:	  Prepends one or more elements to a List.  The last operand in the
+4) +:	Prepends one or more elements to a List.  The last operand in the
         line of code must evaluate to a List; all other operands must
-        evaluate to a value.  NOTICE: The +: and :: operators can be used
-        interchangeably, as they return the same result.
+        evaluate to a value.
+
+        NOTE: The +: and :: operators can be used interchangeably, as they return
+              the same result.  The :: operator works only on a List collection.
+              The +: operator works on any Scala collection of type IterableOnce.
+              When working with Lists, use the :: operator because it's commonly
+              used in recursive functions and for pattern matching (head :: tail).
 
         @main def main():Unit =
           var intList:List[Int] = List(444, 555)
@@ -50,7 +64,14 @@ The following five List operators work on the Scala 3 List class.
           println(s"intList = $intList") // PRINTS: intList = List(111, 222, 333, 444, 555)
         end main
 
-5) :+	  Appends a single element to the end of a List.  The element must be
+5) :+   Appends one or more elements to the end of a List.  The element must be
         on the right side of the operator, the List on the left side.  This
         is an O(n) operation, so it should be avoided for use on large lists.
 
+        @main def main():Unit =
+          var intList:List[Int] = List(111, 222)
+          intList = intList :+ 333
+          println(s"intList = $intList") // PRINTS: intList = List(111, 222, 333)
+          intList = intList :+ 444 :+ 555
+          println(s"intList = $intList") // PRINTS: intList = List(111, 222, 333, 444, 555)
+       end main
