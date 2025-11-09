@@ -1,5 +1,18 @@
-The following ___ operators (which are actually methods) work
-on the Scala 3 List class.
+Many of the operators that work on the Scala List class also work on other
+Scala collections, such as Vectors, ArrayBuffers, ListBuffers, etc.  in a
+similar way.  So once you understand how these operators work on a List class,
+you'll understand how they work on other collection classes.
+
+When a List operator contains a colon char (:), it means the operand closest
+to the colon char (:) must evaluate to a List.  EXAMPLES:
+
+   * When the left-most char in a List operator is a colon (:), the operand
+     immediately to the left of the operator must evaluate to a List.
+   * When the right-most char in a List operator is a colon (:), the operand
+     immediately to the right of the operator must evaluate to a List.
+
+The following ___ List operators (which are actually methods) work on the
+Scala 3 List class.
 
 1) ::  (Used to construct a List.  It's often called the "cons" operator.)
 
