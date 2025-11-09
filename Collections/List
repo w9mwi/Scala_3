@@ -1,27 +1,40 @@
 LIST
 ====
-A Scala List is immutable so it can't be altered/changed/updated after it's created.
-If you want to alter/change/update a Scala List, you need to create a new List.
-The following program demonstrates how to do that.
+A Scala List is immutable so it can't be changed after it's created.
+To "change" the contents of a List actually involves creating an
+entirely new List containing the changes.  The following program
+demonstrates how that's done.
 
-An empty List in Scala is designated by the keyword "Nil"; which is equivalent to: List()
-In functional programming, Scala Lists are sometimes constructed recursively using the
-"cons" operator (::), as shown in an example further below.  Nil serves as the
-terminating condition for recursive operations on Scala Lists.
+An empty List in Scala can be designated in either of these two ways:
 
-The List class inherits from the LinearSeq trait; NOT from the IndexedSeq trait.  This means
-that accessing a List element via an index can take a long time because all elements in the
-List (up to the index value) must be traversed.  You should avoid accessing elements of a
-List via an index value, like this...
+1) Scala's keyword "Nil" keyword represents an empty List.
+2) An empty list can also be designated by the syntax "List()".
+
+The last element in every Scala List must contain the "Nil" value;
+which is equivalent to an empty List().
+
+In functional programming, Scala Lists are sometimes constructed
+recursively using the "cons" operator (::), as shown in an example
+further below.  
+
+The List class inherits from the LinearSeq trait; NOT from the IndexedSeq trait.
+This means that accessing a List element via an index can take a long time
+because all elements in the List (up to the index value) must be traversed.
+
+Even though the following code works, you should avoid accessing elements
+of a List via an index value, like this...
 
    myList(99)
 
-A Scala List is a linked list which consists of a head and a tail.  A List's head
-consists of only its first element; its tail consists of all remaining elements.
+A Scala List is consists of a head and a tail.  The "head" of a List consists
+of its first element only.  The "tail" of a List consists of all elements in
+the List except its "head".  The last element of a List's "tail" contain the
+value "Nil", which is equivalent to "List()" (an empty List).
+
 When a Scala List contains only a single element its head references that single
 element; its tail references an empty List.  EXAMPLE:
 
-   var intList: List[Int] = 123 :: Nil // Nil designates an empty List and is equivalent to: List()
+   var intList: List[Int] = 123 :: Nil // Nil designates an empty List that's equivalent to: List()
    println(s"intList.head = ${intList.head}") // PRINTS: intList.head = 123
    println(s"intList.tail = ${intList.tail}") // PRINTS: intList.tail = List()
    intList = List(987)
