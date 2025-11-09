@@ -4,7 +4,7 @@ similar way.  So once you understand how these operators work on a List class,
 you'll understand how they work on other collection classes.
 
 When a List operator contains a colon char (:), it means the operand closest
-to the colon char (:) must evaluate to a List.  EXAMPLES:
+to the colon char (:) must evaluate to a List, which means the following.
 
    * When the left-most char in a List operator is a colon (:), the operand
      immediately to the left of the operator must evaluate to a List.
