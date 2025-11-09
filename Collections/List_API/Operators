@@ -1,3 +1,6 @@
+LIST OPERATORS
+==============
+
 Many of the operators that work on the Scala List class also work on other
 Scala collections (i.e, Vectors, ArrayBuffers, ListBuffers, etc.) in a
 similar way.  So once you understand how these operators work on a List
