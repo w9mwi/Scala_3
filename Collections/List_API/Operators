@@ -30,7 +30,7 @@ The following ___ List operators work on the Scala 3 List class.
        @main def main():Unit =
          var intList:List[Int] = 333 :: List(444, 555)
          println(s"intList = $intList")  // PRINTS: intList = List(333, 444, 555)
-         intList = 111 :: 222 :: intList // intList
+         intList = 111 :: 222 :: intList
          println(s"intList = $intList")  // PRINTS: intList = List(111, 222, 333, 444, 555)
        end main
 
