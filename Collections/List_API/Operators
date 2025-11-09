@@ -65,8 +65,9 @@ The following five List operators work on the Scala 3 List class.
         end main
 
 5) :+   Appends one or more elements to the end of a List.  The element must be
-        on the right side of the operator, the List on the left side.  This
-        is an O(n) operation, so it should be avoided for use on large lists.
+        on the right side of the operator, the List on the left side.  This is
+        an O(n) operation (the larger the List, the less efficient it becomes).
+        So avoid using the :+ operator on large lists.
 
         @main def main():Unit =
           var intList:List[Int] = List(111, 222)
