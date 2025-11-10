@@ -1,45 +1,62 @@
 LIST
 ====
+
 A Scala List is immutable so it can't be changed after it's created.
 To "change" the contents of a List actually involves creating an
 entirely new List containing the changes.  The following program
 demonstrates how that's done.
 
-An empty List in Scala can be designated in either of these two ways:
-
-1) Scala's keyword "Nil" keyword represents an empty List.
-2) An empty list can also be designated by the syntax "List()".
-
-The last element in every Scala List must contain the "Nil" value;
-which is equivalent to an empty List().
-
-In functional programming, Scala Lists are sometimes constructed
-recursively using the "cons" operator (::), as shown in an example
-further below.  
-
 The List class inherits from the LinearSeq trait; NOT from the IndexedSeq trait.
 This means that accessing a List element via an index can take a long time
 because all elements in the List (up to the index value) must be traversed.
 
-Even though the following code works, you should avoid accessing elements
+Although the following code works, you should avoid accessing elements
 of a List via an index value, like this...
 
    myList(99)
 
-A Scala List is consists of a head and a tail.  The "head" of a List consists
-of its first element only.  The "tail" of a List consists of all elements in
-the List except its "head".  The last element of a List's "tail" contain the
-value "Nil", which is equivalent to "List()" (an empty List).
+The following sample code demonstrates these List basics:
 
-When a Scala List contains only a single element its head references that single
-element; its tail references an empty List.  EXAMPLE:
+  * An empty List.
+  * Three different ways to construct an equivalent List.
+  * A List's head.
+  * A List's tail.
 
-   var intList: List[Int] = 123 :: Nil // Nil designates an empty List that's equivalent to: List()
-   println(s"intList.head = ${intList.head}") // PRINTS: intList.head = 123
-   println(s"intList.tail = ${intList.tail}") // PRINTS: intList.tail = List()
-   intList = List(987)
-   println(s"intList.head = ${intList.head}") // PRINTS: intList.head = 987
-   println(s"intList.tail = ${intList.tail}") // PRINTS: intList.tail = List()
+@main def main():Unit =
+  var intList:List[Int] = List() // List() is an empty List.
+  println(s"1) intList = $intList,  intList.isEmpty = ${intList.isEmpty}")
+  // PRINTS: 1) intList = List(),  intList.isEmpty = true
+
+  intList = Nil // Nil is also an empty List.
+  println(s"2) intList = $intList,  intList.isEmpty = ${intList.isEmpty}")
+  // PRINTS: 2) intList = List(),  intList.isEmpty = true
+
+  // The following 3 ways of building a List are all equivalent.
+  intList = 111 +: 222 +: 333 +: Nil
+  println(s"3) intList = $intList") // PRINTS: 3) intList = List(111, 222, 333)
+  intList = 111 +: 222 +: 333 +: List()
+  println(s"4) intList = $intList") // PRINTS: 4) intList = List(111, 222, 333)
+  intList = List(111, 222, 333)
+  println(s"5) intList = $intList") // PRINTS: 5) intList = List(111, 222, 333)
+
+  // The head of a List consists of only its first element.
+  // The tail of a List consists all its elements except the head.
+  println(s"6) intList.head = ${intList.head},  intList.tail = ${intList.tail}")
+  // PRINTS: 6) intList.head = 111,  intList.tail = List(222, 333)
+
+  // The last element of a List is always an empty List, even
+  // though it doesn't appear when you print the List's contents.
+  // However, when you reference the tail of 1-element List,
+  // you'll see the List's tail is an empty List.
+  intList = List(123)
+  println(s"7) intList = $intList,  intList.head = ${intList.head},  intList.tail = ${intList.tail}")
+  // PRINTS: 7) intList = List(123),  intList.head = 123,  intList.tail = List()
+end main
+============================================
+
+
+
+
 
 =============================================================================
 @main def main():Unit =
