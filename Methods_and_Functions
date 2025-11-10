@@ -63,10 +63,12 @@ Here are 5 other distinctions between a Scala method and a Scala function.
 There are two ways to write a Scala function:
 
 1) You can write an "anonymous function", also known as a "function literal".
-   Obviously, anonymous functions have no name.  Anonymous functions are often
-   passed as arguments to methods/functions.  They're generally very short and
-   simple.  In this example the anonymous function "x=>x*2" is passed as an
-   argument to the List.map() method.
+   Unlike Scala methods (which always have a name), anonymous functions have
+   no name.  Anonymous functions are often passed as arguments to
+   methods/functions.  Anonymous functions are generally short and simple.
+
+   In this example the anonymous function "x=>x*2" is passed as an argument
+   to the List.map() method.
 
    var intList:List[Int] = List(1, 2, 3)
    intList = intList.map(x=>x*2)  // "x=>x*2" is an anonymous function.
@@ -85,8 +87,10 @@ There are two ways to write a Scala function:
 SUMMARY: In most cases you'll write methods to obtain the functionality you need.
          If you need a function, you can easily transform a method into a function
          by performing and an "eta expansion" on the method, as is demonstrated
-         in the following program.  So writing Scala methods is far more common
-         than writing functions.
+         in the following program.  In Scala 3, when you pass a method to another
+         method/function as an argument, the compiler automatically performs an
+         eta expansion on that method.  Programmers write far more Scala methods
+         than they write Scala functions.
 
 ------------------------------------------------------------------------------
 // myMethod is a method that accepts a function as its argument.
