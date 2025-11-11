@@ -1,12 +1,10 @@
-===============================================================
-===============================================================
-===============================================================
-The following methods are all invoked on the List class, but
-most of them can be invoked on other Scala collections.
+BASIC LIST METHODS
+==================
+The following methods are all invoked on the Scala List class.  However, many
+of these same-named methods also apply to other Scala collections, in an
+analgous way.
 
 
-BASIC METHODS:
-=============
 ___ drop - Return all elements except the first n elements, where n is the Int parameter passed.  EXAMPLE:
            val myList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
            val newList = myList.drop(1)
