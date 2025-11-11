@@ -43,6 +43,38 @@ analgous way.  Read the in-line comments.
 
 end main
 ===========================================================================
+@main def main():Unit =
+  val originalList = List(10, 20, 30, 40, 50, 60)
+  println(s"Original List: $originalList")
+
+  // --- 1. Replacing a subsequence ---
+  // Replace 2 elements starting from index 2 (which are 30, 40) with List(35, 45)
+  val replacedList = originalList.patch(2, List(35, 45), 2)
+  println(s"Replaced Subsequence: $replacedList")
+  // PRINTS: Replaced Subsequence: List(10, 20, 35, 45, 50, 60)
+
+
+  // --- 2. Inserting elements ---
+  // Insert List(25) at index 2 without removing any elements (n = 0)
+  val insertedList = originalList.patch(2, List(25), 0)
+  println(s"Inserted Elements: $insertedList")
+  // PRINTS: Inserted Elements: List(10, 20, 25, 30, 40, 50, 60)
+
+
+  // --- 3. Removing elements ---
+  // Remove 3 elements starting from index 1 (which are 20, 30, 40) with an empty list
+  val removedList = originalList.patch(1, List(), 3) // List() = Seq.empty
+  println(s"Removed Elements: $removedList")
+  // PRINTS: Removed Elements: List(10, 50, 60)
+
+
+  // --- 4. Simulating an element update ---
+  // Replace 1 element at index 0 (which is 10) with 5
+  val updatedList = originalList.patch(0, List(5), 1)
+  println(s"Updated Element: $updatedList")
+  // PRINTS: Updated Element: List(5, 20, 30, 40, 50, 60)
+end main
+===========================================================================
 
 
 
