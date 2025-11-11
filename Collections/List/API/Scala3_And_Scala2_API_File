@@ -22,7 +22,7 @@ analgous way.  Read the in-line comments.
   println(s"3) intList.last = ${intList.last}") // last element only.
   // PRINTS: 3) intList.last = 5
 
-  // PATCH METHOD ******************************************
+  // PATCH METHOD - PART 1 ******************************************
   // EXAMPLE: At index 0, insert List(999), and replace
   //          zero (0) elements from the existing intList.
   println(s"4) intList.patch(0, List(999), 0) = ${intList.patch(0, List(999), 0)}")
@@ -37,12 +37,15 @@ analgous way.  Read the in-line comments.
   //          two (2) elements from the existing intList.
   println(s"6) intList.patch(2, List(999), 2) = ${intList.patch(2, List(999), 2)}")
   // PRINTS: 6) intList.patch(2, List(999), 2) = List(1, 2, 999, 5)
-
+  // *****************************************************************
 
   // SLICE METHOD ******************************************
 
 end main
 ===========================================================================
+// *********************************
+// PATCH METHOD - PART 2
+// *********************************
 @main def main():Unit =
   val originalList = List(10, 20, 30, 40, 50, 60)
   println(s"Original List: $originalList")
