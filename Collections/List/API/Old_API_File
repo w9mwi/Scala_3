@@ -1,8 +1,9 @@
-BASIC LIST METHODS
-==================
 The following methods are all invoked on the Scala List class.  However, many
 of these same-named methods also apply to other Scala collections, in an
-analgous way.
+analgous way.  Read the in-line comments.
+
+BASIC LIST METHODS
+==================
 
 
 ___ drop - Return all elements except the first n elements, where n is the Int parameter passed.  EXAMPLE:
