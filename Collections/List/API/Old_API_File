@@ -1,9 +1,52 @@
+
 The following methods are all invoked on the Scala List class.  However, many
 of these same-named methods also apply to other Scala collections, in an
 analgous way.  Read the in-line comments.
 
-BASIC LIST METHODS
-==================
+===========================================================================
+// *********************************
+// BASIC LIST METHODS
+// *********************************
+@main def main():Unit =
+  var intList:List[Int] = List(1, 2, 3, 4, 5)
+
+  // DROP METHOD ******************************************
+  println(s"1) intList.drop(3) = ${intList.drop(3)}")
+  // PRINTS: 1) intList.drop(3) = List(4, 5)
+
+  // INIT METHOD ******************************************
+  println(s"2) intList.init = ${intList.init}") // init(ial) = All elements except last.
+  // PRINTS:2) intList.init = List(1, 2, 3, 4)
+
+  // LAST METHOD ******************************************
+  println(s"3) intList.last = ${intList.last}") // last element only.
+  // PRINTS: 3) intList.last = 5
+
+  // PATCH METHOD ******************************************
+  // EXAMPLE: At index 0, insert List(999), and replace
+  //          zero (0) elements from the existing intList.
+  println(s"4) intList.patch(0, List(999), 0) = ${intList.patch(0, List(999), 0)}")
+  // PRINTS: 4) intList.patch(0, List(999), 0) = List(999, 1, 2, 3, 4, 5)
+
+  // EXAMPLE: At index 2, insert List(999), and replace
+  //          one (1) element from the existing intList.
+  println(s"5) intList.patch(2, List(999), 1) = ${intList.patch(2, List(999), 1)}")
+  // PRINTS: 5) intList.patch(2, List(999), 3) = List(1, 2, 999)
+
+  // EXAMPLE: At index 2, insert List(999), and replace
+  //          two (2) elements from the existing intList.
+  println(s"6) intList.patch(2, List(999), 2) = ${intList.patch(2, List(999), 2)}")
+  // PRINTS: 6) intList.patch(2, List(999), 2) = List(1, 2, 999, 5)
+
+
+  // SLICE METHOD ******************************************
+
+end main
+===========================================================================
+
+
+
+
 
 
 ___ drop - Return all elements except the first n elements, where n is the Int parameter passed.  EXAMPLE:
