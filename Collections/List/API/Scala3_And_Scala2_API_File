@@ -119,11 +119,18 @@ analgous way.  Read the in-line comments.
 end main
 ===========================================================================
 // *********************************
-// 
+// BOOLEAN TESTS ON LIST METHODS
 // *********************************
 @main def main():Unit =
+  val intList:List[Int] = List(111, 222, 333, 444, 555)
 
+  // CONTAINS METHOD
+  println(s"9) intList.contains(666) = ${intList.contains(666)},  intList.contains(555) = ${intList.contains(555)}")
+  // PRINTS: 9) intList.contains(666) = false,  intList.contains(555) = true
 end main
+
+
+===========================================================================
 ===========================================================================
 
 
