@@ -1,11 +1,11 @@
 
 A Scala List elements should be accesssed almost exclusively by traversing
 the List from one element to the next.  The time it takes to access the
-nth element of a List increases as n increases.  So you sohould never
-access List elements via an index like this...
+nth element of a List via an index increases as n increases.  You should
+never access List elements via an index like this...
 
   val intList:List[Int] = List(111, 222, 333, 444, 555)
-  val mySlice = intList(4)  // Don't access Lists via an index!
+  val mySlice = intList(4)  // Don't access Lists via an index like this.
 
 Any operations that work with the end of a long List
 (appending elements to a long list, etc.) should be
