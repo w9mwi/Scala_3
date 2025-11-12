@@ -124,12 +124,38 @@ end main
 @main def main():Unit =
   val intList:List[Int] = List(111, 222, 333, 444, 555)
 
-  // CONTAINS METHOD
+  // contains METHOD  ******************************************
   println(s"9) intList.contains(666) = ${intList.contains(666)},  intList.contains(555) = ${intList.contains(555)}")
   // PRINTS: 9) intList.contains(666) = false,  intList.contains(555) = true
 
-  // ENDSWITH  METHOD
+  // endsWith  METHOD  ******************************************
   println(s"10) intList.endsWith(List(444)) = ${intList.endsWith(List(444))},  intList.endsWith(List(555)) = ${intList.endsWith(List(555))}")
+
+  // isInstanceOf METHOD ******************************************
+  // WARNING: The val isStringList below has the value true, which is WRONG!
+  //          The val isStringList below should be false because intList
+  //          is of type List[Int], not of type List[String].  This error
+  //          occurs due to "type erasure" occurring on the Java Virtual
+  //          Machine (JVM), which is the runtime environment for Scala.
+  //          When Scala code is compiled into JVM bytecode, the generic
+  //          type parameters (like [Int] and [String]) are essentially
+  //          "erased" at runtime.  So the JVM sees only the raw, non-generic
+  //          type, which is List; not List[Int], or List[String], etc.
+  val isIntArray:Boolean   = intList.isInstanceOf[Array[Int]]
+  val isStringList:Boolean = intList.isInstanceOf[List[String]]
+  val isIntList:Boolean    = intList.isInstanceOf[List[Int]]
+  println(s"11) isIntArray = $isIntArray,  isStringList = $isStringList,  isIntList = $isIntList")
+  // PRINTS: 11) isIntArray = false,  isStringList = true,  isIntList = true
+
+  // asInstanceOf METHOD ******************************************
+  // Used to cast one data type to another data type  This
+  // code sample casts the type Int to the type Long.
+  val intValue:Int   = 1234;
+  val longValue:Long = intValue.asInstanceOf[Long]
+  if (intValue.isInstanceOf[Int])
+    println(s"12) intValue's data type = Int") // PRINTS: 12) intValue's data type = Int
+  if (longValue.isInstanceOf[Long])
+    println(s"13) longValue's data type = Long") // PRINTS: 13) longValue's data type = Long
 end main
 
 
