@@ -95,7 +95,12 @@ analgous way.  Read the in-line comments.
   println(s"8) intList.take(4) = ${intList.take(4)}")
   // PRINTS: 8) intList.take(4) = List(111, 222, 333, 444)
 
-
+  // TAKERIGHT METHOD ******************************************
+  // The List.takeRight method returns a new List containing
+  // the first n elements of the original list.  If the list
+  // has fewer than n elements, it returns the entire list.
+  println(s"8) intList.takeRight(4) = ${intList.takeRight(4)}")
+  // PRINTS: 8) intList.takeRight(4) = List(333, 444, 555, 666)
 
 end main
 ===========================================================================
