@@ -1,4 +1,18 @@
 
+A Scala List elements should be accesssed almost exclusively by traversing
+the List from one element to the next.  The time it takes to access the
+nth element of a List increases as n increases.  So you sohould never
+access List elements via an index like this...
+
+  val intList:List[Int] = List(111, 222, 333, 444, 555)
+  val mySlice = intList(4)  // Don't access Lists via an index!
+
+Any operations that work with the end of a long List
+(appending elements to a long list, etc.) should be
+avoided because a List is inefficient at that.  A List
+is efficient when you prepend elements to it, or access
+it via the List's head and tail.
+
 The following methods are all invoked on the Scala List class.  However, many
 of these same-named methods also apply to other Scala collections, in an
 analgous way.  Read the in-line comments.
