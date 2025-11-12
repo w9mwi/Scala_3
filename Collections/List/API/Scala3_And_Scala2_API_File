@@ -127,6 +127,9 @@ end main
   // CONTAINS METHOD
   println(s"9) intList.contains(666) = ${intList.contains(666)},  intList.contains(555) = ${intList.contains(555)}")
   // PRINTS: 9) intList.contains(666) = false,  intList.contains(555) = true
+
+  // ENDSWITH  METHOD
+  println(s"10) intList.endsWith(List(444)) = ${intList.endsWith(List(444))},  intList.endsWith(List(555)) = ${intList.endsWith(List(555))}")
 end main
 
 
