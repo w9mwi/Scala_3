@@ -52,13 +52,9 @@ The following sample code demonstrates these List basics:
   println(s"7) intList = $intList,  intList.head = ${intList.head},  intList.tail = ${intList.tail}")
   // PRINTS: 7) intList = List(123),  intList.head = 123,  intList.tail = List()
 end main
-============================================
-
-
-
-
 
 =============================================================================
+
 @main def main():Unit =
   var intList:List[Int] = List(-666, 2, 3)
   println(s"1) intList = $intList") // PRINTS: 1) intList = List(-666, 2, 3)
