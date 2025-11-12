@@ -76,8 +76,19 @@ analgous way.  Read the in-line comments.
   println(s"6) charList.slice(1,3) = ${charList.slice(1,3) }")
   // PRINTS: 6) charList.slice(1,3) = List(b, c)
 
+  // SPLITAT METHOD
+  // EXAMPLE: Split strList so it returns one List[String] made up
+  //          from the elements contained at indices < 3; and another
+  //          List[String] made up from all remaining elements.
+  val strList:List[String] = List("id", "name", "email",
+                                  "1", "Alice", "alice@example.com",
+                                  "2", "Bob", "bob@example.com")
+  val (header, records) = strList.splitAt(3)
+  println(s"7) header = $header,   records = $records")
+  // PRINTS: 7) header = List(id, name, email),   records = List(1, Alice, alice@example.com, 2, Bob, bob@example.com)
 
-  
+  // TAKE METHOD
+
 
 end main
 ===========================================================================
