@@ -156,6 +156,12 @@ end main
     println(s"12) intValue's data type = Int") // PRINTS: 12) intValue's data type = Int
   if (longValue.isInstanceOf[Long])
     println(s"13) longValue's data type = Long") // PRINTS: 13) longValue's data type = Long
+
+  // startsWith METHOD ******************************************
+  val strList1:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
+  var strList2:List[String] = List("abc", "def")
+  println(s"14) strList1.startsWith($strList2) = ${strList1.startsWith(strList2)}")
+  // PRINTS: 14) strList1.startsWith(List(abc, def)) = true
 end main
 
 
