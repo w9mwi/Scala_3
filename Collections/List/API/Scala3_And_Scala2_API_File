@@ -25,14 +25,17 @@ analgous way.  Read the in-line comments.
   var intList:List[Int] = List(1, 2, 3, 4, 5)
 
   // DROP METHOD ******************************************
+  // Drop the first 3 elements of intList.
   println(s"1) intList.drop(3) = ${intList.drop(3)}")
   // PRINTS: 1) intList.drop(3) = List(4, 5)
 
   // INIT METHOD ******************************************
+  // Return all elements of intList, except the last element.
   println(s"2) intList.init = ${intList.init}") // init(ial) = All elements except last.
   // PRINTS:2) intList.init = List(1, 2, 3, 4)
 
   // LAST METHOD ******************************************
+  // Return the last element of intList.
   println(s"3) intList.last = ${intList.last}") // last element only.
   // PRINTS: 3) intList.last = 5
 
