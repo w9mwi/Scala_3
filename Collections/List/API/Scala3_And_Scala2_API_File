@@ -187,7 +187,7 @@ end main
   println(s"3) result = $result") // Prints: 3) result = None
 
   // indexOf METHOD ******************************************
-  val strList: List[String] = List("abc", "def", "ghi", "jkl", "mno", "mno")
+  var strList_!: List[String] = List("abc", "def", "ghi", "jkl", "mno", "mno")
   // Return the index of the FIRST occurrence of "mno" in strList.
   var index: Int = strList.indexOf("mno")
   println(s"4) index = $index") // PRINTS: 4) index = 4
@@ -196,6 +196,31 @@ end main
   // Return the index of the LAST occurrence of "mno" in strList.
   index = strList.lastIndexOf("mno")
   println(s"5) index = $index") // PRINTS: 5) index = 5
+
+  // diff METHOD ******************************************
+  var strList_1:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
+  var strList_2:List[String] = List("pqr", "mno", "jkl", "ghi", "def", "abc")
+  var strList_3:List[String] = List("mno", "abc")
+  var intList_1: List[Int] = List(111, 222, 333, 444, 222)
+  var intList_2: List[Int] = List(111, 222)
+
+  // Return all elements from strList_1 that are not contained in strList_2.
+  // (All elements in strList_1 are contained in strList_2 so an empty list
+  // is returned.)
+  println(s"6) strList_1.diff(strList_2) = ${strList_1.diff(strList_2)}")
+  // PRINTS: 6) strList_1.diff(strList_2) = List()
+
+  // Return all elements from strList_1 that are not contained in strList_3.
+  println(s"7) strList_1.diff(strList_3) = ${strList_1.diff(strList_3)}")
+  // PRINTS: 7) strList_1.diff(strList_3) = List(def, ghi, jkl, pqr)
+
+  // Return all elements from intList_1 that are not contained in intList_2.
+  // NOTE: When intList_1 contains more than one element that's in intList_2,
+  //       only the first occurrence of that element is removed from the
+  //       result.  Therefore, only the first occurrence of 222 in strList_1
+  //       is removed from the result, but not subsequent occurrences of 222.
+  println(s"8) intList_1.diff(intList_2) = ${intList_1.diff(intList_2)}")
+  // PRINTS: 8) intList_1.diff(intList_2) = List(333, 444, 222)
 
 end main
 
@@ -206,14 +231,6 @@ end main
 
 SEARCHING:
 ==========
-___ indexOf - EXAMPLE:
-              val myList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "mno")
-              val result:Int = myList.indexOf("mno")
-              println("result = " + result) // PRINTS: result = 4
-___ lastIndexOf - EXAMPLE:
-                  val myList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "mno") // NOTE: There are 2 "mno" strings.
-                  val result:Int = myList.lastIndexOf("mno")
-                  println("result = " + result) // PRINTS: result = 5
 ___ diff - Returns the DIFFERENCE between 2 Lists.  EXAMPLE:
            val myList1:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
            val myList2:List[String] = List("pqr", "mno", "jkl", "ghi", "def", "abc")
