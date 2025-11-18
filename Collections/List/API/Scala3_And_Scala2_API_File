@@ -187,9 +187,9 @@ end main
   println(s"3) result = $result") // Prints: 3) result = None
 
   // indexOf METHOD ******************************************
-  var strList_!: List[String] = List("abc", "def", "ghi", "jkl", "mno", "mno")
+  val strList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "mno")
   // Return the index of the FIRST occurrence of "mno" in strList.
-  var index: Int = strList.indexOf("mno")
+  var index:Int = strList.indexOf("mno")
   println(s"4) index = $index") // PRINTS: 4) index = 4
 
   // lastIndexOf METHOD ******************************************
@@ -222,6 +222,13 @@ end main
   println(s"8) intList_1.diff(intList_2) = ${intList_1.diff(intList_2)}")
   // PRINTS: 8) intList_1.diff(intList_2) = List(333, 444, 222)
 
+  // mkString METHOD ******************************************
+  println("9) strList.mkString = " + strList.mkString)
+  // PRINTS: 9) strList.mkString = abcdefghijklmnomno
+  println("10) strList.mkString(\" + \") = " + strList.mkString(" + "))
+  // PRINTS: 10) strList.mkString(" + ") = abc + def + ghi + jkl + mno + mno
+  println("11) strList.mkString(\"BEGIN\", \"_\", \"END\") = " + strList.mkString("BEGIN", "_", "END"))
+  // PRINTS: 11) strList.mkString("BEGIN", "_", "END") = BEGINabc_def_ghi_jkl_mno_mnoEND
 end main
 
 ===========================================================================
@@ -231,16 +238,6 @@ end main
 
 SEARCHING:
 ==========
-___ diff - Returns the DIFFERENCE between 2 Lists.  EXAMPLE:
-           val myList1:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
-           val myList2:List[String] = List("pqr", "mno", "jkl", "ghi", "def", "abc")
-           val myList3:List[String] = List("mno", "abc")
-           // result1 = every element in myList1 that does NOT exist in myList2
-           val result1:List[String] = myList1.diff(myList2)
-           // result2 = every element in myList1 that does NOT exist in myList3
-           val result2:List[String] = myList1.diff(myList3)
-           println("result1 = " + result1 + ", result2 = " + result2)
-           // PRINTS: result1 = List(), result2 = List(def, ghi, jkl, pqr)
 ___ mkString EXAMPLE:
              val myList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
              println("myList                               = " + myList)
