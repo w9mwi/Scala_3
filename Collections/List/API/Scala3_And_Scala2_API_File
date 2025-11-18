@@ -24,23 +24,23 @@ analgous way.  Read the in-line comments.
 @main def main():Unit =
   var intList:List[Int] = List(1, 2, 3, 4, 5)
 
-  // DROP METHOD ******************************************
+  // drop METHOD ******************************************
   // Drop the first 3 elements of intList.
   println(s"1) intList.drop(3) = ${intList.drop(3)}")
   // PRINTS: 1) intList.drop(3) = List(4, 5)
 
-  // INIT METHOD ******************************************
+  // init METHOD ******************************************
   // Return all elements of intList, except the last element.
   println(s"2) intList.init = ${intList.init}") // init(ial) = All elements except last.
   // PRINTS:2) intList.init = List(1, 2, 3, 4)
 
-  // LAST METHOD ******************************************
+  // last METHOD ******************************************
   // Return the last element of intList.
   println(s"3) intList.last = ${intList.last}") // last element only.
   // PRINTS: 3) intList.last = 5
 
 
-  // PATCH METHOD - PART 1 OF 2 *************************************
+  // patch METHOD - PART 1 OF 2 *************************************
   // EXAMPLE: At index 0, insert List(999), and replace
   //          zero (0) elements from the existing intList.
   println(s"4) intList.patch(0, List(999), 0) = ${intList.patch(0, List(999), 0)}")
@@ -58,7 +58,7 @@ analgous way.  Read the in-line comments.
   // *****************************************************************
 
   // *****************************************************************
-  // PATCH METHOD - PART 2 OF 2
+  // patch METHOD - PART 2 OF 2
   val originalList = List(10, 20, 30, 40, 50, 60)
   println(s"Original List: $originalList")
 
@@ -87,13 +87,13 @@ analgous way.  Read the in-line comments.
   // PRINTS: Updated Element: List(5, 20, 30, 40, 50, 60)
   // *****************************************************************
 
-  // SLICE METHOD ******************************************
+  // slice METHOD ******************************************
   // EXAMPLE: slice(startIdx, n)  - Returns charList from
   //          startIdx = 1 ('b') to index (n-1) = 2 ('c)
   println(s"6) charList.slice(1,3) = ${charList.slice(1,3) }")
   // PRINTS: 6) charList.slice(1,3) = List(b, c)
 
-  // SPLITAT METHOD ******************************************
+  // splitAt METHOD ******************************************
   // EXAMPLE: Split strList so it returns one List[String] made up
   //          from the elements contained at indices < 3; and another
   //          List[String] made up from all remaining elements.
@@ -104,7 +104,7 @@ analgous way.  Read the in-line comments.
   println(s"7) header = $header,   records = $records")
   // PRINTS: 7) header = List(id, name, email),   records = List(1, Alice, alice@example.com, 2, Bob, bob@example.com)
 
-  // TAKE METHOD ******************************************
+  // take METHOD ******************************************
   // The List.take method in Scala 3 returns a new List containing
   // the first n elements of the original list.  If the list has
   // fewer than n elements, it returns the entire list.
@@ -112,7 +112,7 @@ analgous way.  Read the in-line comments.
   println(s"8) intList.take(4) = ${intList.take(4)}")
   // PRINTS: 8) intList.take(4) = List(111, 222, 333, 444)
 
-  // TAKERIGHT METHOD ******************************************
+  // takeRight METHOD ******************************************
   // The List.takeRight method returns a new List containing
   // the first n elements of the original list.  If the list
   // has fewer than n elements, it returns the entire list.
@@ -127,11 +127,11 @@ end main
 @main def main():Unit =
   val intList:List[Int] = List(111, 222, 333, 444, 555)
 
-  // contains METHOD  ******************************************
+  // contains METHOD ******************************************
   println(s"9) intList.contains(666) = ${intList.contains(666)},  intList.contains(555) = ${intList.contains(555)}")
   // PRINTS: 9) intList.contains(666) = false,  intList.contains(555) = true
 
-  // endsWith  METHOD  ******************************************
+  // endsWith  METHOD ******************************************
   println(s"10) intList.endsWith(List(444)) = ${intList.endsWith(List(444))},  intList.endsWith(List(555)) = ${intList.endsWith(List(555))}")
 
   // isInstanceOf METHOD ******************************************
@@ -166,25 +166,46 @@ end main
   println(s"14) strList1.startsWith($strList2) = ${strList1.startsWith(strList2)}")
   // PRINTS: 14) strList1.startsWith(List(abc, def)) = true
 end main
-===========================================================================
-// *********************************
-// SEARCHING LIST METHODS
-// *********************************
-
 
 ===========================================================================
+
+@main def main():Unit =
+  // *********************************
+  // SEARCHING LIST METHODS
+  // *********************************
+
+  // find METHOD ******************************************
+  val intList:List[Int] = List[Int](7, 4, 6, 3, 9, 1)
+  // Return the first element of intList having a value < 3.
+  var result:Option[Int] = intList.find(_<6)
+  println(s"1) result = $result") // Prints: 1) result = Some(4)
+  // Return the first element of intList having a value > 7.
+  result = intList.find(_>7)
+  println(s"2) result = $result") // Prints: 2) result = Some(9)
+  // Return the first element of intList having a value > 10.
+  result = intList.find(_>10)
+  println(s"3) result = $result") // Prints: 3) result = None
+
+  // indexOf METHOD ******************************************
+  val strList: List[String] = List("abc", "def", "ghi", "jkl", "mno", "mno")
+  // Return the index of the FIRST occurrence of "mno" in strList.
+  var index: Int = strList.indexOf("mno")
+  println(s"4) index = $index") // PRINTS: 4) index = 4
+
+  // lastIndexOf METHOD ******************************************
+  // Return the index of the LAST occurrence of "mno" in strList.
+  index = strList.lastIndexOf("mno")
+  println(s"5) index = $index") // PRINTS: 5) index = 5
+
+end main
+
+===========================================================================
+
 ===========================================================================
 
 
 SEARCHING:
 ==========
-___ find - EXAMPLE:
-           Finds the FIRST ELEMENT of the sequence satisfying a predicate, if one exists.
-           val intList:List[Int] = List[Int](7, 4, 6, 3, 9, 1)
-           var result:Option[Int] = intList.find(_<4)
-           println(result) // Prints: Some(3)
-           result = intList.find(_>10)
-           println(result) // PRINTS: None
 ___ indexOf - EXAMPLE:
               val myList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "mno")
               val result:Int = myList.indexOf("mno")
