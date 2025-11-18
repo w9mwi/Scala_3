@@ -238,17 +238,7 @@ end main
 
 SEARCHING:
 ==========
-___ mkString EXAMPLE:
-             val myList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
-             println("myList                               = " + myList)
-             println("myList.mkString                      = " + myList.mkString)
-             println("myList.mkString(\" + \")               = " + myList.mkString(" + "))
-             println("myList.mkString(\"BEGIN\", \"_\", \"END\") = " + myList.mkString("BEGIN", "_", "END"))
-             // PRINTS THE FOLLOWING 4 LINES:
-             myList                               = List(abc, def, ghi, jkl, mno, pqr)
-             myList.mkString                      = abcdefghijklmnopqr
-             myList.mkString(" + ")               = abc + def + ghi + jkl + mno + pqr
-             myList.mkString("BEGIN", "_", "END") = BEGINabc_def_ghi_jkl_mno_pqrEND
+
 ___ reverse - EXAMPLE:
               val myList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
               println("myList.reverse = " + myList.reverse) // Prints:  myList.reverse = List(pqr, mno, jkl, ghi, def, abc)
