@@ -330,8 +330,7 @@ The following sample code shows how to use these 4 List methods:
   // zipped, which means any List that contains a tuple pair
   // of Lists in each of its elements.  The unzip method returns
   // two Lists in a tuple pair, as shown here.
-  val unzippedList:(List[Int], List[Int]) = zippedList.unzip
-  println(s"7) unzippedList = $unzippedList")
+  println(s"7) zippedList.unzip = ${zippedList.unzip}")
   // PRINTS: 7) unzippedList = (List(600, 700, -1, -1, -1),List(100, 200, 300, 400, 500))
 
   // The List.zipWithIndex method returns a List of tuples for each element
