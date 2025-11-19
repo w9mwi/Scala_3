@@ -269,8 +269,8 @@ The following sample code shows how to use these 4 List methods:
 
 @main def main():Unit =
   type intTuple = (Int, Int)
-  val intList_1:List[Int] = List(0, 123, 456, 789)
-  val intList_2:List[Int] = List(789, 456, 123, 0)
+  var intList_1:List[Int] = List(0, 123, 456, 789)
+  var intList_2:List[Int] = List(789, 456, 123, 0)
 
   // ============================================================
   // Zip together two Lists of the same size, in both directions.
@@ -281,38 +281,38 @@ The following sample code shows how to use these 4 List methods:
   zippedList = intList_2.zip(intList_1)
   println(s"2) zippedList = $zippedList")
   // PRINTS: 2) zippedList = List((789,0), (456,123), (123,456), (0,789))
-  // ============================================================
-
-  val intList_3:List[Int] = List(100, 200, 300, 400, 500)
-  val intList_4:List[Int] = List(600, 700)
 
   // ============================================================
   // When two Lists have different sizes, the zip method returns
-  // a List having the same size as the smaller List.  Therefore,
+  // a List having the same size as the smaller List; therefore,
   // some elements from the larger List won't be included in the
   // zippedList result.
-  zippedList = intList_3.zip(intList_4)
+  intList_1 = List(100, 200, 300, 400, 500)
+  intList_2 = List(600, 700)
+  zippedList = intList_1.zip(intList_2)
   println(s"3) zippedList = $zippedList")
   // PRINTS: 3) zippedList = List((100,600), (200,700))
 
-  zippedList = intList_4.zip(intList_3)
+  zippedList = intList_2.zip(intList_1)
   println(s"4) zippedList = $zippedList")
   // PRINTS: 4) zippedList = List((600,100), (700,200))
-  // ============================================================
 
   // ============================================================
   // When two Lists have different sizes, the zipAll method
   // returns a List having the same size as the larger List.
-  // Elements missing from the smaller of the two Lists will
-  // be set to one of the two default values passed to the
-  // zipAll method, as shown here.
-  zippedList = intList_3.zipAll(intList_4, -1, -2)
+  // Since intList_1 is larger than intList_2, the following
+  // line of code includes the -2 value for each element returned
+  // that exceeds the size of intList_2.
+  zippedList = intList_1.zipAll(intList_2, -1, -2)
   println(s"5) zippedList = $zippedList")
   // PRINTS: 5) zippedList = List((100,600), (200,700), (300,-2), (400,-2), (500,-2))
-  zippedList = intList_4.zipAll(intList_3, -1, -2)
+
+  // Since intList_1 is larger than intList_2, the following
+  // line of code includes the -1 value for each element returned
+  // that exceeds the size of intList_2.
+  zippedList = intList_2.zipAll(intList_1, -1, -2)
   println(s"6) zippedList = $zippedList")
   // PRINTS: 6) zippedList = List((600,100), (700,200), (-1,300), (-1,400), (-1,500))
-  // ============================================================
 
   // ============================================================
   // The unzip method can be called on any List that has been
@@ -322,6 +322,20 @@ The following sample code shows how to use these 4 List methods:
   val unzippedList:(List[Int], List[Int]) = zippedList.unzip
   println(s"7) unzippedList = $unzippedList")
   // PRINTS: 7) unzippedList = (List(600, 700, -1, -1, -1),List(100, 200, 300, 400, 500))
+
+  // The List.zipWithIndex method returns a List of tuples for each element
+  // in the List.  The first tuple element contains the value from the List;
+  // and the second tuple element contains the index of that List value.
+  val strList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
+  val strListWithIndex:List[(String,Int)] = strList.zipWithIndex
+  println(s"8) strListWithIndex = $strListWithIndex")
+  // PRINTS: 8) strListWithIndex = List((abc,0), (def,1), (ghi,2), (jkl,3), (mno,4), (pqr,5))
+  println(s"9) strListWithIndex(2)._1 = ${strListWithIndex(2)._1}, strListWithIndex(2)._2 = ${strListWithIndex(2)._2}")
+  // PRINTS: 9) strListWithIndex(2)._1 = ghi, strListWithIndex(2)._2 = 2
+
+  val unzipResult:(List[String], List[Int])= strListWithIndex.unzip
+  println(s"10) unzipResult = $unzipResult")
+  // PRINTS: 10) unzipResult = (List(abc, def, ghi, jkl, mno, pqr),List(0, 1, 2, 3, 4, 5))
 end main
 
 ===========================================================================
