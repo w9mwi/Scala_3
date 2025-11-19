@@ -223,6 +223,7 @@ end main
   // PRINTS: 8) intList_1.diff(intList_2) = List(333, 444, 222)
 
   // mkString METHOD ******************************************
+  // See the toArray method below for more examples of mkString.
   println("9) strList.mkString = " + strList.mkString)
   // PRINTS: 9) strList.mkString = abcdefghijklmnomno
   println("10) strList.mkString(\" + \") = " + strList.mkString(" + "))
@@ -233,6 +234,28 @@ end main
   // reverse METHOD ******************************************
   println("12) strList.reverse = " + strList.reverse)
   // PRINTS: 12) strList.reverse = List(pqr, mno, jkl, ghi, def, abc)
+
+  // toArray METHOD ******************************************
+  println(s"13) strList.toArray = ${strList.toArray}")
+  // PRINTS: 13) strList.toArray = [Ljava.lang.String;@2133c8f8
+
+  println(s"14) strList.toArray = ${strList.toArray.mkString}")
+  // PRINTS: 14) strList.toArray = abcdefghijklmnopqr
+
+  println(s"15) strList.toArray = ${strList.toArray.mkString(", ")}")
+  // PRINTS: 15) strList.toArray = abc, def, ghi, jkl, mno, pqr
+
+  // NOTE: The following String argument is passed to mkString():
+  //       1) The String separating each element of the result: " | "
+  println(s"16) strList.toArray = ${strList.toArray.mkString(" | ")}")
+  // PRINTS: 16) strList.toArray = abc | def | ghi | jkl | mno | pqr
+
+  // NOTE: The following 3 String arguments are passed to mkString():
+  //       1) The String that's prepended to the result:        "Array("
+  //       2) The String separating each element of the result: ", "
+  //       3) The String that's appended to the result:        ")"
+  println(s"17) strList.toArray = ${strList.toArray.mkString("Array(", ", ", ")")}")
+  // PRINTS: 17) strList.toArray = Array(abc, def, ghi, jkl, mno, pqr)
 end main
 
 ===========================================================================
@@ -243,9 +266,6 @@ end main
 SEARCHING:
 ==========
 
-___ reverse - EXAMPLE:
-              val myList:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
-              println("myList.reverse = " + myList.reverse) // Prints:  myList.reverse = List(pqr, mno, jkl, ghi, def, abc)
 ___ toList  - EXAMPLE:
               val myArray:Array[String] = Array("abc", "def", "ghi", "jkl", "mno", "pqr")
               val myList:List[String]   = myArray.toList
