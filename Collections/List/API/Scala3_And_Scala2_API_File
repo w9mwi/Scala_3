@@ -138,6 +138,8 @@ end main
   // PRINTS: 2) strList.contains(List("str1_abc_junk") = false
   println(s"""3) strList.contains("str1_abc_junk") = ${strList.contains("str1_abc_junk")}""")
   // PRINTS: 3) strList.contains("str1_abc_junk") = true
+
+  // dropWhile METHOD
   // NOTE: The following line drops all elements from
   //       strList containing the text "abc_".
   println(s"""4) strList.dropWhile(_.contains("abc_")) = ${strList.dropWhile(_.contains("abc_"))}""")
