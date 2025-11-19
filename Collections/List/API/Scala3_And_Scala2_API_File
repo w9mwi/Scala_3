@@ -369,14 +369,6 @@ TWO (2) of these functions that are widely used and very popular.
 They are the filter() function and the map() function.  You should
 make it a point to understand those two functions very well.
 
-___ count - EXAMPLE:
-            val myList:List[Float] = List(123.4F, 456.7F, 78.9F)
-            println("myList.count = " + myList.count(_ > 100.0F)) // Prints: myList.count = 2
-___ dropWhile - Also see the takeWhile method, which is the inverse of this dropWhile method.
-                EXAMPLE:
-                val strList:List[String] = List[String]("str1_abc_junk", "str2_abc_stuff", "str3_qrs_things", "str4_xyz_trash")
-                val result:List[String] = strList.dropWhile(_.contains("abc"))
-                result.foreach(println) // prints: str3_qrs_things  str4_xyz_trash
 ___ combinations - Also see the permutations function.
                    EXAMPLE:
                    val intList:List[Int] = List[Int](7, 4, 6, 3, 9, 1)
