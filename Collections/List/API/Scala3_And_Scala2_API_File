@@ -251,11 +251,22 @@ end main
   // PRINTS: 15) strList.toArray = abc | def | ghi | jkl | mno | pqr
 
   // NOTE: The following 3 String arguments are passed to mkString():
-  //       1) The String that's prepended to the result:        "Array("
+  //       1) The String prepended to the result:               "Array("
   //       2) The String separating each element of the result: ", "
-  //       3) The String that's appended to the result:        ")"
+  //       3) The String appended to the result:                ")"
   println(s"16) strList.toArray = ${strList.toArray.mkString("Array(", ", ", ")")}")
   // PRINTS: 16) strList.toArray = Array(abc, def, ghi, jkl, mno, pqr)
+
+  // product METHOD ******************************************
+  val floatList:List[Float] = List(123.4F, 456.7F, 78.9F)
+  // 123.4 × 456.7 × 78.9 = 4446550.0
+  println(s"17) floatList.product = ${floatList.product}")
+  // PRINTS: 17) floatList.product = 4446550.0
+
+  // sum METHOD ******************************************
+  // 123.4 + 456.7 + 78.9 = 659
+  println(s"18) floatList.sum = ${floatList.sum}")
+  // PRINTS: 18) floatList.sum = 659.00006
 end main
 
 ===========================================================================
@@ -341,36 +352,6 @@ end main
 ===========================================================================
 
 ===========================================================================
-
-
-SEARCHING:
-==========
-
-
-___ zip - EXAMPLE:
-          val myList1:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
-          val myList2:List[String] = List("stu", "vwx", "yz")
-          println(myList1.zip(myList2)) // Prints:  List((abc,stu), (def,vwx), (ghi,yz))
-___ zipWithIndex - When the zipWithIndex() function is called on a List, it returns a List of tuples.
-                   Where the first tuple of the returned List contains the first element of the List
-                   and the index of that first element, which will be 0 (zero).  Followed by the
-                   second element of the List and the index of that second element, which will be
-                   1 (one).  Etc.
-                   EXAMPLE:
-                   val myList:List[String]                = List("abc", "def", "ghi", "jkl", "mno", "pqr")
-                   val myListWithIndex:List[(String,Int)] = myList.zipWithIndex
-                   println("myListWithIndex = " + myListWithIndex)
-                   println("myListWithIndex(2)._1 = " + myListWithIndex(2)._1 + ",  myListWithIndex(2)._2 = " + myListWithIndex(2)._2)
-                   PRINTS THE FOLLOWING 2 LINES:
-                   myListWithIndex = List((abc,0), (def,1), (ghi,2), (jkl,3), (mno,4), (pqr,5))
-                   myListWithIndex(2)._1 = ghi,  myListWithIndex(2)._2 = 2
-___ product - EXAMPLE:
-              val myList:List[Float] = List(123.4F, 456.7F, 78.9F)
-              println("myList.product = " + myList.product) // Prints: myList.product = 4446550.0
-___ sum - EXAMPLE:
-          val myList:List[Float] = List(123.4F, 456.7F, 789.1F)
-          println("myList.sum = " + myList.sum) // Prints: myList.sum = 1369.2
-
 
 HIGHER-ORDER METHODS, ETC.
 ==========================
