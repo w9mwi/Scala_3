@@ -130,11 +130,13 @@ end main
   val intList:List[Int] = List(111, 222, 333, 444, 555)
 
   // contains METHOD ******************************************
+  // Tests whether the List contains a given value as an element.
   println(s"1) intList.contains(666) = ${intList.contains(666)},  intList.contains(555) = ${intList.contains(555)}")
   // PRINTS: 1) intList.contains(666) = false,  intList.contains(555) = true
-  val strList:List[String] = List[String]("str1_abc_junk", "str2_stuff_abc", "str3_qrs_things", "str4_xyz_trash")
-  println(s"""2) strList.contains("str1_abc_jun") = ${strList.contains("str1_abc_jun")}""")
-  // PRINTS: 2) strList.contains("str1_abc_jun") = false
+  println(s"""2) strList.contains(List("str1_abc_junk") = ${strList.contains(List("str1_abc_junk"))}""")
+  // PRINTS: 2) strList.contains(List("str1_abc_junk") = false
+  println(s"""3) strList.contains("str1_abc_junk") = ${strList.contains("str1_abc_junk")}""")
+  // PRINTS: 3) strList.contains("str1_abc_junk") = true
 
   // endsWith  METHOD ******************************************
   println(s"3) intList.endsWith(List(444)) = ${intList.endsWith(List(444))},  intList.endsWith(List(555)) = ${intList.endsWith(List(555))}")
