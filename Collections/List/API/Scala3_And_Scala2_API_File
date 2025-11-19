@@ -18,6 +18,7 @@ of these same-named methods also apply to other Scala collections, in an
 analgous way.  Read the in-line comments.
 
 ===========================================================================
+
 // *********************************
 // BASIC LIST METHODS
 // *********************************
@@ -121,6 +122,7 @@ analgous way.  Read the in-line comments.
 
 end main
 ===========================================================================
+
 // *********************************
 // BOOLEAN TESTS ON LIST METHODS
 // *********************************
