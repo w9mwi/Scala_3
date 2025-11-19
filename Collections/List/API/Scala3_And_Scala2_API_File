@@ -128,6 +128,7 @@ end main
 // *********************************
 @main def main():Unit =
   val intList:List[Int] = List(111, 222, 333, 444, 555)
+  val strList:List[String] = List[String]("str1_abc_junk", "str2_abc_stuff", "str3_qrs_things", "str4_xyz_trash")
 
   // contains METHOD ******************************************
   // Tests whether the List contains a given value as an element.
@@ -137,10 +138,14 @@ end main
   // PRINTS: 2) strList.contains(List("str1_abc_junk") = false
   println(s"""3) strList.contains("str1_abc_junk") = ${strList.contains("str1_abc_junk")}""")
   // PRINTS: 3) strList.contains("str1_abc_junk") = true
+  // NOTE: The following line drops all elements from
+  //       strList containing the text "abc_".
+  println(s"""4) strList.dropWhile(_.contains("abc_")) = ${strList.dropWhile(_.contains("abc_"))}""")
+  // PRINTS: 4) strList.dropWhile(_.contains("abc_")) = List(str3_qrs_things, str4_xyz_trash)
 
   // endsWith  METHOD ******************************************
-  println(s"3) intList.endsWith(List(444)) = ${intList.endsWith(List(444))},  intList.endsWith(List(555)) = ${intList.endsWith(List(555))}")
-  // PRINTS: 3) intList.endsWith(List(444)) = false,  intList.endsWith(List(555)) = true
+  println(s"5) intList.endsWith(List(444)) = ${intList.endsWith(List(444))},  intList.endsWith(List(555)) = ${intList.endsWith(List(555))}")
+  // PRINTS: 5) intList.endsWith(List(444)) = false,  intList.endsWith(List(555)) = true
 
   // isInstanceOf METHOD ******************************************
   // WARNING: The val isStringList below has the value true, which is WRONG!
@@ -155,8 +160,8 @@ end main
   val isIntArray:Boolean   = intList.isInstanceOf[Array[Int]]
   val isStringList:Boolean = intList.isInstanceOf[List[String]]
   val isIntList:Boolean    = intList.isInstanceOf[List[Int]]
-  println(s"4) isIntArray = $isIntArray,  isStringList = $isStringList,  isIntList = $isIntList")
-  // PRINTS: 4) isIntArray = false,  isStringList = true,  isIntList = true
+  println(s"6) isIntArray = $isIntArray,  isStringList = $isStringList,  isIntList = $isIntList")
+  // PRINTS: 6) isIntArray = false,  isStringList = true,  isIntList = true
 
   // asInstanceOf METHOD ******************************************
   // Used to cast one data type to another data type  This
@@ -164,15 +169,15 @@ end main
   val intValue:Int   = 1234;
   val longValue:Long = intValue.asInstanceOf[Long]
   if (intValue.isInstanceOf[Int])
-    println(s"5) intValue's data type = Int") // PRINTS: 5) intValue's data type = Int
+    println(s"7) intValue's data type = Int") // PRINTS: 7) intValue's data type = Int
   if (longValue.isInstanceOf[Long])
-    println(s"6) longValue's data type = Long") // PRINTS: 6) longValue's data type = Long
+    println(s"8) longValue's data type = Long") // PRINTS: 8) longValue's data type = Long
 
   // startsWith METHOD ******************************************
   val strList1:List[String] = List("abc", "def", "ghi", "jkl", "mno", "pqr")
   var strList2:List[String] = List("abc", "def")
-  println(s"7) strList1.startsWith($strList2) = ${strList1.startsWith(strList2)}")
-  // PRINTS: 7) strList1.startsWith(List(abc, def)) = true
+  println(s"9) strList1.startsWith($strList2) = ${strList1.startsWith(strList2)}")
+// PRINTS: 9) strList1.startsWith(List(abc, def)) = true
 end main
 
 ===========================================================================
