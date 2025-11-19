@@ -229,6 +229,10 @@ end main
   // PRINTS: 10) strList.mkString(" + ") = abc + def + ghi + jkl + mno + mno
   println("11) strList.mkString(\"BEGIN\", \"_\", \"END\") = " + strList.mkString("BEGIN", "_", "END"))
   // PRINTS: 11) strList.mkString("BEGIN", "_", "END") = BEGINabc_def_ghi_jkl_mno_mnoEND
+
+  // reverse METHOD ******************************************
+  println("12) strList.reverse = " + strList.reverse)
+  // PRINTS: 12) strList.reverse = List(pqr, mno, jkl, ghi, def, abc)
 end main
 
 ===========================================================================
