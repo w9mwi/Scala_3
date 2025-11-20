@@ -370,9 +370,9 @@ end main
   val intList:List[Int] = List(7, 4, 6, 3, 9, 1)
   var count = 0
 
-  // combinations METHOD
+  // combinations METHOD  ******************************************
   // Generate all possible 1-number combinations
-  // using the Int elements in intList.
+  // using all Int values in intList.
   for (x <- intList.combinations(1))
   {
     count += 1
@@ -386,7 +386,7 @@ end main
   }
 
   // Generate all possible 2-number combinations
-  // using the Int elements in intList.
+  // using all Int values in intList.
   count = 0
   for (x <- intList.combinations(2)) {
     count += 1
@@ -409,7 +409,7 @@ end main
   }
 
   // Generate all possible 3-number combinations
-  // using the Int elements in intList.
+  // using all Int values in intList.
   count = 0
   for (x <- intList.combinations(3))
   {
@@ -437,7 +437,7 @@ end main
     //        20) = List(3, 9, 1)
   }
 
-  // permutations METHOD
+  // permutations METHOD  ******************************************
   // Generate all possible permutations
   // using all Int elements in intList.
   count = 0
@@ -456,6 +456,8 @@ end main
     // 718) List(1, 9, 3, 4, 6, 7)
     // 719) List(1, 9, 3, 6, 7, 4)
     // 720) List(1, 9, 3, 6, 4, 7)
+
+    // exists METHOD  ******************************************
   }
 end main
 
