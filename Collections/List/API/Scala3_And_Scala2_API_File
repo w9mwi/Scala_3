@@ -371,13 +371,12 @@ end main
   var count = 0
 
   // combinations METHOD
-  // Generate all possible 1-number combinations using
-  // the Int elements in intList.
+  // Generate all possible 1-number combinations
+  // using the Int elements in intList.
   for (x <- intList.combinations(1))
   {
     count += 1
-    // Print the same intList.combinations(3) as the above call to foreach.
-    println(s"$count) = $x ")
+    println(s"$count) = $x")
     // PRINTS: 1) = List(7)
     //         2) = List(4)
     //         3) = List(6)
@@ -386,12 +385,11 @@ end main
     //         6) = List(1)
   }
 
-  // Generate all possible 2-number combinations using
-  // the Int elements in intList.
+  // Generate all possible 2-number combinations
+  // using the Int elements in intList.
   count = 0
   for (x <- intList.combinations(2)) {
     count += 1
-    // Print the same intList.combinations(3) as the above call to foreach.
     println(s"$count) = $x ")
     // PRINTS: 1) = List(7, 4)
     //         2) = List(7, 6)
@@ -410,13 +408,12 @@ end main
     //        15) = List(9, 1)
   }
 
-  // Generate all possible 3-number combinations using
-  // the Int elements in intList.
+  // Generate all possible 3-number combinations
+  // using the Int elements in intList.
   count = 0
   for (x <- intList.combinations(3))
   {
     count += 1
-    // Print the same intList.combinations(3) as the above call to foreach.
     println(s"$count) = $x ")
     // PRINTS: 1) = List(7, 4, 6)
     //         2) = List(7, 4, 3)
