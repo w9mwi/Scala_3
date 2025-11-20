@@ -475,36 +475,28 @@ end main
   // PRINTS: 3) intList.exists(x => x==7) = true
   println(s"""4) intList.exists(x => x>7) = ${intList.exists(x => x>7)}""")
   // PRINTS: 4) intList.exists(x => x>7) = false
+
+  // filter METHOD ******************************************
+  val intList:List[Int] = List[Int](1, 2, 3, 4, 5, 6, 7)
+  println(s"5) intList.filter(_ >= 6) = ${intList.filter(_ >= 6)}")
+  // PRINTS: 5) intList.filter(_ >= 6) = List(6, 7)
+
+  // The following two println statements generate the same result
+  // by passing to the two filter methods the same function written
+  // using different syntax.
+  val nameList:List[String] = List("TJB", "Rosy", "Randy")
+  println(s"""6) nameList.filter(_.startsWith("R")) = ${nameList.filter(_.startsWith("R"))}""")
+  // PRINTS: 6) nameList.filter(_.startsWith("R")) = List(Rosy, Randy)
+  println(s"""7) nameList.filter(x => x.startsWith("R")) = ${nameList.filter(x => x.startsWith("R"))}""")
+  // PRINTS: 7) nameList.filter(x => x.startsWith("R")) = List(Rosy, Randy)
+
+  // flatMap METHOD ******************************************
 end main
 
 ===========================================================================
 
 
-___ filter - NOTE: The difference between the filter() and map() functions are as follows:
-                   The function passed to filter() returns a Boolean and gets applied to every
-                   element in the List.  If the Boolean returned by that function is true,
-                   then that element of the List gets returned by filter(), which constructs
-                   a new List that IS A SUBSET of the original List--thus the name filter.
 
-                   The map() function gets passed a function which gets applied to every element
-                   in the List.  That function then returns a value for every element in the List
-                   that is the same type contained in the List.  So List.map() returns a List
-                   containing the same number of elements as the List that it's applied to.
-                   
-             EXAMPLE:
-             val intList:List[Int] = List[Int](1, 2, 3, 4, 5, 6, 7)
-             val result_1:List[Int] = intList.filter(_ > 6)
-             println(result_1) // PRINTS: List(7)
-
-             // The following code shows TWO (2) ways of obtaining identical results by
-             // calling the filter() function.  Both println() statements below print:
-             // RMN
-             // Randy_Reject
-             val nameList:List[String] = List("TJB", "RMN", "Randy_Reject")
-             var result_2:List[String] = nameList.filter(_.startsWith("R"))
-             result_2.foreach(println) // PRINTS: RMN Randy_Reject
-             result_2 = nameList.filter(x => x.startsWith("R"))
-             result_2.foreach(println) // PRINTS: RMN Randy_Reject
 ___ filterNot - The opposite of the filter method.
 ___ flatMap - Also see --> https://github.com/w9mwi/Scala/blob/master/flatMap()_and_flatten()
               The flatMap() method is essentially a combination of the List.map method() run first,
