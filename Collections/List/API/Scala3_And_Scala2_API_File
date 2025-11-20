@@ -441,7 +441,7 @@ end main
   // Generate all possible permutations
   // using all Int elements in intList.
   count = 0
-    for (x <- intList.permutations) {
+  for (x <- intList.permutations) {
     count += 1
     println(s"$count) $x")
     // PRINTS:
@@ -456,24 +456,30 @@ end main
     // 718) List(1, 9, 3, 4, 6, 7)
     // 719) List(1, 9, 3, 6, 7, 4)
     // 720) List(1, 9, 3, 6, 4, 7)
-
-    // exists METHOD  ******************************************
   }
 end main
 
 ===========================================================================
 
+@main def main():Unit =
+  // exists METHOD - PART 1 of 2 ******************************************
+  val strList:List[String] = List[String]("str1_abc_junk", "str2_jkl_stuff", "str3_qrs_things", "str4_xyz_trash");
+  println(s"""1) strList.exists(_.compareTo("str3_qrs_things") == 0) = ${strList.exists(_.compareTo("str3_qrs_things") == 0)}""")
+  // PRINTS: 1) strList.exists(_.compareTo("str3_qrs_things") == 0) = true
+  println(s"""2) strList.exists(_.compareTo("str3_qrs_thing") == 0) = ${strList.exists(_.compareTo("str3_qrs_thing") == 0)}""")
+  // PRINTS: 2) strList.exists(_.compareTo("str3_qrs_thing") == 0) = false
 
-___ exists - The exists method returns true if at least one element in the collection meets the condition.
-             The forall method returns true if ALL elements in the collection meet the condition.
-             EXAMPLE 1:
-             val strList:List[String] = List[String]("str1_abc_junk", "str2_jkl_stuff", "str3_qrs_things", "str4_xyz_trash");
-             val result:Boolean = strList.exists(_.compareTo("str3_qrs_things") == 0)
-             println(result) // result = true
-             EXAMPLE 2:
-             val intList:List[Int] = List[Int](1, 2, 3, 4, 5, 6, 7);
-             val result:Boolean = intList.exists(x => x==7)
-             println(result) // result = true
+  // exists METHOD - PART 2 of 2 ******************************************
+  val intList:List[Int] = List[Int](1, 2, 3, 4, 5, 6, 7);
+  println(s"""3) intList.exists(x => x==7) = ${intList.exists(x => x==7)}""")
+  // PRINTS: 3) intList.exists(x => x==7) = true
+  println(s"""4) intList.exists(x => x>7) = ${intList.exists(x => x>7)}""")
+  // PRINTS: 4) intList.exists(x => x>7) = false
+end main
+
+===========================================================================
+
+
 ___ filter - NOTE: The difference between the filter() and map() functions are as follows:
                    The function passed to filter() returns a Boolean and gets applied to every
                    element in the List.  If the Boolean returned by that function is true,
