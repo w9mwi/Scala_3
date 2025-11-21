@@ -477,130 +477,55 @@ end main
   // PRINTS: 4) intList.exists(x => x>7) = false
 
   // filter METHOD ******************************************
-  val intList:List[Int] = List[Int](1, 2, 3, 4, 5, 6, 7)
   println(s"5) intList.filter(_ >= 6) = ${intList.filter(_ >= 6)}")
   // PRINTS: 5) intList.filter(_ >= 6) = List(6, 7)
 
-  // The following two println statements generate the same result
-  // by passing to the two filter methods the same function written
-  // using different syntax.
+  // The two println statements below show these two function calls return identical results:
+  // 1) nameList.filter(_.startsWith("R"))
+  // 2) nameList.filter(x => x.startsWith("R"))
   val nameList:List[String] = List("TJB", "Rosy", "Randy")
   println(s"""6) nameList.filter(_.startsWith("R")) = ${nameList.filter(_.startsWith("R"))}""")
   // PRINTS: 6) nameList.filter(_.startsWith("R")) = List(Rosy, Randy)
   println(s"""7) nameList.filter(x => x.startsWith("R")) = ${nameList.filter(x => x.startsWith("R"))}""")
   // PRINTS: 7) nameList.filter(x => x.startsWith("R")) = List(Rosy, Randy)
 
+  // map METHOD ******************************************
+  // Execute the function passed to the map method on all
+  // elements of the collection, and return a new collection
+  // containing those calculated values.
+  println(s"8) intList.map(x => x*2) = ${intList.map(x => x*2)}")
+  // PRINTS: 8) intList.map(x => x*2) = List(2, 4, 6, 8, 10, 12, 14)
+  val listOfLists:List[List[Int]] = List(List(1, 2, 3), List(4, 5, 6), List(7, 8, 9))
+  println(s"9) listOfLists.flatten.map(_*2) = ${listOfLists.flatten.map(_ * 2)}")
+  // PRINTS: 9) listOfLists.flatten.map(_*2) = List(2, 4, 6, 8, 10, 12, 14, 16, 18)
+  println(s"10) nameList.map(_.toUpperCase) = ${nameList.map(_.toUpperCase)}")
+  // PRINTS: 10) nameList.map(_.toUpperCase) = List(TJB, ROSY, RANDY)
+
+  // flatten METHOD ******************************************
+  // The flatten method works only on a collection that contains
+  // a collection in each of its elements.  The commented-out
+  // line below won't compile because the elements in intList
+  // contain Int values, instead of collections.
+  // intList.flatten  // WON'T COMPILE!
+
+  // The following example shows that when the flatten method
+  // is run on a collection of collections, flatten returns a
+  // collection of elements; where those elements were obtained
+  // across all List[Int] collections in listOfLists.
+  println(s"11) listOfLists.flatten = ${listOfLists.flatten}")
+  // PRINTS: 11) listOfLists.flatten = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
   // flatMap METHOD ******************************************
+  // The two println statements below show these two function calls return identical results:
+  // 1) nameList.map(_.toUpperCase).flatten
+  // 2) nameList.flatMap(_.toUpperCase)
+  println(s"12) nameList.map(_.toUpperCase).flatten = ${nameList.map(_.toUpperCase).flatten}")
+  // PRINTS: 12) nameList.map(_.toUpperCase).flatten = List(T, J, B, R, O, S, Y, R, A, N, D, Y)
+  println(s"13) nameList.flatMap(_.toUpperCase) = ${nameList.flatMap(_.toUpperCase)}")
+  // PRINTS: 13) nameList.flatMap(_.toUpperCase) = List(T, J, B, R, O, S, Y, R, A, N, D, Y)
 end main
 
 ===========================================================================
-
-
-
-___ filterNot - The opposite of the filter method.
-___ flatMap - Also see --> https://github.com/w9mwi/Scala/blob/master/flatMap()_and_flatten()
-              The flatMap() method is essentially a combination of the List.map method() run first,
-              followed by the List.flatten() method run second.  The flatMap() method returns a List.
-
-              TO UNDERSTAND EXACTLY HOW List.flatMap WORKS, UNDERSTAND THIS CODE...
-
-              object Demo
-              {
-                def main(args: Array[String]):Unit =
-                {
-                  val list_1:List[Int] = List(1,2,3,4,5)
-                  println("A) " + list_1)               // PRINTS: A) List(1, 2, 3, 4, 5)
-                  println("B) " + list_1.map(i=>i*2))   // PRINTS: B) List(2, 4, 6, 8, 10)
-                  println("C) " + list_1.flatMap(func)) // PRINTS: C) List(0, 1, 2, 1, 2, 3, 2, 3, 4, 3, 4, 5, 4, 5, 6)
-
-                  // This is what happens when list_1.flatMap(func) is called:
-                  // 1) flatMap first calls the map function on every element in list_1.
-                  //    So the map function generates this result:
-                  //    List(List(0, 1, 2), List(1, 2, 3), List(2, 3, 4), List(3, 4, 5), List(4, 5, 6))
-                  //
-                  // 2) After flatMap calls the map function, it then calls the flatten function
-                  //    on the results of the map function.  So flatten transforms...
-                  //    THIS:       List(List(0, 1, 2), List(1, 2, 3), List(2, 3, 4), List(3, 4, 5), List(4, 5, 6))
-                  //    INTO THIS:  List(0, 1, 2, 1, 2, 3, 2, 3, 4, 3, 4, 5, 4, 5, 6)
-                }
-
-                def func(intNumber:Int):List[Int] = List(intNumber - 1, intNumber, intNumber + 1)
-              }
-
-
-              MORE EXAMPLES of using the flatMap() method...
-
-              val fish:List[String]               = List[String]("alewife", "bass", "perch", "northern", "walleye")
-              val waterBirds:List[String]         = List[String]("eagle", "duck", "goose")
-              val waterAnimals:List[List[String]] = List[List[String]](fish, waterBirds)
-              println("A) fish                             = " + fish)
-              println("B) waterBirds                       = " + waterBirds)
-              println("C) waterAnimals                     = " + waterAnimals)
-              println("D) waterAnimals.map(x => x)         = " + waterAnimals.map(x => x)) // NOTE: map(x => x) changes nothing.
-              println("E) waterAnimals.flatten             = " + waterAnimals.flatten)
-              println("F) waterAnimals.map(x => x).flatten = " + waterAnimals.map(x => x).flatten)
-              println("G) waterAnimals.flatMap(x => x)     = " + waterAnimals.flatMap(x => x))
-              //  PRINTS THE FOLLOWING 7 LINES...
-              //  A) fish                             = List(alewife, bass, perch, northern, walleye)
-              //  B) waterBirds                       = List(eagle, duck, goose)
-              //  C) waterAnimals                     = List(List(alewife, bass, perch, northern, walleye), List(eagle, duck, goose))
-              //  D) waterAnimals.map(x => x)         = List(List(alewife, bass, perch, northern, walleye), List(eagle, duck, goose))
-              //  E) waterAnimals.flatten             = List(alewife, bass, perch, northern, walleye, eagle, duck, goose)
-              //  F) waterAnimals.map(x => x).flatten = List(alewife, bass, perch, northern, walleye, eagle, duck, goose)
-              //  G) waterAnimals.flatMap(x => x)     = List(alewife, bass, perch, northern, walleye, eagle, duck, goose)
-
-___ flatten - The flatten() method works ONLY on Scala collections that contain collections.
-              Read the following sample code for examples.
-
-            object Demo
-            {
-              def main(args:Array[String]): Unit = {
-            
-                // The flatten() method does NOT work on the following
-                // intArray because it contains Int values, which are
-                // NOT collections.
-                val intArray:Array[Int] = Array(123, 456, 789)
-                // intArray.flatten  // WON'T COMPILE!
-                // *************************************************
-            
-                println("EXAMPLE 1)")
-                // Here we DON'T call the flatten() method yet.
-                // We print strArray only to show its contents.
-                val strArray:Array[String] = Array("ABC", "XYZ")
-                for (x <- strArray)  println(x) // PRINTS: ABC
-                                                //         XYZ
-                // *************************************************
-            
-                println("EXAMPLE 2)")
-                // This result may be unexpected.  The flatten() method
-                // WORKS on strArray because an Array[String] type in
-                // Scala is built with an Array[Char] collection!
-                val charArray:Array[Char] = strArray.flatten
-                for (x <- charArray)  print(x)  // PRINTS: ABCXYZ
-            
-                // *************************************************
-                // Here we flatten a List, where each of its elements
-                // contains a Set.
-                println("\nEXAMPLE 3)")
-                val myList:List[Set[Int]] = List(Set(1, 2, 3), Set(9, 8, 7))
-                println(myList.flatten) // PRINTS: List(1, 2, 3, 9, 8, 7)
-                // *************************************************
-            
-                println("EXAMPLE 4)")
-                // Here's one more example that's more complex.
-                // REMEMBER: The flatten() method works ONLY on a
-                //           collection that contains a collection.
-                val vasc:Vector[Array[Set[Char]]] = Vector(Array(Set('A','B','C'), Set('D','E'), Set('F')),
-                                                           Array(Set('X', 'Y', 'Z')))
-                val vsc:Vector[Set[Char]] = vasc.flatten
-                for (x <- vsc)  print(x + " ")  // PRINTS: Set(A, B, C) Set(D, E) Set(F) Set(X, Y, Z)
-            
-                println("\nEXAMPLE 5)")
-                val vs:Vector[Char] = vsc.flatten
-                for (x <- vs)  print(x + " ")  // PRINTS: A B C D E F X Y Z
-              }
-            }
-             
 
 ___ fold      - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
 
