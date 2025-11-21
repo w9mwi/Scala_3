@@ -523,6 +523,15 @@ end main
   // PRINTS: 12) nameList.map(_.toUpperCase).flatten = List(T, J, B, R, O, S, Y, R, A, N, D, Y)
   println(s"13) nameList.flatMap(_.toUpperCase) = ${nameList.flatMap(_.toUpperCase)}")
   // PRINTS: 13) nameList.flatMap(_.toUpperCase) = List(T, J, B, R, O, S, Y, R, A, N, D, Y)
+
+  // forall METHOD ******************************************
+  // Returns true when all elements in the collection
+  // meet the condition passed as its argument.
+  val intList:List[Int] = List[Int](1, 2, 3, 4, 5, 6, 7);
+  println(s"14) intList.forall(_ > 1) = ${intList.forall(_ > 1)}")
+  // PRINTS: 14) intList.forall(_ > 1) = false
+  println(s"15) intList.forall(_ > 0) = ${intList.forall(_ > 0)}")
+  // PRINTS: 15) intList.forall(_ > 0) = true
 end main
 
 ===========================================================================
