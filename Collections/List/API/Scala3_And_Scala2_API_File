@@ -561,13 +561,6 @@ ___ foldLeft  - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
 
 ___ foldRight - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
 
-___ forall - The forall method returns true if ALL elements in the collection meet the condition.
-             The exists method returns true if at least one element in the collection meets the condition.
-             EXAMPLE:
-             val myList:List[Float] = List(123.4F, 456.7F, 78.9F)
-             println("myList.forall = " + myList.forall(_ > 100.0F)) // Prints: myList.forall = false
-             println("myList.forall = " + myList.forall(_ > 50.0F))  // Prints: myList.forall = true
-
 ___ grouped - Runs through the sequence, grouping items into groups of the specified size.
               EXAMPLE:
               val intList:List[Int] = List[Int](7, 4, 6, 3, 9, 1)
