@@ -527,7 +527,6 @@ end main
   // forall METHOD ******************************************
   // Returns true when all elements in the collection
   // meet the condition passed as its argument.
-  val intList:List[Int] = List[Int](1, 2, 3, 4, 5, 6, 7);
   println(s"14) intList.forall(_ > 1) = ${intList.forall(_ > 1)}")
   // PRINTS: 14) intList.forall(_ > 1) = false
   println(s"15) intList.forall(_ > 0) = ${intList.forall(_ > 0)}")
@@ -544,13 +543,13 @@ end main
   // in the collection, like this.
   intList.foreach:
     element => element
-    print(s"\nelement = $element") // PRINTS: element = 1
-                                   //         element = 2
-                                   //         element = 3
-                                   //         element = 4
-                                   //         element = 5
-                                   //         element = 6
-                                   //         element = 7
+      print(s"\nelement = $element") // PRINTS: element = 1
+  //         element = 2
+  //         element = 3
+  //         element = 4
+  //         element = 5
+  //         element = 6
+  //         element = 7
 
   // grouped METHOD ******************************************
   println(s"16) intList.grouped(1).toList = ${intList.grouped(1).toList}")
