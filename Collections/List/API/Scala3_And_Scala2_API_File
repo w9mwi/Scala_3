@@ -551,6 +551,17 @@ end main
                                    //         element = 5
                                    //         element = 6
                                    //         element = 7
+
+  // grouped METHOD ******************************************
+  var groupedList:List[List[Int]] = intList.grouped(1).toList
+  println(s"16) intList.grouped(1).toList = ${intList.grouped(1).toList}")
+  // PRINTS: 16) intList.grouped(1).toList = List(List(1), List(2), List(3), List(4), List(5), List(6), List(7))
+  println(s"17) intList.grouped(2).toList = ${intList.grouped(2).toList}")
+  // PRINTS: 17) intList.grouped(2).toList = List(List(1, 2), List(3, 4), List(5, 6), List(7))
+  println(s"18) intList.grouped(3).toList = ${intList.grouped(3).toList}")
+  // PRINTS: 18) intList.grouped(3).toList = List(List(1, 2, 3), List(4, 5, 6), List(7))
+  println(s"19) intList.grouped(4).toList = ${intList.grouped(4).toList}")
+  // PRINTS: 19) intList.grouped(4).toList = List(List(1, 2, 3, 4), List(5, 6, 7))
 end main
 
 ===========================================================================
@@ -560,20 +571,6 @@ ___ fold      - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
 ___ foldLeft  - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
 
 ___ foldRight - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
-
-___ grouped - Runs through the sequence, grouping items into groups of the specified size.
-              EXAMPLE:
-              val intList:List[Int] = List[Int](7, 4, 6, 3, 9, 1)
-              intList.grouped(2).foreach(println) // PRINTS: List(7, 4)
-                                                  //         List(6, 3)
-              var count = 0                       //         List(9, 1)
-              for (x <- intList.grouped(2))
-              {
-                 count += 1
-                 // Print the same intList.grouped(2) as the above call to foreach.
-                 println("count = " + count + ", " + x) // PRINTS: count = 1, List(7, 4)
-              }                                         //         count = 2, List(6, 3)
-                                                        //         count = 3, List(9, 1)
 
 ___ indexWhere - Pass this method a function that operates on a single element of the collection.
                  Returns the index of the FIRST element for which the function is true.  Returns
