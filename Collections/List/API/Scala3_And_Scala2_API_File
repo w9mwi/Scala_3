@@ -568,17 +568,17 @@ end main
 
   // indexWhere METHOD
   // Obtain the index of the first value in intList that's greater than 6.
-  println(s"22) intList.indexWhere(_ > 6) = ${intList.indexWhere(_ > 6)})")
-  // PRINTS: 22) intList.indexWhere(_ > 6) = 6)
+  println(s"22) intList.indexWhere(_ > 6) = ${intList.indexWhere(_ > 6)}")
+  // PRINTS: 22) intList.indexWhere(_ > 6) = 6
 
   // Obtain the index of the first value in intList that's less than 0.
   // No value in intList is < 0, so the value -1 is returned.
-  println(s"23) intList.indexWhere(_ < 0) = ${intList.indexWhere(_ < 0)})")
-  // PRINTS: 23) intList.indexWhere(_ < 0) = -1)
+  println(s"23) intList.indexWhere(_ < 0) = ${intList.indexWhere(_ < 0)}")
+  // PRINTS: 23) intList.indexWhere(_ < 0) = -1
 
   // Obtain the index of the first value in intList that's less than < 8.
-  println(s"24) intList.indexWhere(_ < 8) = ${intList.indexWhere(_ < 8)})")
-// PRINTS: 24) intList.indexWhere(_ < 8) = 0)
+  println(s"24) intList.indexWhere(_ < 8) = ${intList.indexWhere(_ < 8)}")
+  // PRINTS: 24) intList.indexWhere(_ < 8) = 0
 end main
 
 ===========================================================================
