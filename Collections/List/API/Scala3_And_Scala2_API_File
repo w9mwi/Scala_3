@@ -32,6 +32,7 @@ analgous way.  Read the in-line comments.
   // PRINTS: 1) intList.drop(3) = List(4, 5)
 
   // init METHOD ******************************************
+  // Don't confuse this init method with the inits method!
   // Return all elements of intList, except the last element.
   println(s"2) intList.init = ${intList.init}") // init(ial) = All elements except last.
   // PRINTS:2) intList.init = List(1, 2, 3, 4)
@@ -591,6 +592,47 @@ end main
   // 7 is the value returned by lastIndexWhere(_ > 0).
   println(s"26) intList.lastIndexWhere(_ > 0) = ${intList.lastIndexWhere(_ > 0)}")
   // PRINTS: 26) intList.lastIndexWhere(_ > 0) = 7
+
+  // inits METHOD ******************************************
+  // Don't confuse this inits method with the init method!
+  // The inits method generates an iterator over all values
+  // of an iterable collection.  The following three iterables
+  // are all equivalent.
+  val iter_1:Iterator[List[Int]] = intList.inits
+  val iter_2:Iterator[List[Int]] = List(1,2,3,4,5,6,7).inits
+  val iter_3:Iterator[List[Int]] = Iterator(List(1, 2, 3, 4, 5, 6, 7), List(1, 2, 3, 4, 5, 6),
+                                            List(1, 2, 3, 4, 5),       List(1, 2, 3, 4),
+                                            List(1,2,3),               List(1,2),
+                                            List(1),                   Nil)
+  // *************************************************
+  // The following 3 for loops print identical results
+  // because iterators iter_1, iter_2, and iter_3
+  // are all equivalent.
+  var count:Int = 0
+  for (x <- iter_1)
+  {
+    count += 1
+    println("count = " + count + ", " + x) // PRINTS: count = 1, List(1, 2, 3, 4, 5, 6, 7)
+                                           //         count = 2, List(1, 2, 3, 4, 5, 6)
+                                           //         count = 3, List(1, 2, 3, 4, 5)
+                                           //         count = 4, List(1, 2, 3, 4)
+                                           //         count = 5, List(1, 2, 3)
+                                           //         count = 6, List(1, 2)
+                                           //         count = 7, List(1)
+                                           //         count = 8, List()
+  }
+  count = 0
+  for (x <- iter_2)
+  {
+    count += 1
+    println("count = " + count + ", " + x)
+  }
+  count = 0
+  for (x <- iter_3)
+  {
+    count += 1
+    println("count = " + count + ", " + x)
+  }
 end main
 
 ===========================================================================
@@ -601,31 +643,6 @@ ___ foldLeft  - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
 
 ___ foldRight - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
 
-
-___ inits - Provides an iterator going from the full sequence to an empty one, removing elements from the end.
-                                                                 // The below println statement PRINTS:
-            val intList:List[Int] = List[Int](7, 4, 6, 3, 9, 1)  // count = 1, List(7, 4, 6, 3, 9, 1)
-            var count = 0                                        // count = 2, List(7, 4, 6, 3, 9)
-            for (x <- intList.inits)                             // count = 3, List(7, 4, 6, 3)
-            {                                                    // count = 4, List(7, 4, 6)
-              count += 1                                         // count = 5, List(7, 4)
-              println("count = " + count + ", " + x)             // count = 6, List(7)
-            }                                                    // count = 7, List()
-
-___ map - NOTE: The difference between the filter() and map() functions are as follows:
-                The function passed to filter() returns a Boolean and gets applied to every
-                element in the List.  If the Boolean returned by that function is true,
-                then that element of the List gets returned by filter(), which constructs
-                a new List that IS A SUBSET of the original List--thus the name filter.
-
-                The map() function gets passed a function which gets applied to every element
-                in the List.  That function then returns a value for every element in the List
-                that is the same type contained in the List.  So List.map() returns a List
-                containing the same number of elements as the List it gets applied to.
-          EXAMPLE:
-          val intList:List[Int] = List[Int](1, 2, 3, 4, 5, 6, 7);
-          val result:List[Int] = intList.map(_*2)
-          println(result) //  prints: List(2, 4, 6, 8, 10, 12, 14)
 ___ partition - Pass this method a function that operates on a single element of the collection
                 and returns a Boolean.  This method returns a tuple with TWO new collections.
                 The first collection in the tuple contains only the elements for which the
