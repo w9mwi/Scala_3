@@ -517,6 +517,13 @@ end main
   println(s"11) listOfLists.flatten = ${listOfLists.flatten}")
   // PRINTS: 11) listOfLists.flatten = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
 
+  // The following 2 lines of code shows that flatMap(x=>x)
+  // and flatten methods return the same results.
+  println(s"12) listOfLists.flatMap(x=>x*x) = ${listOfLists.flatMap(x=>x)}")
+  // PRINTS: 12) listOfLists.flatMap(x=>x*x) = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+  println(s"13) listOfLists.flatten         = ${listOfLists.flatten}")
+  // PRINTS: 13) listOfLists.flatten         = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
   // flatMap METHOD ******************************************
   // The two println statements below show these two function calls return identical results:
   // 1) nameList.map(_.toUpperCase).flatten
