@@ -62,38 +62,40 @@ analgous way.  Read the in-line comments.
   // *****************************************************************
   // patch METHOD - PART 2 OF 2
   val originalList = List(10, 20, 30, 40, 50, 60)
-  println(s"Original List: $originalList")
+  println(s"7) Original List: $originalList")
+  // PRINTS: 7) Original List: List(10, 20, 30, 40, 50, 60)
 
   // --- 1. Replacing a subsequence ---
   // Replace 2 elements starting from index 2 (which are 30, 40) with List(35, 45)
   val replacedList = originalList.patch(2, List(35, 45), 2)
-  println(s"Replaced Subsequence: $replacedList")
-  // PRINTS: Replaced Subsequence: List(10, 20, 35, 45, 50, 60)
+  println(s"8) Replaced Subsequence: $replacedList")
+  // PRINTS: 8) Replaced Subsequence: List(10, 20, 35, 45, 50, 60)
 
   // --- 2. Inserting elements ---
   // Insert List(25) at index 2 without removing any elements (n = 0)
   val insertedList = originalList.patch(2, List(25), 0)
-  println(s"Inserted Elements: $insertedList")
-  // PRINTS: Inserted Elements: List(10, 20, 25, 30, 40, 50, 60)
+  println(s"9) Inserted Elements: $insertedList")
+  // PRINTS: 9) Inserted Elements: List(10, 20, 25, 30, 40, 50, 60)
 
   // --- 3. Removing elements ---
   // Remove 3 elements starting from index 1 (which are 20, 30, 40) with an empty list
   val removedList = originalList.patch(1, List(), 3) // List() = Seq.empty
-  println(s"Removed Elements: $removedList")
-  // PRINTS: Removed Elements: List(10, 50, 60)
+  println(s"10) Removed Elements: $removedList")
+  // PRINTS: 10) Removed Elements: List(10, 50, 60)
 
   // --- 4. Simulating an element update ---
   // Replace 1 element at index 0 (which is 10) with 5
   val updatedList = originalList.patch(0, List(5), 1)
-  println(s"Updated Element: $updatedList")
-  // PRINTS: Updated Element: List(5, 20, 30, 40, 50, 60)
+  println(s"11) Updated Element: $updatedList")
+  // PRINTS: 11) Updated Element: List(5, 20, 30, 40, 50, 60)
   // *****************************************************************
 
   // slice METHOD ******************************************
   // EXAMPLE: slice(startIdx, n)  - Returns charList from
   //          startIdx = 1 ('b') to index (n-1) = 2 ('c)
-  println(s"6) charList.slice(1,3) = ${charList.slice(1,3) }")
-  // PRINTS: 6) charList.slice(1,3) = List(b, c)
+  val charList = List('A', 'B', 'C', 'D', 'E')
+  println(s"12) charList.slice(1,3) = ${charList.slice(1,3) }")
+  // PRINTS: 12) charList.slice(1,3) = List(B, C)
 
   // splitAt METHOD ******************************************
   // EXAMPLE: Split strList so it returns one List[String] made up
@@ -103,25 +105,24 @@ analgous way.  Read the in-line comments.
                                   "1", "Alice", "alice@example.com",
                                   "2", "Bob", "bob@example.com")
   val (header, records) = strList.splitAt(3)
-  println(s"7) header = $header,   records = $records")
-  // PRINTS: 7) header = List(id, name, email),   records = List(1, Alice, alice@example.com, 2, Bob, bob@example.com)
+  println(s"13) header = $header,   records = $records")
+  // PRINTS: 13) header = List(id, name, email),   records = List(1, Alice, alice@example.com, 2, Bob, bob@example.com)
 
   // take METHOD ******************************************
   // The List.take method in Scala 3 returns a new List containing
   // the first n elements of the original list.  If the list has
   // fewer than n elements, it returns the entire list.
-  val intList:List[Int] = List(111, 222, 333, 444, 555, 666)
-  println(s"8) intList.take(4) = ${intList.take(4)}")
-  // PRINTS: 8) intList.take(4) = List(111, 222, 333, 444)
+  println(s"14) intList.take(4) = ${intList.take(4)}")
+  // PRINTS: 14) intList.take(4) = List(1, 2, 3, 4)
 
   // takeRight METHOD ******************************************
   // The List.takeRight method returns a new List containing
   // the first n elements of the original list.  If the list
   // has fewer than n elements, it returns the entire list.
-  println(s"8) intList.takeRight(4) = ${intList.takeRight(4)}")
-  // PRINTS: 8) intList.takeRight(4) = List(333, 444, 555, 666)
-
+  println(s"15) intList.takeRight(4) = ${intList.takeRight(4)}")
+  // PRINTS: 15) intList.takeRight(4) = List(2, 3, 4, 5)
 end main
+
 ===========================================================================
 
 // *********************************
