@@ -566,7 +566,7 @@ end main
   println(s"21) intList.grouped(4).toList = ${intList.grouped(4).toList}")
   // PRINTS: 21) intList.grouped(4).toList = List(List(1, 2, 3, 4), List(5, 6, 7))
 
-  // indexWhere METHOD
+  // indexWhere METHOD ******************************************
   // Obtain the index of the first value in intList that's greater than 6.
   println(s"22) intList.indexWhere(_ > 6) = ${intList.indexWhere(_ > 6)}")
   // PRINTS: 22) intList.indexWhere(_ > 6) = 6
@@ -579,6 +579,18 @@ end main
   // Obtain the index of the first value in intList that's less than < 8.
   println(s"24) intList.indexWhere(_ < 8) = ${intList.indexWhere(_ < 8)}")
   // PRINTS: 24) intList.indexWhere(_ < 8) = 0
+
+  // lastIndexWhere METHOD ******************************************
+  // The following call to lastIndexWhere(_ > 8) returns -1 because
+  // intList contains no value > 8; therefore, no index is associated
+  // with a value > 8.
+  println(s"25) intList.lastIndexWhere(_ > 8) = ${intList.lastIndexWhere(_ > 8)}")
+  // PRINTS: intList.lastIndexWhere(_ > 8) = -1
+
+  // The index of the last value in intList having a value > 0 is 7; therefore,
+  // 7 is the value returned by lastIndexWhere(_ > 0).
+  println(s"26) intList.lastIndexWhere(_ > 0) = ${intList.lastIndexWhere(_ > 0)}")
+  // PRINTS: 26) intList.lastIndexWhere(_ > 0) = 7
 end main
 
 ===========================================================================
@@ -589,13 +601,7 @@ ___ foldLeft  - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
 
 ___ foldRight - SEE:  https://github.com/w9mwi/Scala/blob/master/Fold_Methods
 
-___ indexWhere - Pass this method a function that operates on a single element of the collection.
-                 Returns the index of the FIRST element for which the function is true.  Returns
-                 -1 if the function is NOT true for any of the elements.
-                 EXAMPLE:
-                 val myList:List[Float] = List(12.1F, 34.2F, 56.3F, 78.4F)
-                 val result:Int = myList.indexWhere(_ > 50.0F)
-                 println(result) // Prints: 2
+
 ___ inits - Provides an iterator going from the full sequence to an empty one, removing elements from the end.
                                                                  // The below println statement PRINTS:
             val intList:List[Int] = List[Int](7, 4, 6, 3, 9, 1)  // count = 1, List(7, 4, 6, 3, 9, 1)
@@ -605,14 +611,7 @@ ___ inits - Provides an iterator going from the full sequence to an empty one, r
               count += 1                                         // count = 5, List(7, 4)
               println("count = " + count + ", " + x)             // count = 6, List(7)
             }                                                    // count = 7, List()
-___ lastIndexWhere - Pass this method a function that operates on a single element of the collection
-                     and returns a Boolean.  This method returns the index of the LAST element for
-                     which the function is true.  Returns -1 if the function is NOT true for any
-                     of the elements.
-                     EXAMPLE:
-                     val myList:List[Float] = List(12.1F, 34.2F, 56.3F, 78.4F)
-                     val result:Int = myList.lastIndexWhere(_ > 50.0F)
-                     println(result) // Prints: 3
+
 ___ map - NOTE: The difference between the filter() and map() functions are as follows:
                 The function passed to filter() returns a Boolean and gets applied to every
                 element in the List.  If the Boolean returned by that function is true,
