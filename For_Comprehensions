@@ -26,25 +26,43 @@ as shown in the following examples.
   println(s"flatMapResult = $flatMapResult")
   // PRINTS: flatMapResult = List(1-a, 1-b, 2-a, 2-b, 3-a, 3-b)
 end main
+
 ===================================================================
 
 The map() function is available on many Scala collections.  The following
 program demonstrates a custom map() function that also works on Scala
 collections; where this custom map() implements a for comprehension.
 
-def map[A, B](func:(B) => A, xs:List[B]):List[A] =
-  for x <- xs yield func(x)
-end map
+@main def main():Unit =
+  /**
+   * Return the length of the String passed to this method.
+   */
+  def strLengthFunc(str: String): Int = str.length
 
-def double(intNumber:Int): Int = intNumber * 2
-def strlen(str:String):Int = str.length
+  /**
+   * Double the number passed to this doubleIntFunc function,
+   * and return it.
+   */
+  def doubleIntFunc(intNumber:Int):Int = intNumber * 2
 
-@main def main() =
-  var intList:List[Int] = map(double, List(1, 2, 3))
+  /**
+   * This custom map function replicates the behavior of Scala's
+   * List.map function.
+   * @param func - A Scala function accepts an argument of type B,
+   *               and returns the type A.
+   * @param xs - A Scala List of type B
+   *
+   * @return - A Scala List of type A
+   */
+  def map[A, B](func:B => A, xs:List[B]):List[A] =
+    for x <- xs yield func(x)
+  end map
+
+  var intList:List[Int] = map(doubleIntFunc, List(1, 2, 3))
   println(s"1) intList = $intList") // PRINTS: 1) intList = List(2, 4, 6)
 
-  intList = map(strlen, List("a", "bb", "ccc"))
-  println(s"2) intList = $intList") // PRINTS: 2) intList = List(1, 2, 3)
+  intList = map(strLengthFunc, List("zzzzz", "yyyy", "xxx"))
+  println(s"2) intList = $intList") // PRINTS: 2) intList = List(5, 4, 3)
 end main
 
----------------------------------------------------------------------------------------------------
+===================================================================
