@@ -1,4 +1,28 @@
 The "for loop" in Scala is known as a "for comprehension."
+A "for comprehension" can be written using parenthesis ()
+and/or curly braces {} as shown here.
+
+@main def main():Unit =
+  val list1:List[Int] = List(1,2,3)
+
+  // The following 4 lines of code demonstrates that a
+  // "for comprehensions" can use parenthesis () and
+  // curly braces {} interchangeably.  The first set
+  // of parenthesis () or curly braces {} contains the
+  // generator and any filters.  The second set of
+  // parenthesis () or curly braces {} contains code
+  // that the "for comprehension" executes with each
+  // iteration.
+  for (x <- list1) ( print(x) ); println // PRINTS: 123
+  for (x <- list1) { print(x) }; println // PRINTS: 123
+  for {x <- list1} ( print(x) ); println // PRINTS: 123
+  for {x <- list1} { print(x) }; println // PRINTS: 123
+end main
+
+
+
+
+
 
 For loops/comprehensions in Scala can be written the standard way
 by iterating over a collection using a for loop.  The result
