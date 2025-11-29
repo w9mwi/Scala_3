@@ -4,23 +4,22 @@ and/or curly braces {} as shown here.
 
 @main def main():Unit =
   val list1:List[Int] = List(1,2,3)
-
-  // The following 4 lines of code demonstrates that
+  // The following 4 lines of code demonstrates that a
   // "for comprehensions" can use parenthesis () and
   // curly braces {} interchangeably.  The first set
   // of parenthesis () or curly braces {} contains the
   // generator and any filters.  The second set of
   // parenthesis () or curly braces {} contains code
-  // that the "for comprehension" executes with each
-  // iteration of the "for comprehension".
-  for (x <- list1) ( print(x) ); println // PRINTS: 123
-  for (x <- list1) { print(x) }; println // PRINTS: 123
-  for {x <- list1} ( print(x) ); println // PRINTS: 123
-  for {x <- list1} { print(x) }; println // PRINTS: 123
+  // that the "for comprehension" executes with each iteration.
+  for (x <- list1) (print(s"x = $x, "))  // PRINTS: x = 1, x = 2, x = 3,
+  println
+  for (x <- list1) {print(s"x = $x, ")}  // PRINTS: x = 1, x = 2, x = 3,
+  println
+  for {x <- list1} (print(s"x = $x, "))  // PRINTS: x = 1, x = 2, x = 3,
+  println
+  for {x <- list1} {print(s"x = $x, ")}  // PRINTS: x = 1, x = 2, x = 3,
+  println
 end main
-
-
-
 
 
 
