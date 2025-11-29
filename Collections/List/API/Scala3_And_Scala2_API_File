@@ -1,22 +1,23 @@
 
 Scala List elements should be accesssed by traversing the List from one
-element to the next, using methods List.head, List.next, List.tail.
-The time it takes to access the nth element of a List via an index
-increases as n increases.  Never access List elements via an index,
-like this...
+element to the next by using the methods List.head, List.next, List.tail.
+Never access List elements via an index,like this...
 
   val intList:List[Int] = List(111, 222, 333, 444, 555)
   val mySlice = intList(4)  // Don't access Lists via an index!
 
-Any operations that work with the end of a long List
-(appending elements to a long list, etc.) should be
-avoided because a List is inefficient at that.  A List
-is efficient when you prepend elements to it, or access
-it via the List's head and tail.
+Because the time it takes to access the nth element of a List via
+an index increases as n increases.  Operations that work with the
+end of a long List (i.e., appending elements to a long list, etc.)
+should be avoided because a List is inefficient at adding, changing,
+or deleting elements from the end of a List.
 
-The following methods are all invoked on the Scala List class.  However, many
-of these same-named methods also apply to other Scala collections, in an
-analgous way.  Read the in-line comments.
+A List is efficient at prepending elements to it, or accessing the
+List via the List's next, head, and tail methods.
+
+The following methods are all invoked on the Scala List class.  However,
+many of these methods also apply to other Scala collections.  Read
+in-line comments for details.
 
 ===========================================================================
 
