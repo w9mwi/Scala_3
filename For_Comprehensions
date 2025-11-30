@@ -27,16 +27,16 @@ The following code sample shows how to construct a
     print(s"x = $x, ") // PRINTS: x = 1, x = 2, x = 3,
   println
   for (x <- list1; if (x > 1); if (x < 3)) {
-    print(s"x = $x, ") // PRINTS: x = 2,
+    print(s"x = $x") // PRINTS: x = 2
   }
   println
   for (x <- list1; if (x > 2)) {
-    print(s"x = $x, ") // PRINTS: x = 3,
+    print(s"x = $x") // PRINTS: x = 3
   }
   println
-  for {x <- list1} {
-    print(s"x = $x, ")
-  }  // PRINTS: x = 1, x = 2, x = 3,
+  for {x <- list1; if (x < 2)} {
+    print(s"x = $x")
+  }  // PRINTS: x = 1
 end main
 
 
