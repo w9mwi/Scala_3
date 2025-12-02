@@ -110,6 +110,18 @@ foreach()    - Enables a collection class to invoke the foreach() method.  Invok
                using a for-comprehension.  Here's a code sample showing how to use the foreach()
                method on some Scala collections.
 
+If you write your own collection class and want to make it work with any type of for-comprehension,
+you must write the above four methods and make them members of your collection class.  These
+four methods must have signatures corresponding to the method definitions shown here.
+
+abstract class CustomCollectionClass[A]
+{
+  def flatMap[B](func: A => CustomCollectionClass[B]):CustomCollectionClass[B]
+  def map[B](func: A => B):CustomCollectionClass[B]
+  def withFilter(func: A => Boolean):CustomCollectionClass[A]
+  def foreach(func: A => Unit):Unit
+}
+
 ==========================================================
 ==========================================================
 ==========================================================
