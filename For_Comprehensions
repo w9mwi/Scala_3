@@ -44,6 +44,9 @@ return a value.  If you want a for-comprehension to return a value, include the
   println(s"result = $result") // PRINTS: result = List(1, 2, 3)
 end main
 
+
+NESTED FOR-COMPREHENSIONS
+=========================
 All generators within a for-comprehension must share the same type they loop over.
 For example, if a for-comprehension contains a generator of type List[Int], and
 another generator of type List[String, Float], it will work because both generators
