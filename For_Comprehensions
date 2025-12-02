@@ -43,13 +43,6 @@ the "yield" keyword as in the following code sample.
   println(s"result = $result") // PRINTS: result = List(1, 2, 3)
 end main
 
-
-When a for-comprehension contains the "yield" keyword, it returns a value.
-That returned value can then be assigned to a val/var.  
-
-
-
-
 All generators within a for-comprehension must share the same type they loop over.
 For example, if a for-comprehension contains a generator of type List[Int], and
 another generator of type List[String, Float], it will work because both generators
