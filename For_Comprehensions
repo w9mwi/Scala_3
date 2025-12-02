@@ -32,6 +32,24 @@ for-comprehension that includes a generator and a filter.
   }
 end main
 
+The above sample code performs all its functionality within the for-comprehension's
+body by printing the value of x.  Therefore, the for-comprehension doesn't need to
+return a value.  However, if you want a for-comprehension to return a value, include
+the "yield" keyword as in the following code sample.
+
+@main def main():Unit =
+  val intList:List[Int] = List(1, 2, 3)
+  val result = for (x <- intList) yield x
+  println(s"result = $result") // PRINTS: result = List(1, 2, 3)
+end main
+
+
+When a for-comprehension contains the "yield" keyword, it returns a value.
+That returned value can then be assigned to a val/var.  
+
+
+
+
 All generators within a for-comprehension must share the same type they loop over.
 For example, if a for-comprehension contains a generator of type List[Int], and
 another generator of type List[String, Float], it will work because both generators
