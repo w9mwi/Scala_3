@@ -56,11 +56,10 @@ List[String, Float].  The following code sample demonstrates this.
 @main def main():Unit =
   type StrFloatTuple = (String, Float)
   val intList:List[Int] = List(11, 22, 33)
-  val strFloatList:List[StrFloatTuple] = List(("Eleven",   11.11F),
-                                              ("Twelve",   12.12F),
-                                              ("Thirteen", 13.13F))
-  for (x <- intList)
-   for (y <- strFloatList) {
+  val strFloatVector:Vector[StrFloatTuple] = Vector(("Eleven",   11.11F),
+                                                    ("Twelve",   12.12F),
+                                                    ("Thirteen", 13.13F))
+  for (x <- intList; y <- strFloatList) {
      println(s"x (intList) = $x,  y (strFloatList) = $y")
      // PRINTS: x (intList) = 11,  y (strFloatList) = (Eleven,11.11)
      //         x (intList) = 11,  y (strFloatList) = (Twelve,12.12)
