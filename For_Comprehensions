@@ -39,7 +39,7 @@ the "yield" keyword as in the following code sample.
 
 @main def main():Unit =
   val intList:List[Int] = List(1, 2, 3)
-  val result = for (x <- intList) yield x
+  val result:List[Int] = for (x <- intList) yield x
   println(s"result = $result") // PRINTS: result = List(1, 2, 3)
 end main
 
