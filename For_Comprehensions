@@ -47,32 +47,42 @@ end main
 
 NESTED FOR-COMPREHENSIONS
 =========================
-All generators within a for-comprehension must share the same type they loop over.
-For example, if a for-comprehension contains a generator of type List[Int], and
-another generator of type List[String, Float], it will work because both generators
-are of type List, even though there is a difference between List[Int] and
-List[String, Float].  The following code sample demonstrates this.
+Nesting for-comprehensions is analogous to nesting for-loops.
+The follwing sample code demonstrates nested for-comprehensions.
 
 @main def main():Unit =
   type StrFloatTuple = (String, Float)
   val intList:List[Int] = List(11, 22, 33)
-  val strFloatVector:Vector[StrFloatTuple] = Vector(("Eleven",   11.11F),
-                                                    ("Twelve",   12.12F),
-                                                    ("Thirteen", 13.13F))
+  val strFloatList:List[StrFloatTuple] = List(("Eleven",   11.11F),
+                                              ("Twelve",   12.12F),
+                                              ("Thirteen", 13.13F))
   for (x <- intList; y <- strFloatList) {
-     println(s"x (intList) = $x,  y (strFloatList) = $y")
-     // PRINTS: x (intList) = 11,  y (strFloatList) = (Eleven,11.11)
-     //         x (intList) = 11,  y (strFloatList) = (Twelve,12.12)
-     //         x (intList) = 11,  y (strFloatList) = (Thirteen,13.13)
-     //         x (intList) = 22,  y (strFloatList) = (Eleven,11.11)
-     //         x (intList) = 22,  y (strFloatList) = (Twelve,12.12)
-     //         x (intList) = 22,  y (strFloatList) = (Thirteen,13.13)
-     //         x (intList) = 33,  y (strFloatList) = (Eleven,11.11)
-     //         x (intList) = 33,  y (strFloatList) = (Twelve,12.12)
-     //         x (intList) = 33,  y (strFloatList) = (Thirteen,13.13)
-   }
-end main
+    println(s"x (intList) = $x,  y (strFloatList) = $y")
+    // PRINTS: x (intList) = 11,  y (strFloatList) = (Eleven,11.11)
+    //         x (intList) = 11,  y (strFloatList) = (Twelve,12.12)
+    //         x (intList) = 11,  y (strFloatList) = (Thirteen,13.13)
+    //         x (intList) = 22,  y (strFloatList) = (Eleven,11.11)
+    //         x (intList) = 22,  y (strFloatList) = (Twelve,12.12)
+    //         x (intList) = 22,  y (strFloatList) = (Thirteen,13.13)
+    //         x (intList) = 33,  y (strFloatList) = (Eleven,11.11)
+    //         x (intList) = 33,  y (strFloatList) = (Twelve,12.12)
+    //         x (intList) = 33,  y (strFloatList) = (Thirteen,13.13)
+  }
+  println("===============================")
+  // The following for-comprehension is functionally identical to the
+  // for-comprehension above.  However, the following for-comprehension
+  // implements the "yield" keyword, which forces the for-comprehension
+  // to return a result, which is assigned to the val result.  The
+  // for-comprehension above doesn't implement the "yield" keyword;
+  // so it doesn't return a result.
+  val result:List[(Int, (String, Float))] =
+    // "x <- intList"      is the outer generator (analogous to the outer for-loop).
+    // "y <- strFloatList" is the inner generator (analogous to the inner for-loop).
+    for (x <- intList; y <- strFloatList) yield (x, y)
 
+  for (x <- result) println(s"x (intList) = ${x._1},  y (strFloatList) = ${x._2}")
+  // PRINTS: The exact same text as the first for-comprehension prints above.
+end main
 
 
 ==========================================================
