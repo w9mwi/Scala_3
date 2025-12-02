@@ -35,8 +35,8 @@ end main
 
 The above sample code performs all its functionality within the for-comprehension's
 body by printing the value of x.  Therefore, the for-comprehension doesn't need to
-return a value.  However, if you want a for-comprehension to return a value, include
-the "yield" keyword as in the following code sample.
+return a value.  If you want a for-comprehension to return a value, include the
+"yield" keyword as is done in the following code sample.
 
 @main def main():Unit =
   val intList:List[Int] = List(1, 2, 3)
@@ -48,7 +48,28 @@ All generators within a for-comprehension must share the same type they loop ove
 For example, if a for-comprehension contains a generator of type List[Int], and
 another generator of type List[String, Float], it will work because both generators
 are of type List, even though there is a difference between List[Int] and
-List[String, Float].
+List[String, Float].  The following code sample demonstrates this.
+
+@main def main():Unit =
+  type StrFloatTuple = (String, Float)
+  val intList:List[Int] = List(11, 22, 33)
+  val strFloatList:List[StrFloatTuple] = List(("Eleven",   11.11F),
+                                              ("Twelve",   12.12F),
+                                              ("Thirteen", 13.13F))
+  for (x <- intList)
+   for (y <- strFloatList) {
+     println(s"x (intList) = $x,  y (strFloatList) = $y")
+     // PRINTS: x (intList) = 11,  y (strFloatList) = (Eleven,11.11)
+     //         x (intList) = 11,  y (strFloatList) = (Twelve,12.12)
+     //         x (intList) = 11,  y (strFloatList) = (Thirteen,13.13)
+     //         x (intList) = 22,  y (strFloatList) = (Eleven,11.11)
+     //         x (intList) = 22,  y (strFloatList) = (Twelve,12.12)
+     //         x (intList) = 22,  y (strFloatList) = (Thirteen,13.13)
+     //         x (intList) = 33,  y (strFloatList) = (Eleven,11.11)
+     //         x (intList) = 33,  y (strFloatList) = (Twelve,12.12)
+     //         x (intList) = 33,  y (strFloatList) = (Thirteen,13.13)
+   }
+end main
 
 
 
