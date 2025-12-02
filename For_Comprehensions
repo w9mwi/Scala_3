@@ -1,39 +1,39 @@
-In Scala, a for comprehension is similar to a for loop in other
+In Scala, a for-comprehension is similar to a for-loop in other
 programming languages, as it has many of the same behaviors.
-However, a "for comprehension" can do things that regular "for loops"
-cannot.  A Scala "for comprehension" has this format, where the
+However, a for-comprehension can do things that a regular for-loop
+cannot.  A Scala for-comprehension has this format, where the
 "yield" keyword is optional.
 
    for (enumerators) {
-     // The body of the "for comprehension" exists here, between the curly
-     // braces {}.  Code located within the body of a "for expression" is
-     // executed once for each iteration of the "for comprehension".  However,
-     // a "for comprehension" doesn't require this body of code (it's optional).
+     // The body of the for-comprehension exists here, between the curly
+     // braces {}.  Code located within the body of a for-comprehension is
+     // executed once for each iteration of the for-comprehension.  However,
+     // a for-comprehension doesn't require a body of code (it's optional).
    } yield x
 
 Enumerators consist of the collective code contained between the parenthesis
 following the Scala keyword "for".  An enumerator can be either a generator,
 or a filter.  Enumerators bind values to variables.  Here's an example of a
-"for comprehension" that includes a generator and a filter.
+for-comprehension that includes a generator and a filter.
 
 @main def main():Unit =
   val intList:List[Int] = List(1, 2, 3)
-  // The enumerator of the following for comprehension consists of:
+  // The enumerator of the following for-comprehension consists of:
   // 1) "x <- intList"  This is the GENERATOR.  For each iteration of
-  //                    the for comprehension, one of the Int values
+  //                    the for-comprehension, one of the Int values
   //                    from intList is assigned to the variable x.
-  //                    A for comprehension can contain one or more
+  //                    A for-comprehension can contain one or more
   //                    generators.
-  // 2) "if (x > 2)"    This is a FILTER.  If the value of x is greater
-  //                    than 2, the print statement is executed.  A for
-  //                    comprehension can contain 0, 1, or multiple filters.
+  // 2) "if (x > 2)"    This is a FILTER.  If the value of x is greater than 2,
+  //                    the print statement is executed.  A for-comprehension
+  //                    can contain 0, 1, or multiple filters.
   for (x <- intList; if x > 2) {
     print(s"x = $x")  // PRINTS: x = 3
   }
 end main
 
-All generators within a forcomprehension must share the same type they loop over.
-For example, if a for comprehension contains a generator of type List[Int], and
+All generators within a for-comprehension must share the same type they loop over.
+For example, if a for-comprehension contains a generator of type List[Int], and
 another generator of type List[String, Float], it will work because both generators
 are of type List, even though there is a difference between List[Int] and
 List[String, Float].
