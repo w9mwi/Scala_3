@@ -44,7 +44,6 @@ return a value.  If you want a for-comprehension to return a value, include the
   println(s"result = $result") // PRINTS: result = List(1, 2, 3)
 end main
 
-
 NESTED FOR-COMPREHENSIONS
 =========================
 Nesting for-comprehensions is analogous to nesting for-loops.
@@ -56,6 +55,8 @@ The follwing sample code demonstrates nested for-comprehensions.
   val strFloatList:List[StrFloatTuple] = List(("Eleven",   11.11F),
                                               ("Twelve",   12.12F),
                                               ("Thirteen", 13.13F))
+  // "x <- intList"      is the outer generator (analogous to the outer for-loop).
+  // "y <- strFloatList" is the inner generator (analogous to the inner for-loop).
   for (x <- intList; y <- strFloatList) {
     println(s"x (intList) = $x,  y (strFloatList) = $y")
     // PRINTS: x (intList) = 11,  y (strFloatList) = (Eleven,11.11)
@@ -84,6 +85,30 @@ The follwing sample code demonstrates nested for-comprehensions.
   // PRINTS: The exact same text as the first for-comprehension prints above.
 end main
 
+The syntax used to designate a Scala for-comprehension is known as "syntactic sugar"
+because when the compiler parses a for-comprehension, it translates all its syntax
+into invoking one of more of the following 4 Scala methods.
+
+NOTE: All Scala collections support for-comprehensions,
+      so they implement the following 4 methods.
+
+flatMap()    - Enables a collection class to work with nested for-comprehensions
+               when the for-comprehension implements the "yield" keyword.
+
+map()        - Enables a collection class to work with a for-comprehension when the
+               for-comprehension implements the "yield" keyword. This map() method
+               works only with a single for-comprehension, and not with nested
+               for-comprehensions.  When a collection class must work with embedded
+               for-comprehensions, the collection class MUST contain this map()
+               method, AND the flatMap() method mentioned below.
+
+withFilter() - Enables a collection class to work with a filter inside a for-comprehension.
+               (This method is called ONLY when a for-comprehension. implements a filter.)
+
+foreach()    - Enables a collection class to invoke the foreach() method.  Invoking foreach()
+               on a collection is equivalent to iterating through all elements of the collection
+               using a for-comprehension.  Here's a code sample showing how to use the foreach()
+               method on some Scala collections.
 
 ==========================================================
 ==========================================================
