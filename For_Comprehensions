@@ -13,8 +13,9 @@ cannot.  A Scala for-comprehension has this format, where the
 
 Enumerators consist of the collective code contained between the parenthesis
 following the Scala keyword "for".  An enumerator can be either a generator,
-or a filter.  Enumerators bind values to variables.  Here's an example of a
-for-comprehension that includes a generator and a filter.
+or a filter.  Enumerators bind values to variables.  All for-comprehensions
+must include at least one generator; filters are optional.  Here's an example
+of a for-comprehension that includes a generator and a filter.
 
 @main def main():Unit =
   val intList:List[Int] = List(1, 2, 3)
