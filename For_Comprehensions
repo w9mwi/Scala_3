@@ -120,12 +120,32 @@ NOTE: All Scala collections support for-comprehensions,
 flatMap()    - Enables a collection class to work with nested for-comprehensions
                when the for-comprehension implements the "yield" keyword.
 
-map()        - Enables a collection class to work with a for-comprehension when the
-               for-comprehension implements the "yield" keyword. This map() method
-               works only with a single for-comprehension, and not with nested
-               for-comprehensions.  When a collection class must work with embedded
-               for-comprehensions, the collection class MUST contain this map()
-               method, AND the flatMap() method mentioned below.
+map()        - When a for-comprehension implements the "yield" keyword, Scala
+               actually invokes the collection's map method to generate the result.
+               The following code demonstrates that a for-comprehension implementing the
+               "yield" keyword is equivalent to invoking the map method on the collection.
+               WARNING:
+               Invoking the map() method will generate the correct result only when a
+               for-comprehension contains a single generator (a single "for-loop").  When
+               a for-comprehension contains multiple generators (nested "for-loops") and
+               implements the "yield" keyword, Scala invokes the collection's map and
+               flatMap methods to obtain the for-comprehension's result.
+
+               @main def main():Unit =
+                 val intList_1:List[Int] = List(1, 2)
+                 val intList_2:List[Int] = List(3, 4)
+                 def sum(a:Int, b:Int):Int = { a + b }
+
+                 // The following for-comprehension generates the same result
+                 // as the call to intList_1.map(_*2) below.
+                 var result:List[Int] = for (x <- intList_1) yield (x*2)
+                 println(s"result = $result") // PRINTS: result = List(2, 4)
+
+                 // The following call to intList_1.map(_*2) generates the
+                 // same result as the for-comprehension above.
+                 result = intList_1.map(_*2)
+                 println(s"result = $result") // PRINTS: result = List(2, 4)
+               end main
 
 withFilter() - Enables a collection class to work with a filter inside a for-comprehension.
                (This method is called ONLY when a for-comprehension. implements a filter.)
