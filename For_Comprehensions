@@ -7,8 +7,8 @@ cannot.  A Scala for-comprehension has this format, where the
    for (enumerators) {
      // The body of the for-comprehension exists here, between the curly
      // braces {}.  Code located within the body of a for-comprehension is
-     // executed once for each iteration of the for-comprehension.  However,
-     // a for-comprehension doesn't require a body of code (it's optional).
+     // executed once for each iteration of the for-comprehension.  A
+     // for-comprehension doesn't require a body of code (it's optional).
    } yield x
 
 Enumerators consist of the collective code contained between the parenthesis
