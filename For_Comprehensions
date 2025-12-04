@@ -64,53 +64,13 @@ keyword in two separate for-comprehensions, forcing them to return a result.
   println(s"result = $result") // PRINTS: result = List(4, 5, 5, 6)
 end main
 
-NESTED FOR-COMPREHENSIONS
-=========================
-Nesting for-comprehensions is analogous to nesting for-loops.
-The follwing sample code demonstrates nested for-comprehensions.
-
-===========================================================
-@main def main():Unit =
-  type StrFloatTuple = (String, Float)
-  val intList:List[Int] = List(11, 22, 33)
-  val strFloatList:List[StrFloatTuple] = List(("Eleven",   11.11F),
-                                              ("Twelve",   12.12F),
-                                              ("Thirteen", 13.13F))
-  // "x <- intList"      is the outer generator (analogous to the outer for-loop).
-  // "y <- strFloatList" is the inner generator (analogous to the inner for-loop).
-  for (x <- intList; y <- strFloatList) {
-    println(s"x (intList) = $x,  y (strFloatList) = $y")
-    // PRINTS: x (intList) = 11,  y (strFloatList) = (Eleven,11.11)
-    //         x (intList) = 11,  y (strFloatList) = (Twelve,12.12)
-    //         x (intList) = 11,  y (strFloatList) = (Thirteen,13.13)
-    //         x (intList) = 22,  y (strFloatList) = (Eleven,11.11)
-    //         x (intList) = 22,  y (strFloatList) = (Twelve,12.12)
-    //         x (intList) = 22,  y (strFloatList) = (Thirteen,13.13)
-    //         x (intList) = 33,  y (strFloatList) = (Eleven,11.11)
-    //         x (intList) = 33,  y (strFloatList) = (Twelve,12.12)
-    //         x (intList) = 33,  y (strFloatList) = (Thirteen,13.13)
-  }
-  println("===============================")
-  // The following for-comprehension is functionally identical to the
-  // for-comprehension above.  However, the following for-comprehension
-  // implements the "yield" keyword, which forces the for-comprehension
-  // to return a result, which is assigned to the val result.  The
-  // for-comprehension above doesn't implement the "yield" keyword;
-  // so it doesn't return a result.
-  val result:List[(Int, (String, Float))] =
-    // "x <- intList"      is the outer generator (analogous to the outer for-loop).
-    // "y <- strFloatList" is the inner generator (analogous to the inner for-loop).
-    for (x <- intList; y <- strFloatList) yield (x, y)
-
-  for (x <- result) println(s"x (intList) = ${x._1},  y (strFloatList) = ${x._2}")
-  // PRINTS: The exact same text as the first for-comprehension prints above.
-end main
-
 ===========================================================
 
+HOW TO TRANSLATE SCALA FOR-COMPREHENSIONS INTO SCALA CODE
+=========================================================
 Scala for-comprehensions are known as "syntactic sugar" because when the compiler
 parses a for-comprehension, it translates each for-comprehension into one of more
-of the 4 Scala methods listed here.
+of these 4 Scala methods.
 
 flatMap()    - Enables a collection class to work with nested for-comprehensions
                (analogous to "nested for-loops") that implement the "yield" keyword.
@@ -129,18 +89,23 @@ foreach()    - Enables a collection class to invoke the foreach() method.  Invok
                using a for-comprehension.  Here's a code sample showing how to use the foreach()
                method on some Scala collections.
 
-When a for-comprehension contains multiple generators (nested "for-loops"),
-and it implements the "yield" keyword, Scala translates that for-comprehension
-into the following method calls.
+When a Scala for-comprehension implements the "yield" keyword, follow these rules
+to replace the for-comprehension with calls to the Scala "flatMap" and "map" methods.
 
-  1) When there are N number of generators in a for-comprehension, there
-     will be N-1 calls to the flatMap method.  For example, if a
-     for-comprehension contains two generators, Scala will invoke the
-     flatMap method one time.  If the for-comprehension contains one
-     generator, the flatMap method won't get called!
+1) When there are N number of generators in a for-comprehension, there will
+   be N-1 calls to the flatMap method.  For example, if a for-comprehension
+   is nested 3 levels deep, equivalent code will invoke the flatMap method
+   (N-1) times = (3-1) times = 2 times.
 
-  2) After the flatMap methods has been invoked N-1 times, Scala invokes
-     the map method one time only.
+   WARNING: There will always be one less call to the flatMap method than there are
+            generators in the for-comprehension.  This means all for-comprehensions
+            having only one generator will NOT invoke the flatMap method!
+
+2) After the flatMap method has been invoked N-1 times (as specified above),
+   invoke the Scala map method one time only.
+
+The following sample code demonstrates how to translate three separate
+for-comprehensions into the Scala flatMap and map methods.
 
 =========================================================================
 
@@ -184,9 +149,10 @@ end main
 
 =========================================================================
 
-If you write your own collection class and want to make it work with any type of for-comprehension,
-you must write the above four methods and make them members of your collection class.  These
-four methods must have signatures corresponding to the method definitions shown here.
+If you write your own collection class and want to make it work with any
+type of for-comprehension, you must write the above four methods and make
+them members of your collection class.  These four methods must have
+signatures corresponding to the method definitions shown here.
 
 abstract class CustomCollectionClass[A]
 {
@@ -197,6 +163,50 @@ abstract class CustomCollectionClass[A]
 }
 
 ==========================================================
+
+NESTED FOR-COMPREHENSIONS
+=========================
+Nesting for-comprehensions is analogous to nesting for-loops.
+The follwing sample code demonstrates nested for-comprehensions.
+
+===========================================================
+@main def main():Unit =
+  type StrFloatTuple = (String, Float)
+  val intList:List[Int] = List(11, 22, 33)
+  val strFloatList:List[StrFloatTuple] = List(("Eleven",   11.11F),
+                                              ("Twelve",   12.12F),
+                                              ("Thirteen", 13.13F))
+  // "x <- intList"      is the outer generator (analogous to the outer for-loop).
+  // "y <- strFloatList" is the inner generator (analogous to the inner for-loop).
+  for (x <- intList; y <- strFloatList) {
+    println(s"x (intList) = $x,  y (strFloatList) = $y")
+    // PRINTS: x (intList) = 11,  y (strFloatList) = (Eleven,11.11)
+    //         x (intList) = 11,  y (strFloatList) = (Twelve,12.12)
+    //         x (intList) = 11,  y (strFloatList) = (Thirteen,13.13)
+    //         x (intList) = 22,  y (strFloatList) = (Eleven,11.11)
+    //         x (intList) = 22,  y (strFloatList) = (Twelve,12.12)
+    //         x (intList) = 22,  y (strFloatList) = (Thirteen,13.13)
+    //         x (intList) = 33,  y (strFloatList) = (Eleven,11.11)
+    //         x (intList) = 33,  y (strFloatList) = (Twelve,12.12)
+    //         x (intList) = 33,  y (strFloatList) = (Thirteen,13.13)
+  }
+  println("===============================")
+  // The following for-comprehension is functionally identical to the
+  // for-comprehension above.  However, the following for-comprehension
+  // implements the "yield" keyword, which forces the for-comprehension
+  // to return a result, which is assigned to the val result.  The
+  // for-comprehension above doesn't implement the "yield" keyword;
+  // so it doesn't return a result.
+  val result:List[(Int, (String, Float))] =
+    // "x <- intList"      is the outer generator (analogous to the outer for-loop).
+    // "y <- strFloatList" is the inner generator (analogous to the inner for-loop).
+    for (x <- intList; y <- strFloatList) yield (x, y)
+
+  for (x <- result) println(s"x (intList) = ${x._1},  y (strFloatList) = ${x._2}")
+  // PRINTS: The exact same text as the first for-comprehension prints above.
+end main
+
+
 ==========================================================
 ==========================================================
 
