@@ -138,11 +138,11 @@ When a for-comprehension contains multiple generators (nested "for-loops"),
 and it implements the "yield" keyword, Scala translates that for-comprehension
 into the following method calls.
 
-  1) When there are N number of generators in the for-comprehension, there
-     will be N-1 calls to the flatMap method.  If the for-comprehension
-     contains two generators, Scala will invoke the flatMap method one time.
-     If the for-comprehension contains one generator, the flatMap method
-     won't get called!
+  1) When there are N number of generators in a for-comprehension, there
+     will be N-1 calls to the flatMap method.  For example, if a
+     for-comprehension contains two generators, Scala will invoke the
+     flatMap method one time.  If the for-comprehension contains one
+     generator, the flatMap method won't get called!
 
   2) After the flatMap methods has been invoked N-1 times, Scala invokes
      the map method one time only.
@@ -168,7 +168,7 @@ into the following method calls.
   println(s"2) result_1 = $result_1") // PRINTS: 2) result_1 = List(2, 4)
 
   // ================================================================
-  // FOR-COMPREHENSION WITH TWO GENERATORS (NESTED "FOR-LOOPS").
+  // FOR-COMPREHENSION WITH TWO GENERATORS (A NESTED "FOR-LOOP").
   // ================================================================
   // The following for-comprehension generates the same result_1
   // as the combined calls to intList_1.flatMap and
