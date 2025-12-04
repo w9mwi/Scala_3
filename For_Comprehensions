@@ -148,6 +148,7 @@ into the following method calls.
      the map method one time only.
 
 =========================================================================
+
 @main def main():Unit =
   val intList_1:List[Int] = List(1, 2)
   val intList_2:List[Int] = List(3, 4)
@@ -156,34 +157,49 @@ into the following method calls.
   // ================================================================
   // FOR-COMPREHENSION WITH ONE GENERATOR (ONE "FOR-LOOP").
   // ================================================================
-  // The following for-comprehension generates the same result
+  // The following for-comprehension generates the same result_1
   // as the call to intList_1.map(_*2) below.
-  var result: List[Int] = for (x <- intList_1) yield (x * 2)
-  println(s"1) result = $result") // PRINTS: 1) result = List(2, 4)
+  var result_1:List[Int] = for (x <- intList_1) yield (x * 2)
+  println(s"1) result_1 = $result_1") // PRINTS: 1) result_1 = List(2, 4)
 
   // The following call to intList_1.map(_*2) generates the
-  // same result as the for-comprehension above.
-  result = intList_1.map(_ * 2)
-  println(s"2) result = $result") // PRINTS: 2) result = List(2, 4)
+  // same result_1 as the for-comprehension above.
+  result_1 = intList_1.map(_ * 2)
+  println(s"2) result_1 = $result_1") // PRINTS: 2) result_1 = List(2, 4)
 
   // ================================================================
   // FOR-COMPREHENSION WITH TWO GENERATORS (NESTED "FOR-LOOPS").
   // ================================================================
-  // The following for-comprehension generates the same result
+  // The following for-comprehension generates the same result_1
   // as the combined calls to intList_1.flatMap and
   // intList_2.map below.
-  result = for (a <- intList_1; b <- intList_2) yield sum(a, b)
-  println(s"3) result = $result")  // PRINTS: 3) result = List(4, 5, 5, 6)
+  result_1 = for (a <- intList_1; b <- intList_2) yield sum(a, b)
+  println(s"3) result_1 = $result_1")  // PRINTS: 3) result_1 = List(4, 5, 5, 6)
 
   // The combined calls to intList_1.flatMap and intList_2.map
-  // below generate the same result as does the above
+  // below generate the same result_1 as does the above
   // for-comprehension.
-  result = intList_1.flatMap { a =>
-    intList_2.map { b =>
-      sum(a, b)
-    }
-  }
-  println(s"4) result = $result") // PRINTS: 4) result = List(4, 5, 5, 6)
+  result_1 = intList_1.flatMap(a => intList_2.map(b => sum(a, b)))
+  println(s"4) result_1 = $result_1") // PRINTS: 4) result_1 = List(4, 5, 5, 6)
+
+  // ******************************************************************
+
+  val charList:List[Char] = List('a', 'b')
+  // Use a for-comprehension that has multiple generators (analogous
+  // to nested for-loops) to print the paired values of intList_1
+  // and charList.
+  var result_2:List[String] = for {
+                                    number:Int <- intList_1
+                                    char:Char  <- charList
+                                  } yield s"$number-$char"
+  println(s"5) result_2 = $result_2")
+  // PRINTS: 5) result_2 = List(1-a, 1-b, 2-a, 2-b)
+
+  // The following code invokes the List.flatMap and List.map methods
+  // to obtain the same result as the above for-comprehension.
+  result_2 = intList_1.flatMap((number:Int) => charList.map((char:Char) => s"$number-$char"))
+  println(s"6) result_2 = $result_2")
+  // PRINTS: 6) result_2 = List(1-a, 1-b, 2-a, 2-b)
 end main
 
 =========================================================================
