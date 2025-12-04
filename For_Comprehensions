@@ -178,9 +178,9 @@ into the following method calls.
   // The combined calls to intList_1.flatMap and intList_2.map
   // below generate the same result as does the above
   // for-comprehension.
-  result = intList_1.flatMap { x =>
-    intList_2.map { y =>
-      sum(x, y)
+  result = intList_1.flatMap { a =>
+    intList_2.map { b =>
+      sum(a, b)
     }
   }
   println(s"4) result = $result") // PRINTS: 4) result = List(4, 5, 5, 6)
