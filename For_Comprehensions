@@ -74,6 +74,7 @@ NESTED FOR-COMPREHENSIONS
 Nesting for-comprehensions is analogous to nesting for-loops.
 The follwing sample code demonstrates nested for-comprehensions.
 
+===========================================================
 @main def main():Unit =
   type StrFloatTuple = (String, Float)
   val intList:List[Int] = List(11, 22, 33)
@@ -110,42 +111,20 @@ The follwing sample code demonstrates nested for-comprehensions.
   // PRINTS: The exact same text as the first for-comprehension prints above.
 end main
 
-The syntax used to designate a Scala for-comprehension is known as "syntactic sugar"
-because when the compiler parses a for-comprehension, it translates all its syntax
-into invoking one of more of the following 4 Scala methods.
+===========================================================
 
-NOTE: All Scala collections support for-comprehensions,
-      so they implement the following 4 methods.
+Scala for-comprehensions are known as "syntactic sugar" because when the compiler
+parses a for-comprehension, it translates each for-comprehension into one of more
+of the 4 Scala methods listed here.
 
 flatMap()    - Enables a collection class to work with nested for-comprehensions
-               when the for-comprehension implements the "yield" keyword.
+               (analogous to "nested for-loops") that implement the "yield" keyword.
+               See the following code sample for how flatMap is used.
 
-map()        - When a for-comprehension implements the "yield" keyword, Scala
-               actually invokes the collection's map method to generate the result.
-               The following code demonstrates that a for-comprehension implementing the
-               "yield" keyword is equivalent to invoking the map method on the collection.
-               WARNING:
-               Invoking the map() method will generate the correct result only when a
-               for-comprehension contains a single generator (a single "for-loop").  When
-               a for-comprehension contains multiple generators (nested "for-loops") and
-               implements the "yield" keyword, Scala invokes the collection's map and
-               flatMap methods to obtain the for-comprehension's result.
-
-               @main def main():Unit =
-                 val intList_1:List[Int] = List(1, 2)
-                 val intList_2:List[Int] = List(3, 4)
-                 def sum(a:Int, b:Int):Int = { a + b }
-
-                 // The following for-comprehension generates the same result
-                 // as the call to intList_1.map(_*2) below.
-                 var result:List[Int] = for (x <- intList_1) yield (x*2)
-                 println(s"result = $result") // PRINTS: result = List(2, 4)
-
-                 // The following call to intList_1.map(_*2) generates the
-                 // same result as the for-comprehension above.
-                 result = intList_1.map(_*2)
-                 println(s"result = $result") // PRINTS: result = List(2, 4)
-               end main
+map()        - When a for-comprehension implements the "yield" keyword, the Scala
+               compiler translates that for-comprehension into Scala code, which
+               invokes the collection's map method to generate the result.  See
+               the following code sample for how map is used.
 
 withFilter() - Enables a collection class to work with a filter inside a for-comprehension.
                (This method is called ONLY when a for-comprehension. implements a filter.)
@@ -154,6 +133,60 @@ foreach()    - Enables a collection class to invoke the foreach() method.  Invok
                on a collection is equivalent to iterating through all elements of the collection
                using a for-comprehension.  Here's a code sample showing how to use the foreach()
                method on some Scala collections.
+
+When a for-comprehension contains multiple generators (nested "for-loops"),
+and it implements the "yield" keyword, Scala translates that for-comprehension
+into the following method calls.
+
+  1) When there are N number of generators in the for-comprehension, there
+     will be N-1 calls to the flatMap method.  If the for-comprehension
+     contains two generators, Scala will invoke the flatMap method one time.
+     If the for-comprehension contains one generator, the flatMap method
+     won't get called!
+
+  2) After the flatMap methods has been invoked N-1 times, Scala invokes
+     the map method one time only.
+
+=========================================================================
+@main def main():Unit =
+  val intList_1:List[Int] = List(1, 2)
+  val intList_2:List[Int] = List(3, 4)
+  def sum(a:Int, b:Int):Int = { a + b }
+
+  // ================================================================
+  // FOR-COMPREHENSION WITH ONE GENERATOR (ONE "FOR-LOOP").
+  // ================================================================
+  // The following for-comprehension generates the same result
+  // as the call to intList_1.map(_*2) below.
+  var result: List[Int] = for (x <- intList_1) yield (x * 2)
+  println(s"1) result = $result") // PRINTS: 1) result = List(2, 4)
+
+  // The following call to intList_1.map(_*2) generates the
+  // same result as the for-comprehension above.
+  result = intList_1.map(_ * 2)
+  println(s"2) result = $result") // PRINTS: 2) result = List(2, 4)
+
+  // ================================================================
+  // FOR-COMPREHENSION WITH TWO GENERATORS (NESTED "FOR-LOOPS").
+  // ================================================================
+  // The following for-comprehension generates the same result
+  // as the combined calls to intList_1.flatMap and
+  // intList_2.map below.
+  result = for (a <- intList_1; b <- intList_2) yield sum(a, b)
+  println(s"3) result = $result")  // PRINTS: 3) result = List(4, 5, 5, 6)
+
+  // The combined calls to intList_1.flatMap and intList_2.map
+  // below generate the same result as does the above
+  // for-comprehension.
+  result = intList_1.flatMap { x =>
+    intList_2.map { y =>
+      sum(x, y)
+    }
+  }
+  println(s"4) result = $result") // PRINTS: 4) result = List(4, 5, 5, 6)
+end main
+
+=========================================================================
 
 If you write your own collection class and want to make it work with any type of for-comprehension,
 you must write the above four methods and make them members of your collection class.  These
