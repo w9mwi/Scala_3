@@ -32,6 +32,7 @@ of a for-comprehension that includes a generator and a filter.
     print(s"x = $x")  // PRINTS: x = 3
   }
 end main
+=====================================================================================
 
 THE YIELD KEYWORD
 =================
@@ -64,13 +65,50 @@ keyword in two separate for-comprehensions, forcing them to return a result.
   println(s"result = $result") // PRINTS: result = List(4, 5, 5, 6)
 end main
 
-===========================================================
+=====================================================================================
 
-HOW TO TRANSLATE SCALA FOR-COMPREHENSIONS INTO SCALA CODE
-=========================================================
+NESTED FOR-COMPREHENSIONS
+=========================
+Nesting for-comprehensions is analogous to nesting for-loops.
+The follwing sample code demonstrates nested for-comprehensions.
+
+@main def main():Unit =
+  type StrFloatTuple = (String, Float)
+  val intList:List[Int] = List(11, 22, 33)
+  val strFloatList:List[StrFloatTuple] = List(("Eleven",   11.11F),
+                                              ("Twelve",   12.12F),
+                                              ("Thirteen", 13.13F))
+  for (x <- intList;        // This is the outer generator (analogous to an outer for-loop).
+       y <- strFloatList) { // This is the inner generator (analogous to an inner for-loop).
+    println(s"x (intList) = $x,  y (strFloatList) = $y")
+    // PRINTS: x (intList) = 11,  y (strFloatList) = (Eleven,11.11)
+    //         x (intList) = 11,  y (strFloatList) = (Twelve,12.12)
+    //         x (intList) = 11,  y (strFloatList) = (Thirteen,13.13)
+    //         x (intList) = 22,  y (strFloatList) = (Eleven,11.11)
+    //         x (intList) = 22,  y (strFloatList) = (Twelve,12.12)
+    //         x (intList) = 22,  y (strFloatList) = (Thirteen,13.13)
+    //         x (intList) = 33,  y (strFloatList) = (Eleven,11.11)
+    //         x (intList) = 33,  y (strFloatList) = (Twelve,12.12)
+    //         x (intList) = 33,  y (strFloatList) = (Thirteen,13.13)
+  }
+  println("===============================")
+  // The following for-comprehension is functionally identical to the
+  // for-comprehension above.  However, the following for-comprehension
+  // implements the "yield" keyword, which forces the for-comprehension
+  // to return a result.  The for-comprehension above doesn't implement
+  // the "yield" keyword, so it doesn't return a result.
+  val result:List[(Int, (String, Float))] = for (x <- intList; y <- strFloatList) yield (x, y)
+
+  for (x <- result) println(s"x (intList) = ${x._1},  y (strFloatList) = ${x._2}")
+  // PRINTS: Text that's identical to the text printed by the above for-comprehension.
+end main
+
+=====================================================================================
+
+TRANSLATING SCALA FOR-COMPREHENSIONS INTO SCALA CODE
+====================================================
 Scala for-comprehensions are known as "syntactic sugar" because when the compiler
-parses a for-comprehension, it translates each for-comprehension into one of more
-of these 4 Scala methods.
+parses a for-comprehension, it translates it into one of more of these 4 Scala methods.
 
 flatMap()    - Enables a collection class to work with nested for-comprehensions
                (analogous to "nested for-loops") that implement the "yield" keyword.
@@ -82,27 +120,29 @@ map()        - When a for-comprehension implements the "yield" keyword, the Scal
                the following code sample for how map is used.
 
 withFilter() - Enables a collection class to work with a filter inside a for-comprehension.
-               (This method is called ONLY when a for-comprehension. implements a filter.)
+               (This method is called ONLY when a for-comprehension implements a filter.)
 
 foreach()    - Enables a collection class to invoke the foreach() method.  Invoking foreach()
                on a collection is equivalent to iterating through all elements of the collection
                using a for-comprehension.  Here's a code sample showing how to use the foreach()
                method on some Scala collections.
 
-When a Scala for-comprehension implements the "yield" keyword, follow these rules
-to replace the for-comprehension with calls to the Scala "flatMap" and "map" methods.
+If you have a for-comprehension that implements the "yield" keyword, you can replace
+that for-comprehension by invoking the flatMap and map methods as per these two steps...
 
 1) When there are N number of generators in a for-comprehension, there will
    be N-1 calls to the flatMap method.  For example, if a for-comprehension
-   is nested 3 levels deep, equivalent code will invoke the flatMap method
+   is nested 3 levels deep, the flatMap method will need to be invoked
    (N-1) times = (3-1) times = 2 times.
 
-   WARNING: There will always be one less call to the flatMap method than there are
-            generators in the for-comprehension.  This means all for-comprehensions
-            having only one generator will NOT invoke the flatMap method!
+   WARNING: There will always be one less call to the flatMap method than the number of
+            generators contained in the for-comprehension.  This means that only
+            nested for-comprehensions will invoke the flatMap method.  for-comprehensions
+            that aren't nested always have a single generator, and won't invoke the
+            flatMap method!
 
-2) After the flatMap method has been invoked N-1 times (as specified above),
-   invoke the Scala map method one time only.
+2) Always invoke the Scala map() method one time, regardless of what was done
+   above in step 1).
 
 The following sample code demonstrates how to translate three separate
 for-comprehensions into the Scala flatMap and map methods.
@@ -162,52 +202,6 @@ abstract class CustomCollectionClass[A]
   def foreach(func: A => Unit):Unit
 }
 
-==========================================================
-
-NESTED FOR-COMPREHENSIONS
-=========================
-Nesting for-comprehensions is analogous to nesting for-loops.
-The follwing sample code demonstrates nested for-comprehensions.
-
-===========================================================
-@main def main():Unit =
-  type StrFloatTuple = (String, Float)
-  val intList:List[Int] = List(11, 22, 33)
-  val strFloatList:List[StrFloatTuple] = List(("Eleven",   11.11F),
-                                              ("Twelve",   12.12F),
-                                              ("Thirteen", 13.13F))
-  // "x <- intList"      is the outer generator (analogous to the outer for-loop).
-  // "y <- strFloatList" is the inner generator (analogous to the inner for-loop).
-  for (x <- intList; y <- strFloatList) {
-    println(s"x (intList) = $x,  y (strFloatList) = $y")
-    // PRINTS: x (intList) = 11,  y (strFloatList) = (Eleven,11.11)
-    //         x (intList) = 11,  y (strFloatList) = (Twelve,12.12)
-    //         x (intList) = 11,  y (strFloatList) = (Thirteen,13.13)
-    //         x (intList) = 22,  y (strFloatList) = (Eleven,11.11)
-    //         x (intList) = 22,  y (strFloatList) = (Twelve,12.12)
-    //         x (intList) = 22,  y (strFloatList) = (Thirteen,13.13)
-    //         x (intList) = 33,  y (strFloatList) = (Eleven,11.11)
-    //         x (intList) = 33,  y (strFloatList) = (Twelve,12.12)
-    //         x (intList) = 33,  y (strFloatList) = (Thirteen,13.13)
-  }
-  println("===============================")
-  // The following for-comprehension is functionally identical to the
-  // for-comprehension above.  However, the following for-comprehension
-  // implements the "yield" keyword, which forces the for-comprehension
-  // to return a result, which is assigned to the val result.  The
-  // for-comprehension above doesn't implement the "yield" keyword;
-  // so it doesn't return a result.
-  val result:List[(Int, (String, Float))] =
-    // "x <- intList"      is the outer generator (analogous to the outer for-loop).
-    // "y <- strFloatList" is the inner generator (analogous to the inner for-loop).
-    for (x <- intList; y <- strFloatList) yield (x, y)
-
-  for (x <- result) println(s"x (intList) = ${x._1},  y (strFloatList) = ${x._2}")
-  // PRINTS: The exact same text as the first for-comprehension prints above.
-end main
-
-
-==========================================================
 ==========================================================
 
 A "for loop" in Scala is known as a "for comprehension."
