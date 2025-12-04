@@ -130,16 +130,15 @@ foreach()    - Enables a collection class to invoke the foreach() method.  Invok
 If you have a for-comprehension that implements the "yield" keyword, you can replace
 that for-comprehension by invoking the flatMap and map methods as per these two steps...
 
-1) When there are N number of generators in a for-comprehension, there will
-   be N-1 calls to the flatMap method.  For example, if a for-comprehension
-   is nested 3 levels deep, the flatMap method will need to be invoked
+1) When there are N number of generators in a for-comprehension, there will be
+   N-1 calls to the flatMap method.  For example, if a for-comprehension is nested
+   3 levels deep (it has 3 generators), the flatMap method will need to be invoked
    (N-1) times = (3-1) times = 2 times.
 
    WARNING: There will always be one less call to the flatMap method than the number of
-            generators contained in the for-comprehension.  This means that only
-            nested for-comprehensions will invoke the flatMap method.  for-comprehensions
-            that aren't nested always have a single generator, and won't invoke the
-            flatMap method!
+            generators contained in the for-comprehension.  This means only nested
+            for-comprehensions will invoke the flatMap method.  for-comprehensions
+            that aren't nested (have a single generator) won't invoke the flatMap method!
 
 2) Always invoke the Scala map() method one time, regardless of what was done
    above in step 1).
