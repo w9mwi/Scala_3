@@ -140,8 +140,7 @@ that for-comprehension by invoking the flatMap and map methods as per these two 
             for-comprehensions will invoke the flatMap method.  for-comprehensions
             that aren't nested (have a single generator) won't invoke the flatMap method!
 
-2) Always invoke the Scala map() method one time, regardless of what was done
-   above in step 1).
+2) After step 1) above is completed, invoke the Scala map() method one time.
 
 The following sample code demonstrates how to translate three separate
 for-comprehensions into the Scala flatMap and map methods.
