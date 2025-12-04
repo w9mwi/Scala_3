@@ -37,37 +37,32 @@ THE YIELD KEYWORD
 =================
 The Scala keyword "yield" is used with for-comprehensions.
 
-* A for-comprehension that doesn't implement the "yield" keyword is
-  a for-comprehension that doesn't return a result; it actually
-  returns the type "Unit".  The only purpose of a for-comprehension
-  to not return a result (by not implementing the "yield" keyword)
-  is to generate some desired side effect, like printing info.
-  to the screen.
+A for-comprehension that doesn't implement the "yield" keyword doesn't return
+a result.  (A for-comprehension that doesn't implement the "yield" keyword
+actually returns the type Unit.)  In this case, a for-comprehension is used
+only for its "side effects", such as printing info. to the screen, etc.
 
-* A for-comprehension that implements the "yield" keyword is a
-  for-comprehension that returns a result.  This returned result
-  is built by the for-comprehension iterating through the collection.
-  The following program implements the "yield" keyword in two separate
-  for-comprehensions, forcing them to return a result.
+A for-comprehension that implements the "yield" keyword is a for-comprehension
+that returns a result.  This returned result is built by the for-comprehension
+iterating through the collection.  The following program implements the "yield"
+keyword in two separate for-comprehensions, forcing them to return a result.
 
-  @main def main():Unit =
-    val intList_1:List[Int] = List(1, 2)
-    val intList_2:List[Int] = List(3, 4)
-    def sum(a:Int, b:Int):Int = { a + b }
+@main def main():Unit =
+  val intList_1:List[Int] = List(1, 2)
+  val intList_2:List[Int] = List(3, 4)
+  def sum(a:Int, b:Int):Int = { a + b }
 
-    var result:List[Int] = for (x <- intList_1) yield x
-    println(s"result = $result") // PRINTS: result = List(1, 2)
+  var result:List[Int] = for (x <- intList_1) yield x
+  println(s"result = $result") // PRINTS: result = List(1, 2)
 
-    // The following for-comprehension iterates through all
-    // elements of intList_1 (the "outer loop") and intList_2
-    // (the "inner loop").  For each iteration of this
-    // for-comprehension, the sum method is invoked.
-    // The "yield" keyword forces this for-comprehension
-    // to return a result.
-    result =
-      for (a <- intList_1; b <- intList_2) yield sum(a, b)
-    println(s"result = $result") // PRINTS: result = List(4, 5, 5, 6)
-  end main
+  // The following for-comprehension iterates through all elements of
+  // intList_1 (the "outer loop") and intList_2 (the "inner loop").
+  // For each iteration of this for-comprehension, the sum method
+  // is invoked.  The "yield" keyword forces the for-comprehension
+  // to return a result.
+  result = for (a <- intList_1; b <- intList_2) yield sum(a, b)
+  println(s"result = $result") // PRINTS: result = List(4, 5, 5, 6)
+end main
 
 NESTED FOR-COMPREHENSIONS
 =========================
@@ -173,6 +168,7 @@ into the following method calls.
   result_1 = intList_1.flatMap(a => intList_2.flatMap(b => intList_3.map(c => sum(a,b,c))))
   println(s"4) result_1 = $result_1") // PRINTS: 4) result_1 = List(9, 10, 10, 11, 10, 11, 11, 12)
 
+  // ================================================================
   // The following for-comprehension generates the same result as the
   // combined calls to intList_1.flatMap and charList.map below.
   var result_2: List[String] = for {
