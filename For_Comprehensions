@@ -208,3 +208,40 @@ abstract class CustomCollectionClass[A]
   def withFilter(func: A => Boolean):CustomCollectionClass[A]
   def foreach(func: A => Unit):Unit
 }
+
+=========================================================================
+USE FOR-COMPREHENSIONS WITH THE OPTION CLASS FOR ERROR HANDLING
+===============================================================
+Read the in-line comments in the below program.
+
+@main def main():Unit =
+  def parseAge(s: String):Option[Int] = try { Some(s.toInt) } catch { case _ => None }
+
+  val age_1:Option[Int] = parseAge("35")  // parseAge recognizes this as a VALID text number.
+  val age_2:Option[Int] = parseAge("forty two") // parseAge recognizes this as an INVALID text number.
+
+  // The Scala Option class is a special collection class that can contain
+  // no more than one element.  Because the Option class is a collection, you
+  // can traverse multiple Option collections via nested for-comprehensions
+  // (analogous to nested for-loops).  If any of the age values obtained in
+  // the for-comprehension is invalid, the entire for-comprehension will terminate
+  // and return the value None,   This avoids multiple manual `isDefined` checks,
+  // or nested `match` statements for error detection.
+  var totalAge:Option[Int] = for {
+    age1 <- age_1
+    age2 <- age_2
+  } yield age1 + age2
+  println(s"age_1 + age_2 = $age_1 + $age_2 = $totalAge")
+  // PRINTS: age_1 + age_2 = Some(35) + None = None
+
+  val age_3 = parseAge("30")
+  val age_4 = parseAge("20")
+  totalAge = for {
+                   age3 <- age_3
+                   age4 <- age_4
+  } yield age3 + age4
+  println(s"age_3 + age_4 = $age_3 + $age_4 = $totalAge")
+  // PRINTS: age_3 + age_4 = Some(30) + Some(20) = Some(50)
+end main
+
+=========================================================================
