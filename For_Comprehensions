@@ -187,10 +187,11 @@ end main
 
 =========================================================================
 
-If you write your own collection class and want to make it work with any
-type of for-comprehension, you must write the above four methods and make
-them members of your collection class.  These four methods must have
-signatures corresponding to the method definitions shown here.
+If you write your own custom collection class and want to make it work
+with any type of for-comprehension, you must write the following four
+methods and make them members of your collection class.  These four
+methods must have signatures corresponding to the method definitions
+shown here.
 
 abstract class CustomCollectionClass[A]
 {
