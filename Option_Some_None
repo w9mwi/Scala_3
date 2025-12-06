@@ -1,5 +1,41 @@
 OPTION
 ======
+A collection class is used to store multiple values, like the List,
+ArrayBuffer, and Vector classes.  Although the Option class is a
+collection class, it cannot store multiple values!  The Option class
+can store either no value, or a single value.
+
+The Option class is used to store values that have the possibility of
+being invalid.  For example, if a for-comprehension, or a method call,
+has the possibility of returning an invalid value, a val/var of type
+Option should be declared and used to receive that value.
+
+If some value x stored in the Option class is VALID, that value will
+be scala.Some(x), where x is the value wrapped in the Some class.
+
+If the value stored in the Option class is INVALID, that value will
+be scala.None.
+
+The following code show some examples of how to use the Option
+class for error handling.
+
+==================================================================
+UNDER CONSTRUCTION
+==================================================================
+
+
+
+
+
+catch and handle errors returned by method
+calls, assigning .  Use the Option class
+to wrap any value that has the possibility of being invalid.  For example,
+if a method call has the possibility of returning an invalid result, the
+the returned result would be assigned to a val/var of type Option.
+
+if an Int value exceeds its maximum value, if parsing a value fails to return a valid result, etc.
+
+
 In Scala, an Option data type is a container that can store any data type.
 Unlike other containers (such as List, Array, etc.), an Option can store
 either one value, or no value.  An Option type can never store more than
