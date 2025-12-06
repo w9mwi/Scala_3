@@ -150,8 +150,8 @@ that for-comprehension by invoking the flatMap and map methods as per these two 
 
 2) After step 1) above is completed, invoke the Scala map() method one time.
 
-The following sample code demonstrates how to translate three separate
-for-comprehensions into the Scala flatMap and map methods.
+The following sample code demonstrates how to translate for-comprehensions
+into Scala method calls.
 
 =========================================================================
 
@@ -212,7 +212,7 @@ abstract class CustomCollectionClass[A]
 =========================================================================
 USE FOR-COMPREHENSIONS WITH THE OPTION CLASS FOR ERROR HANDLING
 ===============================================================
-Read the in-line comments in the below program.
+Read the in-line comments in the following programs.
 
 @main def main():Unit =
   def parseAge(s: String):Option[Int] = try { Some(s.toInt) } catch { case _ => None }
@@ -245,3 +245,42 @@ Read the in-line comments in the below program.
 end main
 
 =========================================================================
+
+@main def main():Unit =
+  /**
+   * The for-comprehension in this calculateTotal_1 method calculates
+   * the monetary value of a product stored in inventory.  If the
+   * product's quantity < 1, the for-comprehension returns the Option
+   * value of None.
+   */
+  def calculateTotal_1(quantity:Option[Int],
+                       price:Option[Double]):Option[Double] =
+    for {
+      quantity <- quantity
+      price    <- price
+      if quantity > 0
+    } yield (quantity * price)
+
+  var totalPrice:Option[Double] = calculateTotal_1(Option(11), Option(9.99D))
+  println(s"1) totalPrice = $totalPrice") // PRINTS: 1) totalPrice = Some(109.89)
+
+  totalPrice = calculateTotal_1(Option(0), Option(9.99D))
+  println(s"2) totalPrice = $totalPrice") // PRINTS: 2) totalPrice = None
+
+  /**
+   * This calculateTotal_2 method returns the identical result as the
+   * calculateTotal_1 method above, as it replaces the for-comprehension
+   * in calculateTotal_1 with method calls to Scala's Option class API.
+   */
+  def calculateTotal_2(quantity:Option[Int],
+                       price: Option[Double]):Option[Double] =
+    quantity.flatMap(quantity => price.withFilter(price => quantity > 0).map(price => quantity * price))
+
+  totalPrice = calculateTotal_2(Option(11), Option(9.99D))
+  println(s"3) totalPrice = $totalPrice") // PRINTS: 3) totalPrice = Some(109.89)
+
+  totalPrice = calculateTotal_2(Option(0), Option(9.99D))
+  println(s"4) totalPrice = $totalPrice") // PRINTS: 4) totalPrice = None
+end main
+
+
