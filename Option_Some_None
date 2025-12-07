@@ -63,8 +63,9 @@ class for error handling.
   println(s"4) stringResult = $stringResult") // PRINTS: 4) stringResult = Joe Blow
 
   // ************************************************************
-  // Option.orElse - Returns this scala.Option if it is nonempty,
-  // otherwise; return the result of evaluating alternative.
+  // Option.orElse - Returns the scala.Option class if it's nonempty;
+  // otherwise, return the result of evaluating the alternative(s)
+  // specified in this call to Option.orElse.
   userName_1 = None // Reset.
   var optionResult:Option[String] = userName_1.orElse(userName_2).orElse(userName_3)
   println(s"5) optionResult = $optionResult") // PRINTS: 5) optionResult = Some(Joe Blow)
@@ -74,9 +75,6 @@ class for error handling.
   println(s"6) optionResult = $optionResult") // PRINTS: 6) optionResult = Some(Last Choice)
 end main
 ==================================================================
-
-
-
 
 
 catch and handle errors returned by method
