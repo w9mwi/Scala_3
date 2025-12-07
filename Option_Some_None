@@ -66,7 +66,6 @@ class for error handling.
   // Option.orElse - Returns the scala.Option class if it's nonempty;
   // otherwise, return the result of evaluating the alternative(s)
   // specified in this call to Option.orElse.
-  userName_1 = None // Reset.
   var optionResult:Option[String] = userName_1.orElse(userName_2).orElse(userName_3)
   println(s"5) optionResult = $optionResult") // PRINTS: 5) optionResult = Some(Joe Blow)
 
