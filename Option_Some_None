@@ -22,6 +22,32 @@ one of the following:
    * scala.Some(x)  (Represents the valid value x.)
    * scala.None     (Represents an invalid or non-existent value.)
 
+==================================================================
+The following program demonstrates how to use, and how not use,
+the Scala Option and Some classes.
+
+@main def main():Unit =
+  // The scala.Some class is used to store valid values.  Therefore,
+  // it would make no sense to wrap a null value (or any invalid value)
+  // inside the scala.Some class, like this...
+  val someNull:Some[Null] = Some(null)  // NEVER do this!!!
+  println(s"1) someNull = $someNull") // PRINTS: 1) someNull = Some(null)
+
+  // Instead of wrapping values in the Some class, wrap them in
+  // the Option class.  A value wrapped in an Option class always
+  // evaluates to a Some value (if it's valid), or a None value
+  // (if it's invalid).
+  val someOption:Option[Null] = Option(null)
+  println(s"2) someOption = $someOption") // PRINTS: 2) someOption = None
+
+  // This demonstrates that wrapping a valid value in the Option class
+  // returns that valid value wrapped in the Some class.
+  val optionFloat = Option(-123.987F)
+  println(s"3) optionFloat = $optionFloat") // PRINTS: 3) optionFloat = Some(-123.987)
+end main
+
+==================================================================
+
 The following code show some examples of how to use the Option
 class for error handling.
 
