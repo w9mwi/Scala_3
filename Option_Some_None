@@ -42,7 +42,7 @@ the Scala Option and Some classes.
 
   // This demonstrates that wrapping a valid value in the Option class
   // returns that valid value wrapped in the Some class.
-  val optionFloat = Option(-123.987F)
+  val optionFloat:Option[Float] = Option(-123.987F)
   println(s"3) optionFloat = $optionFloat") // PRINTS: 3) optionFloat = Some(-123.987)
 end main
 
