@@ -69,7 +69,7 @@ class for error handling.
   var optionResult:Option[String] = userName_1.orElse(userName_2).orElse(userName_3)
   println(s"5) optionResult = $optionResult") // PRINTS: 5) optionResult = Some(Joe Blow)
 
-  userName_2 = None // Reset to observe that optionResult obtains a different value.
+  userName_2 = None // Reset userName_2 to observe that Option.orElse returns a new value.
   optionResult = userName_1.orElse(userName_2).orElse(userName_3)
   println(s"6) optionResult = $optionResult") // PRINTS: 6) optionResult = Some(Last Choice)
 end main
