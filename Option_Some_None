@@ -20,7 +20,29 @@ The following code show some examples of how to use the Option
 class for error handling.
 
 ==================================================================
-UNDER CONSTRUCTION
+@main def main():Unit =
+  // The following line of code demonstrates that a Scala
+  // List can contain multiple elements.  But if you
+  // uncomment the next line of code, the program won't
+  // compile because an Option class can't contain more
+  // than one element!
+  val intList:List[Int]          = List(123, 456)
+  // val wont_Compile:Option[Int] = Option(123, 456)  // WON'T COMPILE!
+
+  // The following code demonstrates the 3 possible ways
+  // to assign a value of type Option[Int] to a val/var.
+  // NOTICE: Option(intNumber) = Some(intNumber)
+  val intNumber = 123
+  val intOption_1:Option[Int] = Option(intNumber)
+  val intOption_2:Option[Int] = Some(intNumber)
+  val intOption_3:Option[Int] = None
+  println(s"1) intOption_1 = $intOption_1, intOption_2 = $intOption_2, intOption_3 = $intOption_3")
+  // PRINTS: 1) intOption_1 = Some(123), intOption_2 = Some(123), intOption_3 = None
+
+  if (intOption_1 == intOption_2)
+    println(s"2) intOption_1 = intOption_2 = $intOption_2")
+    // PRINTS: 2) intOption_1 = intOption_2 = Some(123)
+end main
 ==================================================================
 
 
