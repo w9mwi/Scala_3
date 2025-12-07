@@ -77,8 +77,9 @@ class for error handling.
 
 
   // *************************************************************
-  // Option.getOrElse - Returns the Option's value if the Option is
-  // nonempty; otherwise, return the result of evaluating default.
+  // Option.getOrElse
+  // Returns the Option's value if the Option is nonempty;
+  // otherwise, return the result of evaluating default.
   var userName_1:Option[String]  = None
   var userName_2:Option[String]  = Some("Joe Blow")
   var userName_3:Option[String]  = Some("Last Choice")
@@ -121,53 +122,6 @@ class for error handling.
   println(s"8) userEmail = $userEmail") // PRINTS: 8) userEmail = None
 end main
 ==================================================================
-
-
-catch and handle errors returned by method
-calls, assigning .  Use the Option class
-to wrap any value that has the possibility of being invalid.  For example,
-if a method call has the possibility of returning an invalid result, the
-the returned result would be assigned to a val/var of type Option.
-
-if an Int value exceeds its maximum value, if parsing a value fails to return a valid result, etc.
-
-
-In Scala, an Option data type is a container that can store any data type.
-Unlike other containers (such as List, Array, etc.), an Option can store
-either one value, or no value.  An Option type can never store more than
-one value.
-
-An Option that has a value will reference the scala.Some class.  Where the
-value is wrapped inside the scala.Some class.
-
-An Option that has no value will reference the scala.None object, instead
-of referencing a null value.
-
-To sum up, every instance of scala.Option will reference one of the following:
-
-   * scala.Some  (A Scala class that extends the class:  Option[A])
-   * scala.None  (A Scala object that extends the class: Option[Nothing])
-
-An Option should be used to obtain values that have a possibility not existing.
-For example, if it's possible for a result to be a null value, that result
-should be wrapped inside the scala.Some class, which transforms null values
-into the scala.None value.  Here is an example:
-
-   val myStringOption:Option[String] = Option(null)
-   println(s"myStringOption = $myStringOption") // PRINTS: myStringOption = None
-
-IMPORTANT:  It is OK to wrap a null value inside an Option class, like this:  Option(null)
-            Because Option(null) returns the value: scala.None
-
-WARNING:  Never wrap a null value inside the scala.Some class, like this:  Some(null)
-          The scala.Some class is used to designate a valid value.  So it makes no
-          sense to wrap a null value (or any invalid value) inside the scala.Some
-          class.  The get method in the code below returns the null value, so when
-          toUpperCase() is invoked, it throws a NullPointerException.
-
-          val myStringOption:Option[String] = Some(null)
-          println(myStringOption.get.toUpperCase())  // Throws NullPointerException!
-
 
 
 The following program demonstrates how to nest multiple Option values inside
