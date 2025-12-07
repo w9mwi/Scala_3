@@ -32,22 +32,46 @@ class for error handling.
   // uncomment the next line of code, the program won't
   // compile because an Option class can't contain more
   // than one element!
-   val intList:List[Int]          = List(123, 456)
+  val intList:List[Int] = List(123, 456)
   // val wont_Compile:Option[Int] = Option(123, 456)  // WON'T COMPILE!
 
   // The following code demonstrates the 3 possible ways
   // to assign a value of type Option[Int] to a val/var.
   // NOTICE: Option(intNumber) = Some(intNumber)
-  val intNumber = 123
+  val intNumber:Int           = 123
   val intOption_1:Option[Int] = Option(intNumber)
   val intOption_2:Option[Int] = Some(intNumber)
   val intOption_3:Option[Int] = None
   println(s"1) intOption_1 = $intOption_1, intOption_2 = $intOption_2, intOption_3 = $intOption_3")
   // PRINTS: 1) intOption_1 = Some(123), intOption_2 = Some(123), intOption_3 = None
 
-  if (intOption_1 == intOption_2)
+  if (intOption_1 == intOption_2) {
     println(s"2) intOption_1 = intOption_2 = $intOption_2")
-    // PRINTS: 2) intOption_1 = intOption_2 = Some(123)
+  } // PRINTS:2) intOption_1 = intOption_2 = Some(123)
+
+
+  // *************************************************************
+  // Option.getOrElse - Returns the Option's value if the Option is
+  // nonempty; otherwise, return the result of evaluating default.
+  var userName_1:Option[String]  = None
+  var userName_2:Option[String]  = Some("Joe Blow")
+  var userName_3:Option[String]  = Some("Last Choice")
+  var stringResult:String = userName_1.getOrElse("J. Doe")
+  println(s"3) stringResult = $stringResult") // PRINTS: 3) stringResult = J. Doe
+
+  stringResult = userName_2.getOrElse("J. Doe")
+  println(s"4) stringResult = $stringResult") // PRINTS: 4) stringResult = Joe Blow
+
+  // ************************************************************
+  // Option.orElse - Returns this scala.Option if it is nonempty,
+  // otherwise; return the result of evaluating alternative.
+  userName_1 = None // Reset.
+  var optionResult:Option[String] = userName_1.orElse(userName_2).orElse(userName_3)
+  println(s"5) optionResult = $optionResult") // PRINTS: 5) optionResult = Some(Joe Blow)
+
+  userName_2 = None // Reset to observe that optionResult obtains a different value.
+  optionResult = userName_1.orElse(userName_2).orElse(userName_3)
+  println(s"6) optionResult = $optionResult") // PRINTS: 6) optionResult = Some(Last Choice)
 end main
 ==================================================================
 
