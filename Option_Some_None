@@ -10,11 +10,17 @@ being invalid.  For example, if a for-comprehension, or a method call,
 has the possibility of returning an invalid value, a val/var of type
 Option should be declared and used to receive that value.
 
-If some value x stored in the Option class is VALID, that value will
-be scala.Some(x), where x is the value wrapped in the Some class.
+If an Option class stores a VALID value x, it's stored as Some(x);
+where x is the value wrapped in the Some class.
 
-If the value stored in the Option class is INVALID, that value will
-be scala.None.
+If an Option class represents an INVALID or non-existent value,
+it's stored as None.
+
+To sum up, every instance of the scala.Option class will reference
+one of the following:
+
+   * scala.Some(x)  (Represents the valid value x.)
+   * scala.None     (Represents an invalid or non-existent value.)
 
 The following code show some examples of how to use the Option
 class for error handling.
