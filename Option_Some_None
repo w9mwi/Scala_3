@@ -27,6 +27,13 @@ The following program demonstrates how to use, and how not use,
 the Scala Option and Some classes.
 
 @main def main():Unit =
+  // The following line of code demonstrates that a Scala List
+  // class can contain multiple elements.  But if you uncomment
+  // the next line of code, the program won't compile because
+  // an Option class can't contain more than one element!
+  val intList:List[Int] = List(123, 456)
+  // val wont_Compile:Option[Int] = Option(123, 456)  // WON'T COMPILE!
+
   // The scala.Some class is used to store valid values.  Therefore,
   // it would make no sense to wrap a null value (or any invalid value)
   // inside the scala.Some class, like this...
@@ -42,8 +49,12 @@ the Scala Option and Some classes.
 
   // This demonstrates that wrapping a valid value in the Option class
   // returns that valid value wrapped in the Some class.
-  val optionFloat:Option[Float] = Option(-123.987F)
+  var optionFloat:Option[Float] = Option(-123.987F)
   println(s"3) optionFloat = $optionFloat") // PRINTS: 3) optionFloat = Some(-123.987)
+
+  // This demonstrates that you can assign a Some value to an Option type.
+  optionFloat = Some(987.123F)
+  println(s"4) optionFloat = $optionFloat") // PRINTS: 4) optionFloat = Some(987.123)
 end main
 
 ==================================================================
@@ -53,14 +64,6 @@ class for error handling.
 
 ==================================================================
 @main def main():Unit =
-  // The following line of code demonstrates that a Scala
-  // List can contain multiple elements.  But if you
-  // uncomment the next line of code, the program won't
-  // compile because an Option class can't contain more
-  // than one element!
-  val intList:List[Int] = List(123, 456)
-  // val wont_Compile:Option[Int] = Option(123, 456)  // WON'T COMPILE!
-
   // The following code demonstrates the 3 possible ways
   // to assign a value of type Option[Int] to a val/var.
   // NOTICE: Option(intNumber) = Some(intNumber)
