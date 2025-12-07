@@ -10,11 +10,11 @@ being invalid.  For example, if a for-comprehension, or a method call,
 has the possibility of returning an invalid value, a val/var of type
 Option should be declared and used to receive that value.
 
-If an Option class stores a VALID value x, it's stored as Some(x);
+If an Option class represents a VALID value x, it's stored as Some(x);
 where x is the value wrapped in the Some class.
 
 If an Option class represents an INVALID or non-existent value,
-it's stored as None.
+its value is set to None.
 
 To sum up, every instance of the scala.Option class will reference
 one of the following:
@@ -32,7 +32,7 @@ class for error handling.
   // uncomment the next line of code, the program won't
   // compile because an Option class can't contain more
   // than one element!
-  val intList:List[Int]          = List(123, 456)
+   val intList:List[Int]          = List(123, 456)
   // val wont_Compile:Option[Int] = Option(123, 456)  // WON'T COMPILE!
 
   // The following code demonstrates the 3 possible ways
