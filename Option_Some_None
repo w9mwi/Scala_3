@@ -63,15 +63,36 @@ class for error handling.
   println(s"4) stringResult = $stringResult") // PRINTS: 4) stringResult = Joe Blow
 
   // ************************************************************
-  // Option.orElse - Returns the scala.Option class if it's nonempty;
-  // otherwise, return the result of evaluating the alternative(s)
-  // specified in this call to Option.orElse.
+  // Option.orElse
+  // Return the scala.Option class if it's nonempty; otherwise,
+  // return the result of evaluating the alternative(s) specified
+  // in this call to Option.orElse.
   var optionResult:Option[String] = userName_1.orElse(userName_2).orElse(userName_3)
   println(s"5) optionResult = $optionResult") // PRINTS: 5) optionResult = Some(Joe Blow)
 
   userName_2 = None // Reset userName_2 to observe that Option.orElse returns a new value.
   optionResult = userName_1.orElse(userName_2).orElse(userName_3)
   println(s"6) optionResult = $optionResult") // PRINTS: 6) optionResult = Some(Last Choice)
+
+  // ***************************************************************
+  // Option.flatMap
+  // Use Option.flatMap when the function you want to apply returns
+  // an Option itself.  This prevents nested Option[Option[T]]
+  // results.
+  case class User(id: Int, email: Option[String])
+  def findUser(id:Int):Option[User] =
+    // If the id argument passed to this method equals one (1),
+    // this method will return an Option of type User, which
+    // is defined via the case class above.  Otherwise, None
+    // will be returned.
+    id match { case 1 => Some(User(id, Some("alice@example.com")))
+               case _ => None }
+
+  var userEmail:Option[String] = findUser(1).flatMap(_.email)
+  println(s"7) userEmail = $userEmail") // PRINTS: 7) userEmail = Some(alice@example.com)
+
+  userEmail = findUser(2).flatMap(_.email)
+  println(s"8) userEmail = $userEmail") // PRINTS: 8) userEmail = None
 end main
 ==================================================================
 
