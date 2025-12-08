@@ -29,11 +29,12 @@ ANSWER:
 Because the Option class is a collection class, it works with for-comprehensions.
 (This means you can "loop through" all elements in an Option class with a
 for-comprehension, even though the Option class can store only one element.)
-Use the Option class's for-comprehension to obtain the value of the Option
-class because it transforms valid values into the value Some(x), and transforms
-invalid values into the value None.  This prevents errors like NullPointerExceptions
-from being generated.  It also prevents the programmer from having to manually
-perform error checks on every value that might be invalid.
+Use the Option class's for-comprehension to the value of the Option class
+because the for-comprehension transforms valid values into the value Some(x),
+and it transforms invalid values into the value None.  This prevents errors
+like NullPointerExceptions from being generated.  It also prevents the
+programmer from having to manually perform error checks on every value
+that might be invalid.
 
 See the two sample programs at the bottom of this web page.  They implement
 the Option class to store values that may be invalid.
