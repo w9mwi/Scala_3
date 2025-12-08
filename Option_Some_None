@@ -1,14 +1,28 @@
-OPTION
-======
-A collection class is used to store multiple values, like the List,
-ArrayBuffer, and Vector classes.  Although the Option class is a
-collection class, it cannot store multiple values!  The Option class
-can store either no value, or a single value.
+OPTION CLASS
+============
+A collection class is used to store multiple values.  The Scala List class,
+ArrayBuffer class, and Vector are examples of Scala collection classes.
+The Scala Option class is also a collection class.  But unlike other collections,
+the Option class cannot store multiple elements of data!  The Option class can
+hold no more than one element, so it can store no more than a single value.
 
-The Option class is used to store values that have the possibility of
-being invalid.  For example, if a for-comprehension, or a method call,
-has the possibility of returning an invalid value, a val/var of type
-Option should be declared and used to receive that value.
+All Scala collection classes (including the Option class) can be traversed using
+a Scala for-comprehension.  Although the Scala Option class can store no more
+than one element of data, the Option class is used within Scala for-comprehensions
+to automatically detect errors, so the programmer doesn't have to write that code.
+Here's how it works...
+
+Assume you have declared three vals of type Option to store three separate values
+that have a possibility of being valid or invalid.  When those three Option
+classes are traversed via for-comprehension, 
+
+
+
+
+The Option class is used to store values that have the possibility of being invalid,
+or non-existent.  For example, if a method call, or a for-comprehension, has the
+possibility of returning an invalid/non-existent value, an Option val/var should
+be declared used to receive that value.
 
 If an Option class represents a VALID value x, it's stored as Some(x);
 where x is the value wrapped in the Some class.
