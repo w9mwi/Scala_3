@@ -6,35 +6,38 @@ The Scala Option class is also a collection class.  But unlike other collections
 the Option class cannot store multiple elements of data!  The Option class can
 hold no more than one element, so it can store no more than a single value.
 
-All Scala collection classes (including the Option class) can be traversed using
-a Scala for-comprehension.  Although the Scala Option class can store no more
-than one element of data, the Option class is used within Scala for-comprehensions
-to automatically detect errors, so the programmer doesn't have to write that code.
-Here's how it works...
+The Option class is used to store values that have the possibility of being valid or
+invalid.  For example, if a for-comprehension has the possibility of returning an
+invalid/non-existent value, that value should be declared as type Option.
 
-Assume you have declared three vals of type Option to store three separate values
-that have a possibility of being valid or invalid.  When those three Option
-classes are traversed via for-comprehension, 
+If an Option class represents a VALID value x, it will be stored in the Option class
+as Some(x); where x is a valid value, wrapped in the Some class.
 
-
-
-
-The Option class is used to store values that have the possibility of being invalid,
-or non-existent.  For example, if a method call, or a for-comprehension, has the
-possibility of returning an invalid/non-existent value, an Option val/var should
-be declared used to receive that value.
-
-If an Option class represents a VALID value x, it's stored as Some(x);
-where x is the value wrapped in the Some class.
-
-If an Option class represents an INVALID or non-existent value,
-its value is set to None.
+If an Option class represents an INVALID or non-existent value, its value is None.
 
 To sum up, every instance of the scala.Option class will reference
 one of the following:
 
-   * scala.Some(x)  (Represents the valid value x.)
+   * scala.Some(x)  (Represents the valid value x wrapped in the Some class.)
    * scala.None     (Represents an invalid or non-existent value.)
+
+QUESTION:
+Why should the Option class be used to obtain values that have the possibility
+of being invalid?
+
+ANSWER:
+Because the Option class is a collection class, it works with for-comprehensions.
+(This means you can "loop through" all elements in an Option class with a
+for-comprehension, even though the Option class can store only one element.)
+Use the Option class's for-comprehension to obtain the value of the Option
+class because it transforms valid values into the value Some(x), and transforms
+invalid values into the value None.  This prevents errors like NullPointerExceptions
+from being generated.  It also prevents the programmer from having to manually
+perform error checks on every value that might be invalid.
+
+See the two sample programs at the bottom of this web page.  They implement
+the Option class to store values that may be invalid.
+--> https://github.com/w9mwi/Scala_3/blob/main/For_Comprehensions
 
 ==================================================================
 The following program demonstrates how to use, and how not use,
