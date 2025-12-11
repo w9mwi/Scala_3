@@ -156,9 +156,9 @@ List.map methods.
 
 =========================================================================
 @main def main():Unit =
-  val list1 = List(1, 2)
-  val list2 = List("A", "B")
-  val list3 = List(true, false)
+  val list1:List[Int]     = List(1, 2)
+  val list2:List[String]  = List("A", "B")
+  val list3:List[Boolean] = List(true, false)
 
   // ********************************************************
   // When a Scala for-comprehension contains no yield statement,
@@ -206,6 +206,7 @@ List.map methods.
   // PRINTS: result_2 = List((1, A, true), (1, A, false), (1, B, true), (1, B, false),
   //                         (2, A, true), (2, A, false), (2, B, true), (2, B, false))
 end main
+
 =========================================================================
 
 @main def main():Unit =
