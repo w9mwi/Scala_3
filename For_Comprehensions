@@ -150,9 +150,62 @@ that for-comprehension by invoking the flatMap and map methods as per these two 
 
 2) After step 1) above is completed, invoke the Scala map() method one time.
 
-The following sample code demonstrates how to translate for-comprehensions
-into Scala method calls.
+The following programs code demonstrate how to translate for-comprehensions
+that use the Scala "yield" keyword into method calls to the List.flatMap and
+List.map methods.
 
+=========================================================================
+@main def main():Unit =
+  val list1 = List(1, 2)
+  val list2 = List("A", "B")
+  val list3 = List(true, false)
+
+  // ********************************************************
+  // When a Scala for-comprehension contains no yield statement,
+  // it returns "nothing" (the Scala type Unit), as demonstrated
+  // by this code...
+  val result_1:Unit = for (x <- list1;
+                           y <- list2;
+                           z <- list3) {
+    println(s"x = $x,  y = $y,  z = $z")
+    // PRINTS: x = 1,  y = A,  z = true
+    //         x = 1,  y = A,  z = false
+    //         x = 1,  y = B,  z = true
+    //         x = 1,  y = B,  z = false
+    //         x = 2,  y = A,  z = true
+    //         x = 2,  y = A,  z = false
+    //         x = 2,  y = B,  z = true
+    //         x = 2,  y = B,  z = false
+  }
+  // Because result_1 has the data type Unit, result_1
+  // prints this text to the console:  ()
+  println(s"result_1 = $result_1")  // PRINTS: result_1 = ()
+
+
+  // ********************************************************
+  // The following for-comprehension is identical to the
+  // for-comprehension above, except this for-comprehension
+  // contains a yield statement, which means it returns a
+  // valid result other than the Scala type Unit.
+  var result_2:List[String] = for (x <- list1;
+                                   y <- list2;
+                                   z <- list3) yield s"($x, $y, $z)"
+  println(s"result_2 = $result_2")
+  // PRINTS: result_2 = List((1, A, true), (1, A, false), (1, B, true), (1, B, false),
+  //                         (2, A, true), (2, A, false), (2, B, true), (2, B, false))
+
+
+  // ********************************************************
+  // The following code generates identical results to the
+  // above for-comprehension by replacing the "for" keyword
+  // with calls to the Scala List.flatMap and List.map methods.
+  // NOTE: The following code doesn't contain the "yield" keyword
+  //       because it's used only by Scala for-comprehensions.
+  result_2 = list1.flatMap(x => list2.flatMap(y => list3.map(z => s"($x, $y, $z)")))
+  println(s"result_2 = $result_2")
+  // PRINTS: result_2 = List((1, A, true), (1, A, false), (1, B, true), (1, B, false),
+  //                         (2, A, true), (2, A, false), (2, B, true), (2, B, false))
+end main
 =========================================================================
 
 @main def main():Unit =
