@@ -31,6 +31,11 @@ NOTE:  The following program's behavior will remain unchanged if you...
        with this line of text:     trait Animal:
        To understand why, read the "TRAIT VS. ABSTRACT CLASS" section below.
 ======================================================================
+@main def main():Unit =
+  val dog = IrishSetter("Big Red")
+  println(s"dog = $dog")
+  // PRINTS:  dog = This Irish Setter is named Big Red; it's 12 years old.
+end main
 
 abstract class Animal:
   def ageInYears:Int // ageInYears is an abstract method.
@@ -46,15 +51,7 @@ class IrishSetter(name: String) extends Animal:
   // Every class has a default toString() method.  Here we override that
   // method with our own toString definition so it prints relevant info.
   override def toString = s"This Irish Setter is named $name; it's $ageInYears years old."
-
-/******************
- * main()
- *****************/
-@main def main():Unit =
-  val dog = IrishSetter("Big Red")
-  println(s"dog = $dog")
-  // PRINTS:  dog = This Irish Setter is named Big Red; it's 12 years old.
-
+======================================================================
 
 TRAIT VS. ABSTRACT CLASS
 ========================
@@ -65,10 +62,10 @@ or an abstract member, can then be inherited by another trait.
 So when you want to write a class that implements abstract methods/members, you can write
 either an abstract class, or a trait, to contain those abstract methods/members.  So then
 your class can inherit from either the trait you wrote, or inherit from the abstract class
-you wrote.  That leads to the following question...
+you wrote.
 
-QUESTION: When you need to write abstract methods/members, should they be contained
-          in a Scala trait, or in an abstract class?
+QUESTION: When you need to write abstract methods/members, should they
+          be contained in a trait, or in an abstract class?
 
 ANSWER:   Scala 2 traits can't accept arguments, but abstract classes (in both Scala 2
           and Scala 3) can accept arguments.  So Scala 2 required you to use an abstract
@@ -79,9 +76,9 @@ ANSWER:   Scala 2 traits can't accept arguments, but abstract classes (in both S
 
 IMPORTANT:  A class can inherit from only one class, and from any number of traits.
             Generally, you should use a trait to hold methods and members that can
-            would apply to different class types.  For example, assume you had 3
-            classes named Boat, Car, and Jet; and all 3 of those classes implemented
-            methods named startEngine(), travel(), and stopEngine().  You could place
-            those 3 methods in a trait named Action, where you'd define each one as
-            either an abstract method, or a concrete method.  Finally, the Boat,
-            Car, and Jet classes would all inherit from that Action trait.
+            apply to different class types.  For example, assume you have 3 classes named
+            Boat, Car, and Jet; and all 3 of those classes implemented methods named
+            startEngine(), travel(), and stopEngine().  You could place those 3 methods
+            in a trait named Action, where you'd define each one as either an abstract
+            method, or a concrete method.  Finally, the Boat, Car, and Jet classes
+            would all inherit from that Action trait.
