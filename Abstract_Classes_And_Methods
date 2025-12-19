@@ -27,10 +27,10 @@ not implemented, or at least one member that's not initialized.  The following
 program shows an example of this.
 
 NOTE:  The following program's behavior will remain unchanged if you...
-       replace this line of text...   abstract class Animal:
-       with this line of text...      trait Animal:
+       replace this line of text:  abstract class Animal:
+       with this line of text:     trait Animal:
        To understand why, read the "TRAIT VS. ABSTRACT CLASS" section below.
-
+======================================================================
 
 abstract class Animal:
   def ageInYears:Int // ageInYears is an abstract method.
