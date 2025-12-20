@@ -8,12 +8,12 @@ FYI:  When class A inherits from class B, class A is the superclass;
 
 A Scala class can be written as an abstract class when the "abstract" keyword
 precedes the "class" keyword.  It must also contain at least one method that's
-not implemented, or at least one member that's not initialized.  The following
-program shows an example of this.
+not implemented, or at least one val/var member that's not initialized.  The
+program below demonstrates this.
 
-NOTE: The following program's behavior will remain unchanged
-      if you replace this line of text:  abstract class Animal:
-      with this line of text:            trait Animal:
+NOTE: The behavior of the following program remains unchanged if you
+      replace this line of text:  abstract class Animal:
+      with this line of text:     trait Animal:
 
 The section below explains the similarities and differences between an
 abstract class and a trait.
