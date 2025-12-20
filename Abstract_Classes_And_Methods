@@ -1,35 +1,22 @@
-ABSTRACT METHODS AND MEMBERS
-============================
-An abstract method is a method that's defined, but contains no body
-of executable code, which means it's not implemented.  An abstract
-member is a val/var that's declared, but not initialized.  Abstract
-methods and members can exist only in an abstract class, or in a trait.
-
-Methods that contain a body of executable code are called concrete methods.
-Members (vals/vars) that are initialized to some value are called concrete
-members.
-
-Concrete methods and members can exist inside a regular class, inside an
-abstract class, inside a trait, and inside of the main() method.
-
-
 ABSTRACT CLASS
 ==============
 Unlike a regular Scala class, an abstract class can't be instantiated.  An
 abstract class can only be used by a regular class that inherits from it.
 
-FYI:  When class A inherits from class B, class A is the superclass; class B
-      is the subclass.
+FYI:  When class A inherits from class B, class A is the superclass;
+      class B is the subclass.
 
 A Scala class can be written as an abstract class when the "abstract" keyword
 precedes the "class" keyword.  It must also contain at least one method that's
 not implemented, or at least one member that's not initialized.  The following
 program shows an example of this.
 
-NOTE:  The following program's behavior will remain unchanged if you...
-       replace this line of text:  abstract class Animal:
-       with this line of text:     trait Animal:
-       To understand why, read the "TRAIT VS. ABSTRACT CLASS" section below.
+NOTE: The following program's behavior will remain unchanged
+      if you replace this line of text:  abstract class Animal:
+      with this line of text:            trait Animal:
+
+The section below explains the similarities and differences between an
+abstract class and a trait.
 ======================================================================
 @main def main():Unit =
   val dog = IrishSetter("Big Red")
