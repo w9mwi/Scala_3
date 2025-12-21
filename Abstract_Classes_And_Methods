@@ -42,11 +42,13 @@ class IrishSetter(name: String) extends Animal:
 
 TRAIT VS. ABSTRACT CLASS
 ========================
-As mentioned above, a Scala trait (like an abstract class) can also contain
-abstract methods and abstract members.  A trait containing an abstract method,
-or an abstract member, can then be inherited by another trait.
+A Scala trait has behavior so similar to an abstract class, the two can
+sometimes be used interchangably.  A Scala trait (like an abstract class)
+can also contain abstract methods and abstract members.
 
-So when you want to write a class that implements abstract methods/members, you can write
+
+
+When you want to write a class that implements abstract methods/members, you can write
 either an abstract class, or a trait, to contain those abstract methods/members.  So then
 your class can inherit from either the trait you wrote, or inherit from the abstract class
 you wrote.
