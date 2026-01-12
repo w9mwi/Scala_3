@@ -23,7 +23,7 @@ Tail Recursion - A specific form of recursion where the recursive call to a
 
 The following program demonstrates how to code two equivalent functions.
 Where one function implements Deep Recursion; the other function implements
-Tail Recursion.
+tail recursion.
 
 =========================================================================
 
