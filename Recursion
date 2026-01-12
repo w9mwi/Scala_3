@@ -1,0 +1,70 @@
+RECURSION
+=========
+
+Deep Recursion - A function that implements deep recursion performs a calculation
+                 after the recursive call returns.  Each recursive call adds a
+                 new frame to the call stack to store the intermediate state
+                 (local variables, return address).  The stack grows linearly
+                 with the depth of the recursion.  For large inputs, this can
+                 consume excessive memory and lead to a StackOverflowError
+                 because the stack has a limited size.
+
+Tail Recursion - A specific form of recursion where the recursive call to a
+                 function is the the very last operation in the function's
+                 execution.  This structure allows the compiler to optimize
+                 the function, effectively converting the recursion into an
+                 iterative loop.  This prevents stack overflow errors that
+                 that can occur with deep recursion.
+
+The following program demonstrates how to code two equivalent functions.
+Where one function implements Deep Recursion; the other function implements
+Tail Recursion.
+
+=========================================================================
+
+import scala.annotation.tailrec
+/*********************************************
+* This sumDeep method performs Deep Recursion.
+*********************************************/
+def sumDeep(n: Int): Int =
+  if n <= 0 then
+    0
+  else
+    // The addition (n + ...) happens AFTER the recursive call returns.
+    n + sumDeep(n - 1)
+
+/*************************************************************
+* This sumTail method performs Tail Recursion.
+*
+* The following "@tailrec" annotation is REQUIRED to force
+* the Scala compiler to transform recursive code into an
+* iterative loop, which prevents the possibility of any
+* stack overflow errors.
+*************************************************************/
+@tailrec
+def sumTail(n: Int, accumulator: Int = 0): Int =
+  if n <= 0 then
+    accumulator
+  else
+    // The recursive call is the last operation.
+    // The result of the call is immediately returned.
+    // The 'accumulator' carries the intermediate state.
+    sumTail(n - 1, accumulator + n)
+
+/**********************************************
+* main()
+**********************************************/
+@main def main():Unit =
+  println(s"sumTail(99) = ${sumTail(99)}") // PRINTS: sumTail(99) = 4950
+  println(s"sumDeep(99) = ${sumDeep(99)}") // PRINTS: sumDeep(99) = 4950
+
+  // The code below demonstrates that sumTail(999_999) works,
+  // while sumDeep(999_999) generates a StackOverflowError.
+  println(s"sumTail(999_999) = ${sumTail(999_999)}")
+  // PRINTS: sumTail(999_999) = 1783293664
+
+  println(s"sumDeep(999_999) = ${sumDeep(999_999)}")
+  // PRINTS: Exception in thread "main" java.lang.StackOverflowError
+end main
+
+=========================================================================
