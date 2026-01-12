@@ -72,4 +72,63 @@ def sumTail(n: Int, accumulator: Int = 0): Int =
   // PRINTS: Exception in thread "main" java.lang.StackOverflowError
 end main
 
-=========================================================================
+=================================================================================
+The following program demonstrates three more methods that are tail recursive.
+
+import scala.annotation.tailrec
+/******************************************************************
+* factorial() - The embedded factHelper() method is tail recursive.
+******************************************************************/
+def factorial(n: Int):BigInt =
+  // The following "@tailrec" annotation tag is REQUIRED for
+  // the factHelper() method to implement tail recursion.
+  @tailrec
+  def factHelper(n: Int, accumulator: BigInt): BigInt =
+    if (n <= 1) accumulator
+    else factHelper(n - 1, n * accumulator)
+  end factHelper
+
+  factHelper(n, 1)
+end factorial
+
+/***************************************************************
+* sumList() - THe embedded sumHelper() method is tail recursive.
+***************************************************************/
+def sumList(list: List[Int]): Int =
+  @tailrec
+  def sumHelper(list: List[Int], accumulator: Int): Int =
+    list match {
+      case head :: tail => sumHelper(tail, accumulator + head)
+      case Nil          => accumulator
+   }
+  sumHelper(list, 0)
+end sumList
+
+/************************************************************************
+* reverseList() - The embedded reverseHelper() method is tail recursive.
+************************************************************************/
+def reverseList[A](list: List[A]): List[A] =
+  @tailrec
+  def reverseHelper(remaining: List[A], reversedAcc: List[A]): List[A] =
+    remaining match {
+    case head :: tail => reverseHelper(tail, head :: reversedAcc)
+    case Nil          => reversedAcc
+  }
+  reverseHelper(list, Nil)
+end reverseList
+
+/**********************************************
+* main()
+**********************************************/
+@main def main():Unit =
+  println(s"factorial(13) = ${factorial(13)}")
+  // PRINTS: factorial(13) = 6227020800
+
+  val intList = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  println(s"sumList(intList) = ${sumList(intList)}")
+  // PRINTS: sumList(intList) = 55
+
+  println(s"reverseList(intList) = ${reverseList(intList)}")
+  // PRINTS: reverseList(intList) = List(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+end main
+=================================================================================
