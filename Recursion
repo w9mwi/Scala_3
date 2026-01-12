@@ -16,6 +16,10 @@ Tail Recursion - A specific form of recursion where the recursive call to a
                  iterative loop.  This prevents stack overflow errors that
                  that can occur with deep recursion.
 
+                 Scala methods that implement tail recursion MUST be preceded
+                 with the "@tailrec" Scala annotaton tag.
+
+
 The following program demonstrates how to code two equivalent functions.
 Where one function implements Deep Recursion; the other function implements
 Tail Recursion.
