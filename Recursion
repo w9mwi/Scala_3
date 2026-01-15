@@ -130,7 +130,7 @@ end reverseList
   println(s"sumList(intList) = ${sumList(intList)}")
   // PRINTS: sumList(intList) = 55
 
-  // println(s"reverseList(intList) = ${reverseList(intList)}")
+  println(s"reverseList(intList) = ${reverseList(intList)}")
   // PRINTS: reverseList(intList) = List(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
 end main
 =================================================================================
