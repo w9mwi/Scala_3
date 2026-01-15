@@ -68,7 +68,9 @@ def sumTail(n: Int, accumulator: Int = 0): Int =
   println(s"sumTail(999_999) = ${sumTail(999_999)}")
   // PRINTS: sumTail(999_999) = 1783293664
 
-  println(s"sumDeep(999_999) = ${sumDeep(999_999)}")
+  // If you uncomment the following commented-out line, this
+  // program will generate a StackOverflowError and crash.
+  // println(s"sumDeep(999_999) = ${sumDeep(999_999)}")
   // PRINTS: Exception in thread "main" java.lang.StackOverflowError
 end main
 
