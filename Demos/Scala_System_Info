@@ -1,0 +1,57 @@
+import scala.jdk.CollectionConverters._
+import scala.collection.mutable
+import scala.sys.SystemProperties
+
+/********************************************
+* main()
+********************************************/
+@main def main() =
+  // Print the Scala version that this program uses...
+  println("1) Scala Version = " + util.Properties.versionNumberString)
+  println("2) Scala Version = " + util.Properties.versionString)
+  println("3) Scala Version = " + util.Properties.versionMsg)
+
+  println("=======================================================")
+  println("PRINT ALL ENVIRONMENT VALUES:")
+  val envVars:mutable.Map[String,String] = System.getenv().asScala
+  for ((k,v) <- envVars) { println(s"key = $k, value = $v") }
+
+  println("=======================================================")
+  println("PRINT ALL SYSTEM PROPERTIES USING:  System.getProperties().asScala")
+  var sysProps:mutable.Map[String,String] = System.getProperties().asScala
+  for ((k,v) <- sysProps) { println(s"key = $k, value = $v") }
+
+  println("=======================================================")
+  println("PRINT ALL SYSTEM PROPERTIES USING:  new SystemProperties()")
+  sysProps = new SystemProperties()
+  for (sp <-sysProps) { println(s"key = ${sp._1}, value = ${sp._2}") }
+
+  println("================================================")
+  println("PRINT A SINGLE ENVIRONMENT VALUE:")
+  var optionStr:Option[String] = envVars.get("USER")
+  println("USER = " + optionStr)                 // PRINTS: USER = Some(tjb)
+  println("USER = " + getOptionValue(optionStr)) // PRINTS: USER = tjb
+
+  println("================================================")
+  println("PRINT A SINGLE SYSTEM PROPERTY VALUE:")
+  optionStr = sysProps.get("os.name")
+  println("os.name = " + optionStr)                 // PRINTS: os.name = Some(Linux)
+  println("os.name = " + getOptionValue(optionStr)) // PRINTS: os.name = Linux
+
+  println("================================================")
+  println("PRINT A NON-EXISTENT ENVIRONMENT AND SYSTEM PROPERTY VALUE:")
+  optionStr = envVars.get("Junk_1")
+  println("Junk_1 = " + optionStr)                 // PRINTS: Junk_1 = None
+  println("Junk_1 = " + getOptionValue(optionStr)) // PRINTS: Junk_1 = Does not exist.
+  optionStr = sysProps.get("Junk_2")
+  println("Junk_2 = " + optionStr)                 // PRINTS: Junk_2 = None
+  println("Junk_2 = " + getOptionValue(optionStr)) // PRINTS: Junk_2 = Does not exist.
+end main
+
+/********************************************
+* getOptionValue()
+********************************************/
+def getOptionValue(optionStr: Option[String]): String =
+  if (optionStr.isEmpty) "Does not exist."
+  else optionStr.get
+end getOptionValue
