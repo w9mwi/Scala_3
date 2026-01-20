@@ -10,8 +10,9 @@ You must first install SBT, which is not covered in this documentation.
 The following instructions show how to use SBT to compile and run
 a simple Scala program.
 
-CREATE A DIRECTORY
-==================
+
+CREATE A NEW DIRECTORY
+======================
 Create a new directory that will contain your SBT project.  The name you
 give to this directory will be the name of your SBT project, and will
 appear as part of the SBT prompt after you launch the SBT server.
