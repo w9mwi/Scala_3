@@ -74,6 +74,11 @@ the "help" command, like the following example shows.
 sbt:sbt> help      (Prints info for how to obtain SBT help.)
 sbt:sbt> help run  (Prints help for the SBT run command.)
 
+The following command prints to the console the Scala version currently
+used by your SBT project.
+
+sbt:sbt> scalaVersion
+
 To change the Scala version used by your SBT project, run the following command
 from the SBT prompt.  If you don't run it, the default Scala version will be used.
 
