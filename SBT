@@ -31,6 +31,7 @@ add text to this build.sbt file.
 
 $ touch build.sbt   (Create a new, empty, build.sbt file.)
 
+
 CREATE A FILE NAMED Main.scala
 ==============================
 In the same directory that contains your sbt.build file, create the following
@@ -42,7 +43,7 @@ $ mkdir -p src/main/scala/example
 In the src/main/scala/example directory, create a file named Main.scala,
 then copy and paste the following Scala code into it.
 
-====================================
+-----------------------------------------------------
 package example  // This Main.scala file is located in "example" directory.
 
 // This is a Scala 2 program, which also works in Scala 3.
@@ -59,7 +60,8 @@ object Main {
   println(s"Scala version: ${scala.util.Properties.versionNumberString}")
 end main
 **********/
-====================================
+-----------------------------------------------------
+
 
 LAUNCH SBT SERVER
 =================
@@ -84,6 +86,7 @@ from the SBT prompt.  If you don't run it, the default Scala version will be use
 
 sbt:sbt> set ThisBuild / scalaVersion := "2.13.12"
 
+
 COMPILE THE SCALA PROGRAM
 =========================
 To compile the SBT project, you have these 2 options:
@@ -103,6 +106,7 @@ To compile the SBT project, you have these 2 options:
     manually run "compile" every time a file is changed.
 
     sbt:sbt> ~compile
+
 
 RUN THE SCALA PROGRAM FROM SBT
 ==============================
