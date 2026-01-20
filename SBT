@@ -1,17 +1,22 @@
 SBT = SCALA BUILD TOOL
 ======================
 
-SBT (Scala Build Tool) is an application that launches an "SBT server".  Once you launch SBT, you enter an SBT prompt.  From the SBT prompt, you can compile code, build projects, and execute the compiled code.
+SBT (Scala Build Tool) is an application that launches an "SBT server".
+Once you launch SBT, an SBT prompt appears.  From the SBT prompt, you
+can compile code, build projects, and execute the compiled code.
 
-You must install SBT, which is not covered in this documentation.
+You must first install SBT, which is not covered in this documentation.
 
-The following instructions show how to use SBT to compile and run a simple Scala program.
+The following instructions show how to use SBT to compile and run
+a simple Scala program.
 
 CREATE A DIRECTORY
 ==================
-Create a new directory that will contain your SBT project.  The name you give to this directory will be the name of your SBT project, and will appear on the SBT prompt after you launch the SBT server.
+Create a new directory that will contain your SBT project.  The name you
+give to this directory will be the name of your SBT project, and will
+appear as part of the SBT prompt after you launch the SBT server.
 
-$ mkdir sbt  (Creates a directory named "sbt".)
+$ mkdir sbt  (Create a directory named "sbt".)
 $ cd sbt     (Point to the sbt directory.)
 
 From this point on, you will always be working from this "sbt" directory.
@@ -19,20 +24,23 @@ From this point on, you will always be working from this "sbt" directory.
 
 CREATE AN EMPTY SBT BUILD FILE
 ==============================
-You need a file named sbt.build to launch the SBT server, which gets you to the SBT prompt.  A build.sbt file can be empty, but it must exist!  In this example, create an empty build.sbt file by running the following Linux command.  Later on, we'll add text
-to this build.sbt file.
+You need a file named sbt.build to launch the SBT server.  A build.sbt
+file can be empty, but it must exist!  In this example, create an empty
+build.sbt file by running the following Linux command.  Later on, we'll
+add text to this build.sbt file.
 
 $ touch build.sbt   (Create a new, empty, build.sbt file.)
 
 CREATE A FILE NAMED Main.scala
 ==============================
-In the same directory that contains your sbt.build file, create the nested directories, that will contain the Main.Scala file.
+In the same directory that contains your sbt.build file, create the following
+nested directories.  The Main.Scala file (shown below) will reside in the
+src/main/scala/example directory create with the following mkdir command.
 
 $ mkdir -p src/main/scala/example
 
-In the src/main/scala/example directory, create a file that contains
-your Scala source code.  In this example that file is named "Main.scala"
-and includes this simple Scala program.
+In the src/main/scala/example directory, create a file named Main.scala,
+then copy and paste the following Scala code into it.
 
 ====================================
 package example  // This Main.scala file is located in "example" directory.
@@ -53,29 +61,35 @@ end main
 **********/
 ====================================
 
+LAUNCH SBT SERVER
+=================
 Launch the SBT server, and the following SBT prompt appears.
 
 $ sbt
 sbt:sbt>    (To exit SBT, enter "exit" from the SBT prompt.)
 
-Once you're in the SBT prompt, you can obtain SBT help via the "help" command:
+Once you're at the SBT prompt, you can obtain SBT help via
+the "help" command, like the following example shows.
 
 sbt:sbt> help      (Prints info for how to obtain SBT help.)
 sbt:sbt> help run  (Prints help for the SBT run command.)
 
-To change the Scala version used by your SBT project, run the following command from the SBT prompt.  If you don't run it, the default Scala version will be used.
+To change the Scala version used by your SBT project, run the following command
+from the SBT prompt.  If you don't run it, the default Scala version will be used.
 
 sbt:sbt> set ThisBuild / scalaVersion := "2.13.12"
 
+COMPILE THE SCALA PROGRAM
+=========================
 To compile the SBT project, you have these 2 options:
 
 1)  The following command performs a single manual compile,
-    and then returns to the SBT prompt.
+    and returns you to the SBT prompt.
 
     sbt:sbt> compile
 
-2)  The following "~compile" command performs a compile just like the above
-    "compile" command, but it doesn't return to the SBT prompt!
+2)  The following "~compile" command performs a compile just like the
+    above "compile" command, but it doesn't return to the SBT prompt!
 
     Instead, the "~compile" command remains "up-and-running", waiting for
     changes to be made to SBT project files.  For example, if you make a
@@ -85,10 +99,10 @@ To compile the SBT project, you have these 2 options:
 
     sbt:sbt> ~compile
 
-                        
 RUN THE SCALA PROGRAM FROM SBT
 ==============================
-After you have successfully compiled your Scala program, you can execute it via SBT like this:
+After you've successfully compiled your Scala program,
+you can execute it via SBT like this:
 
 $ run
 
