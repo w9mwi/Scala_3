@@ -20,14 +20,14 @@ appear as part of the SBT prompt after you launch the SBT server.
 $ mkdir sbt  (Create a directory named "sbt".)
 $ cd sbt     (Point to the sbt directory.)
 
-From this point on, you will always be working from this "sbt" directory.
+From this point on you'll always be working from this "sbt" directory.
 
 
 CREATE AN EMPTY SBT BUILD FILE
 ==============================
 You need a file named sbt.build to launch the SBT server.  A build.sbt
 file can be empty, but it must exist!  In this example, create an empty
-build.sbt file by running the following Linux command.  Later on, we'll
+build.sbt file by running the following Linux command.  Later on we'll
 add text to this build.sbt file.
 
 $ touch build.sbt   (Create a new, empty, build.sbt file.)
@@ -37,7 +37,7 @@ CREATE A FILE NAMED Main.scala
 ==============================
 In the same directory that contains your sbt.build file, create the following
 nested directories.  The Main.Scala file (shown below) will reside in the
-src/main/scala/example directory create with the following mkdir command.
+src/main/scala/example directory created with the following mkdir command.
 
 $ mkdir -p src/main/scala/example
 
@@ -45,7 +45,8 @@ In the src/main/scala/example directory, create a file named Main.scala,
 then copy and paste the following Scala code into it.
 
 -----------------------------------------------------
-package example  // This Main.scala file is located in "example" directory.
+// This Main.scala file is located in "example" directory and package.
+package example
 
 // This is a Scala 2 program, which also works in Scala 3.
 object Main {
@@ -119,3 +120,18 @@ $ run
 The following text is printed to the console, and you're returned to the SBT prompt.
 Scala 2 - Hello World
 sbt:sbt>
+
+EDITING THE BUILD.SBT FILE
+==========================
+The SBT server can't be launched unless you create a build.sbt file.
+The build.sbt file can be empty, but it is always required.
+
+
+
+ThisBuild / scalaVersion := "2.13.12"
+ThisBuild / organization := "com.example"
+
+lazy val hello = (project in file("."))
+  .settings(
+    name := "Hello"
+  )
