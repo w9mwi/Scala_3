@@ -148,7 +148,12 @@ show dependencyTree
 show Compile/dependencyClasspath  (Shows the jar files used by your SBT project at compile time.)
 show Runtime/dependencyClasspath  (Shows the jar files used by your SBT project at run time.)
 
+console   (Launch the Scala REPL console.)
+q:        (Quit the Scala REPL console.)
+projects  (List all SBT projects.)
+MyProject/compile  (Compiles MyProject, where 'MyProject' is one of the SBT project names.)
+
 More sbt commands--not explained at this time.
 test
-reload
+reload  (Causes the build.sbt file to be re-read, and its settings applied.)
 session save
