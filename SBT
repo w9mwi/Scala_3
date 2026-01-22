@@ -121,17 +121,29 @@ The following text is printed to the console, and you're returned to the SBT pro
 Scala 2 - Hello World
 sbt:sbt>
 
+
 EDITING THE BUILD.SBT FILE
 ==========================
 The SBT server can't be launched unless you create a build.sbt file.
 The build.sbt file can be empty, but it is always required.
 
+The following lines of text are some examples of settings that you
+can add to the build.sbt file.
 
-
-ThisBuild / scalaVersion := "2.13.12"
-ThisBuild / organization := "com.example"
-
+scalaVersion := "2.13.12"
+organization := "com.example"
 lazy val hello = (project in file("."))
   .settings(
     name := "Hello"
   )
+
+USEFUL SBT COMMANDS
+===================
+The following are some commands you can run from the sbt prompt to obtain
+sbt-related info.
+
+show scalaVersion   (Shows the version of Scala your SBT project is built with.)
+show fullClasspath  (Shows all jar files used by your SBT project.)
+show dependencyTree
+show Compile/dependencyClasspath  (Shows the jar files used by your SBT project at compile time.)
+show Runtime/dependencyClasspath  (Shows the jar files used by your SBT project at run time.)
