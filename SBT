@@ -153,6 +153,24 @@ q:        (Quit the Scala REPL console.)
 projects  (List all SBT projects.)
 MyProject/compile  (Compiles MyProject, where 'MyProject' is one of the SBT project names.)
 
+
+SBT can be run in batch mode, specifying a space-separated list of sbt commands as arguments,
+as shown below.
+
+$ sbt clean compile run  (Run 3 SBT commands at once.)
+
+In the following example, "testOnly" is a defined SBT command that accepts two arguments.
+When running an SBT command from the command line that accepts arguments, the SBT command
+and it arguments must be contained between parenthesis (""), as shown here.
+
+$ sbt clean compile "testOnly TestA TestB"
+
+
+
+For sbt commands that take arguments, pass the command and arguments as one argument to sbt by enclosing them in quotes. For example,
+
+$ sbt clean compile "testOnly TestA TestB"
+
 More sbt commands--not explained at this time.
 test
 reload  (Causes the build.sbt file to be re-read, and its settings applied.)
