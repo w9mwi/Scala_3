@@ -35,8 +35,15 @@ Thare are three main categories of Scala Collections.
                                      //         Yellow
           end main
 
-In addition to the three main categories of Scala collections shown above,
-there are other Scala collection types like ranges, stacks, and queues.
+The following is a list of the most commonly-used Scala collections.  Keep
+in mind many other Scala collection types exist, including ranges, stacks,
+and queues.
 
-
-
+List        - A linear (linked list), immutable sequence
+Vector      - An indexed, immutable sequence
+LazyList    - A "lazy" immutable linked list.  Its elements are computed only when
+              they’re referenced (needed).  Works best for large or infinite sequences.
+ArrayBuffer -	The go-to type for a mutable, indexed sequence.
+ListBuffer  - Used when you want a mutable List; typically converted to a List.
+Map         - An iterable collection that consists of pairs of keys and values.
+Set         - An iterable collection with no duplicate elements.
