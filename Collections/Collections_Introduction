@@ -4,7 +4,7 @@ SCALA COLLECTIONS
 Thare are three main categories of Scala Collections:
 
 1) Sequences - A sequential collection of elements that may be indexed (like an array)
-   or may be linear (like a linked list).
+               or may be linear (like a linked list).
 
 2) Maps - A collection of key/value pairs.  In the following example, keypadMap maps
           each number on a phone to a String to its corresponding alphabet characters.
@@ -15,3 +15,23 @@ Thare are three main categories of Scala Collections:
                               '5' -> "JKL", '6' -> "MNO", '7' -> "PQRS", '8' -> "TUV", '9' -> "WXYZ")
 
 3) Sets - An unordered collection of unique values.
+
+          @main def main():Unit =
+            var colors: Set[String] = Set("Red", "Green", "Blue")
+            colors.foreach(println) // PRINTS: Red
+                                    //         Green
+                                    //         Blue
+
+            // NOTE: All values in a Scala Set are unique.  The following
+            //       code attempts to add two elements having the identical
+            //       value "Red" to the colors Set.  Printing the contents
+            //       of the colors Set reveals that Scala rejected the
+            //       attempt to add another value of "Red".
+            colors = Set("Red", "Green", "Blue", "Red", "Yellow")
+            colors.foreach(println)  // PRINTS: Red
+                                     //         Green
+                                     //         Blue
+                                     //         Yellow
+end main
+
+
