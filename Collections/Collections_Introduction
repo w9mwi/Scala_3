@@ -41,8 +41,9 @@ stacks, and queues.
 
 LazyList    - A "lazy" immutable linked list.  Its elements are computed only when they're
               referenced (needed).  Works best for large or infinite sequences.
-List        - An immutable linked list.
-ListBuffer  - A List that's mutable, where its size can grow or shink.
+List        - An immutable linked list that should be accessed using "head" and "tail",
+              and not via an element index number.
+ListBuffer  - A List that's both mutable, and its size can grow or shink.
 Vector      - An immutable indexed sequence.
 ArrayBuffer - The go-to type for a mutable, indexed sequence.
 Map         - An iterable collection that consists of key + value pairs.
