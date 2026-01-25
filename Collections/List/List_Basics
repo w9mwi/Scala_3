@@ -8,12 +8,23 @@ demonstrates how that's done.
 
 The List class inherits from the LinearSeq trait; NOT from the IndexedSeq trait.
 This means that accessing a List element via an index can take a long time
-because all elements in the List (up to the index value) must be traversed.
+because all elements in the List (from index 0 to the desired index value)
+must first be traversed.
 
-Although the following code works, you should avoid accessing elements
-of a List via an index value, like this...
+Although the following line of code returns the contents of myList at element
+index 9, you should avoid accessing List elements via an index.  Because
+before element 9 of myList is accessed, the compiled Scala code acutally
+traverses myList elements 0 through 9 before it returns the List's value
+at index 9.  If you need to access a collection via an index, don't use
+List.  Instead use a class that inhehits from the IndexedSeq trait,
+such as Vector, ArrayBuffer, etc.
 
-   myList(99)
+@main def main(): Unit =
+  val charList:List[Char] = List('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J')
+  var myChar = charList(9)  // AVOID accessing a List via an index as done here.
+  println(s"myChar(9) = $myChar") // PRINTS: myChar(9) = J
+end main
+
 
 The following sample code demonstrates these List basics:
 
