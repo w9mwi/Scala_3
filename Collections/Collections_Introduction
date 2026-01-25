@@ -27,7 +27,7 @@ Thare are three main categories of Scala Collections:
             //       code attempts to add two elements having the identical
             //       value "Red" to the colors Set.  Printing the contents
             //       of the colors Set reveals that Scala rejected the
-            //       attempt to add another value of "Red".
+            //       attempt to add a duplicate "Red" value.
             colors = Set("Red", "Green", "Blue", "Red", "Yellow")
             colors.foreach(println)  // PRINTS: Red
                                      //         Green
