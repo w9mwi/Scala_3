@@ -1,0 +1,17 @@
+SCALA COLLECTIONS
+=================
+
+Thare are three main categories of Scala Collections:
+
+1) Sequences - A sequential collection of elements that may be indexed (like an array)
+   or may be linear (like a linked list).
+
+2) Maps - A collection of key/value pairs.  In the following example, keypadMap maps
+          each number on a phone to a String to its corresponding alphabet characters.
+          NOTE: Phone digits 0 and 1 don't map to any alphabet charaters on a phone,
+          so they're mapped to a single-character String.
+
+          val keypadMap = Map('0' -> "0",   '1' -> "1",   '2' -> "ABC",  '3' -> "DEF", '4' -> "GHI",
+                              '5' -> "JKL", '6' -> "MNO", '7' -> "PQRS", '8' -> "TUV", '9' -> "WXYZ")
+
+3) Sets - An unordered collection of unique values.
