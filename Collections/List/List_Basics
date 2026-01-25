@@ -16,8 +16,8 @@ index 9, you should avoid accessing List elements via an index.  Because
 before element 9 of myList is accessed, the compiled Scala code acutally
 traverses myList elements 0 through 9 before it returns the List's value
 at index 9.  If you need to access a collection via an index, don't use
-List.  Instead use a class that inhehits from the IndexedSeq trait,
-such as Vector, ArrayBuffer, etc.
+List.  Instead, use a class that inherits from the IndexedSeq trait,
+(i.e., Vector), the IndexedBuffer trait (i.e., ArrayBuffer), etc.
 
 @main def main(): Unit =
   val charList:List[Char] = List('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J')
