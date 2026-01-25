@@ -3,10 +3,10 @@ LIST BASICS
 
 A Scala List is immutable so it can't be changed after it's created.
 To "change" the contents of a List actually involves creating an
-entirely new List that contains the changes.  The following program
-demonstrates how that's done.
+entirely new List that contains the changes, as demonstrated in one
+of the Scala programs below.
 
-The List class inherits from the LinearSeq trait; NOT from the IndexedSeq trait.
+The List class inherits from the LinearSeq trait; not from the IndexedSeq trait.
 This means that accessing a List element via an index can take a long time
 because all elements in the List (from index 0 to the desired index value)
 must first be traversed.
@@ -14,7 +14,7 @@ must first be traversed.
 Although the following line of code returns the contents of myList at element
 index 9, you should avoid accessing List elements via an index.  Because
 before element 9 of myList is accessed, the compiled Scala code acutally
-traverses myList elements 0 through 9 before it returns the List's value
+traverses myList elements 0 through 8 before it returns the List's value
 at index 9.  If you need to access a collection via an index, don't use
 List.  Instead, use a class that inherits from the IndexedSeq trait,
 (i.e., Vector), the IndexedBuffer trait (i.e., ArrayBuffer), etc.
