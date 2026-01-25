@@ -44,6 +44,6 @@ LazyList    - A "lazy" immutable linked list.  Its elements are computed only wh
 List        - An immutable linked list.
 ListBuffer  - A List that's mutable, where its size can grow or shink.
 Vector      - An immutable indexed sequence
-ArrayBuffer -	The go-to type for a mutable, indexed sequence.
+ArrayBuffer - The go-to type for a mutable, indexed sequence.
 Map         - An iterable collection that consists of key + value pairs.
 Set         - An iterable collection that prohibits duplicate values.
