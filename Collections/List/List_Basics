@@ -23,8 +23,33 @@ accessed via its "head" and "tail" methods and indecies should be avoided.
   println(s"myChar(9) = $myChar") // PRINTS: myChar(9) = J
 end main
 
+The following program demonstrates how to iterate over a List.
 
-The following sample code demonstrates these List basics:
+@main def main():Unit =
+  val intList:List[Int] = List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+  println(s"1) intList: $intList")
+  // PRINTS: 1) intList = List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+  // ******************************************************************
+  // Traverse intList in the Forward (Left-to-Right) direction.
+  var iter:Iterator[Int] = intList.iterator // Obtain the FORWARD iterator.
+  print("2) intValue = ")
+  while (iter.hasNext)
+    print(s"${iter.next()}, ")
+    // PRINTS: 2) intValue = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+
+  // ******************************************************************
+  // Traverse intList in the Reverse (Right-to-Left) direction.
+  iter = intList.reverseIterator // Obtain the REVERSE iterator.
+  print("\n3) intValue = ")
+  while (iter.hasNext)
+    print(s"${iter.next()}, ")
+    // PRINTS: 3) intValue = 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,
+end main
+
+=============================================================================
+The following program demonstrates these List basics:
 
   * An empty List.
   * Three different ways to construct an equivalent List.
