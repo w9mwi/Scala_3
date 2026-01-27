@@ -7,9 +7,9 @@ Thare are three main categories of Scala Collections.
                or may be linear (like a linked list).
 
 2) Maps - A collection of key/value pairs.  In the following example, the val keypadMap
-          maps each number on a phone to a String of corresponding alphabet characters.
-          NOTE: Digits 0 and 1 don't map to any alphabet charaters on a phone, so they're
-          mapped to a single-digit String value.
+          maps each number on a phone to a String of characters.  NOTE: Digits 0 and 1
+          don't map to any alphabet characters on a phone, so they're mapped to a
+          single-digit String value.
 
           val keypadMap = Map('0' -> "0",   '1' -> "1",   '2' -> "ABC",  '3' -> "DEF", '4' -> "GHI",
                               '5' -> "JKL", '6' -> "MNO", '7' -> "PQRS", '8' -> "TUV", '9' -> "WXYZ")
