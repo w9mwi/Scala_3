@@ -11,17 +11,15 @@ This means that accessing a List element via an index can take a long time
 because all elements in the List (from index 0 to the desired index value)
 must first be traversed.
 
-Although the following line of code returns the contents of myList at element
-index 9, you should avoid accessing List elements via an index.  Because
-before element 9 of myList is accessed, the compiled Scala code acutally
-traverses myList elements 0 through 8 before it returns the List's value
-at index 9.  If you need to access a collection via an index, don't use
-List.  Instead, use a class that inherits from the IndexedSeq trait,
-(i.e., Vector), the IndexedBuffer trait (i.e., ArrayBuffer), etc.
+Although the following program returns the contents of myList at element
+index 9, you should avoid accessing List elements via an index because
+the compiled Scala code actually traverses a List from its first element,
+all the way to the indexed element you specify.  Instead, a List should
+accessed via its "head" and "tail" methods and indecies should be avoided.
 
 @main def main(): Unit =
   val charList:List[Char] = List('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J')
-  var myChar = charList(9)  // AVOID accessing a List via an index as done here.
+  var myChar = charList(9)  // AVOID accessing a List via an index, like this.
   println(s"myChar(9) = $myChar") // PRINTS: myChar(9) = J
 end main
 
